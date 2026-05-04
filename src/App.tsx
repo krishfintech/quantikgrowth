@@ -1254,37 +1254,22 @@ const App = () => {
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-primary-bg border border-text-primary/10 w-full max-w-lg rounded-2xl relative z-10 overflow-hidden flex flex-col p-8 sm:p-12"
+              className="bg-primary-bg border border-text-primary/10 w-full max-w-4xl rounded-2xl relative z-10 overflow-hidden flex flex-col"
+              style={{ height: 'min(800px, 90vh)' }}
             >
               <div className="absolute top-4 right-4 z-20 bg-primary-bg rounded-full p-1 shadow-sm border border-text-primary/10">
                 <button className="text-text-primary/60 hover:text-text-primary transition-colors flex items-center justify-center" onClick={() => setIsModalOpen(false)}>
                   <X className="w-6 h-6" />
                 </button>
               </div>
-              <div className="text-center mb-8">
-                <h3 className="text-3xl font-serif italic text-accent-terracotta mb-2">Book Your Strategy Session</h3>
-                <p className="text-sm text-text-primary/60">Fill out your details below and our team will reach out directly to schedule.</p>
+              <div className="w-full h-full pt-12 pb-4 px-4 bg-primary-bg">
+                <iframe
+                  src="https://cal.com/krish-naidu/pms-growth-audit"
+                  className="w-full h-full border-0 rounded-lg"
+                  title="Book PMS Growth Strategy Session"
+                  loading="lazy"
+                ></iframe>
               </div>
-              <form className="space-y-4 flex flex-col" onSubmit={(e) => { e.preventDefault(); alert("Thanks! Your details have been securely routed to our support team."); setIsModalOpen(false); }}>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1 block">Full Name</label>
-                  <input required type="text" className="w-full bg-secondary-surface/30 border border-text-primary/10 rounded p-3 text-sm focus:outline-none focus:border-accent-terracotta/40 transition-colors" placeholder="e.g. Rahul Sharma" />
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1 block">Firm Name / Website</label>
-                  <input required type="text" className="w-full bg-secondary-surface/30 border border-text-primary/10 rounded p-3 text-sm focus:outline-none focus:border-accent-terracotta/40 transition-colors" placeholder="Your PMS Firm" />
-                </div>
-                <div>
-                  <label className="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1 block">Work Email</label>
-                  <input required type="email" className="w-full bg-secondary-surface/30 border border-text-primary/10 rounded p-3 text-sm focus:outline-none focus:border-accent-terracotta/40 transition-colors" placeholder="rahul@firm.com" />
-                </div>
-                <button type="submit" className="w-full bg-accent-terracotta text-white font-bold uppercase tracking-widest text-[11px] py-4 rounded shadow-lg mt-4 hover:opacity-90 transition-opacity">
-                  Request Session
-                </button>
-                <div className="text-center mt-4">
-                  <span className="text-[9px] uppercase tracking-widest opacity-40 font-bold">Details routed securely to our support team</span>
-                </div>
-              </form>
             </motion.div>
           </div>
         )}
