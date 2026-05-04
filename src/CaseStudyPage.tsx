@@ -156,7 +156,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                   </div>
                   <div className="absolute top-8 left-0 right-0 bottom-0 bg-[#0a2a1b] overflow-hidden">
                     <iframe 
-                      src="/" 
+                      src="https://pms-demo-one.vercel.app/" 
                       className="absolute top-0 left-0 w-[1280px] h-[800px] origin-top-left pointer-events-none border-none" 
                       style={{ transform: 'scale(0.5)', width: '200%', height: '200%' }} 
                       title="QuantikGrowth Site Preview"
@@ -280,28 +280,32 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                 {/* Visual: SEO Dashboard Mockup */}
                 <div className="bg-primary-bg border border-text-primary/5 rounded-sm p-6 shadow-sm space-y-6">
                   <div className="flex items-center gap-3 border-b border-text-primary/5 pb-4">
-                    <Search className="w-4 h-4 opacity-20" />
-                    <div className="text-[10px] font-bold opacity-30">best pms fund for long term wealth india</div>
+                    <div className="w-4 h-4 rounded-full border-2 border-text-primary/20 flex items-center justify-center shrink-0">
+                       <div className="w-1.5 h-1.5 bg-text-primary/20 rounded-full" />
+                    </div>
+                    <div className="text-[10px] font-bold opacity-30 tracking-wide">best pms fund for long term wealth india</div>
                   </div>
                   <div className="space-y-4">
-                    <div className="flex gap-4 p-4 border border-accent-terracotta/20 bg-accent-terracotta/[0.02]">
-                       <div className="w-24 h-16 bg-[#0a2a1b] shrink-0 rounded-sm border border-text-primary/10 flex items-center justify-center">
-                         <div className="text-[#C8F04A] text-[8px] font-bold">ARTICLE</div>
+                    <div className="flex gap-4 p-4 border border-accent-terracotta/20 bg-accent-terracotta/[0.02] shadow-sm relative overflow-hidden group hover:border-accent-terracotta/40 transition-colors">
+                       <div className="absolute inset-y-0 left-0 w-1 bg-accent-terracotta" />
+                       <div className="w-24 h-16 bg-[#0a2a1b] shrink-0 rounded-sm flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform">
+                         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] animate-shimmer" />
+                         <div className="text-[#C8F04A] text-[8px] font-bold uppercase tracking-widest relative z-10">Article</div>
                        </div>
-                       <div>
-                         <div className="text-[10px] text-text-primary/30 mb-1">quantikgrowth.com/insights</div>
-                         <div className="text-[14px] font-serif text-accent-terracotta italic font-bold mb-1">PMS vs Mutual Funds: Which is Right for HNIs?</div>
-                         <div className="text-[10px] text-text-primary/60 leading-relaxed font-medium">If you have over ₹50 Lakhs to invest, here is why a SEBI-registered PMS may outperform...</div>
+                       <div className="flex-1">
+                         <div className="text-[9px] text-text-primary/40 font-bold uppercase tracking-widest mb-1.5">quantikgrowth.com/insights</div>
+                         <div className="text-[15px] font-serif text-accent-terracotta italic font-bold mb-1.5 leading-tight">PMS vs Mutual Funds: Which is Right for HNIs?</div>
+                         <div className="text-[11px] text-text-primary/60 leading-relaxed font-medium line-clamp-2">If you have over ₹50 Lakhs to invest, here is why a SEBI-registered PMS may outperform traditional mutual funds in capturing structural growth...</div>
                        </div>
                     </div>
-                    <div className="flex gap-4 p-4 border border-text-primary/10">
-                       <div className="w-24 h-16 bg-secondary-surface shrink-0 rounded-sm border border-text-primary/10 flex items-center justify-center">
-                         <div className="text-text-primary/40 text-[8px] font-bold">ARTICLE</div>
+                    <div className="flex gap-4 p-4 border border-text-primary/5 hover:border-text-primary/20 transition-colors group opacity-80">
+                       <div className="w-24 h-16 bg-secondary-surface shrink-0 rounded-sm flex items-center justify-center border border-text-primary/5 group-hover:scale-105 transition-transform">
+                         <div className="text-text-primary/30 text-[8px] font-bold uppercase tracking-widest">Article</div>
                        </div>
-                       <div>
-                         <div className="text-[10px] text-text-primary/30 mb-1">quantikgrowth.com/insights</div>
-                         <div className="text-[14px] font-serif font-bold mb-1">Understanding The Growth Engine Strategy</div>
-                         <div className="text-[10px] text-text-primary/60 leading-relaxed font-medium">Deep dive into how our alpha leaders capitalize on structural growth...</div>
+                       <div className="flex-1">
+                         <div className="text-[9px] text-text-primary/40 font-bold uppercase tracking-widest mb-1.5">quantikgrowth.com/insights</div>
+                         <div className="text-[15px] font-serif font-bold mb-1.5 leading-tight text-text-primary/90">Understanding The Growth Engine Strategy</div>
+                         <div className="text-[11px] text-text-primary/60 leading-relaxed font-medium line-clamp-2">Deep dive into how our alpha leaders capitalize on structural growth across small and midcap segments...</div>
                        </div>
                     </div>
                   </div>
@@ -341,62 +345,50 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
             {/* 04 NEWSLETTER */}
             <div className="grid lg:grid-cols-2 gap-24 items-center">
               <FadeIn delay={0.1} className="lg:order-2">
-                <div className="relative bg-primary-bg border border-text-primary/5 rounded-sm p-4 shadow-xl overflow-hidden min-h-[350px]">
-                  {/* Newsletter Subscription Mockup */}
-                  <div className="absolute top-4 left-4 right-4 bg-secondary-surface p-6 rounded-sm border border-text-primary/5 shadow-sm z-10">
-                    <div className="text-[10px] font-bold text-accent-terracotta uppercase tracking-widest mb-2">Subscribe to Insights</div>
-                    <div className="text-[16px] font-serif italic text-text-primary mb-4">The QuantikGrowth Newsletter</div>
-                    <div className="flex gap-2">
-                       <div className="flex-grow bg-primary-bg border border-text-primary/10 rounded-sm px-3 py-2 text-[10px] text-text-primary/40">investor@example.com</div>
-                       <button className="bg-text-primary text-primary-bg px-4 py-2 rounded-sm text-[10px] font-bold uppercase">Subscribe</button>
+                <div className="bg-primary-bg border border-text-primary/5 rounded-sm p-4 shadow-xl overflow-hidden relative">
+                  {/* Email Client Header */}
+                  <div className="flex items-center gap-3 bg-secondary-surface px-5 py-3 rounded-t-sm border border-text-primary/5 mb-0">
+                    <div className="flex gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-text-primary/10" />
+                      <div className="w-2 h-2 rounded-full bg-text-primary/10" />
+                      <div className="w-2 h-2 rounded-full bg-text-primary/10" />
                     </div>
+                    <div className="text-[9px] font-bold uppercase tracking-widest text-text-primary/30 ml-2">Inbox — QuantikGrowth Insights</div>
                   </div>
                   
-                  {/* Inbox Animation */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-primary-bg border border-text-primary/10 rounded-sm p-4 pt-16 shadow-inner overflow-hidden">
-                     <div className="text-[8px] uppercase tracking-widest text-text-primary/30 mb-4 font-bold border-b border-text-primary/5 pb-2">Inbox</div>
-                     
-                     <div className="space-y-3 relative">
-                       {/* Unread animated email */}
-                       <motion.div 
-                         initial={{ y: -40, opacity: 0 }}
-                         animate={{ y: 0, opacity: 1 }}
-                         transition={{ duration: 0.8, delay: 0.5, type: 'spring', bounce: 0.4, repeat: Infinity, repeatDelay: 4 }}
-                         className="flex gap-3 items-center p-3 bg-secondary-surface border-l-2 border-accent-terracotta rounded-sm shadow-sm relative z-20"
-                       >
-                         <div className="w-2 h-2 rounded-full bg-accent-terracotta shrink-0 animate-pulse" />
-                         <div className="flex-grow">
-                           <div className="flex justify-between items-center mb-1">
-                             <div className="text-[10px] font-bold">QuantikGrowth Insights</div>
-                             <div className="text-[8px] opacity-40 font-bold">Just Now</div>
-                           </div>
-                           <div className="text-[11px] font-serif italic text-text-primary/80">Market Volatility & The Alpha Opportunity</div>
-                         </div>
-                       </motion.div>
-                       
-                       {/* Older emails */}
-                       {[
-                         { sender: "QuantikGrowth Insights", subject: "Welcome to The Growth Engine", time: "2 Days Ago" },
-                         { sender: "QuantikGrowth Team", subject: "Your Quarterly Performance Report", time: "1 Week Ago" }
-                       ].map((email, i) => (
-                         <motion.div 
-                           key={i}
-                           initial={{ y: 0 }}
-                           animate={{ y: 0 }}
-                           transition={{ duration: 0.8, delay: 0.5, repeat: Infinity, repeatDelay: 4 }}
-                           className="flex gap-3 items-center p-3 border-b border-text-primary/5 opacity-50 relative z-10"
-                         >
-                           <div className="w-2 h-2 rounded-full border border-text-primary/20 shrink-0" />
-                           <div className="flex-grow">
-                             <div className="flex justify-between items-center mb-1">
-                               <div className="text-[10px] font-medium">{email.sender}</div>
-                               <div className="text-[8px] opacity-40 font-bold">{email.time}</div>
-                             </div>
-                             <div className="text-[11px] text-text-primary/60">{email.subject}</div>
-                           </div>
-                         </motion.div>
-                       ))}
-                     </div>
+                  {/* Newsletter Signup Bar */}
+                  <div className="bg-accent-terracotta/5 border border-accent-terracotta/15 px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
+                    <div className="flex-grow">
+                      <div className="text-[11px] font-bold text-text-primary mb-0.5">The QuantikGrowth Letter</div>
+                      <div className="text-[9px] text-text-primary/40 font-medium">Weekly insights for SEBI-registered fund managers</div>
+                    </div>
+                    <div className="bg-text-primary text-primary-bg px-4 py-1.5 text-[8px] font-bold uppercase tracking-widest rounded-sm shadow-sm shrink-0">Subscribed ✓</div>
+                  </div>
+
+                  {/* Email List */}
+                  <div className="divide-y divide-text-primary/5">
+                    {[
+                      { from: "QuantikGrowth Insights", subject: "Market Volatility & The Alpha Opportunity", time: "Just Now", unread: true },
+                      { from: "QuantikGrowth Weekly", subject: "Your Q3 Performance Update — AUM +18.2%", time: "2 Days Ago", unread: true },
+                      { from: "QuantikGrowth Team", subject: "Welcome to The Growth Engine Newsletter", time: "1 Week Ago", unread: false }
+                    ].map((email, i) => (
+                      <motion.div 
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.3 + 0.2, duration: 0.4 }}
+                        className={`flex gap-3 items-start px-5 py-4 ${email.unread ? 'bg-accent-terracotta/[0.02]' : 'opacity-50'} hover:bg-secondary-surface/30 transition-colors cursor-pointer`}
+                      >
+                        <div className={`w-2 h-2 rounded-full shrink-0 mt-1.5 ${email.unread ? 'bg-accent-terracotta' : 'border border-text-primary/20'}`} />
+                        <div className="flex-grow min-w-0">
+                          <div className="flex justify-between items-center mb-1">
+                            <div className={`text-[10px] ${email.unread ? 'font-bold' : 'font-medium'}`}>{email.from}</div>
+                            <div className="text-[8px] opacity-40 font-bold shrink-0 ml-2">{email.time}</div>
+                          </div>
+                          <div className={`text-[11px] font-serif ${email.unread ? 'italic text-text-primary/80' : 'text-text-primary/50'} truncate`}>{email.subject}</div>
+                        </div>
+                      </motion.div>
+                    ))}
                   </div>
                 </div>
               </FadeIn>

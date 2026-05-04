@@ -50,106 +50,137 @@ const ExperienceShowcase = () => {
   const experiences = [
     {
       id: "01",
-      title: "Conversion-Engineered Architecture",
-      description: "Visualizing tactile layouts that prioritize client psychology and authority.",
+      title: "Wealth Creation Visualization",
+      description: "Interactive data artifacts that prove alpha generation and build immediate institutional trust.",
       visual: (
-        <div className="w-full h-full bg-white rounded-lg p-6 flex flex-col gap-4 shadow-sm relative overflow-hidden">
-          <div className="flex gap-2">
-            <div className="w-8 h-2 bg-text-primary/10 rounded-full" />
-            <div className="w-4 h-2 bg-text-primary/5 rounded-full" />
-          </div>
-          <div className="grid grid-cols-2 gap-4 mt-2">
-            <motion.div
-              initial={{ height: 0 }} animate={{ height: 80 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="bg-accent-lime/10 border border-accent-lime/20 rounded-md"
-            />
-            <div className="space-y-3">
-              <div className="h-2 w-full bg-text-primary/5 rounded-full" />
-              <div className="h-2 w-4/5 bg-text-primary/5 rounded-full" />
-              <div className="h-2 w-full bg-text-primary/5 rounded-full" />
+        <div className="w-full h-full bg-[#06211A] rounded-lg p-5 flex flex-col gap-4 shadow-sm overflow-hidden relative border border-white/10">
+          <div className="text-[10px] font-bold text-white/50 uppercase tracking-widest border-b border-white/10 pb-2">Growth Engine vs BSE 500</div>
+          <div className="flex-1 relative mt-2">
+            {/* Graph Grid */}
+            <div className="absolute inset-0 flex flex-col justify-between opacity-[0.03]">
+               {[1, 2, 3, 4, 5].map(i => <div key={i} className="border-t border-white w-full h-[1px]" />)}
             </div>
+            {/* SVG Lines */}
+            <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
+               <motion.path 
+                 d="M 0 90 Q 20 85, 40 60 T 70 30 T 100 10" 
+                 fill="none" 
+                 stroke="#C29D5A" 
+                 strokeWidth="3" 
+                 initial={{ pathLength: 0 }} 
+                 animate={{ pathLength: 1 }} 
+                 transition={{ duration: 2, ease: "easeOut", repeat: Infinity, repeatDelay: 2 }}
+               />
+               <motion.path 
+                 d="M 0 90 Q 20 88, 40 70 T 70 50 T 100 45" 
+                 fill="none" 
+                 stroke="#FFFFFF" 
+                 strokeWidth="1.5" 
+                 strokeDasharray="4 4"
+                 opacity="0.3"
+                 initial={{ pathLength: 0 }} 
+                 animate={{ pathLength: 1 }} 
+                 transition={{ duration: 2, ease: "easeOut", repeat: Infinity, repeatDelay: 2 }}
+               />
+               <motion.circle cx="100" cy="10" r="3" fill="#C29D5A" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 2, duration: 0.3, repeat: Infinity, repeatDelay: 3.7 }} />
+            </svg>
           </div>
-          <div className="absolute -right-4 bottom-8 w-32 h-32 bg-[radial-gradient(circle_at_center,rgba(188,108,37,0.05)_0%,transparent_70%)] rounded-full" />
+          <div className="flex gap-4 mt-auto">
+             <div className="flex items-center gap-1.5 text-[8px] text-white font-bold uppercase tracking-widest"><div className="w-2 h-2 rounded-full bg-[#C29D5A]" /> Quantik</div>
+             <div className="flex items-center gap-1.5 text-[8px] text-white/50 font-bold uppercase tracking-widest"><div className="w-2 h-2 rounded-full bg-white/50" /> BSE 500</div>
+          </div>
         </div>
       )
     },
     {
       id: "02",
-      title: "Tactile Engagement Loops",
-      description: "Seamless newsletter signup flows that turn visitors into artifacts of trust.",
+      title: "Conversion-Optimized Home",
+      description: "A live, responsive website that communicates authority in the first 5 seconds.",
       visual: (
-        <div className="w-full h-full bg-white rounded-lg p-8 flex flex-col items-center justify-center gap-6 shadow-sm">
-          <div className="w-full space-y-4">
-            <div className="h-10 w-full bg-text-primary/5 border border-text-primary/10 rounded-lg flex items-center px-4">
-              <motion.div
-                initial={{ width: 0 }} animate={{ width: "100%" }}
-                transition={{ duration: 2, ease: "easeInOut" }}
-                className="h-2 bg-text-primary/20 rounded-full"
-              />
-            </div>
-            <motion.button
-              whileTap={{ scale: 0.98 }}
-              className="h-10 w-full bg-text-primary text-white rounded-lg text-[10px] font-bold uppercase tracking-widest"
-            >
-              Subscribe to Blueprint
-            </motion.button>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 2 }}
-            className="flex items-center gap-2 text-success text-[10px] font-bold"
-          >
-            <CheckCircle2 className="w-3 h-3" /> SUCCESSFUL SUBSCRIPTION
-          </motion.div>
+        <div className="w-full h-full bg-[#0a2a1b] rounded-lg overflow-hidden shadow-sm relative border border-white/10">
+          <iframe 
+            src="https://pms-demo-one.vercel.app/" 
+            className="w-[200%] h-[200%] origin-top-left pointer-events-none border-none" 
+            style={{ transform: 'scale(0.5)' }} 
+            title="Demo Website Preview"
+            loading="lazy"
+          />
         </div>
       )
     },
     {
       id: "03",
-      title: "AI Curator Assistant",
-      description: "Custom-trained models that handle HNIs with institutional-grade precision.",
+      title: "Performance Artifacts",
+      description: "Live-updating AUM grids and dynamic bar charts that communicate scale in seconds.",
       visual: (
-        <div className="w-full h-full bg-white rounded-lg p-6 flex flex-col gap-4 shadow-sm relative border border-black/5">
-          <div className="flex items-start gap-3">
-            <div className="w-6 h-6 rounded-full bg-accent-lime flex items-center justify-center text-[8px] font-bold">AI</div>
-            <div className="flex-1 bg-secondary-surface/50 rounded-2xl rounded-tl-none p-3 text-[10px] leading-relaxed">
-              Welcome. Understanding your AUM goals is our priority. How can I assist?
-            </div>
-          </div>
-          <div className="flex items-start gap-3 justify-end mt-2">
-            <div className="bg-text-primary text-white rounded-2xl rounded-tr-none p-3 text-[10px] leading-relaxed">
-              What's the typical compliance lead time?
-            </div>
-          </div>
-          <div className="flex gap-1 ml-9 opacity-50">
-            {[1, 2, 3].map(i => <div key={i} className="w-1 h-1 bg-accent-lime rounded-full" />)}
+        <div className="w-full h-full bg-secondary-surface/30 rounded-lg p-5 flex flex-col justify-center shadow-sm border border-text-primary/5">
+          <div className="text-[10px] font-bold text-text-primary/40 uppercase tracking-widest mb-4">Live Performance Matrix</div>
+          <div className="grid grid-cols-2 gap-3">
+             <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm">
+                <div className="text-[8px] font-bold uppercase tracking-widest text-text-primary/40 mb-1">AUM</div>
+                <div className="text-xl font-serif italic font-bold text-text-primary">₹360cr+</div>
+             </div>
+             <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm">
+                <div className="text-[8px] font-bold uppercase tracking-widest text-text-primary/40 mb-1">1YR Return</div>
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xl font-serif italic font-bold text-success">42%</motion.div>
+             </div>
+             <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm">
+                <div className="text-[8px] font-bold uppercase tracking-widest text-text-primary/40 mb-1">Alpha Generated</div>
+                <div className="text-xl font-serif italic font-bold text-success">+15.6%</div>
+             </div>
+             <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm flex items-end justify-between gap-1 h-[68px]">
+                {[30, 45, 60, 40, 85, 100].map((h, i) => (
+                   <motion.div 
+                     key={i} 
+                     initial={{ height: 0 }} 
+                     animate={{ height: `${h}%` }} 
+                     transition={{ duration: 1, delay: i * 0.15, ease: "easeOut", repeat: Infinity, repeatDelay: 4 }}
+                     className="w-full bg-accent-terracotta rounded-t-[2px] opacity-80" 
+                   />
+                ))}
+             </div>
           </div>
         </div>
       )
     },
     {
       id: "04",
-      title: "Authoritative Artifacts",
-      description: "Content that establishes market leadership through design and data.",
+      title: "AI Curator Assistant",
+      description: "Custom-trained models that handle HNIs with institutional-grade precision.",
       visual: (
-        <div className="w-full h-full bg-white rounded-lg p-6 flex flex-col gap-4 shadow-sm overflow-hidden">
-          <div className="space-y-4">
-            {[1, 2].map(i => (
-              <div key={i} className="flex gap-4 items-center">
-                <div className="w-16 h-12 bg-text-primary/5 rounded-md overflow-hidden relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-                </div>
-                <div className="flex-1 space-y-2">
-                  <div className="h-2 w-full bg-text-primary/10 rounded-full" />
-                  <div className="h-2 w-2/3 bg-text-primary/5 rounded-full" />
-                </div>
-              </div>
-            ))}
+        <div className="w-full h-full bg-white rounded-lg p-5 flex flex-col gap-3 shadow-sm relative border border-text-primary/5 overflow-hidden">
+          <div className="flex items-start gap-2">
+            <div className="w-6 h-6 rounded-full bg-accent-terracotta/10 border border-accent-terracotta/20 flex items-center justify-center text-[8px] font-bold text-accent-terracotta shrink-0">AI</div>
+            <motion.div 
+              initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
+              className="flex-1 bg-secondary-surface/40 rounded-2xl rounded-tl-none p-3 text-[10px] leading-relaxed border border-text-primary/5"
+            >
+              Welcome. Our minimum ticket is ₹50 Lakhs. I can walk you through our concentrated alpha strategy. How can I assist?
+            </motion.div>
           </div>
-          <div className="mt-4 pt-4 border-t border-black/5">
-            <div className="text-[9px] font-bold text-accent-terracotta uppercase tracking-widest">Trending Insights</div>
+          <div className="flex items-start gap-2 justify-end mt-1">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2, duration: 0.3 }}
+              className="bg-text-primary text-white rounded-2xl rounded-tr-none p-3 text-[10px] leading-relaxed shadow-md max-w-[85%]"
+            >
+              What's your CAGR over the last 3 years?
+            </motion.div>
+          </div>
+          <div className="flex items-start gap-2 mt-1">
+            <div className="w-6 h-6 rounded-full bg-accent-terracotta/10 border border-accent-terracotta/20 flex items-center justify-center text-[8px] font-bold text-accent-terracotta shrink-0">AI</div>
+            <motion.div 
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 0.3 }}
+              className="flex gap-1 items-center mt-2"
+            >
+              {[0, 1, 2].map(i => (
+                <motion.div 
+                  key={i}
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.12 }}
+                  className="w-1.5 h-1.5 bg-accent-terracotta/60 rounded-full" 
+                />
+              ))}
+            </motion.div>
           </div>
         </div>
       )
@@ -950,7 +981,6 @@ const App = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isModalSubmitted, setIsModalSubmitted] = useState(false);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
 
   useEffect(() => {
@@ -965,6 +995,28 @@ const App = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Dynamic SEO Management
+    const titles: Record<string, string> = {
+      'home': 'QuantikGrowth — Full-Stack Digital Growth for SEBI-Registered PMS Firms',
+      'case-study': 'Infrastructure Blueprint — QuantikGrowth for PMS Firms',
+      'blog': 'PMS Growth Letter — Insights by QuantikGrowth'
+    };
+    
+    const descriptions: Record<string, string> = {
+      'home': "India's only full-stack growth studio for SEBI-registered PMS firms. We build websites, AI chatbots, SEO engines, and video assets.",
+      'case-study': 'A complete walkthrough of the digital infrastructure we build to turn PMS websites into 24/7 AUM client acquisition engines.',
+      'blog': 'Weekly insights and strategies for SEBI-registered fund managers on SEO, AI, and digital authority.'
+    };
+
+    document.title = titles[currentPage] || titles['home'];
+    
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', descriptions[currentPage] || descriptions['home']);
+    }
+  }, [currentPage]);
 
   const navigateToHome = () => {
     setCurrentPage('home');
@@ -1139,42 +1191,55 @@ const App = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
             >
-              <BlogPage onNavigateHome={navigateToHome} />
+              <BlogPage onNavigateHome={navigateToHome} onOpenModal={() => setIsModalOpen(true)} />
             </motion.div>
           )}
         </AnimatePresence>
       </main>
 
       {/* Footer */}
-      <footer className="bg-primary-bg pt-20 md:pt-32 pb-16 border-t border-text-primary/5">
-        <div className="container mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-16 mb-24">
-          <div className="space-y-6 md:space-y-8 lg:col-span-2">
-            <div onClick={navigateToHome} className="flex items-center text-xl md:text-2xl font-serif tracking-tighter cursor-pointer">
-              <span className="text-text-primary italic">Quantik</span>
-              <span className="text-accent-terracotta ml-0.5">Growth</span>
+      <footer className="bg-primary-bg pt-20 md:pt-32 pb-8 border-t border-text-primary/5 overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row justify-between mb-24 md:mb-32">
+            {/* Left side: Menu & Social */}
+            <div className="flex gap-20 md:gap-32 mb-16 lg:mb-0">
+              <div>
+                <h4 className="text-[13px] font-bold text-text-primary/50 mb-4 md:mb-6">Menu</h4>
+                <ul className="space-y-2 md:space-y-3">
+                  {['Blueprint', 'Process', 'Blog'].map(link => (
+                    <li key={link}>
+                      <span
+                        onClick={link === 'Blueprint' ? navigateToCaseStudy : link === 'Blog' ? navigateToBlog : navigateToHome}
+                        className="text-text-primary text-[16px] md:text-[18px] font-bold hover:text-accent-terracotta cursor-pointer transition-colors"
+                      >
+                        {link}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <p className="text-text-primary/60 text-[14px] leading-relaxed max-w-[240px]">
-              India&apos;s only full-stack growth studio for SEBI-registered PMS firms.
-            </p>
+
+            {/* Right side: Call to Action */}
+            <div className="max-w-md lg:text-left">
+              <h3 className="text-[32px] md:text-[42px] font-bold text-text-primary leading-[1.05] tracking-tight mb-6">
+                Ready to build your growth engine?
+              </h3>
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="text-text-primary text-[15px] md:text-[16px] font-bold border-b-[2px] border-text-primary pb-1 hover:text-accent-terracotta hover:border-accent-terracotta transition-colors"
+              >
+                Book a Growth Audit
+              </button>
+            </div>
           </div>
-          <div>
-            <h4 className="text-[10px] uppercase font-bold tracking-[0.3em] opacity-40 mb-6 md:mb-8">Navigation</h4>
-            <ul className="space-y-3 md:space-y-4">
-              {['About', 'Blueprint', 'Blog', 'Contact'].map(link => (
-                <li key={link}>
-                  <span
-                    onClick={link === 'Blueprint' ? navigateToCaseStudy : link === 'Blog' ? navigateToBlog : navigateToHome}
-                    className="text-text-primary/60 hover:text-text-primary transition-colors text-[14px] cursor-pointer"
-                  >
-                    {link}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-[10px] uppercase font-bold tracking-[0.3em] opacity-40 mb-6 md:mb-8">Contact</h4>
-            <span className="text-accent-terracotta font-bold text-[14px] break-words">contact@quantikgrowth.com</span>
+
+          {/* Big Logo text */}
+          <div className="w-full flex justify-center mt-8">
+            <h1 className="text-[12vw] sm:text-[13.5vw] leading-[0.75] font-serif tracking-tighter select-none whitespace-nowrap flex items-baseline">
+              <span className="text-text-primary italic">Quantik</span>
+              <span className="text-accent-terracotta">Growth</span>
+            </h1>
           </div>
         </div>
       </footer>
@@ -1182,33 +1247,29 @@ const App = () => {
       {/* Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 sm:p-6">
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="absolute inset-0 bg-primary-bg/95 backdrop-blur-sm" onClick={() => setIsModalOpen(false)}
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-primary-bg border border-text-primary/10 w-full max-w-lg rounded-2xl p-6 sm:p-10 relative z-10"
+              className="bg-primary-bg border border-text-primary/10 w-full max-w-4xl rounded-2xl relative z-10 overflow-hidden flex flex-col"
+              style={{ height: 'min(800px, 90vh)' }}
             >
-              <button className="absolute top-6 right-6 sm:top-8 sm:right-8 text-text-primary/40" onClick={() => setIsModalOpen(false)}><X className="w-5 h-5" /></button>
-
-              {!isModalSubmitted ? (
-                <>
-                  <h3 className="text-3xl sm:text-4xl font-serif mb-6 text-center italic">Inquiry Portal</h3>
-                  <form className="space-y-4 sm:space-y-6" onSubmit={(e) => { e.preventDefault(); setIsModalSubmitted(true); setTimeout(() => { setIsModalOpen(false); setIsModalSubmitted(false); }, 3000); }}>
-                    <input type="text" required placeholder="Identifier (Name)" className="w-full bg-secondary-surface/40 border border-text-primary/5 rounded-md px-5 py-4 text-sm sm:text-base focus:outline-none focus:border-accent-terracotta/30 transition-colors" />
-                    <input type="email" required placeholder="Portal (Email)" className="w-full bg-secondary-surface/40 border border-text-primary/5 rounded-md px-5 py-4 text-sm sm:text-base focus:outline-none focus:border-accent-terracotta/30 transition-colors" />
-                    <button type="submit" className="w-full bg-text-primary text-primary-bg font-bold py-5 hover:opacity-90 active:scale-95 transition-all text-sm sm:text-base">Confirm Inquiry</button>
-                  </form>
-                </>
-              ) : (
-                <div className="py-12 sm:py-20 text-center space-y-4">
-                  <CheckCircle2 className="w-12 h-12 sm:w-16 sm:h-16 text-success mx-auto" />
-                  <h3 className="text-2xl font-serif italic">Inquiry Received</h3>
-                  <p className="text-text-primary/60 text-sm">A growth curator will respond to your portal shortly.</p>
-                </div>
-              )}
+              <div className="absolute top-4 right-4 z-20 bg-primary-bg rounded-full p-1 shadow-sm border border-text-primary/10">
+                <button className="text-text-primary/60 hover:text-text-primary transition-colors flex items-center justify-center" onClick={() => setIsModalOpen(false)}>
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="w-full h-full pt-12 pb-4 px-4 bg-primary-bg">
+                <iframe
+                  src="https://cal.com/krish-naidu/pms-growth-audit"
+                  className="w-full h-full border-0 rounded-lg"
+                  title="Book PMS Growth Audit"
+                  loading="lazy"
+                ></iframe>
+              </div>
             </motion.div>
           </div>
         )}

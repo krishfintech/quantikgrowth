@@ -165,7 +165,7 @@ const ProcessStep = ({ number, title, body, isLast }: { number: string, title: s
 
 // --- Main Blog Page ---
 
-const BlogPage = ({ onNavigateHome }: { onNavigateHome: () => void }) => {
+const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void, onOpenModal: () => void }) => {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [readingProgress, setReadingProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("");
@@ -540,10 +540,6 @@ const BlogPage = ({ onNavigateHome }: { onNavigateHome: () => void }) => {
                     <p className="text-[14px] text-text-primary/50 leading-relaxed font-medium">
                       India&apos;s only full-stack digital growth studio built exclusively for SEBI-registered PMS firms. We design websites, train AI chatbots, build SEO engines, and produce video assets that turn portfolio management services into client acquisition machines.
                     </p>
-                    <div className="flex gap-4 mt-6">
-                      <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-text-primary/40 hover:text-accent-terracotta transition-colors"><Linkedin className="w-3.5 h-3.5" /> LinkedIn</button>
-                      <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-text-primary/40 hover:text-accent-terracotta transition-colors"><Twitter className="w-3.5 h-3.5" /> Twitter</button>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -602,7 +598,7 @@ const BlogPage = ({ onNavigateHome }: { onNavigateHome: () => void }) => {
                   <div className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4 opacity-60 font-mono">Growth Audit</div>
                   <h4 className="text-xl font-serif italic mb-4 leading-tight">Is your PMS website costing you clients?</h4>
                   <p className="text-[13px] opacity-80 leading-relaxed mb-8">We&apos;ll show you exactly what to fix — free 30-min call.</p>
-                  <button onClick={onNavigateHome} className="w-full bg-white text-accent-terracotta text-[10px] font-bold uppercase tracking-widest py-4 rounded-md group-hover:scale-[1.02] transition-transform">Book Free Audit &rarr;</button>
+                  <button onClick={onOpenModal} className="w-full bg-white text-accent-terracotta text-[10px] font-bold uppercase tracking-widest py-4 rounded-md group-hover:scale-[1.02] transition-transform">Book Free Audit &rarr;</button>
                 </div>
               </div>
             </div>
@@ -624,7 +620,7 @@ const BlogPage = ({ onNavigateHome }: { onNavigateHome: () => void }) => {
               Book a free 30-minute Growth Audit. We will audit your current digital presence, show you what your competitors are doing better, and hand you a clear roadmap — no obligation.
             </p>
             <button 
-              onClick={onNavigateHome}
+              onClick={onOpenModal}
               className="inline-flex items-center gap-4 bg-text-primary text-primary-bg px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:opacity-90 active:scale-95 transition-all rounded shadow-2xl shadow-text-primary/10"
             >
               Book My Free Growth Audit <ArrowRight className="w-4 h-4" />
