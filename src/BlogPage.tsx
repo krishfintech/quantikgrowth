@@ -114,7 +114,7 @@ const ComparisonTable = () => (
         {[
           "Investor sees a clear offer, proof, and a booking button in 5 seconds",
           "Flawless on every device — designed mobile-first",
-          "AI chatbot live, calendar booking embedded, CRM wired",
+          "AI chatbot live, lead capture forms embedded, support emails wired",
           "Performance track record, media mentions, SEBI credentials prominent",
           "Bounce rate: 30–40%"
         ].map((item, idx) => (
@@ -282,7 +282,7 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
             <FadeIn delay={0.1}>
               <p>What is the difference? It is not alpha. It is not team size. It is not even SEBI connections or legacy relationships. The difference is that one group has built a systematic, always-on client acquisition machine — and the other group is still waiting for the next referral over dinner.</p>
 
-              <p>We have audited more than thirty SEBI-registered PMS firms&apos; digital presence in the past year. The pattern is identical every time. The firms growing fastest are not the best fund managers in the room. They are the best-marketed. They show up on Google. They have a website that converts. Their AI answers investor questions at 2am. Their newsletter lands in inboxes every week. Their fund manager&apos;s face is on video, building trust before the first call is ever booked.</p>
+              <p>We have researched more than thirty SEBI-registered PMS firms&apos; digital presence in the past year. The pattern is identical every time. The firms growing fastest are not the best fund managers in the room. They are the best-marketed. They show up on Google. They have a website that converts. Their AI answers investor questions at 2am. Their newsletter lands in inboxes every week. Their fund manager&apos;s face is on video, building trust before the first call is ever booked.</p>
 
               <Callout label="The Core Insight">
                 Without the infrastructure described in this article, these same firms would have grown AUM 80% slower. The fund performance is the same. The system around it is what compounds.
@@ -307,14 +307,14 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                 <ServiceCard 
                   icon="🖥️"
                   sub="What We Build"
-                  title="A Conversion-Engineered Website on Antigravity"
-                  desc="We design and build your complete website on Antigravity — India's most powerful no-code platform. Every section is reverse-engineered from how HNI investors actually make decisions."
+                  title="A Custom Engineered Website"
+                  desc="We design and build your custom engineered website. Every section is reverse-engineered from how HNI investors actually make decisions."
                   items={[
                     "Above-the-fold value proposition that answers the investor's first three questions",
                     "SEBI-compliant copy — every claim approved within regulatory guardrails",
                     "Mobile-first, sub-2-second load time. Core Web Vitals score above 95.",
-                    "Calendly booking integrated on three pages — zero friction",
-                    "CRM connection so every lead is captured and routed automatically"
+                    "Lead capture forms integrated on three pages — zero friction",
+                    "Lead capture instantly routed to your support email"
                   ]}
                 />
 
@@ -390,7 +390,7 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                     "Custom newsletter template — dark, premium, reflects your brand",
                     "3-email automated welcome sequence sent on days 0, 3, and 7",
                     "Lead magnet design — 'The HNI Investment Guide: PMS Explained' — 12-page PDF",
-                    "CRM tagging: prospects who open 3+ emails get flagged as hot leads",
+                    "Lead tagging: prospects who open 3+ emails get flagged as hot leads",
                     "Newsletter signup embedded at 5 locations across your website"
                   ]}
                 />
@@ -447,12 +447,11 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                     "Trained on 25–50 proprietary documents — strategy, performance, FAQs",
                     "SEBI-aware guardrails: no unapproved claims or guaranteed return language",
                     "Lead qualification built in: the chatbot asks size and timeline before routing",
-                    "Full conversation transcript delivered to your CRM for RM handoff",
-                    "WhatsApp integration and direct calendar booking into your founder's schedule"
+                    "Direct lead capturing into your support email"
                   ]}
                 />
 
-                <p className="mt-8">The compliance angle matters enormously here. Most PMS firms are afraid of any digital communication that could be construed as financial advice or unapproved advertising. We build the guardrails before training begins. The AI knows exactly what it can and cannot say — and it never deviates. Your compliance officer can review every conversation in the CRM dashboard.</p>
+                <p className="mt-8">The compliance angle matters enormously here. Most PMS firms are afraid of any digital communication that could be construed as financial advice or unapproved advertising. We build the guardrails before training begins. The AI knows exactly what it can and cannot say — and it never deviates. Your compliance officer can review every conversation securely.</p>
               </div>
             </FadeIn>
 
@@ -472,8 +471,8 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                 <ServiceCard 
                   icon="🎬"
                   sub="What We Build"
-                  title="Professional Video Production — Shot in Your City"
-                  desc="We coordinate the entire shoot — scripting, location, crew, direction, and post-production. One day. Your city. Three to five final assets delivered."
+                  title="Professional Video Production — Shot in Mumbai"
+                  desc="We coordinate the entire shoot — scripting, location, crew, direction, and post-production. One day. Mumbai. Three to five final assets delivered."
                   items={[
                     "Fund manager story video (3–5 min) — philosophy and origin story",
                     "Strategy explainer (60–90 sec) — what you invest in and why",
@@ -595,10 +594,10 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
               <div className="bg-accent-terracotta text-white rounded-sm p-8 shadow-xl shadow-accent-terracotta/10 relative overflow-hidden group">
                 <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] [background-size:12px_12px]" />
                 <div className="relative z-10">
-                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4 opacity-60 font-mono">Growth Audit</div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4 opacity-60 font-mono">Strategy Session</div>
                   <h4 className="text-xl font-serif italic mb-4 leading-tight">Is your PMS website costing you clients?</h4>
                   <p className="text-[13px] opacity-80 leading-relaxed mb-8">We&apos;ll show you exactly what to fix — free 30-min call.</p>
-                  <button onClick={onOpenModal} className="w-full bg-white text-accent-terracotta text-[10px] font-bold uppercase tracking-widest py-4 rounded-md group-hover:scale-[1.02] transition-transform">Book Free Audit &rarr;</button>
+                  <button onClick={onOpenModal} className="w-full bg-white text-accent-terracotta text-[10px] font-bold uppercase tracking-widest py-4 rounded-md group-hover:scale-[1.02] transition-transform">Book Strategy Session &rarr;</button>
                 </div>
               </div>
             </div>
@@ -617,13 +616,13 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
               <span className="text-accent-terracotta">Client Acquisition Machine?</span>
             </h2>
             <p className="text-[16px] sm:text-[18px] text-text-primary/50 max-w-2xl mx-auto mb-12 font-medium">
-              Book a free 30-minute Growth Audit. We will audit your current digital presence, show you what your competitors are doing better, and hand you a clear roadmap — no obligation.
+              Book a free 30-minute Growth Strategy Session. We will review your current digital presence, show you what your competitors are doing better, and hand you a clear roadmap — no obligation.
             </p>
             <button 
               onClick={onOpenModal}
               className="inline-flex items-center gap-4 bg-text-primary text-primary-bg px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:opacity-90 active:scale-95 transition-all rounded shadow-2xl shadow-text-primary/10"
             >
-              Book My Free Growth Audit <ArrowRight className="w-4 h-4" />
+              Book My Free Strategy Session <ArrowRight className="w-4 h-4" />
             </button>
             <div className="flex flex-wrap justify-center gap-6 sm:gap-12 mt-16">
               {[

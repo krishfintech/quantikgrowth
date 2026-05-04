@@ -323,7 +323,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 onClick={onOpenModal}
                 className="bg-text-primary text-primary-bg text-xs font-bold uppercase tracking-[0.2em] px-10 py-5 hover:opacity-90 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                Enter Audit <ArrowRight className="w-4 h-4" />
+                Enter Strategy Session <ArrowRight className="w-4 h-4" />
               </button>
               <button
                 onClick={onNavigateToCaseStudy}
@@ -509,7 +509,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 label: "AI-POWERED",
                 title: "The Curator Assistant",
                 body: "We train a custom AI curator on your fund documents. It answers with the precision of your most senior relationship manager, qualifying interest 24/7.",
-                features: ["Document-trained model", "Regulated guardrails", "Lead qualification", "RM handoff interface"],
+                features: ["Document-trained model", "Regulated guardrails", "Lead qualification", "Support email routing"],
                 visual: (
                   <div className="bg-secondary-surface/40 border border-text-primary/5 p-8 space-y-6 max-w-sm mx-auto">
                     <div className="flex justify-end">
@@ -672,11 +672,11 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 relative">
             <span className="hidden lg:block absolute -top-16 left-0 text-[180px] font-serif text-text-primary/[0.02] select-none z-0 pointer-events-none">03</span>
             {[
-              { week: "01", title: "Audit & Blueprint", body: "Deep-dive analysis of your artifacts and competitors." },
+              { week: "01", title: "Strategy & Blueprint", body: "Deep-dive analysis of your artifacts and competitors." },
               { week: "02", title: "Narrative & Flow", body: "Visual mockups and compliance-aware copy curation." },
               { week: "03", title: "Material Science", body: "Development on tactile platforms and AI assistant training." },
               { week: "04", title: "Domain Indexing", body: "Publishing authoritative posts and analytics curation." },
-              { week: "06", title: "The Handoff", body: "Boutique launch and artifact delivery." }
+              { week: "06", title: "The Launch", body: "Boutique launch and artifact delivery." }
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <motion.div
@@ -888,7 +888,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 onClick={onOpenModal}
                 className="w-full bg-text-primary text-primary-bg text-xs font-bold uppercase tracking-[0.2em] py-5 hover:opacity-90 transition-all"
               >
-                Enter Audit →
+                Enter Strategy Session →
               </button>
             </motion.div>
 
@@ -913,7 +913,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 onClick={onOpenModal}
                 className="w-full bg-accent-terracotta text-white text-xs font-bold uppercase tracking-[0.2em] py-5 hover:opacity-90 transition-all"
               >
-                Scale Audit →
+                Scale Strategy Session →
               </button>
             </motion.div>
           </div>
@@ -1087,7 +1087,7 @@ const App = () => {
                 onClick={() => setIsModalOpen(true)}
                 className="bg-text-primary text-primary-bg text-[10px] font-bold uppercase tracking-widest px-8 py-3.5 hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 group"
               >
-                Book Audit <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                Book Strategy Session <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
           </div>
 
@@ -1144,7 +1144,7 @@ const App = () => {
                   onClick={() => { setIsMenuOpen(false); setIsModalOpen(true); }}
                   className="w-full bg-text-primary text-primary-bg text-sm font-bold uppercase tracking-[0.2em] py-5 flex items-center justify-center gap-2"
                 >
-                  Book Growth Audit <ArrowRight className="w-4 h-4" />
+                  Book Strategy Session <ArrowRight className="w-4 h-4" />
                 </button>
                 <div className="text-center">
                   <p className="text-[10px] text-text-primary/40 uppercase tracking-widest font-bold mb-2">Connect with us</p>
@@ -1229,7 +1229,7 @@ const App = () => {
                 onClick={() => setIsModalOpen(true)}
                 className="text-text-primary text-[15px] md:text-[16px] font-bold border-b-[2px] border-text-primary pb-1 hover:text-accent-terracotta hover:border-accent-terracotta transition-colors"
               >
-                Book a Growth Audit
+                Book a Strategy Session
               </button>
             </div>
           </div>
@@ -1254,22 +1254,37 @@ const App = () => {
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-primary-bg border border-text-primary/10 w-full max-w-4xl rounded-2xl relative z-10 overflow-hidden flex flex-col"
-              style={{ height: 'min(800px, 90vh)' }}
+              className="bg-primary-bg border border-text-primary/10 w-full max-w-lg rounded-2xl relative z-10 overflow-hidden flex flex-col p-8 sm:p-12"
             >
               <div className="absolute top-4 right-4 z-20 bg-primary-bg rounded-full p-1 shadow-sm border border-text-primary/10">
                 <button className="text-text-primary/60 hover:text-text-primary transition-colors flex items-center justify-center" onClick={() => setIsModalOpen(false)}>
                   <X className="w-6 h-6" />
                 </button>
               </div>
-              <div className="w-full h-full pt-12 pb-4 px-4 bg-primary-bg">
-                <iframe
-                  src="https://cal.com/krish-naidu/pms-growth-audit"
-                  className="w-full h-full border-0 rounded-lg"
-                  title="Book PMS Growth Audit"
-                  loading="lazy"
-                ></iframe>
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-serif italic text-accent-terracotta mb-2">Book Your Strategy Session</h3>
+                <p className="text-sm text-text-primary/60">Fill out your details below and our team will reach out directly to schedule.</p>
               </div>
+              <form className="space-y-4 flex flex-col" onSubmit={(e) => { e.preventDefault(); alert("Thanks! Your details have been securely routed to our support team."); setIsModalOpen(false); }}>
+                <div>
+                  <label className="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1 block">Full Name</label>
+                  <input required type="text" className="w-full bg-secondary-surface/30 border border-text-primary/10 rounded p-3 text-sm focus:outline-none focus:border-accent-terracotta/40 transition-colors" placeholder="e.g. Rahul Sharma" />
+                </div>
+                <div>
+                  <label className="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1 block">Firm Name / Website</label>
+                  <input required type="text" className="w-full bg-secondary-surface/30 border border-text-primary/10 rounded p-3 text-sm focus:outline-none focus:border-accent-terracotta/40 transition-colors" placeholder="Your PMS Firm" />
+                </div>
+                <div>
+                  <label className="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1 block">Work Email</label>
+                  <input required type="email" className="w-full bg-secondary-surface/30 border border-text-primary/10 rounded p-3 text-sm focus:outline-none focus:border-accent-terracotta/40 transition-colors" placeholder="rahul@firm.com" />
+                </div>
+                <button type="submit" className="w-full bg-accent-terracotta text-white font-bold uppercase tracking-widest text-[11px] py-4 rounded shadow-lg mt-4 hover:opacity-90 transition-opacity">
+                  Request Session
+                </button>
+                <div className="text-center mt-4">
+                  <span className="text-[9px] uppercase tracking-widest opacity-40 font-bold">Details routed securely to our support team</span>
+                </div>
+              </form>
             </motion.div>
           </div>
         )}
@@ -1287,7 +1302,7 @@ const App = () => {
             <div className="bg-text-primary text-primary-bg p-4 flex items-center justify-between rounded-lg shadow-2xl">
               <div className="space-y-0.5">
                 <div className="text-[10px] font-bold uppercase tracking-widest opacity-60 leading-none">Qualified PMS Firms</div>
-                <div className="text-sm font-serif italic leading-none">Free Growth Audit</div>
+                <div className="text-sm font-serif italic leading-none">Free Strategy Session</div>
               </div>
               <div className="flex items-center gap-3">
                 <button

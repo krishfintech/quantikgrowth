@@ -103,7 +103,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                 </div>
 
                 <div className="mt-8 sm:mt-10 inline-block px-3 py-1 bg-accent-terracotta/10 border border-accent-terracotta/20 text-accent-terracotta rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em]">
-                  THE INITIAL AUDIT
+                  THE INITIAL RESEARCH
                 </div>
               </div>
             </div>
@@ -179,7 +179,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                       "A/B tested value props",
                       "SEBI-compliant copy",
                       "98 PageSpeed score",
-                      "Zoho CRM lead routing",
+                      "Support email lead routing",
                       "Embedded booking flows"
                     ].map(f => (
                       <div key={f} className="flex gap-3 items-center">
@@ -256,7 +256,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                       "Trained on your strategies",
                       "SEBI-aware guardrails",
                       "Direct lead capturing",
-                      "RM handoff protocols",
+                      "Support email notification protocols",
                       "Full transparency logs",
                       "Instant qualification"
                     ].map(f => (
@@ -407,7 +407,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                       "High-value HNI guides",
                       "Lead capture strategies",
                       "Strategic content calendar",
-                      "CRM integration & tagging"
+                      "Lead capturing & tagging"
                     ].map(f => (
                       <div key={f} className="flex gap-3 items-center">
                         <CheckCircle2 className="w-4 h-4 text-success" />
@@ -671,13 +671,13 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                 Ready to Build Your Own <br className="hidden md:block" /> Growth Engine?
             </h2>
             <p className="text-[14px] sm:text-[16px] text-text-primary/60 max-w-[520px] mx-auto mb-10 sm:mb-16 leading-relaxed font-medium">
-                Book a free 30-minute Growth Audit. We curate a tactile roadmap for your firm&apos;s digital infrastructure and benchmark your presence against Category Leaders.
+                Book a free 30-minute Growth Strategy session. We curate a tactile roadmap for your firm&apos;s digital infrastructure and benchmark your presence against Category Leaders.
             </p>
             <button 
               onClick={onOpenModal}
               className="bg-text-primary text-primary-bg text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.3em] px-10 sm:px-14 py-5 sm:py-6 hover:opacity-90 active:scale-95 transition-all mb-12 sm:mb-16 w-full sm:w-auto"
             >
-              Book My Free Growth Audit →
+              Book My Free Growth Strategy Session →
             </button>
             <div className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] opacity-40">
               30-min call · No obligation · For SEBI-registered PMS firms only
