@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { StaggeredText, CountUp, FadeIn } from './SharedComponents';
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  X, 
-  Search, 
+import {
+  ArrowRight,
+  CheckCircle2,
+  X,
+  Search,
   ChevronRight,
   TrendingUp,
   User,
@@ -29,7 +29,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
 
   return (
     <div className="bg-primary-bg text-text-primary font-sans selection:bg-accent-terracotta/20">
-      
+
       {/* SECTION 1 — INFRASTRUCTURE HERO */}
       <section className="pt-24 sm:pt-32 pb-12 sm:pb-16 px-6">
         <div className="container mx-auto">
@@ -78,13 +78,13 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
           <FadeIn delay={0.1}>
             <div className="bg-primary-bg border border-text-primary/5 p-6 sm:p-10 rounded-sm shadow-sm relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-32 h-32 bg-accent-terracotta/[0.03] rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110" />
-              
+
               <div className="relative z-10">
                 <h3 className="text-xl sm:text-2xl font-serif italic mb-1">Your Current State</h3>
                 <div className="text-[10px] font-bold uppercase tracking-widest opacity-40 mb-6 sm:mb-8">The Static Brochure Trap</div>
-                
+
                 <div className="w-full h-[1px] bg-text-primary/10 mb-6 sm:mb-8" />
-                
+
                 <div className="space-y-5 sm:space-y-6">
                   {[
                     { l: "Typical AUM Range", v: "₹10Cr – ₹250Cr" },
@@ -103,7 +103,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                 </div>
 
                 <div className="mt-8 sm:mt-10 inline-block px-3 py-1 bg-accent-terracotta/10 border border-accent-terracotta/20 text-accent-terracotta rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em]">
-                  THE INITIAL RESEARCH
+                  THE INITIAL AUDIT
                 </div>
               </div>
             </div>
@@ -155,10 +155,10 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                     </div>
                   </div>
                   <div className="absolute top-8 left-0 right-0 bottom-0 bg-[#0a2a1b] overflow-hidden">
-                    <iframe 
-                      src="https://pms-demo-one.vercel.app/" 
-                      className="absolute top-0 left-0 w-[1280px] h-[800px] origin-top-left pointer-events-none border-none" 
-                      style={{ transform: 'scale(0.5)', width: '200%', height: '200%' }} 
+                    <iframe
+                      src="https://pms-demo-one.vercel.app/"
+                      className="absolute top-0 left-0 w-[1280px] h-[800px] origin-top-left pointer-events-none border-none"
+                      style={{ transform: 'scale(0.5)', width: '200%', height: '200%' }}
                       title="QuantikGrowth Site Preview"
                       loading="lazy"
                     />
@@ -179,7 +179,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                       "A/B tested value props",
                       "SEBI-compliant copy",
                       "98 PageSpeed score",
-                      "Support email lead routing",
+                      "Zoho CRM lead routing",
                       "Embedded booking flows"
                     ].map(f => (
                       <div key={f} className="flex gap-3 items-center">
@@ -214,7 +214,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="flex justify-end">
                       <div className="bg-text-primary/5 text-text-primary/80 border border-text-primary/5 rounded-2xl rounded-tr-none py-2 px-3 text-[10px] font-medium max-w-[85%]">
                         What is your minimum investment?
@@ -256,7 +256,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                       "Trained on your strategies",
                       "SEBI-aware guardrails",
                       "Direct lead capturing",
-                      "Support email notification protocols",
+                      "RM handoff protocols",
                       "Full transparency logs",
                       "Instant qualification"
                     ].map(f => (
@@ -281,32 +281,32 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                 <div className="bg-primary-bg border border-text-primary/5 rounded-sm p-6 shadow-sm space-y-6">
                   <div className="flex items-center gap-3 border-b border-text-primary/5 pb-4">
                     <div className="w-4 h-4 rounded-full border-2 border-text-primary/20 flex items-center justify-center shrink-0">
-                       <div className="w-1.5 h-1.5 bg-text-primary/20 rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-text-primary/20 rounded-full" />
                     </div>
                     <div className="text-[10px] font-bold opacity-30 tracking-wide">best pms fund for long term wealth india</div>
                   </div>
                   <div className="space-y-4">
                     <div className="flex gap-4 p-4 border border-accent-terracotta/20 bg-accent-terracotta/[0.02] shadow-sm relative overflow-hidden group hover:border-accent-terracotta/40 transition-colors">
-                       <div className="absolute inset-y-0 left-0 w-1 bg-accent-terracotta" />
-                       <div className="w-24 h-16 bg-[#0a2a1b] shrink-0 rounded-sm flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform">
-                         <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] animate-shimmer" />
-                         <div className="text-[#C8F04A] text-[8px] font-bold uppercase tracking-widest relative z-10">Article</div>
-                       </div>
-                       <div className="flex-1">
-                         <div className="text-[9px] text-text-primary/40 font-bold uppercase tracking-widest mb-1.5">quantikgrowth.com/insights</div>
-                         <div className="text-[15px] font-serif text-accent-terracotta italic font-bold mb-1.5 leading-tight">PMS vs Mutual Funds: Which is Right for HNIs?</div>
-                         <div className="text-[11px] text-text-primary/60 leading-relaxed font-medium line-clamp-2">If you have over ₹50 Lakhs to invest, here is why a SEBI-registered PMS may outperform traditional mutual funds in capturing structural growth...</div>
-                       </div>
+                      <div className="absolute inset-y-0 left-0 w-1 bg-accent-terracotta" />
+                      <div className="w-24 h-16 bg-[#0a2a1b] shrink-0 rounded-sm flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform">
+                        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[length:250%_250%,100%_100%] animate-shimmer" />
+                        <div className="text-[#C8F04A] text-[8px] font-bold uppercase tracking-widest relative z-10">Article</div>
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-[9px] text-text-primary/40 font-bold uppercase tracking-widest mb-1.5">quantikgrowth.com/insights</div>
+                        <div className="text-[15px] font-serif text-accent-terracotta italic font-bold mb-1.5 leading-tight">PMS vs Mutual Funds: Which is Right for HNIs?</div>
+                        <div className="text-[11px] text-text-primary/60 leading-relaxed font-medium line-clamp-2">If you have over ₹50 Lakhs to invest, here is why a SEBI-registered PMS may outperform traditional mutual funds in capturing structural growth...</div>
+                      </div>
                     </div>
                     <div className="flex gap-4 p-4 border border-text-primary/5 hover:border-text-primary/20 transition-colors group opacity-80">
-                       <div className="w-24 h-16 bg-secondary-surface shrink-0 rounded-sm flex items-center justify-center border border-text-primary/5 group-hover:scale-105 transition-transform">
-                         <div className="text-text-primary/30 text-[8px] font-bold uppercase tracking-widest">Article</div>
-                       </div>
-                       <div className="flex-1">
-                         <div className="text-[9px] text-text-primary/40 font-bold uppercase tracking-widest mb-1.5">quantikgrowth.com/insights</div>
-                         <div className="text-[15px] font-serif font-bold mb-1.5 leading-tight text-text-primary/90">Understanding The Growth Engine Strategy</div>
-                         <div className="text-[11px] text-text-primary/60 leading-relaxed font-medium line-clamp-2">Deep dive into how our alpha leaders capitalize on structural growth across small and midcap segments...</div>
-                       </div>
+                      <div className="w-24 h-16 bg-secondary-surface shrink-0 rounded-sm flex items-center justify-center border border-text-primary/5 group-hover:scale-105 transition-transform">
+                        <div className="text-text-primary/30 text-[8px] font-bold uppercase tracking-widest">Article</div>
+                      </div>
+                      <div className="flex-1">
+                        <div className="text-[9px] text-text-primary/40 font-bold uppercase tracking-widest mb-1.5">quantikgrowth.com/insights</div>
+                        <div className="text-[15px] font-serif font-bold mb-1.5 leading-tight text-text-primary/90">Understanding The Growth Engine Strategy</div>
+                        <div className="text-[11px] text-text-primary/60 leading-relaxed font-medium line-clamp-2">Deep dive into how our alpha leaders capitalize on structural growth across small and midcap segments...</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -355,7 +355,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                     </div>
                     <div className="text-[9px] font-bold uppercase tracking-widest text-text-primary/30 ml-2">Inbox — QuantikGrowth Insights</div>
                   </div>
-                  
+
                   {/* Newsletter Signup Bar */}
                   <div className="bg-accent-terracotta/5 border border-accent-terracotta/15 px-5 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
                     <div className="flex-grow">
@@ -372,7 +372,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                       { from: "QuantikGrowth Weekly", subject: "Your Q3 Performance Update — AUM +18.2%", time: "2 Days Ago", unread: true },
                       { from: "QuantikGrowth Team", subject: "Welcome to The Growth Engine Newsletter", time: "1 Week Ago", unread: false }
                     ].map((email, i) => (
-                      <motion.div 
+                      <motion.div
                         key={i}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -407,7 +407,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                       "High-value HNI guides",
                       "Lead capture strategies",
                       "Strategic content calendar",
-                      "Lead capturing & tagging"
+                      "CRM integration & tagging"
                     ].map(f => (
                       <div key={f} className="flex gap-3 items-center">
                         <CheckCircle2 className="w-4 h-4 text-success" />
@@ -429,16 +429,16 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                 <div className="bg-primary-bg p-8 border border-text-primary/5 space-y-8 rounded-sm shadow-sm relative overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(#BC6C25_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.02]" />
                   <div className="relative z-10 border-b border-text-primary/5 pb-4 mb-4 flex justify-between items-end">
-                     <div>
-                       <div className="text-[14px] font-serif italic text-accent-terracotta">Press & Media</div>
-                       <div className="text-[9px] font-bold opacity-40 uppercase tracking-widest">Institutional Coverage</div>
-                     </div>
-                     <div className="flex gap-2">
-                       <div className="w-6 h-6 rounded-full border border-text-primary/10 flex items-center justify-center"><ArrowRight className="w-3 h-3 rotate-180 opacity-40" /></div>
-                       <div className="w-6 h-6 rounded-full border border-text-primary/10 flex items-center justify-center"><ArrowRight className="w-3 h-3 opacity-40" /></div>
-                     </div>
+                    <div>
+                      <div className="text-[14px] font-serif italic text-accent-terracotta">Press & Media</div>
+                      <div className="text-[9px] font-bold opacity-40 uppercase tracking-widest">Institutional Coverage</div>
+                    </div>
+                    <div className="flex gap-2">
+                      <div className="w-6 h-6 rounded-full border border-text-primary/10 flex items-center justify-center"><ArrowRight className="w-3 h-3 rotate-180 opacity-40" /></div>
+                      <div className="w-6 h-6 rounded-full border border-text-primary/10 flex items-center justify-center"><ArrowRight className="w-3 h-3 opacity-40" /></div>
+                    </div>
                   </div>
-                  
+
                   <div className="relative z-10 grid gap-4">
                     {[
                       { source: "Economic Times", title: "Why QuantikGrowth is leading the PMS revolution", date: "Oct 2023" },
@@ -446,16 +446,16 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                       { source: "Mint", title: "The Alpha Generation Strategies of 2024", date: "Jan 2024" }
                     ].map((media, i) => (
                       <div key={i} className="flex gap-4 items-center p-4 bg-secondary-surface/50 border border-text-primary/5 hover:border-accent-terracotta/20 transition-colors group cursor-pointer">
-                         <div className="w-12 h-12 bg-text-primary/5 rounded-sm flex items-center justify-center shrink-0">
-                           <div className="text-[8px] font-black uppercase rotate-[-45deg] opacity-20">{media.source.substring(0,3)}</div>
-                         </div>
-                         <div className="flex-grow">
-                           <div className="flex justify-between mb-1">
-                             <div className="text-[9px] font-bold text-accent-terracotta uppercase tracking-widest">{media.source}</div>
-                             <div className="text-[8px] font-bold opacity-40">{media.date}</div>
-                           </div>
-                           <div className="text-[13px] font-serif font-medium group-hover:text-accent-terracotta transition-colors">{media.title}</div>
-                         </div>
+                        <div className="w-12 h-12 bg-text-primary/5 rounded-sm flex items-center justify-center shrink-0">
+                          <div className="text-[8px] font-black uppercase rotate-[-45deg] opacity-20">{media.source.substring(0, 3)}</div>
+                        </div>
+                        <div className="flex-grow">
+                          <div className="flex justify-between mb-1">
+                            <div className="text-[9px] font-bold text-accent-terracotta uppercase tracking-widest">{media.source}</div>
+                            <div className="text-[8px] font-bold opacity-40">{media.date}</div>
+                          </div>
+                          <div className="text-[13px] font-serif font-medium group-hover:text-accent-terracotta transition-colors">{media.title}</div>
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -493,12 +493,12 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
               <FadeIn delay={0.1} className="lg:order-2">
                 <div className="relative h-[300px] flex items-center justify-center">
                   {[1, 2, 3].map(i => (
-                    <div 
-                      key={i} 
+                    <div
+                      key={i}
                       className="absolute bg-primary-bg border border-text-primary/10 rounded-sm aspect-video w-[320px] transition-transform hover:z-20 hover:scale-105 shadow-xl flex flex-col overflow-hidden"
-                      style={{ 
-                        transform: `rotate(${(i-2)*5}deg) translateX(${(i-2)*40}px) translateY(${(i-2)*-10}px)`, 
-                        zIndex: 10 + i 
+                      style={{
+                        transform: `rotate(${(i - 2) * 5}deg) translateX(${(i - 2) * 40}px) translateY(${(i - 2) * -10}px)`,
+                        zIndex: 10 + i
                       }}
                     >
                       <div className="flex-grow bg-secondary-surface flex items-center justify-center group cursor-pointer">
@@ -591,7 +591,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
               { phase: "Months 4–6", title: "Compounding", d: ["Organic Dominion", "AUM Pipeline", "Boutique Scale"] }
             ].map((p, i) => (
               <div key={i} className="bg-primary-bg border border-text-primary/5 p-8 rounded-sm relative group overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-10 font-serif italic text-4xl group-hover:text-accent-terracotta group-hover:opacity-100 transition-all">0{i+1}</div>
+                <div className="absolute top-0 right-0 p-4 opacity-10 font-serif italic text-4xl group-hover:text-accent-terracotta group-hover:opacity-100 transition-all">0{i + 1}</div>
                 <div className="text-[10px] font-bold uppercase tracking-widest opacity-40 mb-2">{p.phase}</div>
                 <h4 className="text-xl font-serif italic mb-6">{p.title}</h4>
                 <ul className="space-y-3">
@@ -636,20 +636,20 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                t: "Foundation Tier", 
-                AUM: "Under ₹100Cr", 
-                body: "Priority: credibility artifacts (website, AI assistant) that make you look like a ₹500Cr boutique. Your brand needs to signal institutional scale before your AUM reaches it." 
+              {
+                t: "Foundation Tier",
+                AUM: "Under ₹100Cr",
+                body: "Priority: credibility artifacts (website, AI assistant) that make you look like a ₹500Cr boutique. Your brand needs to signal institutional scale before your AUM reaches it."
               },
-              { 
-                t: "Growth engine", 
-                AUM: "₹100Cr–₹500Cr", 
-                body: "Compounding digital artifacts — SEO content, video trust-building, and newsletter nurturing — are your move to building a sustainable inbound pipeline." 
+              {
+                t: "Growth engine",
+                AUM: "₹100Cr–₹500Cr",
+                body: "Compounding digital artifacts — SEO content, video trust-building, and newsletter nurturing — are your move to building a sustainable inbound pipeline."
               },
-              { 
-                t: "Institution Tier", 
-                AUM: "₹500Cr+", 
-                body: "Custom scale engagement. We build press-worthy sites, produce cinimatic video, and curate thought leadership positioning your fund managers as India&apos;s leading category voices." 
+              {
+                t: "Institution Tier",
+                AUM: "₹500Cr+",
+                body: "Custom scale engagement. We build press-worthy sites, produce cinimatic video, and curate thought leadership positioning your fund managers as India&apos;s leading category voices."
               }
             ].map((card, i) => (
               <div key={i} className="bg-primary-bg border border-text-primary/5 p-12 hover:border-accent-terracotta/20 transition-all rounded-sm group">
@@ -667,21 +667,21 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
       <section className="py-20 sm:py-24 md:py-40 px-6 relative overflow-hidden bg-secondary-surface">
         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_60%_80%_at_50%_50%,rgba(188,108,37,0.05)_0%,transparent_70%)]" />
         <div className="container mx-auto relative z-10 text-center">
-            <h2 className="text-[28px] sm:text-[40px] md:text-[64px] font-serif italic mb-6 sm:mb-8 leading-tight text-accent-terracotta">
-                Ready to Build Your Own <br className="hidden md:block" /> Growth Engine?
-            </h2>
-            <p className="text-[14px] sm:text-[16px] text-text-primary/60 max-w-[520px] mx-auto mb-10 sm:mb-16 leading-relaxed font-medium">
-                Book a free 30-minute Growth Strategy session. We curate a tactile roadmap for your firm&apos;s digital infrastructure and benchmark your presence against Category Leaders.
-            </p>
-            <button 
-              onClick={onOpenModal}
-              className="bg-text-primary text-primary-bg text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.3em] px-10 sm:px-14 py-5 sm:py-6 hover:opacity-90 active:scale-95 transition-all mb-12 sm:mb-16 w-full sm:w-auto"
-            >
-              Book My Free Growth Strategy Session →
-            </button>
-            <div className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] opacity-40">
-              30-min call · No obligation · For SEBI-registered PMS firms only
-            </div>
+          <h2 className="text-[28px] sm:text-[40px] md:text-[64px] font-serif italic mb-6 sm:mb-8 leading-tight text-accent-terracotta">
+            Ready to Build Your Own <br className="hidden md:block" /> Growth Engine?
+          </h2>
+          <p className="text-[14px] sm:text-[16px] text-text-primary/60 max-w-[520px] mx-auto mb-10 sm:mb-16 leading-relaxed font-medium">
+            Book a free 30-minute Growth Audit. We curate a tactile roadmap for your firm&apos;s digital infrastructure and benchmark your presence against Category Leaders.
+          </p>
+          <button
+            onClick={onOpenModal}
+            className="bg-text-primary text-primary-bg text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.3em] px-10 sm:px-14 py-5 sm:py-6 hover:opacity-90 active:scale-95 transition-all mb-12 sm:mb-16 w-full sm:w-auto"
+          >
+            Book My Free Growth Audit →
+          </button>
+          <div className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] opacity-40">
+            30-min call · No obligation · For SEBI-registered PMS firms only
+          </div>
         </div>
       </section>
 

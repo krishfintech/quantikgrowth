@@ -58,36 +58,36 @@ const ExperienceShowcase = () => {
           <div className="flex-1 relative mt-2">
             {/* Graph Grid */}
             <div className="absolute inset-0 flex flex-col justify-between opacity-[0.03]">
-               {[1, 2, 3, 4, 5].map(i => <div key={i} className="border-t border-white w-full h-[1px]" />)}
+              {[1, 2, 3, 4, 5].map(i => <div key={i} className="border-t border-white w-full h-[1px]" />)}
             </div>
             {/* SVG Lines */}
             <svg className="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100">
-               <motion.path 
-                 d="M 0 90 Q 20 85, 40 60 T 70 30 T 100 10" 
-                 fill="none" 
-                 stroke="#C29D5A" 
-                 strokeWidth="3" 
-                 initial={{ pathLength: 0 }} 
-                 animate={{ pathLength: 1 }} 
-                 transition={{ duration: 2, ease: "easeOut", repeat: Infinity, repeatDelay: 2 }}
-               />
-               <motion.path 
-                 d="M 0 90 Q 20 88, 40 70 T 70 50 T 100 45" 
-                 fill="none" 
-                 stroke="#FFFFFF" 
-                 strokeWidth="1.5" 
-                 strokeDasharray="4 4"
-                 opacity="0.3"
-                 initial={{ pathLength: 0 }} 
-                 animate={{ pathLength: 1 }} 
-                 transition={{ duration: 2, ease: "easeOut", repeat: Infinity, repeatDelay: 2 }}
-               />
-               <motion.circle cx="100" cy="10" r="3" fill="#C29D5A" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 2, duration: 0.3, repeat: Infinity, repeatDelay: 3.7 }} />
+              <motion.path
+                d="M 0 90 Q 20 85, 40 60 T 70 30 T 100 10"
+                fill="none"
+                stroke="#C29D5A"
+                strokeWidth="3"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 2, ease: "easeOut", repeat: Infinity, repeatDelay: 2 }}
+              />
+              <motion.path
+                d="M 0 90 Q 20 88, 40 70 T 70 50 T 100 45"
+                fill="none"
+                stroke="#FFFFFF"
+                strokeWidth="1.5"
+                strokeDasharray="4 4"
+                opacity="0.3"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 2, ease: "easeOut", repeat: Infinity, repeatDelay: 2 }}
+              />
+              <motion.circle cx="100" cy="10" r="3" fill="#C29D5A" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 2, duration: 0.3, repeat: Infinity, repeatDelay: 3.7 }} />
             </svg>
           </div>
           <div className="flex gap-4 mt-auto">
-             <div className="flex items-center gap-1.5 text-[8px] text-white font-bold uppercase tracking-widest"><div className="w-2 h-2 rounded-full bg-[#C29D5A]" /> Quantik</div>
-             <div className="flex items-center gap-1.5 text-[8px] text-white/50 font-bold uppercase tracking-widest"><div className="w-2 h-2 rounded-full bg-white/50" /> BSE 500</div>
+            <div className="flex items-center gap-1.5 text-[8px] text-white font-bold uppercase tracking-widest"><div className="w-2 h-2 rounded-full bg-[#C29D5A]" /> Quantik</div>
+            <div className="flex items-center gap-1.5 text-[8px] text-white/50 font-bold uppercase tracking-widest"><div className="w-2 h-2 rounded-full bg-white/50" /> BSE 500</div>
           </div>
         </div>
       )
@@ -98,10 +98,10 @@ const ExperienceShowcase = () => {
       description: "A live, responsive website that communicates authority in the first 5 seconds.",
       visual: (
         <div className="w-full h-full bg-[#0a2a1b] rounded-lg overflow-hidden shadow-sm relative border border-white/10">
-          <iframe 
-            src="https://pms-demo-one.vercel.app/" 
-            className="w-[200%] h-[200%] origin-top-left pointer-events-none border-none" 
-            style={{ transform: 'scale(0.5)' }} 
+          <iframe
+            src="https://pms-demo-one.vercel.app/"
+            className="w-[200%] h-[200%] origin-top-left pointer-events-none border-none"
+            style={{ transform: 'scale(0.5)' }}
             title="Demo Website Preview"
             loading="lazy"
           />
@@ -116,29 +116,29 @@ const ExperienceShowcase = () => {
         <div className="w-full h-full bg-secondary-surface/30 rounded-lg p-5 flex flex-col justify-center shadow-sm border border-text-primary/5">
           <div className="text-[10px] font-bold text-text-primary/40 uppercase tracking-widest mb-4">Live Performance Matrix</div>
           <div className="grid grid-cols-2 gap-3">
-             <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm">
-                <div className="text-[8px] font-bold uppercase tracking-widest text-text-primary/40 mb-1">AUM</div>
-                <div className="text-xl font-serif italic font-bold text-text-primary">₹360cr+</div>
-             </div>
-             <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm">
-                <div className="text-[8px] font-bold uppercase tracking-widest text-text-primary/40 mb-1">1YR Return</div>
-                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xl font-serif italic font-bold text-success">42%</motion.div>
-             </div>
-             <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm">
-                <div className="text-[8px] font-bold uppercase tracking-widest text-text-primary/40 mb-1">Alpha Generated</div>
-                <div className="text-xl font-serif italic font-bold text-success">+15.6%</div>
-             </div>
-             <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm flex items-end justify-between gap-1 h-[68px]">
-                {[30, 45, 60, 40, 85, 100].map((h, i) => (
-                   <motion.div 
-                     key={i} 
-                     initial={{ height: 0 }} 
-                     animate={{ height: `${h}%` }} 
-                     transition={{ duration: 1, delay: i * 0.15, ease: "easeOut", repeat: Infinity, repeatDelay: 4 }}
-                     className="w-full bg-accent-terracotta rounded-t-[2px] opacity-80" 
-                   />
-                ))}
-             </div>
+            <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm">
+              <div className="text-[8px] font-bold uppercase tracking-widest text-text-primary/40 mb-1">AUM</div>
+              <div className="text-xl font-serif italic font-bold text-text-primary">₹360cr+</div>
+            </div>
+            <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm">
+              <div className="text-[8px] font-bold uppercase tracking-widest text-text-primary/40 mb-1">1YR Return</div>
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-xl font-serif italic font-bold text-success">42%</motion.div>
+            </div>
+            <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm">
+              <div className="text-[8px] font-bold uppercase tracking-widest text-text-primary/40 mb-1">Alpha Generated</div>
+              <div className="text-xl font-serif italic font-bold text-success">+15.6%</div>
+            </div>
+            <div className="bg-primary-bg border border-text-primary/5 p-3 rounded-md shadow-sm flex items-end justify-between gap-1 h-[68px]">
+              {[30, 45, 60, 40, 85, 100].map((h, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ height: 0 }}
+                  animate={{ height: `${h}%` }}
+                  transition={{ duration: 1, delay: i * 0.15, ease: "easeOut", repeat: Infinity, repeatDelay: 4 }}
+                  className="w-full bg-accent-terracotta rounded-t-[2px] opacity-80"
+                />
+              ))}
+            </div>
           </div>
         </div>
       )
@@ -151,7 +151,7 @@ const ExperienceShowcase = () => {
         <div className="w-full h-full bg-white rounded-lg p-5 flex flex-col gap-3 shadow-sm relative border border-text-primary/5 overflow-hidden">
           <div className="flex items-start gap-2">
             <div className="w-6 h-6 rounded-full bg-accent-terracotta/10 border border-accent-terracotta/20 flex items-center justify-center text-[8px] font-bold text-accent-terracotta shrink-0">AI</div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}
               className="flex-1 bg-secondary-surface/40 rounded-2xl rounded-tl-none p-3 text-[10px] leading-relaxed border border-text-primary/5"
             >
@@ -159,7 +159,7 @@ const ExperienceShowcase = () => {
             </motion.div>
           </div>
           <div className="flex items-start gap-2 justify-end mt-1">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 1.2, duration: 0.3 }}
               className="bg-text-primary text-white rounded-2xl rounded-tr-none p-3 text-[10px] leading-relaxed shadow-md max-w-[85%]"
             >
@@ -168,16 +168,16 @@ const ExperienceShowcase = () => {
           </div>
           <div className="flex items-start gap-2 mt-1">
             <div className="w-6 h-6 rounded-full bg-accent-terracotta/10 border border-accent-terracotta/20 flex items-center justify-center text-[8px] font-bold text-accent-terracotta shrink-0">AI</div>
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2, duration: 0.3 }}
               className="flex gap-1 items-center mt-2"
             >
               {[0, 1, 2].map(i => (
-                <motion.div 
+                <motion.div
                   key={i}
                   animate={{ y: [0, -4, 0] }}
                   transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.12 }}
-                  className="w-1.5 h-1.5 bg-accent-terracotta/60 rounded-full" 
+                  className="w-1.5 h-1.5 bg-accent-terracotta/60 rounded-full"
                 />
               ))}
             </motion.div>
@@ -323,7 +323,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 onClick={onOpenModal}
                 className="bg-text-primary text-primary-bg text-xs font-bold uppercase tracking-[0.2em] px-10 py-5 hover:opacity-90 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                Enter Strategy Session <ArrowRight className="w-4 h-4" />
+                Enter Audit <ArrowRight className="w-4 h-4" />
               </button>
               <button
                 onClick={onNavigateToCaseStudy}
@@ -509,7 +509,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 label: "AI-POWERED",
                 title: "The Curator Assistant",
                 body: "We train a custom AI curator on your fund documents. It answers with the precision of your most senior relationship manager, qualifying interest 24/7.",
-                features: ["Document-trained model", "Regulated guardrails", "Lead qualification", "Support email routing"],
+                features: ["Document-trained model", "Regulated guardrails", "Lead qualification", "RM handoff interface"],
                 visual: (
                   <div className="bg-secondary-surface/40 border border-text-primary/5 p-8 space-y-6 max-w-sm mx-auto">
                     <div className="flex justify-end">
@@ -672,11 +672,11 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-12 relative">
             <span className="hidden lg:block absolute -top-16 left-0 text-[180px] font-serif text-text-primary/[0.02] select-none z-0 pointer-events-none">03</span>
             {[
-              { week: "01", title: "Strategy & Blueprint", body: "Deep-dive analysis of your artifacts and competitors." },
+              { week: "01", title: "Audit & Blueprint", body: "Deep-dive analysis of your artifacts and competitors." },
               { week: "02", title: "Narrative & Flow", body: "Visual mockups and compliance-aware copy curation." },
               { week: "03", title: "Material Science", body: "Development on tactile platforms and AI assistant training." },
               { week: "04", title: "Domain Indexing", body: "Publishing authoritative posts and analytics curation." },
-              { week: "06", title: "The Launch", body: "Boutique launch and artifact delivery." }
+              { week: "06", title: "The Handoff", body: "Boutique launch and artifact delivery." }
             ].map((item, i) => (
               <FadeIn key={i} delay={i * 0.1}>
                 <motion.div
@@ -710,56 +710,56 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 {/* Live Preview / Mockup of QuantikGrowth */}
                 <div className="absolute inset-0 bg-[#0a2a1b] overflow-hidden">
                   <div className="absolute top-0 inset-x-0 h-8 bg-[#0a2a1b]/80 backdrop-blur-md border-b border-white/5 flex items-center px-6 justify-between z-20">
-                     <span className="text-white font-serif text-[10px] font-bold tracking-widest flex items-center gap-2">
-                       <div className="w-1.5 h-1.5 bg-[#C8F04A] rounded-full" />
-                       QuantikGrowth
-                     </span>
-                     <div className="flex gap-4 opacity-50">
-                       <div className="w-8 h-[2px] bg-white/40 rounded-full"></div>
-                       <div className="w-6 h-[2px] bg-white/40 rounded-full"></div>
-                     </div>
+                    <span className="text-white font-serif text-[10px] font-bold tracking-widest flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-[#C8F04A] rounded-full" />
+                      QuantikGrowth
+                    </span>
+                    <div className="flex gap-4 opacity-50">
+                      <div className="w-8 h-[2px] bg-white/40 rounded-full"></div>
+                      <div className="w-6 h-[2px] bg-white/40 rounded-full"></div>
+                    </div>
                   </div>
-                  
+
                   {/* Content Mockup */}
                   <div className="relative p-6 lg:p-10 pt-16 lg:pt-20 space-y-6 lg:space-y-8 z-10 h-full flex flex-col justify-center">
                     <h1 className="text-white font-serif text-3xl lg:text-4xl leading-[1.1] tracking-tight">
-                      Risk-Conscious<br/>
+                      Risk-Conscious<br />
                       <span className="italic text-[#C8F04A]">investment</span> leaders
                     </h1>
-                    
+
                     <div className="w-full p-4 lg:p-6 border border-white/10 rounded-sm bg-[radial-gradient(rgba(200,240,74,0.05)_1px,transparent_1px)] [background-size:12px_12px] flex justify-between items-center bg-black/20 backdrop-blur-sm">
-                       <div>
-                         <div className="text-[8px] text-white/40 uppercase font-bold tracking-[0.2em] mb-1">AUM</div>
-                         <div className="text-white font-serif text-xl">₹360cr+</div>
-                       </div>
-                       <div className="h-8 w-[1px] bg-white/10"></div>
-                       <div>
-                         <div className="text-[8px] text-white/40 uppercase font-bold tracking-[0.2em] mb-1">1Yr Alpha</div>
-                         <div className="text-white font-serif text-xl">42%</div>
-                       </div>
-                       <div className="h-8 w-[1px] bg-white/10 hidden sm:block"></div>
-                       <div className="hidden sm:block">
-                         <div className="text-[8px] text-white/40 uppercase font-bold tracking-[0.2em] mb-1">Experience</div>
-                         <div className="text-white font-serif text-xl">80yrs+</div>
-                       </div>
+                      <div>
+                        <div className="text-[8px] text-white/40 uppercase font-bold tracking-[0.2em] mb-1">AUM</div>
+                        <div className="text-white font-serif text-xl">₹360cr+</div>
+                      </div>
+                      <div className="h-8 w-[1px] bg-white/10"></div>
+                      <div>
+                        <div className="text-[8px] text-white/40 uppercase font-bold tracking-[0.2em] mb-1">1Yr Alpha</div>
+                        <div className="text-white font-serif text-xl">42%</div>
+                      </div>
+                      <div className="h-8 w-[1px] bg-white/10 hidden sm:block"></div>
+                      <div className="hidden sm:block">
+                        <div className="text-[8px] text-white/40 uppercase font-bold tracking-[0.2em] mb-1">Experience</div>
+                        <div className="text-white font-serif text-xl">80yrs+</div>
+                      </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-3 gap-3 lg:gap-4">
-                       <div className="h-16 lg:h-20 border border-white/5 bg-white/[0.02] rounded-sm p-3 lg:p-4 flex flex-col justify-end hover:bg-white/[0.05] transition-colors">
-                         <div className="text-[#C8F04A] text-[6px] lg:text-[7px] uppercase tracking-widest font-bold mb-1">Strategy 01</div>
-                         <div className="text-white text-[9px] lg:text-[11px] font-serif">Growth Engine</div>
-                       </div>
-                       <div className="h-16 lg:h-20 border border-white/5 bg-white/[0.02] rounded-sm p-3 lg:p-4 flex flex-col justify-end hover:bg-white/[0.05] transition-colors">
-                         <div className="text-[#C8F04A] text-[6px] lg:text-[7px] uppercase tracking-widest font-bold mb-1">Strategy 02</div>
-                         <div className="text-white text-[9px] lg:text-[11px] font-serif">Alpha Leaders</div>
-                       </div>
-                       <div className="h-16 lg:h-20 border border-white/5 bg-white/[0.02] rounded-sm p-3 lg:p-4 flex flex-col justify-end hover:bg-white/[0.05] transition-colors">
-                         <div className="text-[#C8F04A] text-[6px] lg:text-[7px] uppercase tracking-widest font-bold mb-1">Strategy 03</div>
-                         <div className="text-white text-[9px] lg:text-[11px] font-serif">Value Catalyst</div>
-                       </div>
+                      <div className="h-16 lg:h-20 border border-white/5 bg-white/[0.02] rounded-sm p-3 lg:p-4 flex flex-col justify-end hover:bg-white/[0.05] transition-colors">
+                        <div className="text-[#C8F04A] text-[6px] lg:text-[7px] uppercase tracking-widest font-bold mb-1">Strategy 01</div>
+                        <div className="text-white text-[9px] lg:text-[11px] font-serif">Growth Engine</div>
+                      </div>
+                      <div className="h-16 lg:h-20 border border-white/5 bg-white/[0.02] rounded-sm p-3 lg:p-4 flex flex-col justify-end hover:bg-white/[0.05] transition-colors">
+                        <div className="text-[#C8F04A] text-[6px] lg:text-[7px] uppercase tracking-widest font-bold mb-1">Strategy 02</div>
+                        <div className="text-white text-[9px] lg:text-[11px] font-serif">Alpha Leaders</div>
+                      </div>
+                      <div className="h-16 lg:h-20 border border-white/5 bg-white/[0.02] rounded-sm p-3 lg:p-4 flex flex-col justify-end hover:bg-white/[0.05] transition-colors">
+                        <div className="text-[#C8F04A] text-[6px] lg:text-[7px] uppercase tracking-widest font-bold mb-1">Strategy 03</div>
+                        <div className="text-white text-[9px] lg:text-[11px] font-serif">Value Catalyst</div>
+                      </div>
                     </div>
                   </div>
-                  
+
                   {/* Subtle Background Effects */}
                   <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(200,240,74,0.1)_0%,transparent_50%)]" />
                 </div>
@@ -888,7 +888,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 onClick={onOpenModal}
                 className="w-full bg-text-primary text-primary-bg text-xs font-bold uppercase tracking-[0.2em] py-5 hover:opacity-90 transition-all"
               >
-                Enter Strategy Session →
+                Enter Audit →
               </button>
             </motion.div>
 
@@ -913,7 +913,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 onClick={onOpenModal}
                 className="w-full bg-accent-terracotta text-white text-xs font-bold uppercase tracking-[0.2em] py-5 hover:opacity-90 transition-all"
               >
-                Scale Strategy Session →
+                Scale Audit →
               </button>
             </motion.div>
           </div>
@@ -962,11 +962,11 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
               <StaggeredText text="Your AUM Should Reflect Your Performance." />
             </h2>
             <button
-                onClick={onOpenModal}
-                className="bg-text-primary text-primary-bg text-xs sm:text-sm font-bold uppercase tracking-[0.2em] px-10 sm:px-12 py-5 sm:py-6 hover:opacity-90 active:scale-95 transition-all w-full sm:w-auto mt-4"
-              >
-                Enter the Boutique →
-              </button>
+              onClick={onOpenModal}
+              className="bg-text-primary text-primary-bg text-xs sm:text-sm font-bold uppercase tracking-[0.2em] px-10 sm:px-12 py-5 sm:py-6 hover:opacity-90 active:scale-95 transition-all w-full sm:w-auto mt-4"
+            >
+              Enter the Boutique →
+            </button>
           </FadeIn>
         </div>
       </section>
@@ -995,28 +995,6 @@ const App = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  useEffect(() => {
-    // Dynamic SEO Management
-    const titles: Record<string, string> = {
-      'home': 'QuantikGrowth — Full-Stack Digital Growth for SEBI-Registered PMS Firms',
-      'case-study': 'Infrastructure Blueprint — QuantikGrowth for PMS Firms',
-      'blog': 'PMS Growth Letter — Insights by QuantikGrowth'
-    };
-    
-    const descriptions: Record<string, string> = {
-      'home': "India's only full-stack growth studio for SEBI-registered PMS firms. We build websites, AI chatbots, SEO engines, and video assets.",
-      'case-study': 'A complete walkthrough of the digital infrastructure we build to turn PMS websites into 24/7 AUM client acquisition engines.',
-      'blog': 'Weekly insights and strategies for SEBI-registered fund managers on SEO, AI, and digital authority.'
-    };
-
-    document.title = titles[currentPage] || titles['home'];
-    
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) {
-      metaDesc.setAttribute('content', descriptions[currentPage] || descriptions['home']);
-    }
-  }, [currentPage]);
 
   const navigateToHome = () => {
     setCurrentPage('home');
@@ -1051,44 +1029,44 @@ const App = () => {
 
           <div className="hidden lg:flex items-center space-x-10">
             {['Services', 'Process', 'Blueprint', 'Blog'].map((item) => (
-                <a
-                  key={item}
-                  href={item === 'Blueprint' ? '/case-study' : item === 'Blog' ? '/blog' : `#${item.toLowerCase().replace(' ', '-')}`}
-                  onClick={(e) => {
-                    if (item === 'Blueprint') {
+              <a
+                key={item}
+                href={item === 'Blueprint' ? '/case-study' : item === 'Blog' ? '/blog' : `#${item.toLowerCase().replace(' ', '-')}`}
+                onClick={(e) => {
+                  if (item === 'Blueprint') {
+                    e.preventDefault();
+                    navigateToCaseStudy();
+                  } else if (item === 'Blog') {
+                    e.preventDefault();
+                    navigateToBlog();
+                  } else {
+                    if (currentPage !== 'home') {
                       e.preventDefault();
-                      navigateToCaseStudy();
-                    } else if (item === 'Blog') {
-                      e.preventDefault();
-                      navigateToBlog();
-                    } else {
-                      if (currentPage !== 'home') {
-                        e.preventDefault();
-                        navigateToHome();
-                        setTimeout(() => {
-                          const el = document.getElementById(item.toLowerCase().replace(' ', '-'));
-                          el?.scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                      }
+                      navigateToHome();
+                      setTimeout(() => {
+                        const el = document.getElementById(item.toLowerCase().replace(' ', '-'));
+                        el?.scrollIntoView({ behavior: 'smooth' });
+                      }, 100);
                     }
-                  }}
-                  className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-opacity relative group px-4 py-2 ${(currentPage === 'case-study' && item === 'Blueprint') || (currentPage === 'blog' && item === 'Blog') ? 'text-text-primary' : 'text-text-primary/40'
-                    } hover:text-text-primary`}
-                >
-                  {item}
-                  <span className={`absolute -bottom-1 left-4 h-[1px] bg-text-primary transition-all duration-300 ${(currentPage === 'case-study' && item === 'Blueprint') || (currentPage === 'blog' && item === 'Blog') ? 'w-[calc(100%-32px)]' : 'w-0'
-                    } group-hover:w-[calc(100%-32px)]`} />
-                </a>
+                  }
+                }}
+                className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-opacity relative group px-4 py-2 ${(currentPage === 'case-study' && item === 'Blueprint') || (currentPage === 'blog' && item === 'Blog') ? 'text-text-primary' : 'text-text-primary/40'
+                  } hover:text-text-primary`}
+              >
+                {item}
+                <span className={`absolute -bottom-1 left-4 h-[1px] bg-text-primary transition-all duration-300 ${(currentPage === 'case-study' && item === 'Blueprint') || (currentPage === 'blog' && item === 'Blog') ? 'w-[calc(100%-32px)]' : 'w-0'
+                  } group-hover:w-[calc(100%-32px)]`} />
+              </a>
             ))}
           </div>
 
           <div className="hidden lg:block">
-              <button
-                onClick={() => setIsModalOpen(true)}
-                className="bg-text-primary text-primary-bg text-[10px] font-bold uppercase tracking-widest px-8 py-3.5 hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 group"
-              >
-                Book Strategy Session <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-              </button>
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-text-primary text-primary-bg text-[10px] font-bold uppercase tracking-widest px-8 py-3.5 hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 group"
+            >
+              Book Audit <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
 
           <button className="lg:hidden text-text-primary p-2 -mr-2" onClick={() => setIsMenuOpen(true)}>
@@ -1144,7 +1122,7 @@ const App = () => {
                   onClick={() => { setIsMenuOpen(false); setIsModalOpen(true); }}
                   className="w-full bg-text-primary text-primary-bg text-sm font-bold uppercase tracking-[0.2em] py-5 flex items-center justify-center gap-2"
                 >
-                  Book Strategy Session <ArrowRight className="w-4 h-4" />
+                  Book Growth Audit <ArrowRight className="w-4 h-4" />
                 </button>
                 <div className="text-center">
                   <p className="text-[10px] text-text-primary/40 uppercase tracking-widest font-bold mb-2">Connect with us</p>
@@ -1225,11 +1203,11 @@ const App = () => {
               <h3 className="text-[32px] md:text-[42px] font-bold text-text-primary leading-[1.05] tracking-tight mb-6">
                 Ready to build your growth engine?
               </h3>
-              <button 
+              <button
                 onClick={() => setIsModalOpen(true)}
                 className="text-text-primary text-[15px] md:text-[16px] font-bold border-b-[2px] border-text-primary pb-1 hover:text-accent-terracotta hover:border-accent-terracotta transition-colors"
               >
-                Book a Strategy Session
+                Book a Growth Audit
               </button>
             </div>
           </div>
@@ -1266,7 +1244,7 @@ const App = () => {
                 <iframe
                   src="https://cal.com/krish-naidu/pms-growth-audit"
                   className="w-full h-full border-0 rounded-lg"
-                  title="Book PMS Growth Strategy Session"
+                  title="Book PMS Growth Audit"
                   loading="lazy"
                 ></iframe>
               </div>
@@ -1287,7 +1265,7 @@ const App = () => {
             <div className="bg-text-primary text-primary-bg p-4 flex items-center justify-between rounded-lg shadow-2xl">
               <div className="space-y-0.5">
                 <div className="text-[10px] font-bold uppercase tracking-widest opacity-60 leading-none">Qualified PMS Firms</div>
-                <div className="text-sm font-serif italic leading-none">Free Strategy Session</div>
+                <div className="text-sm font-serif italic leading-none">Free Growth Audit</div>
               </div>
               <div className="flex items-center gap-3">
                 <button
