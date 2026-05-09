@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://quantikgrowth.com/sitemap.xml
