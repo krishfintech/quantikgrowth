@@ -231,7 +231,7 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
                     <div className="flex justify-start gap-2">
                       <div className="w-6 h-6 shrink-0" />
                       <div className="space-y-2 w-full">
-                        <div className="w-full bg-primary-bg border border-accent-terracotta/20 text-accent-terracotta text-[9px] font-bold uppercase tracking-widest text-center py-2">Book a Call →</div>
+                        <div className="w-full bg-primary-bg border border-accent-terracotta/20 text-accent-terracotta text-[9px] font-bold uppercase tracking-widest text-center py-2">Request Audit →</div>
                         <div className="w-full bg-primary-bg border border-text-primary/10 text-text-primary/40 text-[9px] font-bold uppercase tracking-widest text-center py-2">Get Document</div>
                       </div>
                     </div>
@@ -671,13 +671,13 @@ const CaseStudyPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => 
             Ready to Build Your Own <br className="hidden md:block" /> Growth Engine?
           </h2>
           <p className="text-[14px] sm:text-[16px] text-text-primary/60 max-w-[520px] mx-auto mb-10 sm:mb-16 leading-relaxed font-medium">
-            Book a free 30-minute Growth Audit. We curate a tactile roadmap for your firm&apos;s digital infrastructure and benchmark your presence against Category Leaders.
+            Request a free 30-minute Strategy Session. We curate a tactile roadmap for your firm&apos;s digital infrastructure and benchmark your presence against Category Leaders.
           </p>
           <button
             onClick={onOpenModal}
             className="bg-text-primary text-primary-bg text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.3em] px-10 sm:px-14 py-5 sm:py-6 hover:opacity-90 active:scale-95 transition-all mb-12 sm:mb-16 w-full sm:w-auto"
           >
-            Book My Free Growth Audit →
+            Request Free Strategy Audit →
           </button>
           <div className="text-[9px] sm:text-[10px] font-extrabold uppercase tracking-[0.2em] opacity-40">
             30-min call · No obligation · For SEBI-registered PMS firms only

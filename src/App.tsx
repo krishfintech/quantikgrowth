@@ -323,7 +323,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 onClick={onOpenModal}
                 className="bg-text-primary text-primary-bg text-xs font-bold uppercase tracking-[0.2em] px-10 py-5 hover:opacity-90 transition-all flex items-center justify-center gap-2 w-full sm:w-auto"
               >
-                Enter Audit <ArrowRight className="w-4 h-4" />
+                Request Strategy Audit <ArrowRight className="w-4 h-4" />
               </button>
               <button
                 onClick={onNavigateToCaseStudy}
@@ -888,7 +888,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 onClick={onOpenModal}
                 className="w-full bg-text-primary text-primary-bg text-xs font-bold uppercase tracking-[0.2em] py-5 hover:opacity-90 transition-all"
               >
-                Enter Audit →
+                Request Strategy Audit →
               </button>
             </motion.div>
 
@@ -913,7 +913,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
                 onClick={onOpenModal}
                 className="w-full bg-accent-terracotta text-white text-xs font-bold uppercase tracking-[0.2em] py-5 hover:opacity-90 transition-all"
               >
-                Scale Audit →
+                Request Strategy Audit →
               </button>
             </motion.div>
           </div>
@@ -965,7 +965,7 @@ const HomeContent = ({ onNavigateToCaseStudy, onNavigateToBlog, onOpenModal }: {
               onClick={onOpenModal}
               className="bg-text-primary text-primary-bg text-xs sm:text-sm font-bold uppercase tracking-[0.2em] px-10 sm:px-12 py-5 sm:py-6 hover:opacity-90 active:scale-95 transition-all w-full sm:w-auto mt-4"
             >
-              Enter the Boutique →
+              Request Strategy Audit →
             </button>
           </FadeIn>
         </div>
@@ -986,7 +986,7 @@ const App = () => {
   useEffect(() => {
     const path = window.location.pathname;
     if (path === '/case-study') setCurrentPage('case-study');
-    if (path === '/blog') setCurrentPage('blog');
+    if (path === '/insights' || path === '/blog') setCurrentPage('blog');
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 80);
@@ -1010,7 +1010,7 @@ const App = () => {
 
   const navigateToBlog = () => {
     setCurrentPage('blog');
-    window.history.pushState({}, '', '/blog');
+    window.history.pushState({}, '', '/insights');
     window.scrollTo(0, 0);
   };
 
@@ -1028,15 +1028,15 @@ const App = () => {
           </div>
 
           <div className="hidden lg:flex items-center space-x-10">
-            {['Services', 'Process', 'Blueprint', 'Blog'].map((item) => (
+            {['Services', 'Process', 'Blueprint', 'Insights'].map((item) => (
               <a
                 key={item}
-                href={item === 'Blueprint' ? '/case-study' : item === 'Blog' ? '/blog' : `#${item.toLowerCase().replace(' ', '-')}`}
+                href={item === 'Blueprint' ? '/case-study' : item === 'Insights' ? '/insights' : `#${item.toLowerCase().replace(' ', '-')}`}
                 onClick={(e) => {
                   if (item === 'Blueprint') {
                     e.preventDefault();
                     navigateToCaseStudy();
-                  } else if (item === 'Blog') {
+                  } else if (item === 'Insights') {
                     e.preventDefault();
                     navigateToBlog();
                   } else {
@@ -1050,11 +1050,11 @@ const App = () => {
                     }
                   }
                 }}
-                className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-opacity relative group px-4 py-2 ${(currentPage === 'case-study' && item === 'Blueprint') || (currentPage === 'blog' && item === 'Blog') ? 'text-text-primary' : 'text-text-primary/40'
+                className={`text-[11px] font-bold uppercase tracking-[0.2em] transition-opacity relative group px-4 py-2 ${(currentPage === 'case-study' && item === 'Blueprint') || (currentPage === 'blog' && item === 'Insights') ? 'text-text-primary' : 'text-text-primary/40'
                   } hover:text-text-primary`}
               >
                 {item}
-                <span className={`absolute -bottom-1 left-4 h-[1px] bg-text-primary transition-all duration-300 ${(currentPage === 'case-study' && item === 'Blueprint') || (currentPage === 'blog' && item === 'Blog') ? 'w-[calc(100%-32px)]' : 'w-0'
+                <span className={`absolute -bottom-1 left-4 h-[1px] bg-text-primary transition-all duration-300 ${(currentPage === 'case-study' && item === 'Blueprint') || (currentPage === 'blog' && item === 'Insights') ? 'w-[calc(100%-32px)]' : 'w-0'
                   } group-hover:w-[calc(100%-32px)]`} />
               </a>
             ))}
@@ -1065,7 +1065,7 @@ const App = () => {
               onClick={() => setIsModalOpen(true)}
               className="bg-text-primary text-primary-bg text-[10px] font-bold uppercase tracking-widest px-8 py-3.5 hover:opacity-90 active:scale-95 transition-all flex items-center gap-2 group"
             >
-              Book Audit <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              Request Strategy Audit <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
 
@@ -1095,13 +1095,13 @@ const App = () => {
               </div>
 
               <div className="flex flex-col space-y-8 mb-auto">
-                {['Services', 'Process', 'Blueprint', 'Blog'].map((item) => (
+                {['Services', 'Process', 'Blueprint', 'Insights'].map((item) => (
                   <button
                     key={item}
                     onClick={() => {
                       setIsMenuOpen(false);
                       if (item === 'Blueprint') navigateToCaseStudy();
-                      else if (item === 'Blog') navigateToBlog();
+                      else if (item === 'Insights') navigateToBlog();
                       else {
                         navigateToHome();
                         setTimeout(() => {
@@ -1122,7 +1122,7 @@ const App = () => {
                   onClick={() => { setIsMenuOpen(false); setIsModalOpen(true); }}
                   className="w-full bg-text-primary text-primary-bg text-sm font-bold uppercase tracking-[0.2em] py-5 flex items-center justify-center gap-2"
                 >
-                  Book Growth Audit <ArrowRight className="w-4 h-4" />
+                  Request Strategy Audit <ArrowRight className="w-4 h-4" />
                 </button>
                 <div className="text-center">
                   <p className="text-[10px] text-text-primary/40 uppercase tracking-widest font-bold mb-2">Connect with us</p>
@@ -1184,10 +1184,10 @@ const App = () => {
               <div>
                 <h4 className="text-[13px] font-bold text-text-primary/50 mb-4 md:mb-6">Menu</h4>
                 <ul className="space-y-2 md:space-y-3">
-                  {['Blueprint', 'Process', 'Blog'].map(link => (
+                  {['Blueprint', 'Process', 'Insights'].map(link => (
                     <li key={link}>
                       <span
-                        onClick={link === 'Blueprint' ? navigateToCaseStudy : link === 'Blog' ? navigateToBlog : navigateToHome}
+                        onClick={link === 'Blueprint' ? navigateToCaseStudy : link === 'Insights' ? navigateToBlog : navigateToHome}
                         className="text-text-primary text-[16px] md:text-[18px] font-bold hover:text-accent-terracotta cursor-pointer transition-colors"
                       >
                         {link}
@@ -1221,7 +1221,7 @@ const App = () => {
                 onClick={() => setIsModalOpen(true)}
                 className="text-text-primary text-[15px] md:text-[16px] font-bold border-b-[2px] border-text-primary pb-1 hover:text-accent-terracotta hover:border-accent-terracotta transition-colors"
               >
-                Book a Growth Audit
+                Request a Strategy Audit
               </button>
             </div>
           </div>

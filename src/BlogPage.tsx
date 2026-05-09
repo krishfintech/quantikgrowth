@@ -413,7 +413,7 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                   />
                   <ProcessStep 
                     number="04"
-                    title="They book a call. Already warm. Already trusting."
+                    title="They request a session. Already warm. Already trusting."
                     isLast
                     body="When they are finally ready, they book through your calendar. The meeting starts at a completely different temperature than a cold referral call."
                   />
@@ -466,7 +466,7 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                 
                 <p>HNI investors do not invest in funds. They invest in the people running them. The CAGR matters. The Sharpe ratio matters. But before any of that gets evaluated, the investor has already decided whether they trust the person on the other side of the table. Video is how you establish that trust before the table ever exists.</p>
                 
-                <p className="mt-6">A four-minute fund manager story — shot well, scripted right, posted on your website&apos;s homepage — does the work of ten introductory calls. The investor watches it. They feel like they know you. They understand your conviction. They see your thought process. When they eventually book a call, you are not strangers. You are familiar. That is a completely different starting point.</p>
+                <p className="mt-6">A four-minute fund manager story — shot well, scripted right, posted on your website&apos;s homepage — does the work of ten introductory calls. The investor watches it. They feel like they know you. They understand your conviction. They see your thought process. When they eventually request a strategy session, you are not strangers. You are familiar. That is a completely different starting point.</p>
 
                 <ServiceCard 
                   icon="🎬"
@@ -486,7 +486,7 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-10">
                   <StatCard number="4" label="Higher engagement with video" suffix="×" />
                   <StatCard number="67" label="HNIs influenced by video trust" suffix="%" />
-                  <StatCard number="3" label="More likely to book a call" suffix="×" />
+                  <StatCard number="3" label="More likely to request an audit" suffix="×" />
                 </div>
               </div>
             </FadeIn>
@@ -503,7 +503,7 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                 <p>Here is why this works so much better than any single component in isolation. Each piece feeds the others. The blog drives organic traffic to the website. The website captures leads into the newsletter. The newsletter warms leads until they book. The AI chatbot handles the ones who are ready immediately. The video builds the trust that makes all of it convert. Remove any one piece and the whole system underperforms. Keep all five and it compounds.</p>
 
                 <Callout label="The Full Acquisition Loop">
-                  SEO blog ranks on Google → HNI investor finds article → lands on website → chatbot answers their first question → they sign up for the newsletter → welcome sequence runs → monthly newsletter keeps them warm → 90 days later, they book a discovery call → the call converts at 3× the rate of a cold referral.
+                  SEO insights rank on Google → HNI investor finds article → lands on website → chatbot answers their first question → they sign up for the newsletter → welcome sequence runs → monthly newsletter keeps them warm → 90 days later, they request a strategy session → the session converts at 3× the rate of a cold referral.
                 </Callout>
 
                 <p>The traditional PMS firm operates on hope and relationship management. The firms pulling away from the pack have built a machine. One that qualifies leads, nurtures them, builds trust, and books calls — without any human intervention until the investor is genuinely ready to move. That is not magic. That is infrastructure.</p>
@@ -511,7 +511,7 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                 <div className="bg-success/[0.05] border border-success/20 p-8 sm:p-12 rounded-sm my-12">
                    <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-success mb-4 font-mono">What This Looks Like at Month 6</div>
                    <p className="text-[16px] text-text-primary/70 leading-relaxed font-medium italic">
-                      2,800+ monthly website visitors. 300+ newsletter subscribers. 15–20 AI chatbot-qualified leads per month. 3 new SEO blog posts ranking in the top 5 for their target keywords. Your fund manager&apos;s video watched by 1,200+ people. And a booking calendar that fills from organic inbound traffic.
+                      2,800+ monthly website visitors. 300+ newsletter subscribers. 15–20 AI chatbot-qualified leads per month. 3 new SEO insights ranking in the top 5 for their target keywords. Your fund manager&apos;s video watched by 1,200+ people. And a booking calendar that fills from organic inbound traffic.
                    </p>
                 </div>
 
@@ -597,7 +597,7 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
                   <div className="text-[10px] font-bold uppercase tracking-[0.3em] mb-4 opacity-60 font-mono">Strategy Session</div>
                   <h4 className="text-xl font-serif italic mb-4 leading-tight">Is your PMS website costing you clients?</h4>
                   <p className="text-[13px] opacity-80 leading-relaxed mb-8">We&apos;ll show you exactly what to fix — free 30-min call.</p>
-                  <button onClick={onOpenModal} className="w-full bg-white text-accent-terracotta text-[10px] font-bold uppercase tracking-widest py-4 rounded-md group-hover:scale-[1.02] transition-transform">Book Strategy Session &rarr;</button>
+                  <button onClick={onOpenModal} className="w-full bg-white text-accent-terracotta text-[10px] font-bold uppercase tracking-widest py-4 rounded-md group-hover:scale-[1.02] transition-transform">Request Strategy Session &rarr;</button>
                 </div>
               </div>
             </div>
@@ -616,13 +616,13 @@ const BlogPage = ({ onNavigateHome, onOpenModal }: { onNavigateHome: () => void,
               <span className="text-accent-terracotta">Client Acquisition Machine?</span>
             </h2>
             <p className="text-[16px] sm:text-[18px] text-text-primary/50 max-w-2xl mx-auto mb-12 font-medium">
-              Book a free 30-minute Growth Strategy Session. We will review your current digital presence, show you what your competitors are doing better, and hand you a clear roadmap — no obligation.
+              Request a free 30-minute Growth Strategy Session. We will review your current digital presence, show you what your competitors are doing better, and hand you a clear roadmap — no obligation.
             </p>
             <button 
               onClick={onOpenModal}
               className="inline-flex items-center gap-4 bg-text-primary text-primary-bg px-10 py-5 text-xs font-bold uppercase tracking-[0.2em] hover:opacity-90 active:scale-95 transition-all rounded shadow-2xl shadow-text-primary/10"
             >
-              Book My Free Strategy Session <ArrowRight className="w-4 h-4" />
+              Request My Free Strategy Session <ArrowRight className="w-4 h-4" />
             </button>
             <div className="flex flex-wrap justify-center gap-6 sm:gap-12 mt-16">
               {[
