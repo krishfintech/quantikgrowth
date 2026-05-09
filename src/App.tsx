@@ -1196,6 +1196,20 @@ const App = () => {
                   ))}
                 </ul>
               </div>
+              <div>
+                <h4 className="text-[13px] font-bold text-text-primary/50 mb-4 md:mb-6">Contact</h4>
+                <ul className="space-y-2 md:space-y-3">
+                  <li>
+                    <a
+                      href="mailto:krishnaidu@quantikgrowth.in"
+                      className="text-text-primary text-[16px] md:text-[18px] font-bold hover:text-accent-terracotta cursor-pointer transition-colors inline-flex items-center gap-2"
+                    >
+                      <Mail className="w-4 h-4" />
+                      krishnaidu@quantikgrowth.in
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
 
             {/* Right side: Call to Action */}
@@ -1242,7 +1256,7 @@ const App = () => {
               </div>
               <div className="w-full h-full pt-12 pb-4 px-4 bg-primary-bg">
                 <iframe
-                  src="https://cal.com/krish-naidu/pms-growth-audit"
+                  src="https://cal.com/krish-naidu-zxj0dm/pms-growth-audit"
                   className="w-full h-full border-0 rounded-lg"
                   title="Book PMS Growth Audit"
                   loading="lazy"
