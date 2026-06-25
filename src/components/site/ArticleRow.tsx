@@ -3,10 +3,11 @@ import { motion } from 'motion/react';
 import { useFadeUpVariants, useStaggerVariants, viewportOnce } from './motion';
 
 export interface ArticleItem {
+  slug: string;
   title: string;
   date: string;
-  readingTime: string;
-  href: string;
+  readingMinutes: number;
+  excerpt: string;
 }
 
 interface ArticleRowProps {
@@ -22,8 +23,8 @@ export const ArticleRow = ({ articles, className = '' }: ArticleRowProps) => {
     <motion.div className={className} variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
       {articles.map((article, i) => (
         <motion.a
-          key={article.href}
-          href={article.href}
+          key={article.slug}
+          href={`/writing/${article.slug}`}
           variants={fadeUp}
           className={`group grid grid-cols-[1fr_auto] gap-6 items-baseline py-6 border-b border-line pl-0 hover:pl-[10px] transition-[padding-left] duration-200 ${
             i === 0 ? 'border-t border-line' : ''
@@ -33,7 +34,7 @@ export const ArticleRow = ({ articles, className = '' }: ArticleRowProps) => {
             {article.title}
           </span>
           <span className="text-[13.5px] text-ink-soft whitespace-nowrap">
-            {article.date} · {article.readingTime}
+            {article.date} · {article.readingMinutes} min read
           </span>
         </motion.a>
       ))}

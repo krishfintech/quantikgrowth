@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital Infrastructure & Web Design for PMS Firms | QuantikGrowth</title>
-    <meta name="description" content="QuantikGrowth engineers high-performance digital platforms and SEO infrastructures specifically for Indian PMS firms and investment institutions to accelerate AUM growth." />
-    <meta name="keywords" content="PMS website design India, best digital agency for wealth managers, investment firm website development, AUM growth digital strategy, financial advisor SEO, wealth management marketing" />
+    <title>Digital Infrastructure for Venture & PE Firms | QuantikGrowth</title>
+    <meta name="description" content="QuantikGrowth designs clean, fast websites for VC and PE firms — built around the companies you've backed, the case studies that prove your judgment, and a publishing engine that turns your thinking into authority. Select PMS pilots alongside." />
+    <meta name="keywords" content="venture capital website design, VC firm web design, private equity website, portfolio site for investors, investment case studies, venture firm publishing, PMS website pilot" />
     <meta name="author" content="QuantikGrowth" />
-    <meta name="theme-color" content="#F4F1EA" />
+    <meta name="theme-color" content="#FBFBF8" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://quantikgrowth.com" />
-    
+
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Digital Infrastructure for PMS Firms | QuantikGrowth" />
-    <meta property="og:description" content="QuantikGrowth engineers high-performance digital platforms and SEO infrastructures specifically for Indian PMS firms and investment institutions to accelerate AUM growth." />
+    <meta property="og:title" content="Digital Infrastructure for Venture & PE Firms | QuantikGrowth" />
+    <meta property="og:description" content="Clean, fast websites for VC and PE firms — portfolio, investment case studies, and a publishing engine that turns your thinking into authority. Select PMS pilots alongside." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://quantikgrowth.com" />
     <meta property="og:image" content="https://quantikgrowth.com/og-image.jpg" />
@@ -23,8 +23,8 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://quantikgrowth.com" />
-    <meta name="twitter:title" content="Digital Infrastructure for PMS Firms | QuantikGrowth" />
-    <meta name="twitter:description" content="QuantikGrowth engineers high-performance digital platforms and SEO infrastructures specifically for Indian PMS firms and investment institutions to accelerate AUM growth." />
+    <meta name="twitter:title" content="Digital Infrastructure for Venture & PE Firms | QuantikGrowth" />
+    <meta name="twitter:description" content="Clean, fast websites for VC and PE firms — portfolio, investment case studies, and a publishing engine that turns your thinking into authority. Select PMS pilots alongside." />
     <meta name="twitter:image" content="https://quantikgrowth.com/twitter-image.jpg" />
 
     <!-- JSON-LD Schema Markup -->
@@ -35,12 +35,12 @@
       "name": "QuantikGrowth",
       "url": "https://quantikgrowth.com",
       "logo": "https://quantikgrowth.com/logo.png",
-      "description": "Digital infrastructure and SEO engineering for SEBI-registered PMS firms and investment institutions.",
+      "description": "Digital infrastructure for venture and private equity firms — websites, investment case studies, and publishing engines. Select PMS pilots alongside.",
       "areaServed": {
         "@type": "Country",
         "name": "India"
       },
-      "industry": "Financial Services Marketing"
+      "industry": "Web Design & Digital Infrastructure"
     }
     </script>
 
@@ -51,15 +51,28 @@
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
-    <!-- Legacy fonts: still used by existing font-serif/old font-sans usages until components migrate -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+    <!-- Load fonts off the critical path: paint immediately with fallback (display=swap),
+         then upgrade once the stylesheet arrives. Keeps fonts out of render-blocking. -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter+Tight:wght@400;500;600&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+    </noscript>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="f0Huu-R4IS8Paf7A9lT4Z";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+      (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}
+      // Defer the chatbot until the user is actually engaged (first interaction or idle),
+      // so it never competes with the page's first paint / interactivity (Lighthouse TBT).
+      var loaded=false;function loadChatbase(){if(loaded)return;loaded=true;var script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="f0Huu-R4IS8Paf7A9lT4Z";script.domain="www.chatbase.co";document.body.appendChild(script)}
+      var evts=["pointerdown","keydown","scroll","touchstart"];function onFirst(){evts.forEach(function(e){window.removeEventListener(e,onFirst)});loadChatbase()}evts.forEach(function(e){window.addEventListener(e,onFirst,{passive:true,once:true})});
+      if("requestIdleCallback"in window){requestIdleCallback(loadChatbase,{timeout:6000})}else{setTimeout(loadChatbase,5000)}})();
     </script>
   </body>
 </html>

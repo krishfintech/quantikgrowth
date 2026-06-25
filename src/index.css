@@ -45,6 +45,13 @@
     font-weight: 500;
     letter-spacing: -0.01em;
   }
+
+  /* Visible keyboard focus, brand color. Only for keyboard nav, not mouse clicks. */
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
 }
 
 html {
@@ -56,19 +63,22 @@ html {
   color: #fff;
 }
 
-@layer utilities {
-  .glass {
-    @apply backdrop-blur-xl bg-primary-bg/75 border border-text-primary/5 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)];
+/* Honor users who ask for less motion: kill smooth scroll + animations/transitions. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-
-  .text-glow {
-    text-shadow: 0 0 20px rgba(188, 108, 37, 0.2);
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #1A1A1A22 #F4F1EA;
+  scrollbar-color: #13241C22 #FBFBF8;
 }
 
 ::-webkit-scrollbar {
@@ -76,14 +86,14 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F4F1EA;
+  background: #FBFBF8;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1A1A1A22;
+  background: #13241C22;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1A1A1A44;
+  background: #13241C44;
 }

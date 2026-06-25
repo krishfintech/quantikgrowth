@@ -17,14 +17,16 @@ interface SiteFooterProps {
   columns: FooterColumn[];
   legalLeft: string;
   legalRight: string;
+  id?: string;
   className?: string;
 }
 
-export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, className = '' }: SiteFooterProps) => {
+export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, className = '' }: SiteFooterProps) => {
   const fadeUp = useFadeUpVariants();
 
   return (
     <motion.footer
+      id={id}
       className={`border-t border-line pt-16 pb-14 ${className}`}
       variants={fadeUp}
       initial="hidden"
@@ -42,7 +44,7 @@ export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, className 
         <div className="flex flex-wrap gap-16">
           {columns.map((col) => (
             <div key={col.heading}>
-              <h4 className="text-[13px] text-ink-soft font-medium tracking-[0.02em] mb-4">{col.heading}</h4>
+              <h2 className="text-[13px] text-ink-soft font-medium tracking-[0.02em] mb-4">{col.heading}</h2>
               {col.links.map((link) => (
                 <a
                   key={link.label}
