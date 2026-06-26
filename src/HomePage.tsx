@@ -1,10 +1,11 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react';
 import {
   ArticleRow,
   Button,
   Eyebrow,
   HeroArtifact,
+  MaskReveal,
   MobileCtaBar,
   Nav,
   OfferBand,
@@ -59,54 +60,65 @@ const SectionHead = ({ title, label }: { title: string; label: string }) => {
 
 const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
   const fadeUp = useFadeUpVariants();
-  const stagger = useStaggerVariants(0.08, 0.1);
+  const stagger = useStaggerVariants(0.08, 0.35);
+  const reduceMotion = useReducedMotion();
+
+  // Parallax-lite: the artifact drifts gently as the hero scrolls past.
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
+  const artifactY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -48]);
 
   return (
-    <section className="pt-[60px] pb-[56px] sm:pt-[92px] sm:pb-[88px]">
+    <section ref={sectionRef} className="pt-[60px] pb-[56px] sm:pt-[92px] sm:pb-[88px]">
       <div className="max-w-[1380px] mx-auto px-8 lg:px-12 grid lg:grid-cols-[1.05fr_0.95fr] gap-x-20 gap-y-14 items-center">
-        <motion.div variants={stagger} initial="hidden" animate="visible">
-          <motion.div variants={fadeUp}>
-            <Eyebrow className="mb-[26px]">{hero.eyebrow}</Eyebrow>
+        <div>
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.div variants={fadeUp}>
+              <Eyebrow className="mb-[26px]">{hero.eyebrow}</Eyebrow>
+            </motion.div>
           </motion.div>
 
-          <motion.h1
-            variants={fadeUp}
-            className="font-display font-normal text-[clamp(2.7rem,5.4vw,4.4rem)] leading-[1.05] tracking-[-0.018em] max-w-[20ch]"
-          >
-            {hero.lead} <em className="italic text-brand">{hero.em}</em>
-          </motion.h1>
+          {/* Cinematic clip reveal — the headline rises into place */}
+          <h1 className="font-display font-normal text-[clamp(2.7rem,5.4vw,4.4rem)] leading-[1.05] tracking-[-0.018em] max-w-[20ch]">
+            <MaskReveal delay={0.12}>
+              {hero.lead} <em className="italic text-brand">{hero.em}</em>
+            </MaskReveal>
+          </h1>
 
-          <motion.p
-            variants={fadeUp}
-            className="text-[clamp(1.05rem,1.5vw,1.24rem)] text-ink-soft max-w-[56ch] mt-[28px] leading-[1.55]"
-          >
-            {hero.sub}
-          </motion.p>
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.p
+              variants={fadeUp}
+              className="text-[clamp(1.05rem,1.5vw,1.24rem)] text-ink-soft max-w-[56ch] mt-[28px] leading-[1.55]"
+            >
+              {hero.sub}
+            </motion.p>
 
-          <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 sm:gap-6 mt-[40px]">
-            <Button variant="primary" href="/work" arrow>
-              See the work
-            </Button>
-            <Button variant="ghost" href="/contact">
-              Book an intro call
-            </Button>
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 sm:gap-6 mt-[40px]">
+              <Button variant="primary" href="/work" arrow>
+                See the work
+              </Button>
+              <Button variant="ghost" href="/contact">
+                Book an intro call
+              </Button>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="mt-[44px] flex flex-wrap gap-x-7 gap-y-2 text-[13.5px] text-ink-soft">
+              {['Website design', 'On-page SEO', 'Content engine'].map((item, i) => (
+                <span key={item} className="flex items-center gap-2.5">
+                  <span className="h-1 w-1 rounded-full bg-brand" />
+                  {item}
+                  {i < 2 && <span className="ml-5 hidden text-line-strong sm:inline">/</span>}
+                </span>
+              ))}
+            </motion.div>
           </motion.div>
-
-          <motion.div variants={fadeUp} className="mt-[44px] flex flex-wrap gap-x-7 gap-y-2 text-[13.5px] text-ink-soft">
-            {['Website design', 'On-page SEO', 'Content engine'].map((item, i) => (
-              <span key={item} className="flex items-center gap-2.5">
-                <span className="h-1 w-1 rounded-full bg-brand" />
-                {item}
-                {i < 2 && <span className="ml-5 hidden text-line-strong sm:inline">/</span>}
-              </span>
-            ))}
-          </motion.div>
-        </motion.div>
+        </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+          style={{ y: artifactY }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <HeroArtifact />
         </motion.div>

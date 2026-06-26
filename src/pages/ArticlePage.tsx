@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useScroll, useSpring, useReducedMotion } from 'motion/react';
 import {
   Button,
+  MaskReveal,
   Seo,
   SITE_URL,
   SiteLayout,
@@ -263,12 +264,9 @@ const ArticlePage = ({ slug }: { slug: string }) => {
                   ← Writing
                 </a>
               </motion.div>
-              <motion.h1
-                variants={fadeUp}
-                className="mt-8 font-display font-normal text-[clamp(2.2rem,4.6vw,3.2rem)] leading-[1.08] tracking-[-0.018em]"
-              >
-                {article.title}
-              </motion.h1>
+              <h1 className="mt-8 font-display font-normal text-[clamp(2.2rem,4.6vw,3.2rem)] leading-[1.08] tracking-[-0.018em]">
+                <MaskReveal delay={0.1}>{article.title}</MaskReveal>
+              </h1>
               <motion.p
                 variants={fadeUp}
                 className="mt-6 font-display text-[clamp(1.2rem,2vw,1.45rem)] leading-[1.45] tracking-[-0.005em] text-ink-soft"

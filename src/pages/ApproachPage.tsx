@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import {
   Button,
   Eyebrow,
+  MaskReveal,
   Seo,
   SiteLayout,
   useFadeUpVariants,
@@ -172,12 +173,11 @@ const ApproachPage = () => {
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[22px]">Approach</Eyebrow>
           </motion.div>
-          <motion.h1
-            variants={fadeUp}
-            className="font-display font-normal text-[clamp(2.4rem,5.2vw,4rem)] leading-[1.06] tracking-[-0.018em] max-w-[17ch]"
-          >
-            {c.hero.lead} <em className="italic text-brand">{c.hero.em}</em>
-          </motion.h1>
+          <h1 className="font-display font-normal text-[clamp(2.4rem,5.2vw,4rem)] leading-[1.06] tracking-[-0.018em] max-w-[17ch]">
+            <MaskReveal delay={0.1}>
+              {c.hero.lead} <em className="italic text-brand">{c.hero.em}</em>
+            </MaskReveal>
+          </h1>
           <motion.div variants={fadeUp} className="mt-[28px]">
             <Lead>{c.hero.copy}</Lead>
           </motion.div>
