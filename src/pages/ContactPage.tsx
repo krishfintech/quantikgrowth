@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { Eyebrow, Seo, SiteLayout, useFadeUpVariants, useStaggerVariants } from '../components/site';
 import { BOOKING_URL, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
+import { breadcrumbSchema } from '../data/structuredData';
 
 const ContactPage = () => {
   const fadeUp = useFadeUpVariants();
@@ -10,9 +11,15 @@ const ContactPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Contact — start a project"
-        description="Tell us about the firm. We build a real first design of your new site before you commit — love it and we continue with three revisions; if you don't, you owe nothing."
+        title="Contact — book a call"
+        description="Book a 30-minute intro call. We build a real first design of your new site before you commit — three revisions included, or you owe nothing."
         path="/contact"
+        image="/og/contact.png"
+        imageAlt="Contact QuantikGrowth — book a 30-minute intro call."
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact' },
+        ])}
       />
       <section className="pt-[104px] pb-[80px]">
         <motion.div

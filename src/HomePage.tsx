@@ -8,7 +8,6 @@ import {
   Nav,
   OfferBand,
   Seo,
-  SITE_URL,
   SiteFooter,
   WorkLedger,
   useFadeUpVariants,
@@ -18,6 +17,7 @@ import {
 } from './components/site';
 import { work } from './data/work';
 import { writing } from './data/writing';
+import { organizationSchema, websiteSchema } from './data/structuredData';
 
 const NAV_LINKS: NavLink[] = [
   { label: 'Approach', href: '/approach' },
@@ -414,25 +414,16 @@ const ResultsBand = () => {
 
 // --- Page --------------------------------------------------------------------
 
-const HOME_JSON_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'QuantikGrowth',
-  url: SITE_URL,
-  description:
-    'Digital infrastructure for venture and private equity firms — website design, on-page SEO, and a content engine.',
-  areaServed: { '@type': 'Country', name: 'India' },
-  knowsAbout: ['Website design', 'On-page SEO', 'Content marketing for venture capital'],
-};
-
 const HomePage = () => (
   <div className="bg-paper">
     <Seo
-      title="Digital infrastructure for venture & PE firms"
-      description="QuantikGrowth designs clean, fast websites for VC and PE firms, makes them findable with on-page SEO, and runs a content engine that turns partners' voicenotes into articles and social."
+      title="Websites & SEO for venture capital firms"
+      description="We design fast, editorial websites for VC and PE firms, make them findable with on-page SEO, and turn partner voicenotes into articles and social."
       path="/"
+      image="/og/home.png"
+      imageAlt="QuantikGrowth — websites, SEO and a content engine for venture firms."
       keywords="venture capital website design, VC firm web design, private equity website, on-page SEO for investors, content engine for venture firms"
-      jsonLd={HOME_JSON_LD}
+      jsonLd={[organizationSchema, websiteSchema]}
     />
     <Nav links={NAV_LINKS} ctaLabel="Start a project" ctaHref="/contact" />
 

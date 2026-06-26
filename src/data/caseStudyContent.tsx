@@ -75,7 +75,7 @@ const northbound: CaseStudyContent = {
   slug: 'northbound-capital',
   badge: 'Representative engagement',
   description:
-    "How we rebuilt an early-stage climate fund's site around its portfolio, made it findable with on-page SEO, and stood up a content engine — a representative build, end to end.",
+    'How we rebuilt an early-stage climate fund around its portfolio, made it findable with on-page SEO, and added a content engine. Representative work.',
   keywords:
     'venture capital case study, climate VC website, portfolio website design, on-page SEO for investors, content engine case study',
   datePublished: '2026-06-20',

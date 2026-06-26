@@ -9,6 +9,37 @@ import {
   useStaggerVariants,
   viewportOnce,
 } from '../components/site';
+import { breadcrumbSchema, faqSchema, servicesSchema } from '../data/structuredData';
+
+// AEO: real questions a VC partner asks, each with a tight, directly-quotable
+// answer. Rendered as question-headings + concise answers, and mirrored into
+// FAQPage structured data below.
+const APPROACH_FAQ = [
+  {
+    q: 'What does on-page SEO do for a venture firm?',
+    a: 'On-page SEO makes a venture firm findable when founders and LPs search. It does three things: it brings inbound from people who arrive already convinced, it makes you discoverable for your own thesis terms instead of directories, and it positions your pages as the clearest thinking on a topic.',
+  },
+  {
+    q: 'How do you turn voicenotes into content?',
+    a: "A partner records a two-minute voicenote or short video after a meeting. We transcribe it, shape it into a finished article in your firm's voice, and you approve a draft. Then we publish it, structured for search, and repurpose it into LinkedIn posts, an X thread, and short clips.",
+  },
+  {
+    q: 'How long does a website build take?',
+    a: 'A full build typically runs about six weeks from kickoff to launch: audit and positioning, design, then an SEO-structured build. You see a real first design before committing, and the content engine begins publishing on a weekly cadence once the site is live.',
+  },
+  {
+    q: 'Do you write the content, or do we?',
+    a: "We do the writing. Your partners supply the thinking in the most natural form — a voicenote or a short video — and we turn it into finished articles and social posts. You approve drafts. The goal is authority that compounds without adding to a partner's week.",
+  },
+  {
+    q: "What does it cost, and what's the risk?",
+    a: "We build a real first design of your new site before you commit. If you love it, we continue, with three revisions included. If you don't, you owe nothing. Pricing depends on scope across the three services, and we quote it after a short call.",
+  },
+  {
+    q: 'Do you only work with venture firms?',
+    a: 'Venture and private equity firms are our focus. We also take a small number of PMS — portfolio management service — engagements as pilots. The work is the same: a portfolio-led site, on-page SEO, and a content engine that turns expertise into authority.',
+  },
+];
 
 // --- Small primitives --------------------------------------------------------
 
@@ -206,14 +237,25 @@ const Flywheel = () => {
 const ApproachPage = () => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08, 0.05);
+  const faqStagger = useStaggerVariants(0.06);
 
   return (
     <SiteLayout>
       <Seo
-        title="Approach — website design, on-page SEO, and a content engine"
-        description="How we think about a venture firm's website: portfolio-led design, on-page SEO that brings inbound, and a content engine that turns voicenotes into articles and social."
+        title="Website design, SEO & content for VC firms"
+        description="How we build for venture firms: a portfolio-led site, on-page SEO that brings inbound, and a content engine that turns voicenotes into articles and social."
         path="/approach"
+        image="/og/approach.png"
+        imageAlt="QuantikGrowth approach: website design, on-page SEO, and a content engine."
         keywords="venture firm website, on-page SEO for VC, content engine, voicenote to article, VC inbound marketing"
+        jsonLd={[
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Approach', path: '/approach' },
+          ]),
+          ...servicesSchema,
+          faqSchema(APPROACH_FAQ),
+        ]}
       />
       <section className="pt-[96px] pb-[40px]">
         <motion.div className="max-w-[1120px] mx-auto px-8" variants={stagger} initial="hidden" animate="visible">
@@ -317,6 +359,38 @@ const ApproachPage = () => {
           <Flywheel />
         </Chapter>
       </div>
+
+      {/* FAQ — AEO: question-headings + tight, quotable answers */}
+      <section className="border-t border-line py-[80px]" aria-labelledby="faq-heading">
+        <div className="max-w-[1120px] mx-auto px-8">
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+            <Eyebrow className="mb-[22px]">Questions, answered</Eyebrow>
+            <h2
+              id="faq-heading"
+              className="font-display font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] tracking-[-0.01em] max-w-[22ch]"
+            >
+              What VC partners ask before they start.
+            </h2>
+          </motion.div>
+
+          <motion.dl
+            className="mt-12 grid gap-px overflow-hidden rounded-[16px] border border-line bg-line md:grid-cols-2"
+            variants={faqStagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {APPROACH_FAQ.map((item) => (
+              <motion.div key={item.q} variants={fadeUp} className="bg-paper p-7">
+                <dt className="font-display text-[1.25rem] leading-[1.25] tracking-[-0.01em] text-ink">
+                  {item.q}
+                </dt>
+                <dd className="mt-3 text-[15.5px] leading-[1.6] text-ink-soft">{item.a}</dd>
+              </motion.div>
+            ))}
+          </motion.dl>
+        </div>
+      </section>
 
       <section className="border-t border-line py-[80px]">
         <div className="max-w-[1120px] mx-auto px-8">

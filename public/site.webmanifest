@@ -1,0 +1,12 @@
+{
+  "name": "QuantikGrowth",
+  "short_name": "QuantikGrowth",
+  "description": "Website design, on-page SEO, and a content engine for venture & private equity firms.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBFBF8",
+  "theme_color": "#0F5A39",
+  "icons": [
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any", "purpose": "any" }
+  ]
+}

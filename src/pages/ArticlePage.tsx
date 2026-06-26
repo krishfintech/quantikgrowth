@@ -12,6 +12,7 @@ import {
 import { writing } from '../data/writing';
 import { articleContent } from '../data/articleContent';
 import type { ArticleSection } from '../data/articleContent';
+import { breadcrumbSchema } from '../data/structuredData';
 
 /* --- Scrollspy: highlight the table-of-contents entry in view --------------- */
 const useScrollSpy = (ids: string[]) => {
@@ -209,18 +210,27 @@ const ArticlePage = ({ slug }: { slug: string }) => {
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.svg` },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${path}` },
-    image: `${SITE_URL}/og-image.jpg`,
+    image: `${SITE_URL}/og/${slug}.png`,
     articleSection: content.section,
+    wordCount: content.wordCount,
+    inLanguage: 'en',
     keywords: content.keywords,
   };
+
+  const breadcrumb = breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Writing', path: '/writing' },
+    { name: content.seoTitle, path },
+  ]);
 
   return (
     <SiteLayout>
       <Seo
-        title={article.title}
+        title={content.seoTitle}
         description={content.description}
         path={path}
         type="article"
+        image={`/og/${slug}.png`}
         keywords={content.keywords}
         imageAlt={content.ogImageAlt}
         article={{
@@ -228,7 +238,7 @@ const ArticlePage = ({ slug }: { slug: string }) => {
           author: content.author.name,
           section: content.section,
         }}
-        jsonLd={jsonLd}
+        jsonLd={[jsonLd, breadcrumb]}
       />
       <ProgressBar />
 

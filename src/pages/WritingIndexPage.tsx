@@ -10,6 +10,7 @@ import {
 } from '../components/site';
 import { writing } from '../data/writing';
 import type { ArticleItem } from '../components/site';
+import { breadcrumbSchema } from '../data/structuredData';
 
 const Meta = ({ article }: { article: ArticleItem }) => (
   <span className="text-[13px] text-ink-soft">
@@ -73,10 +74,16 @@ const WritingIndexPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Writing — on how venture firms present themselves"
-        description="Notes on portfolio, proof, and publishing — the small decisions that make a venture firm legible to the founders and LPs it wants to reach."
+        title="Writing on how VC firms present themselves"
+        description="Notes on portfolio, proof, and publishing — the decisions that make a venture firm legible to the founders and LPs it wants to reach."
         path="/writing"
+        image="/og/writing.png"
+        imageAlt="QuantikGrowth writing — on how venture firms present themselves."
         keywords="venture capital writing, VC thought leadership, how venture firms present themselves, publishing for investors"
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Writing', path: '/writing' },
+        ])}
       />
       <section className="pt-[96px] pb-[48px]">
         <motion.div className="max-w-[1120px] mx-auto px-8" variants={stagger} initial="hidden" animate="visible">

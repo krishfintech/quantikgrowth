@@ -10,6 +10,7 @@ import {
 } from '../components/site';
 import { work } from '../data/work';
 import type { WorkItem } from '../components/site';
+import { breadcrumbSchema } from '../data/structuredData';
 
 const WorkCard = ({ item, index }: { item: WorkItem; index: number }) => {
   const fadeUp = useFadeUpVariants();
@@ -63,10 +64,16 @@ const WorkIndexPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="Work — venture firms, presented as well as they invest"
-        description="A representative set of builds for VC and PE firms: portfolios made legible, track records turned into investment case studies, and a content engine that compounds."
+        title="Venture capital website case study"
+        description="A representative end-to-end build for an early-stage venture fund: a portfolio-led site, on-page SEO, and a content engine. The craft is real."
         path="/work"
+        image="/og/work.png"
+        imageAlt="QuantikGrowth work — a venture capital website built end to end."
         keywords="venture capital case studies, VC website examples, portfolio design, investment case study"
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Work', path: '/work' },
+        ])}
       />
       <section className="pt-[96px] pb-[56px]">
         <motion.div className="max-w-[1120px] mx-auto px-8" variants={stagger} initial="hidden" animate="visible">

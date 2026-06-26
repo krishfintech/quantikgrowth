@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Eyebrow, Seo, SiteLayout, useFadeUpVariants, useStaggerVariants, viewportOnce } from '../components/site';
+import { breadcrumbSchema } from '../data/structuredData';
 
 const P = ({ children }: { children: React.ReactNode }) => (
   <p className="text-[1.15rem] leading-[1.85] text-ink mb-7 last:mb-0">{children}</p>
@@ -34,9 +35,14 @@ const AboutPage = () => {
   return (
     <SiteLayout>
       <Seo
-        title="About — a studio for how venture firms present themselves"
-        description="QuantikGrowth is a small studio that builds the digital infrastructure venture and private equity firms use to present their judgment — clearly and on their own terms."
+        title="About — a studio for venture & PE firms"
+        description="A small studio that builds the websites, on-page SEO, and content engine venture and private equity firms use to present their judgment."
         path="/about"
+        imageAlt="About QuantikGrowth — a studio for venture and private equity firms."
+        jsonLd={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'About', path: '/about' },
+        ])}
       />
       <section className="pt-[96px] pb-[40px]">
         <motion.div

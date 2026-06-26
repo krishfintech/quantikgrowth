@@ -1,0 +1,28 @@
+# QuantikGrowth
+
+> QuantikGrowth is a digital-infrastructure studio for venture capital and private equity firms. We do three things: design clean, fast websites built around a firm's portfolio and investment case studies; on-page SEO so the firm is found by the founders and LPs searching for it; and a content engine that turns a partner's voicenotes and videos into polished articles and repurposed social posts across LinkedIn, X, and short-form video. Based in Mumbai, India. We also take a small number of PMS (portfolio management service) engagements as pilots.
+
+## What we do
+
+- **Website design for venture & PE firms** — We rebuild a firm's site around the companies it has backed. The portfolio becomes a set of short stories rather than a logo wall, and the best investments become editorial case studies (thesis, partnership, outcome). Sites load in under a second and are built mobile-first.
+- **On-page SEO for venture firms** — We make the site findable by the people who matter: founders searching for an investor in their space, and LPs checking a firm out before a meeting. This means pages mapped to real search intent, clean semantic structure, fast loads, and internal linking that compounds authority. The three reasons it matters: inbound (founders arrive already convinced), discoverability (you rank for your own thesis terms instead of directories), and authority (your pages read as the clearest thinking on the topic).
+- **Content engine (voicenote/video to articles + social)** — A partner records a two-minute voicenote or a short video; we turn it into a finished article in the firm's voice, published and SEO-structured on the firm's own site, then repurposed into LinkedIn posts, an X thread, and short clips. The partner spends minutes; the firm publishes everywhere, on a weekly cadence. There is no chatbot involved.
+
+## How we work
+
+We build a real first design of the new site before the client commits. If they love it, we continue with three revisions included; if not, they owe nothing. A typical full build runs about six weeks from kickoff to launch.
+
+## Key pages
+
+- Home: https://quantikgrowth.in/
+- Approach (services in depth, with FAQ): https://quantikgrowth.in/approach
+- Work (representative case study): https://quantikgrowth.in/work
+- Writing (articles): https://quantikgrowth.in/writing
+- Flagship article — "Why a venture firm should think like a publisher, not a marketer": https://quantikgrowth.in/writing/think-like-a-publisher
+- About: https://quantikgrowth.in/about
+- Contact / book a call: https://quantikgrowth.in/contact
+
+## Contact
+
+Email: krish@quantikgrowth.in
+LinkedIn: https://www.linkedin.com/company/quantikgrowth

@@ -14,6 +14,7 @@ import {
 import { work } from '../data/work';
 import { caseStudyContent } from '../data/caseStudyContent';
 import type { CaseServiceBlock } from '../data/caseStudyContent';
+import { breadcrumbSchema } from '../data/structuredData';
 
 /* --- Compact service visuals ------------------------------------------------ */
 
@@ -156,7 +157,15 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.svg` },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${path}` },
+    image: `${SITE_URL}/og/${slug}.png`,
+    inLanguage: 'en',
   };
+
+  const breadcrumb = breadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Work', path: '/work' },
+    { name: item.company, path },
+  ]);
 
   return (
     <SiteLayout>
@@ -165,9 +174,11 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
         description={content.description}
         path={path}
         type="article"
+        image={`/og/${slug}.png`}
+        imageAlt={`${item.company} — a representative QuantikGrowth case study.`}
         keywords={content.keywords}
         article={{ publishedTime: content.datePublished, section: 'Case study' }}
-        jsonLd={jsonLd}
+        jsonLd={[jsonLd, breadcrumb]}
       />
 
       {/* Cover */}

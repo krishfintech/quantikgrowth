@@ -55,6 +55,10 @@ export interface ArticleContent {
   author: { name: string; role: string };
   /** ISO date (YYYY-MM-DD) for JSON-LD + article:published_time. */
   datePublished: string;
+  /** Short <title> for SEO (the H1 headline can be longer). */
+  seoTitle: string;
+  /** Approximate word count, for Article structured data. */
+  wordCount: number;
   /** SEO meta description (~150–160 chars). */
   description: string;
   keywords: string;
@@ -73,6 +77,8 @@ const thinkLikeAPublisher: ArticleContent = {
   dek: 'Marketing rents attention. Publishing compounds it. For a firm whose entire product is judgment, that difference decides whether the best founders arrive already convinced — or never arrive at all.',
   author: { name: 'Krish Naidu', role: 'Founder, QuantikGrowth' },
   datePublished: '2026-06-18',
+  seoTitle: 'Think like a publisher, not a marketer',
+  wordCount: 1600,
   description:
     'Capital is a commodity; judgment is the product. Why venture firms that publish how they think — on a cadence — out-compound the ones that only market.',
   keywords:
@@ -278,6 +284,8 @@ const logoWallIsDead: ArticleContent = {
   dek: 'A grid of portfolio logos proves you wrote a cheque. An investment case study proves you had a reason — and that the reason turned out to be right.',
   author: { name: 'Krish Naidu', role: 'Founder, QuantikGrowth' },
   datePublished: '2026-06-10',
+  seoTitle: 'The logo wall is dead',
+  wordCount: 180,
   description:
     'The logo wall tells a founder that money changed hands, nothing more. An investment case study shows how a firm decides — which is what founders actually want to learn.',
   keywords: 'venture portfolio page, investment case study, VC website design, logo wall, portfolio presentation',
@@ -313,6 +321,8 @@ const whatFoundersRead: ArticleContent = {
   dek: 'By the time a strong founder replies to your email, they have already decided what they think of you. Here is what they looked at to decide it.',
   author: { name: 'Krish Naidu', role: 'Founder, QuantikGrowth' },
   datePublished: '2026-05-20',
+  seoTitle: 'What founders read before they call',
+  wordCount: 190,
   description:
     'Strong founders do their diligence in reverse — four minutes on your site before they reply. Here is what they look for, and why most firms give them nothing to find.',
   keywords: 'founder diligence, what founders look for in investors, VC website, venture firm credibility',

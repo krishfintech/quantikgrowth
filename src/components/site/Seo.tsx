@@ -9,7 +9,7 @@ import React from 'react';
 
 export const SITE_URL = 'https://quantikgrowth.in';
 export const SITE_NAME = 'QuantikGrowth';
-const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`; // TODO(Phase F): ship this asset
+const DEFAULT_OG_IMAGE = '/og/default.png';
 
 interface SeoProps {
   title: string;
@@ -42,6 +42,7 @@ export const Seo = ({
 }: SeoProps) => {
   const url = `${SITE_URL}${path}`;
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
+  const ogImage = image.startsWith('http') ? image : `${SITE_URL}${image}`;
 
   return (
     <>
@@ -56,7 +57,9 @@ export const Seo = ({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
       {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
       <meta property="og:locale" content="en_IN" />
       {type === 'article' && article?.publishedTime && (
@@ -69,7 +72,8 @@ export const Seo = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={ogImage} />
+      {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
 
       {jsonLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
