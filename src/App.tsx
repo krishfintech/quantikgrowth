@@ -171,7 +171,7 @@ const App = ({ initialPath }: { initialPath?: string } = {}) => {
 
   return (
     <AudienceContext.Provider value={{ audience, link, switchAudience, switching }}>
-      <div className="relative min-h-screen overflow-x-hidden">
+      <div className="relative min-h-screen overflow-x-clip">
         {/* Keyed so each navigation (and the audience switch) re-mounts the page
             and replays its entrance reveal — the hero rises into place on arrival. */}
         <div key={routeKey}>{renderView(route)}</div>

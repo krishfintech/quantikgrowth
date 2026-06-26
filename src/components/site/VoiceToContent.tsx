@@ -1,15 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion, useInView, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react';
+import React, { useRef } from 'react';
+import { motion, useInView, useReducedMotion } from 'motion/react';
 
 /**
  * The signature animation: a voicenote transformed into published content, stage
- * by stage. Desktop pins and steps through the five stages on scroll; mobile is
- * a clean vertical stack where each stage animates as it enters view. Under
+ * by stage. A robust scroll-reveal sequence — each of the five stages animates
+ * as it enters view (no sticky pinning, so it can never blank out). Under
  * prefers-reduced-motion it renders a static, labelled five-stage diagram.
  *
- * Performance: only ONE layout is mounted per viewport (no hidden duplicate
- * running loops), and a stage's infinite loops only run while it is on screen.
- * One-shot reveals use whileInView. Transform/opacity only → 60fps.
+ * Performance: a stage's infinite loops only run while it is on screen; one-shot
+ * reveals use whileInView. Transform/opacity only → 60fps.
  */
 
 interface Stage {
@@ -35,18 +34,6 @@ interface VisualProps {
   /** Play one-shot entrance reveals (off under reduced motion). */
   reveal: boolean;
 }
-
-const useIsDesktop = () => {
-  const [isDesktop, setIsDesktop] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)');
-    const update = () => setIsDesktop(mq.matches);
-    update();
-    mq.addEventListener('change', update);
-    return () => mq.removeEventListener('change', update);
-  }, []);
-  return isDesktop;
-};
 
 /* --- Stage visuals ---------------------------------------------------------- */
 
@@ -221,122 +208,61 @@ const StageVisual = ({ index, live, reveal }: { index: number } & VisualProps) =
   return <V live={live} reveal={reveal} />;
 };
 
-/* --- Progress rail ---------------------------------------------------------- */
+/* --- Layout: robust scroll-reveal sequence ---------------------------------- */
 
-const Rail = ({ active }: { active: number }) => (
-  <ol className="flex items-center justify-center gap-2 sm:gap-3" aria-hidden>
-    {STAGES.map((s, i) => (
-      <li key={s.n} className="flex items-center gap-2 sm:gap-3">
-        <span
-          className={`flex h-7 items-center rounded-full px-2.5 text-[12px] font-medium transition-colors duration-300 ${
-            i === active ? 'bg-brand text-white' : i < active ? 'text-brand' : 'text-ink-soft/50'
-          }`}
-        >
-          {s.n}
-        </span>
-        {i < STAGES.length - 1 && <span className={`h-px w-4 sm:w-6 ${i < active ? 'bg-brand' : 'bg-line-strong'}`} />}
-      </li>
-    ))}
-  </ol>
-);
-
-/* --- Layouts ---------------------------------------------------------------- */
-
-const StackCard = ({ index, animate }: { index: number; animate: boolean }) => {
+const StageRow = ({ index, animate, flip }: { index: number; animate: boolean; flip: boolean }) => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { margin: '-15% 0px -15% 0px' });
+  const s = STAGES[index];
 
   return (
     <div ref={ref} className="relative">
       <motion.div
-        className="grid gap-5"
-        initial={animate ? { opacity: 0, y: 24 } : false}
+        className="grid items-center gap-7 lg:grid-cols-2 lg:gap-16"
+        initial={animate ? { opacity: 0, y: 28 } : false}
         whileInView={animate ? { opacity: 1, y: 0 } : undefined}
-        viewport={{ once: true, margin: '-60px' }}
+        viewport={{ once: true, margin: '-80px' }}
         transition={animate ? { duration: 0.6, ease: EASE } : undefined}
       >
-        <div className="flex items-baseline gap-3">
-          <span className="font-display text-[1.3rem] italic text-brand">{STAGES[index].n}</span>
-          <span className="text-[13px] font-medium uppercase tracking-[0.16em] text-ink-soft">{STAGES[index].label}</span>
+        {/* text */}
+        <div className={flip ? 'lg:order-2' : ''}>
+          <div className="flex items-center gap-3">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-tint font-display text-[1rem] text-brand">
+              {s.n}
+            </span>
+            <span className="text-[13px] font-medium uppercase tracking-[0.16em] text-ink-soft">{s.label}</span>
+          </div>
+          <p className="mt-5 max-w-[20ch] font-display text-[clamp(1.6rem,3vw,2.3rem)] leading-[1.12] tracking-[-0.01em] text-ink">
+            {s.caption}
+          </p>
         </div>
-        <div className="aspect-[16/11]">
+
+        {/* visual */}
+        <div className={`aspect-[16/11] ${flip ? 'lg:order-1' : ''}`}>
           <Frame>
             <StageVisual index={index} live={animate && inView} reveal={animate} />
           </Frame>
         </div>
-        <p className="font-display text-[1.25rem] leading-[1.3] tracking-[-0.01em] text-ink">{STAGES[index].caption}</p>
       </motion.div>
-      {index < STAGES.length - 1 && <div className="mx-auto mt-6 h-6 w-px bg-line-strong" aria-hidden />}
-    </div>
-  );
-};
 
-const Stacked = ({ animate }: { animate: boolean }) => (
-  <div className="space-y-6">
-    {STAGES.map((_, i) => (
-      <React.Fragment key={i}>
-        <StackCard index={i} animate={animate} />
-      </React.Fragment>
-    ))}
-  </div>
-);
-
-const DesktopPinned = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
-  const [active, setActive] = useState(0);
-
-  useMotionValueEvent(scrollYProgress, 'change', (v) => {
-    const i = Math.min(STAGES.length - 1, Math.max(0, Math.floor(v * STAGES.length)));
-    setActive((prev) => (prev === i ? prev : i));
-  });
-
-  return (
-    <div ref={ref} className="relative" style={{ height: `${STAGES.length * 80}vh` }}>
-      <div className="sticky top-0 flex h-[100svh] flex-col items-center justify-center gap-8 px-8">
-        <Rail active={active} />
-        <div className="relative aspect-[16/9] w-full max-w-[760px]">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active}
-              className="absolute inset-0 will-change-transform"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -18 }}
-              transition={{ duration: 0.4, ease: EASE }}
-            >
-              <Frame>
-                <StageVisual index={active} live reveal />
-              </Frame>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-        <div className="h-[3.5rem] text-center">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={active}
-              className="font-display text-[clamp(1.3rem,2.4vw,1.9rem)] leading-[1.25] tracking-[-0.01em] text-ink"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.3 }}
-            >
-              {STAGES[active].caption}
-            </motion.p>
-          </AnimatePresence>
-        </div>
-      </div>
+      {index < STAGES.length - 1 && (
+        <div className="mx-auto my-8 h-10 w-px bg-line-strong sm:my-10 lg:my-12" aria-hidden />
+      )}
     </div>
   );
 };
 
 export const VoiceToContent = ({ className = '' }: { className?: string }) => {
   const reduceMotion = useReducedMotion();
-  const isDesktop = useIsDesktop();
+  const animate = !reduceMotion;
 
   return (
     <div className={className}>
-      {reduceMotion ? <Stacked animate={false} /> : isDesktop ? <DesktopPinned /> : <Stacked animate />}
+      {STAGES.map((_, i) => (
+        <React.Fragment key={i}>
+          <StageRow index={i} animate={animate} flip={i % 2 === 1} />
+        </React.Fragment>
+      ))}
     </div>
   );
 };

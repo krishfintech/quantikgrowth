@@ -37,7 +37,9 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     cursor: auto;
-    overflow-x: hidden;
+    /* `clip` prevents horizontal scroll WITHOUT breaking position: sticky
+       (which `hidden` does, by establishing a scroll container). */
+    overflow-x: clip;
   }
 
   h1, h2, h3, h4 {
