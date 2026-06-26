@@ -13,6 +13,7 @@ import { writing } from '../data/writing';
 import { articleContent } from '../data/articleContent';
 import type { ArticleSection } from '../data/articleContent';
 import { breadcrumbSchema } from '../data/structuredData';
+import { useAudience } from '../audience';
 
 /* --- Scrollspy: highlight the table-of-contents entry in view --------------- */
 const useScrollSpy = (ids: string[]) => {
@@ -184,6 +185,7 @@ const NotFound = () => (
 const ArticlePage = ({ slug }: { slug: string }) => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.07, 0.05);
+  const { link } = useAudience();
 
   const article = writing.find((a) => a.slug === slug);
   const content = articleContent[slug];
@@ -193,7 +195,7 @@ const ArticlePage = ({ slug }: { slug: string }) => {
 
   if (!article || !content) return <NotFound />;
 
-  const path = `/writing/${slug}`;
+  const path = link(`/writing/${slug}`);
   const showToc = content.sections.length > 2;
 
   const jsonLd = {
@@ -218,8 +220,8 @@ const ArticlePage = ({ slug }: { slug: string }) => {
   };
 
   const breadcrumb = breadcrumbSchema([
-    { name: 'Home', path: '/' },
-    { name: 'Writing', path: '/writing' },
+    { name: 'Home', path: link('/') },
+    { name: 'Writing', path: link('/writing') },
     { name: content.seoTitle, path },
   ]);
 

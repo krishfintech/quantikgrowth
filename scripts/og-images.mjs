@@ -82,6 +82,14 @@ const IMAGES = {
   'logo-wall-is-dead': 'The logo wall is dead. Long live the case study.',
   'what-founders-read': 'What founders read before they take your call',
   'northbound-capital': 'Northbound Capital — a representative build',
+  // Portfolio (PMS) track
+  'portfolio-home': 'A PMS firm, presented as well as it performs',
+  'portfolio-approach': 'Website design, on-page SEO & a content engine for PMS firms',
+  'portfolio-work': 'A PMS website, built end to end',
+  'portfolio-writing': 'Writing on how PMS firms earn trust online',
+  'meridian-pms': 'Meridian PMS — a representative build',
+  'what-hni-investors-read': 'What an HNI reads before trusting a PMS',
+  'seo-for-pms-firms': 'On-page SEO for PMS firms',
 };
 
 async function main() {

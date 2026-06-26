@@ -196,6 +196,132 @@ const northbound: CaseStudyContent = {
   },
 };
 
+const meridian: CaseStudyContent = {
+  slug: 'meridian-pms',
+  badge: 'Representative engagement',
+  description:
+    'How we rebuilt a SEBI-registered PMS around its track record, made it findable to searching HNIs, and added a content engine. Representative work.',
+  keywords:
+    'PMS case study, portfolio management website India, SEBI registered PMS marketing, on-page SEO for wealth managers, content engine for fund managers',
+  datePublished: '2026-06-22',
+  spec: [
+    { label: 'Engagement', value: 'Full build' },
+    { label: 'Timeline', value: '6 weeks' },
+    { label: 'Services', value: 'All three' },
+    { label: 'Firm type', value: 'SEBI-registered PMS' },
+  ],
+  context: {
+    paras: [
+      'Meridian runs a disciplined, fundamentals-first PMS with an enviable multi-year track record across mid and small caps. The performance was real and the team was credible — and almost none of it reached the investors who could act on it.',
+      'The website was a brochure from 2016: a stock photo, a one-line strategy blurb, a phone number, and a PDF. An HNI who looked Meridian up learned that it managed money — and nothing about the discipline behind the returns or what it was like to be a client.',
+      'So every new mandate came through a referral. Growth was capped by the partners’ personal network while directories and aggregators ranked for exactly the terms Meridian’s ideal investors were searching.',
+    ],
+    stateTitle: 'Before',
+    stateSubtitle: 'The brochure site',
+    stateRows: [
+      { l: 'Website', v: 'Stock photo, one strategy page, a PDF' },
+      { l: 'Search presence', v: 'Outranked by directories' },
+      { l: 'Enquiries', v: 'Referrals only' },
+      { l: 'Manager writing', v: 'Quarterly note, then silence' },
+    ],
+  },
+  challenge: {
+    intro: 'Three things were holding the firm back — and not one of them was the quality of the investing.',
+    points: [
+      {
+        title: 'A site that signalled "small", not "institutional"',
+        body: 'The brochure quietly told a wealthy investor the firm was sub-scale, before a single performance figure was read.',
+      },
+      {
+        title: 'Invisible when wealth was searching',
+        body: 'When an HNI searched for a way to grow long-term wealth, aggregators and listicles ranked for Meridian’s own category — and sold the lead elsewhere.',
+      },
+      {
+        title: 'A track record nobody could follow',
+        body: 'The discipline behind the returns lived in PDFs and review meetings, building no trust with investors who were still deciding.',
+      },
+    ],
+  },
+  services: [
+    {
+      n: '01',
+      kicker: 'Website design',
+      title: 'The track record, rebuilt to read as institutional',
+      body: 'We rebuilt the site around the performance and the discipline behind it. Strategy, AUM, and SEBI registration communicate in the first five seconds, with compliance-aware copy that stays within the guardrails. The firm now looks like the institution its numbers already were.',
+      points: [
+        'Performance and strategy with institutional clarity',
+        'SEBI-registration and compliance-aware copy',
+        'A credibility layer that signals scale',
+        'Sub-second loads, accessible, mobile-first',
+      ],
+      note: 'An HNI now reads "institutional and disciplined" in the first five seconds.',
+    },
+    {
+      n: '02',
+      kicker: 'On-page SEO',
+      title: 'Found by HNIs and advisors, not directories',
+      body: 'We mapped pages to the language HNIs and their advisors actually use — "best PMS for long-term wealth," "portfolio management for HNIs in India" — and built the strategy and approach pages to answer them. Clean structure, fast loads, and internal linking that compounds authority.',
+      points: [
+        'Pages mapped to real HNI and advisor searches',
+        'Semantic structure and fast, crawlable pages',
+        'Strategy pages built to rank for the firm’s point of view',
+        'Internal linking that compounds over time',
+      ],
+      note: 'Page one for four wealth-defining queries within two quarters.',
+    },
+    {
+      n: '03',
+      kicker: 'Content engine',
+      title: 'The managers’ thinking, finally reaching investors',
+      body: 'We stood up a content engine: a fund manager records a two-minute voicenote after a review, and we turn it into a compliance-aware article on the site, then repurpose it into LinkedIn posts and an X thread. No writing required, and a weekly cadence the firm could sustain.',
+      points: [
+        'Voicenote or short video in — finished article out',
+        'Compliance-aware, in the firm’s voice, SEO-structured',
+        'Repurposed to LinkedIn and X',
+        'A weekly cadence that builds trust over time',
+      ],
+      note: 'One voicenote a week became an article and four social posts.',
+    },
+  ],
+  build: {
+    intro: 'The clearest way to see the change is side by side. Same firm, same track record — a completely different front door.',
+    before: [
+      'A brochure that signalled sub-scale',
+      'Outranked by directories for every wealth term',
+      'Enquiries entirely dependent on referrals',
+      'Manager insight stuck in PDFs and meetings',
+    ],
+    after: [
+      'A site that reads as institutional and disciplined',
+      'Ranks page one for four wealth-defining queries',
+      'A steady stream of qualified HNI enquiries',
+      'A weekly publishing cadence the firm owns',
+    ],
+  },
+  results: {
+    intro: "Representative outcomes over the first two quarters after launch — directional benchmarks for a build like this, not a single named client's audited figures.",
+    metrics: [
+      { value: 34, prefix: '+', suffix: '%', label: 'Qualified HNI enquiries', sub: 'vs. referrals only before' },
+      { value: 3.2, decimals: 1, suffix: '×', label: 'Organic search traffic', sub: 'two quarters after launch' },
+      { value: 4, label: 'Page-one queries', sub: 'wealth-defining search terms' },
+      { value: 16, label: 'Articles published', sub: 'from manager voicenotes' },
+      { value: 68, suffix: '%', label: 'Strategy read-depth', sub: 'median on approach pages' },
+      { value: 6, label: 'Weeks to launch', sub: 'kickoff to live site' },
+    ],
+    timeline: [
+      { phase: 'Weeks 1–6', title: 'Build', items: ['Audit & positioning', 'Credibility-first design', 'SEO-structured build'] },
+      { phase: 'Months 2–3', title: 'Publish', items: ['Content engine live', 'Weekly cadence begins', 'Pages start indexing'] },
+      { phase: 'Months 4–6', title: 'Compound', items: ['Rankings climb', 'Enquiries grow', 'The archive compounds'] },
+    ],
+  },
+  closing: {
+    quote:
+      'The goal was never a prettier website. It was a front door that does what a great relationship manager does — make the case for the discipline, with specifics, before anyone has to ask.',
+    attribution: 'The Meridian build · representative engagement',
+  },
+};
+
 export const caseStudyContent: Record<string, CaseStudyContent> = {
   [northbound.slug]: northbound,
+  [meridian.slug]: meridian,
 };

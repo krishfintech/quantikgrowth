@@ -15,6 +15,7 @@ export interface WorkItem {
   year: string;
   summary: string;
   metrics?: WorkMetric[];
+  audience: 'venture' | 'portfolio';
 }
 
 interface WorkLedgerProps {

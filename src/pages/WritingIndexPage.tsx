@@ -8,9 +8,33 @@ import {
   useStaggerVariants,
   viewportOnce,
 } from '../components/site';
-import { writing } from '../data/writing';
+import { writingByAudience } from '../data/writing';
 import type { ArticleItem } from '../components/site';
 import { breadcrumbSchema } from '../data/structuredData';
+import { useAudience, type Audience } from '../audience';
+
+const COPY: Record<Audience, { metaTitle: string; metaDescription: string; og: string; lead: string; em: string; intro: string }> = {
+  venture: {
+    metaTitle: 'Writing on how VC firms present themselves',
+    metaDescription:
+      'Notes on portfolio, proof, and publishing — the decisions that make a venture firm legible to the founders and LPs it wants to reach.',
+    og: '/og/writing.png',
+    lead: 'On how venture firms',
+    em: 'present themselves.',
+    intro:
+      'Notes on portfolio, proof, and publishing — the small decisions that make a firm legible to the founders and LPs it wants to reach. This is also the content engine, working on our own site.',
+  },
+  portfolio: {
+    metaTitle: 'Writing on how PMS firms grow AUM online',
+    metaDescription:
+      'Notes on credibility, discoverability, and trust — the decisions that make a SEBI-registered PMS legible to the HNIs and advisors it wants to reach.',
+    og: '/og/portfolio-writing.png',
+    lead: 'On how PMS firms',
+    em: 'earn trust online.',
+    intro:
+      'Notes on credibility, discoverability, and trust — the small decisions that make a PMS firm legible to the HNIs and advisors it wants to reach. This is also the content engine, working on our own site.',
+  },
+};
 
 const Meta = ({ article }: { article: ArticleItem }) => (
   <span className="text-[13px] text-ink-soft">
@@ -68,21 +92,23 @@ const ArticleListItem = ({ article }: { article: ArticleItem }) => {
 const WritingIndexPage = () => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08, 0.05);
+  const { audience, link } = useAudience();
+  const c = COPY[audience];
 
-  const [featured, ...rest] = writing;
+  const [featured, ...rest] = writingByAudience(audience);
 
   return (
     <SiteLayout>
       <Seo
-        title="Writing on how VC firms present themselves"
-        description="Notes on portfolio, proof, and publishing — the decisions that make a venture firm legible to the founders and LPs it wants to reach."
-        path="/writing"
-        image="/og/writing.png"
-        imageAlt="QuantikGrowth writing — on how venture firms present themselves."
-        keywords="venture capital writing, VC thought leadership, how venture firms present themselves, publishing for investors"
+        title={c.metaTitle}
+        description={c.metaDescription}
+        path={link('/writing')}
+        image={c.og}
+        imageAlt={`QuantikGrowth — ${c.metaTitle}.`}
+        keywords="venture capital writing, PMS marketing, thought leadership for investors, publishing for investment firms"
         jsonLd={breadcrumbSchema([
-          { name: 'Home', path: '/' },
-          { name: 'Writing', path: '/writing' },
+          { name: 'Home', path: link('/') },
+          { name: 'Writing', path: link('/writing') },
         ])}
       />
       <section className="pt-[60px] pb-[36px] sm:pt-[96px] sm:pb-[48px]">
@@ -94,15 +120,13 @@ const WritingIndexPage = () => {
             variants={fadeUp}
             className="font-display font-normal text-[clamp(2.4rem,5vw,3.8rem)] leading-[1.06] tracking-[-0.018em] max-w-[16ch]"
           >
-            On how venture firms <em className="italic text-brand">present themselves.</em>
+            {c.lead} <em className="italic text-brand">{c.em}</em>
           </motion.h1>
           <motion.p
             variants={fadeUp}
             className="text-[clamp(1.02rem,1.5vw,1.2rem)] text-ink-soft max-w-[52ch] mt-[26px] leading-[1.55]"
           >
-            Notes on portfolio, proof, and publishing — the small decisions that make a firm legible to
-            the founders and LPs it wants to reach. This is also the content engine, working on our own
-            site.
+            {c.intro}
           </motion.p>
         </motion.div>
       </section>

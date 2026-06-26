@@ -8,6 +8,7 @@ export interface ArticleItem {
   date: string;
   readingMinutes: number;
   excerpt: string;
+  audiences: ('venture' | 'portfolio')[];
 }
 
 interface ArticleRowProps {

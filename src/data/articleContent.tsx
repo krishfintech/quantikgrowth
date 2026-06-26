@@ -353,8 +353,121 @@ const whatFoundersRead: ArticleContent = {
   ],
 };
 
+const whatHniInvestorsRead: ArticleContent = {
+  slug: 'what-hni-investors-read',
+  dek: 'Performance gets you considered. The website decides whether a wealthy investor believes you can be trusted with the next decade of their capital.',
+  author: { name: 'Krish Naidu', role: 'Founder, QuantikGrowth' },
+  datePublished: '2026-06-12',
+  seoTitle: 'What an HNI reads before trusting a PMS',
+  wordCount: 320,
+  description:
+    'A wealthy investor researches a PMS firm before the first call. Strong returns get you onto the shortlist; the website decides whether you survive it.',
+  keywords: 'PMS firm website, HNI investor research, SEBI registered PMS, portfolio management trust, wealth management marketing',
+  ogImageAlt: 'Essay: what an HNI reads before they trust a PMS firm.',
+  section: 'Strategy',
+  related: ['think-like-a-publisher', 'seo-for-pms-firms'],
+  sections: [
+    {
+      id: 'trust-before-the-call',
+      heading: 'Trust is decided before the first call',
+      body: (
+        <>
+          <P>
+            An HNI investor with serious capital does not pick up the phone cold. They are introduced to your
+            name — by a friend, an advisor, a search result — and then they go and look you up. By the time
+            they call, they have already formed a view. The website is where that view is formed.
+          </P>
+          <P>
+            Strong returns get you onto the shortlist. They do not get you the mandate. The investor is
+            weighing something returns cannot prove on their own: whether this firm is institutional, durable,
+            and safe to trust with the next ten years of their wealth. A brochure site from 2016 quietly
+            answers "no" before a single number is read.
+          </P>
+        </>
+      ),
+    },
+    {
+      id: 'what-they-look-for',
+      heading: 'What the page has to communicate',
+      body: (
+        <>
+          <P>
+            Three things, in the first five seconds: that you are a SEBI-registered portfolio manager and what
+            that means; that your strategy is disciplined and explicable, not a black box; and that the people
+            running the money are credible and present. Most PMS sites bury all three behind a stock photo and
+            a phone number.
+          </P>
+          <P>
+            Done properly, the site stops being a digital business card and becomes the firm's most patient
+            relationship manager — making the case for your discipline and your track record while the team is
+            focused on the markets. That is the same job a venture firm's site has to do, which is why we argue
+            every firm should{' '}
+            <A href="/writing/think-like-a-publisher">think like a publisher rather than a marketer</A>.
+          </P>
+        </>
+      ),
+    },
+  ],
+};
+
+const seoForPmsFirms: ArticleContent = {
+  slug: 'seo-for-pms-firms',
+  dek: 'When an HNI searches for a way to grow long-term wealth, a directory ranks for your category — not you. On-page SEO fixes who gets found.',
+  author: { name: 'Krish Naidu', role: 'Founder, QuantikGrowth' },
+  datePublished: '2026-05-28',
+  seoTitle: 'On-page SEO for PMS firms',
+  wordCount: 330,
+  description:
+    'On-page SEO for PMS firms: how SEBI-registered portfolio managers get found when HNIs and advisors search — inbound that arrives already qualified.',
+  keywords: 'SEO for PMS firms, portfolio management SEO India, how PMS firms get found, wealth management SEO, HNI search',
+  ogImageAlt: 'Essay: on-page SEO for PMS firms.',
+  section: 'SEO',
+  related: ['think-like-a-publisher', 'what-hni-investors-read'],
+  sections: [
+    {
+      id: 'who-ranks-for-your-category',
+      heading: 'Right now, a directory ranks for your category',
+      body: (
+        <>
+          <P>
+            Type "best PMS for long-term wealth" or "portfolio management for HNIs in India" into Google. The
+            first page is aggregators, listicles, and comparison directories — pages built to capture your
+            prospective investor and sell them as a lead. The firm doing the actual work is nowhere to be seen.
+          </P>
+          <P>
+            That is not a branding problem; it is an on-page problem. The directories rank because they have
+            pages that answer the exact question being asked, structured so search engines can read them. Most
+            PMS sites have a single "Strategy" page and a PDF. There is nothing for search to rank.
+          </P>
+        </>
+      ),
+    },
+    {
+      id: 'what-on-page-seo-does',
+      heading: 'What on-page SEO actually does for a PMS firm',
+      body: (
+        <>
+          <P>
+            It puts your firm where the searching happens. We map pages to the language HNIs and their advisors
+            actually use, give each a clean semantic structure and a fast load, and link them so authority
+            compounds across the site. The result is inbound that arrives already qualified — an investor who
+            found you by searching has, by definition, gone looking for exactly what you do.
+          </P>
+          <P>
+            It compounds with content, too. Every article a fund manager records as a voicenote becomes another
+            page that can rank for a real question — which is why we treat SEO and the content engine as one
+            project, not two line items.
+          </P>
+        </>
+      ),
+    },
+  ],
+};
+
 export const articleContent: Record<string, ArticleContent> = {
   [thinkLikeAPublisher.slug]: thinkLikeAPublisher,
   [logoWallIsDead.slug]: logoWallIsDead,
   [whatFoundersRead.slug]: whatFoundersRead,
+  [whatHniInvestorsRead.slug]: whatHniInvestorsRead,
+  [seoForPmsFirms.slug]: seoForPmsFirms,
 };

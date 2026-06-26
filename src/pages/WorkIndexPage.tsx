@@ -8,9 +8,37 @@ import {
   useStaggerVariants,
   viewportOnce,
 } from '../components/site';
-import { work } from '../data/work';
+import { workByAudience } from '../data/work';
 import type { WorkItem } from '../components/site';
 import { breadcrumbSchema } from '../data/structuredData';
+import { useAudience, type Audience } from '../audience';
+
+const COPY: Record<Audience, { title: string; metaTitle: string; metaDescription: string; og: string; lead: string; em: string; intro: string; foot: string }> = {
+  venture: {
+    title: 'Selected work',
+    metaTitle: 'Venture capital website case study',
+    metaDescription:
+      'A representative end-to-end build for an early-stage venture fund: a portfolio-led site, on-page SEO, and a content engine. The craft is real.',
+    og: '/og/work.png',
+    lead: 'Firms presented',
+    em: 'as well as they invest.',
+    intro:
+      "A representative build, shown end to end — a portfolio made legible, made findable with on-page SEO, and given a content engine that compounds the firm's thinking into authority. It's illustrative work, not a named client; the craft is real.",
+    foot: 'Built for venture firms. We take a select number of private equity and PMS engagements as pilots.',
+  },
+  portfolio: {
+    title: 'Selected work',
+    metaTitle: 'PMS website case study',
+    metaDescription:
+      'A representative end-to-end build for a SEBI-registered PMS: a credibility-first site, on-page SEO, and a content engine. The craft is real.',
+    og: '/og/portfolio-work.png',
+    lead: 'Firms presented',
+    em: 'as well as they perform.',
+    intro:
+      'A representative build, shown end to end — a track record made legible, made findable when HNIs search, and given a content engine that compounds the firm’s thinking into trust. It’s illustrative work, not a named client; the craft is real.',
+    foot: 'Built for SEBI-registered PMS & investment firms. We also work with venture capital firms.',
+  },
+};
 
 const WorkCard = ({ item, index }: { item: WorkItem; index: number }) => {
   const fadeUp = useFadeUpVariants();
@@ -22,7 +50,6 @@ const WorkCard = ({ item, index }: { item: WorkItem; index: number }) => {
       className="group block border-t border-line py-12 transition-colors duration-200 first:border-t-0"
     >
       <div className="grid gap-y-7 lg:grid-cols-[1fr_1.15fr] lg:gap-x-16">
-        {/* Left: identity */}
         <div>
           <div className="flex items-center gap-3 text-[13px] text-ink-soft">
             <span className="font-display text-[15px] italic text-brand">{String(index + 1).padStart(2, '0')}</span>
@@ -34,7 +61,6 @@ const WorkCard = ({ item, index }: { item: WorkItem; index: number }) => {
           <p className="mt-4 max-w-[40ch] text-[1.05rem] leading-[1.5] text-ink">{item.thesis}</p>
         </div>
 
-        {/* Right: summary + metrics */}
         <div className="lg:pt-1">
           <p className="max-w-[54ch] text-[16px] leading-[1.6] text-ink-soft">{item.summary}</p>
           {item.metrics && (
@@ -60,39 +86,40 @@ const WorkCard = ({ item, index }: { item: WorkItem; index: number }) => {
 const WorkIndexPage = () => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08, 0.05);
+  const { audience, link } = useAudience();
+  const c = COPY[audience];
+  const items = workByAudience(audience);
 
   return (
     <SiteLayout>
       <Seo
-        title="Venture capital website case study"
-        description="A representative end-to-end build for an early-stage venture fund: a portfolio-led site, on-page SEO, and a content engine. The craft is real."
-        path="/work"
-        image="/og/work.png"
-        imageAlt="QuantikGrowth work — a venture capital website built end to end."
-        keywords="venture capital case studies, VC website examples, portfolio design, investment case study"
+        title={c.metaTitle}
+        description={c.metaDescription}
+        path={link('/work')}
+        image={c.og}
+        imageAlt={`QuantikGrowth — ${c.metaTitle}.`}
+        keywords="case studies, website examples, portfolio design, investment case study"
         jsonLd={breadcrumbSchema([
-          { name: 'Home', path: '/' },
-          { name: 'Work', path: '/work' },
+          { name: 'Home', path: link('/') },
+          { name: 'Work', path: link('/work') },
         ])}
       />
       <section className="pt-[60px] pb-[40px] sm:pt-[96px] sm:pb-[56px]">
         <motion.div className="max-w-[1320px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
-            <Eyebrow className="mb-[22px]">Selected work</Eyebrow>
+            <Eyebrow className="mb-[22px]">{c.title}</Eyebrow>
           </motion.div>
           <motion.h1
             variants={fadeUp}
             className="font-display font-normal text-[clamp(2.4rem,5vw,3.8rem)] leading-[1.06] tracking-[-0.018em] max-w-[18ch]"
           >
-            Firms presented <em className="italic text-brand">as well as they invest.</em>
+            {c.lead} <em className="italic text-brand">{c.em}</em>
           </motion.h1>
           <motion.p
             variants={fadeUp}
             className="text-[clamp(1.02rem,1.5vw,1.2rem)] text-ink-soft max-w-[54ch] mt-[26px] leading-[1.55]"
           >
-            A representative build, shown end to end — a portfolio made legible, made findable with
-            on-page SEO, and given a content engine that compounds the firm's thinking into authority.
-            It's illustrative work, not a named client; the craft is real.
+            {c.intro}
           </motion.p>
         </motion.div>
       </section>
@@ -105,15 +132,12 @@ const WorkIndexPage = () => {
           whileInView="visible"
           viewport={viewportOnce}
         >
-          {work.map((item, i) => (
+          {items.map((item, i) => (
             <React.Fragment key={item.slug}>
               <WorkCard item={item} index={i} />
             </React.Fragment>
           ))}
-          <p className="mt-12 max-w-[60ch] text-[13px] text-ink-soft">
-            Built for venture firms. We take a select number of private equity and PMS engagements as
-            pilots.
-          </p>
+          <p className="mt-12 max-w-[60ch] text-[13px] text-ink-soft">{c.foot}</p>
         </motion.div>
       </section>
     </SiteLayout>

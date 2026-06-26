@@ -15,6 +15,7 @@ import { work } from '../data/work';
 import { caseStudyContent } from '../data/caseStudyContent';
 import type { CaseServiceBlock } from '../data/caseStudyContent';
 import { breadcrumbSchema } from '../data/structuredData';
+import { useAudience } from '../audience';
 
 /* --- Compact service visuals ------------------------------------------------ */
 
@@ -137,13 +138,14 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08, 0.1);
   const staggerGroup = useStaggerVariants(0.08);
+  const { link } = useAudience();
 
   const item = work.find((w) => w.slug === slug);
   const content = caseStudyContent[slug];
 
   if (!item || !content) return <NotFound />;
 
-  const path = `/work/${slug}`;
+  const path = link(`/work/${slug}`);
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -162,8 +164,8 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
   };
 
   const breadcrumb = breadcrumbSchema([
-    { name: 'Home', path: '/' },
-    { name: 'Work', path: '/work' },
+    { name: 'Home', path: link('/') },
+    { name: 'Work', path: link('/work') },
     { name: item.company, path },
   ]);
 

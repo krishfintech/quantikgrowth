@@ -3,22 +3,24 @@ import { motion } from 'motion/react';
 import { Eyebrow, Seo, SiteLayout, useFadeUpVariants, useStaggerVariants } from '../components/site';
 import { BOOKING_URL, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
 import { breadcrumbSchema } from '../data/structuredData';
+import { useAudience } from '../audience';
 
 const ContactPage = () => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08, 0.06);
+  const { link } = useAudience();
 
   return (
     <SiteLayout>
       <Seo
         title="Contact — book a call"
         description="Book a 30-minute intro call. We build a real first design of your new site before you commit — three revisions included, or you owe nothing."
-        path="/contact"
+        path={link('/contact')}
         image="/og/contact.png"
         imageAlt="Contact QuantikGrowth — book a 30-minute intro call."
         jsonLd={breadcrumbSchema([
-          { name: 'Home', path: '/' },
-          { name: 'Contact', path: '/contact' },
+          { name: 'Home', path: link('/') },
+          { name: 'Contact', path: link('/contact') },
         ])}
       />
       <section className="pt-[64px] pb-[48px] sm:pt-[104px] sm:pb-[80px]">
