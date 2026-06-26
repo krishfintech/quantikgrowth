@@ -259,12 +259,15 @@ const ArticlePage = ({ slug }: { slug: string }) => {
           {/* Article body */}
           <article className="mx-auto max-w-[700px]">
             <motion.header variants={stagger} initial="hidden" animate="visible">
-              <motion.div variants={fadeUp}>
-                <a href="/writing" className="text-[14px] text-ink-soft hover:text-brand transition-colors">
+              <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3">
+                <a href={link('/writing')} className="text-[14px] text-ink-soft hover:text-brand transition-colors">
                   ← Writing
                 </a>
+                <span className="rounded-full border border-brand/25 bg-brand-tint px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-brand">
+                  {article.tag}
+                </span>
               </motion.div>
-              <h1 className="mt-8 font-display font-normal text-[clamp(2.2rem,4.6vw,3.2rem)] leading-[1.08] tracking-[-0.018em]">
+              <h1 className="mt-7 font-display font-normal text-[clamp(2.2rem,4.6vw,3.2rem)] leading-[1.08] tracking-[-0.018em]">
                 <MaskReveal delay={0.1}>{article.title}</MaskReveal>
               </h1>
               <motion.p

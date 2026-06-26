@@ -6,7 +6,8 @@ export const writing: ArticleItem[] = [
     slug: 'think-like-a-publisher',
     title: 'Why a venture firm should think like a publisher, not a marketer',
     date: 'Jun 2026',
-    readingMinutes: 6,
+    readingMinutes: 7,
+    tag: 'Strategy',
     audiences: ['venture', 'portfolio'],
     excerpt:
       'Marketing rents attention. Publishing compounds it. For a firm whose entire product is judgment, the difference decides whether founders arrive already convinced.',
@@ -15,7 +16,8 @@ export const writing: ArticleItem[] = [
     slug: 'logo-wall-is-dead',
     title: 'The logo wall is dead. Long live the investment case study.',
     date: 'Jun 2026',
-    readingMinutes: 5,
+    readingMinutes: 7,
+    tag: 'Portfolio',
     audiences: ['venture'],
     excerpt:
       'A grid of portfolio logos proves you wrote a cheque. An investment case study proves you had a reason — and that the reason turned out to be right.',
@@ -24,28 +26,31 @@ export const writing: ArticleItem[] = [
     slug: 'what-founders-read',
     title: 'What founders actually read before they take your call',
     date: 'May 2026',
-    readingMinutes: 4,
+    readingMinutes: 7,
+    tag: 'Strategy',
     audiences: ['venture'],
     excerpt:
-      "By the time a strong founder replies to your email, they've already decided what they think of you. Here is what they looked at to decide it.",
+      "By the time a strong founder replies to your email, they've already decided what they think of you. Here is the four minutes they spent deciding it.",
   },
   {
     slug: 'what-hni-investors-read',
     title: 'What an HNI reads before they trust a PMS firm',
     date: 'Jun 2026',
-    readingMinutes: 5,
+    readingMinutes: 7,
+    tag: 'Trust',
     audiences: ['portfolio'],
     excerpt:
-      'Performance gets you considered. The website decides whether a wealthy investor believes you can be trusted with the next decade of their capital.',
+      'Performance gets you onto the shortlist. The website decides whether a wealthy investor trusts you with the next decade of their capital — and what quietly loses them.',
   },
   {
     slug: 'seo-for-pms-firms',
     title: 'On-page SEO for PMS firms: getting found when wealth is searching',
     date: 'May 2026',
-    readingMinutes: 5,
+    readingMinutes: 8,
+    tag: 'SEO',
     audiences: ['portfolio'],
     excerpt:
-      'When an HNI searches for a way to grow long-term wealth, a directory ranks for your category — not you. On-page SEO fixes who gets found.',
+      'When an HNI searches for a way to grow long-term wealth, a directory ranks for your category — and sells your prospect as a lead. On-page SEO fixes who gets found.',
   },
 ];
 

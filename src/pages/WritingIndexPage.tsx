@@ -38,7 +38,10 @@ const COPY: Record<Audience, { metaTitle: string; metaDescription: string; og: s
 };
 
 const Meta = ({ article }: { article: ArticleItem }) => (
-  <span className="text-[13px] text-ink-soft">
+  <span className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[13px] text-ink-soft">
+    <span className="rounded-full border border-brand/25 bg-brand-tint px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-brand">
+      {article.tag}
+    </span>
     {article.date} · {article.readingMinutes} min read
   </span>
 );
