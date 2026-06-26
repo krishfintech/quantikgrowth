@@ -15,6 +15,8 @@ export type { WorkItem, WorkMetric } from './WorkLedger';
 export { ArticleRow } from './ArticleRow';
 export type { ArticleItem } from './ArticleRow';
 
+export { HeroArtifact } from './HeroArtifact';
+
 export { OfferBand } from './OfferBand';
 
 export { SiteFooter } from './SiteFooter';
