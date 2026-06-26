@@ -24,7 +24,7 @@ const SITE_GRAPH: Record<string, unknown>[] = [
     image: `${SITE_URL}/og/default.png`,
     description:
       'Digital-infrastructure studio for venture capital, private equity and PMS firms: website design, on-page SEO, and a content engine.',
-    email: 'krish@quantikgrowth.in',
+    email: 'krishnaidu@quantikgrowth.in',
     areaServed: { '@type': 'Country', name: 'India' },
     sameAs: ['https://www.linkedin.com/company/quantikgrowth'],
   },

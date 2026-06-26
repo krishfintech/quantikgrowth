@@ -141,8 +141,8 @@ export const Nav = ({ links, ctaLabel, ctaHref, onCtaClick, className = '' }: Na
               >
                 Book a call <span aria-hidden>→</span>
               </a>
-              <a href="mailto:krish@quantikgrowth.in" className="mt-4 block text-center text-[15px] text-ink-soft">
-                krish@quantikgrowth.in
+              <a href="mailto:krishnaidu@quantikgrowth.in" className="mt-4 block text-center text-[15px] text-ink-soft">
+                krishnaidu@quantikgrowth.in
               </a>
             </div>
           </motion.div>

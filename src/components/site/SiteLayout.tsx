@@ -42,7 +42,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => (
         {
           heading: 'Get in touch',
           links: [
-            { label: 'krish@quantikgrowth.in', href: 'mailto:krish@quantikgrowth.in' },
+            { label: 'krishnaidu@quantikgrowth.in', href: 'mailto:krishnaidu@quantikgrowth.in' },
             { label: 'LinkedIn', href: '#' },
             { label: 'Start a project', href: '/contact' },
           ],

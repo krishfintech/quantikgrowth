@@ -15,7 +15,7 @@ export const organizationSchema: JsonLd = {
   image: `${SITE_URL}/og/default.png`,
   description:
     'Digital-infrastructure studio for venture capital and private equity firms: website design, on-page SEO, and a content engine.',
-  email: 'krish@quantikgrowth.in',
+  email: 'krishnaidu@quantikgrowth.in',
   areaServed: { '@type': 'Country', name: 'India' },
   sameAs: ['https://www.linkedin.com/company/quantikgrowth'],
   knowsAbout: [
