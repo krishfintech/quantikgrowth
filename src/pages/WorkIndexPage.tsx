@@ -83,9 +83,9 @@ const WorkIndexPage = () => {
             variants={fadeUp}
             className="text-[clamp(1.02rem,1.5vw,1.2rem)] text-ink-soft max-w-[54ch] mt-[26px] leading-[1.55]"
           >
-            A representative set of builds — portfolios made legible, track records turned into case
-            studies, and a content engine that compounds a firm's thinking into authority. Each is shown
-            as representative work; the craft is real.
+            A representative build, shown end to end — a portfolio made legible, made findable with
+            on-page SEO, and given a content engine that compounds the firm's thinking into authority.
+            It's illustrative work, not a named client; the craft is real.
           </motion.p>
         </motion.div>
       </section>
