@@ -209,15 +209,19 @@ export const HeroArtifact = ({ className = '' }: { className?: string }) => {
         {/* caption + dots */}
         <div className="mt-3 flex items-center justify-between px-1">
           <span className="max-w-[70%] text-[11px] leading-tight text-ink-soft">{PANELS[index].caption}</span>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-0.5">
             {PANELS.map((p, i) => (
               <button
                 key={p.id}
                 type="button"
                 aria-label={`Show ${p.label}`}
                 onClick={() => setIndex(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? 'w-5 bg-brand' : 'w-1.5 bg-line-strong hover:bg-ink-soft/40'}`}
-              />
+                className="group flex h-9 items-center px-1.5"
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-all duration-300 ${i === index ? 'w-5 bg-brand' : 'w-1.5 bg-line-strong group-hover:bg-ink-soft/40'}`}
+                />
+              </button>
             ))}
           </div>
         </div>

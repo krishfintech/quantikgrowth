@@ -119,7 +119,7 @@ const NotFound = () => (
   <SiteLayout>
     <Seo title="Case study not found" description="The case study you were looking for could not be found." path="/work" />
     <section className="pt-[120px] pb-[140px]">
-      <div className="max-w-[1120px] mx-auto px-8">
+      <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
         <h1 className="font-display text-[2.4rem] tracking-[-0.01em]">Case study not found</h1>
         <p className="text-ink-soft mt-4">
           <a href="/work" className="text-brand hover:underline">← Back to all work</a>
@@ -182,8 +182,8 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
       />
 
       {/* Cover */}
-      <section className="pt-[84px] pb-[20px]">
-        <motion.div className="max-w-[1120px] mx-auto px-8" variants={stagger} initial="hidden" animate="visible">
+      <section className="pt-[64px] pb-[20px] sm:pt-[84px]">
+        <motion.div className="max-w-[1320px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <a href="/work" className="text-[14px] text-ink-soft hover:text-brand transition-colors">← Selected work</a>
           </motion.div>
@@ -220,8 +220,8 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
       </section>
 
       {/* Context */}
-      <section className="border-t border-line py-[72px] mt-12">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[56px] sm:py-[72px] mt-12">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <motion.div
             className="grid items-start gap-12 lg:grid-cols-[1fr_360px] lg:gap-16"
             variants={stagger}
@@ -262,8 +262,8 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
       </section>
 
       {/* Challenge */}
-      <section className="border-t border-line py-[72px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[56px] sm:py-[72px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <SectionLabel>The challenge</SectionLabel>
             <h2 className="font-display font-normal text-[clamp(1.7rem,3vw,2.4rem)] leading-[1.12] tracking-[-0.01em] max-w-[24ch]">
@@ -289,8 +289,8 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
       </section>
 
       {/* What we did */}
-      <section className="border-t border-line py-[72px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[56px] sm:py-[72px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <SectionLabel>What we did</SectionLabel>
             <h2 className="font-display font-normal text-[clamp(1.7rem,3vw,2.4rem)] leading-[1.12] tracking-[-0.01em] max-w-[22ch]">
@@ -308,8 +308,8 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
       </section>
 
       {/* The build — before / after */}
-      <section className="border-t border-line py-[72px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[56px] sm:py-[72px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <SectionLabel>The build</SectionLabel>
             <h2 className="font-display font-normal text-[clamp(1.7rem,3vw,2.4rem)] leading-[1.12] tracking-[-0.01em] max-w-[22ch]">
@@ -352,8 +352,8 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
       </section>
 
       {/* Results */}
-      <section className="border-t border-line py-[80px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[60px] sm:py-[80px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <SectionLabel>The outcome</SectionLabel>
             <h2 className="font-display font-normal text-[clamp(1.7rem,3vw,2.4rem)] leading-[1.12] tracking-[-0.01em] max-w-[18ch]">
@@ -401,8 +401,8 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
       </section>
 
       {/* Closing */}
-      <section className="border-t border-line py-[88px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[64px] sm:py-[88px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <motion.figure
             variants={fadeUp}
             initial="hidden"

@@ -135,8 +135,8 @@ const RelatedFooter = ({ slugs }: { slugs: string[] }) => {
     .filter((a): a is NonNullable<typeof a> => Boolean(a));
 
   return (
-    <section className="border-t border-line py-[72px]">
-      <div className="max-w-[1120px] mx-auto px-8">
+    <section className="border-t border-line py-[56px] sm:py-[72px]">
+      <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
         <div className="mb-9 text-[13px] font-medium uppercase tracking-[0.14em] text-ink-soft">More writing</div>
         <div className="grid gap-px overflow-hidden rounded-[16px] border border-line bg-line md:grid-cols-2">
           {related.map((a) => (
@@ -242,7 +242,7 @@ const ArticlePage = ({ slug }: { slug: string }) => {
       />
       <ProgressBar />
 
-      <div className="mx-auto max-w-[1120px] px-6 pt-[72px] pb-[40px] lg:px-8">
+      <div className="mx-auto max-w-[1320px] px-6 pt-[72px] pb-[40px] lg:px-12">
         <div className={showToc ? 'lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-x-14' : ''}>
           {/* Sticky TOC (desktop only) */}
           {showToc && (

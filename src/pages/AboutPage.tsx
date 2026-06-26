@@ -44,9 +44,9 @@ const AboutPage = () => {
           { name: 'About', path: '/about' },
         ])}
       />
-      <section className="pt-[96px] pb-[40px]">
+      <section className="pt-[60px] pb-[32px] sm:pt-[96px] sm:pb-[40px]">
         <motion.div
-          className="max-w-[1120px] mx-auto px-8"
+          className="max-w-[1320px] mx-auto px-8 lg:px-12"
           variants={stagger}
           initial="hidden"
           animate="visible"
@@ -70,7 +70,7 @@ const AboutPage = () => {
         </motion.div>
       </section>
 
-      <div className="max-w-[1120px] mx-auto px-8 mt-8">
+      <div className="max-w-[1320px] mx-auto px-8 lg:px-12 mt-8">
         <Block label="Point of view">
           <P>
             The best firms are excellent investors and forgettable publishers. Their websites read like
@@ -106,7 +106,7 @@ const AboutPage = () => {
       </div>
 
       <section className="pt-[20px] pb-[104px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <a
             href="/contact"
             className="group inline-flex items-center gap-2 font-display text-[clamp(1.6rem,3.2vw,2.4rem)] tracking-[-0.01em] text-ink hover:text-brand transition-colors"

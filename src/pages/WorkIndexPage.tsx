@@ -75,8 +75,8 @@ const WorkIndexPage = () => {
           { name: 'Work', path: '/work' },
         ])}
       />
-      <section className="pt-[96px] pb-[56px]">
-        <motion.div className="max-w-[1120px] mx-auto px-8" variants={stagger} initial="hidden" animate="visible">
+      <section className="pt-[60px] pb-[40px] sm:pt-[96px] sm:pb-[56px]">
+        <motion.div className="max-w-[1320px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[22px]">Selected work</Eyebrow>
           </motion.div>
@@ -99,7 +99,7 @@ const WorkIndexPage = () => {
 
       <section className="pb-[104px]">
         <motion.div
-          className="max-w-[1120px] mx-auto px-8"
+          className="max-w-[1320px] mx-auto px-8 lg:px-12"
           variants={stagger}
           initial="hidden"
           whileInView="visible"

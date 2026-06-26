@@ -33,7 +33,7 @@ export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, classN
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="max-w-[1120px] mx-auto px-8 flex flex-wrap items-start justify-between gap-10">
+      <div className="max-w-[1320px] mx-auto px-8 lg:px-12 flex flex-wrap items-start justify-between gap-10">
         <div>
           <a href="#" className="font-sans font-semibold text-[21px] tracking-[-0.01em] text-ink">
             Quantik<span className="text-brand">growth</span>
@@ -49,7 +49,7 @@ export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, classN
                 <a
                   key={link.label}
                   href={link.href}
-                  className="block text-[15px] text-ink mb-2.5 hover:text-brand transition-colors duration-200"
+                  className="block py-1.5 text-[15px] text-ink hover:text-brand transition-colors duration-200"
                 >
                   {link.label}
                 </a>
@@ -59,7 +59,7 @@ export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, classN
         </div>
       </div>
 
-      <div className="max-w-[1120px] mx-auto px-8 mt-12 pt-6 border-t border-line flex flex-wrap justify-between gap-5 text-[13.5px] text-ink-soft">
+      <div className="max-w-[1320px] mx-auto px-8 lg:px-12 mt-12 pt-6 border-t border-line flex flex-wrap justify-between gap-5 text-[13.5px] text-ink-soft">
         <span>{legalLeft}</span>
         <span>{legalRight}</span>
       </div>

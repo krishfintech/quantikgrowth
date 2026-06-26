@@ -5,6 +5,7 @@ import {
   Button,
   Eyebrow,
   HeroArtifact,
+  MobileCtaBar,
   Nav,
   OfferBand,
   Seo,
@@ -52,8 +53,8 @@ const Hero = () => {
   const stagger = useStaggerVariants(0.08, 0.1);
 
   return (
-    <section className="pt-[72px] pb-[88px] sm:pt-[92px]">
-      <div className="max-w-[1180px] mx-auto px-8 grid lg:grid-cols-[1.05fr_0.95fr] gap-x-16 gap-y-14 items-center">
+    <section className="pt-[60px] pb-[56px] sm:pt-[92px] sm:pb-[88px]">
+      <div className="max-w-[1380px] mx-auto px-8 lg:px-12 grid lg:grid-cols-[1.05fr_0.95fr] gap-x-20 gap-y-14 items-center">
         <motion.div variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[26px]">Digital infrastructure for venture & PE firms</Eyebrow>
@@ -61,14 +62,14 @@ const Hero = () => {
 
           <motion.h1
             variants={fadeUp}
-            className="font-display font-normal text-[clamp(2.7rem,5.4vw,4.4rem)] leading-[1.05] tracking-[-0.018em] max-w-[15ch]"
+            className="font-display font-normal text-[clamp(2.7rem,5.4vw,4.4rem)] leading-[1.05] tracking-[-0.018em] max-w-[20ch]"
           >
             A venture firm, presented <em className="italic text-brand">as well as it invests.</em>
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
-            className="text-[clamp(1.05rem,1.5vw,1.24rem)] text-ink-soft max-w-[50ch] mt-[28px] leading-[1.55]"
+            className="text-[clamp(1.05rem,1.5vw,1.24rem)] text-ink-soft max-w-[56ch] mt-[28px] leading-[1.55]"
           >
             We do three things for VC and PE firms: design a clean, fast website around your portfolio,
             make it findable with on-page SEO, and run a content engine that turns your partners'
@@ -300,10 +301,10 @@ const ServiceBlock = ({ service, flip }: { service: DeepService; flip: boolean }
           <span className="font-display text-[15px] italic text-brand">{service.index}</span>
           <span className="font-medium uppercase tracking-[0.16em]">{service.kicker}</span>
         </div>
-        <h3 className="mt-4 font-display font-normal text-[clamp(1.7rem,2.8vw,2.3rem)] leading-[1.12] tracking-[-0.01em] max-w-[18ch]">
+        <h3 className="mt-4 font-display font-normal text-[clamp(1.7rem,2.8vw,2.3rem)] leading-[1.12] tracking-[-0.01em] max-w-[22ch]">
           {service.title}
         </h3>
-        <p className="mt-5 max-w-[46ch] text-[16.5px] leading-[1.55] text-ink-soft">{service.body}</p>
+        <p className="mt-5 max-w-[52ch] text-[16.5px] leading-[1.55] text-ink-soft">{service.body}</p>
         <ul className="mt-7 space-y-3.5">
           {service.points.map((p) => (
             <React.Fragment key={p}>
@@ -388,7 +389,7 @@ const ResultsBand = () => {
 
   return (
     <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
-      <motion.div variants={fadeUp} className="max-w-[46ch]">
+      <motion.div variants={fadeUp} className="max-w-[56ch]">
         <Eyebrow className="mb-5">What a build like this is worth</Eyebrow>
         <p className="font-display text-[clamp(1.5rem,2.6vw,2rem)] leading-[1.2] tracking-[-0.01em]">
           A venture firm's website is the one partner that keeps working while everyone else is in meetings.
@@ -430,8 +431,8 @@ const HomePage = () => (
     <main>
       <Hero />
 
-      <section id="services" className="border-t border-line py-[92px] scroll-mt-[90px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section id="services" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <SectionHead title="What we build" label="Three things, done properly" />
           <div className="space-y-[104px]">
             {SERVICES.map((service, i) => (
@@ -443,15 +444,15 @@ const HomePage = () => (
         </div>
       </section>
 
-      <section id="process" className="border-t border-line py-[92px] scroll-mt-[90px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section id="process" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <SectionHead title="How it works" label="From first call to a running engine" />
           <Process />
         </div>
       </section>
 
-      <section id="work" className="border-t border-line py-[92px] scroll-mt-[90px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section id="work" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <SectionHead title="Selected work" label="Representative builds" />
           <WorkLedger items={work.slice(0, 3)} />
           <div className="mt-9">
@@ -462,8 +463,8 @@ const HomePage = () => (
         </div>
       </section>
 
-      <section id="writing" className="border-t border-line py-[92px] scroll-mt-[90px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section id="writing" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <SectionHead title="Writing" label="On how venture firms present themselves" />
           <ArticleRow articles={writing.slice(0, 3)} />
           <div className="mt-9">
@@ -474,14 +475,14 @@ const HomePage = () => (
         </div>
       </section>
 
-      <section className="border-t border-line py-[92px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[64px] sm:py-[92px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <ResultsBand />
         </div>
       </section>
 
-      <section className="border-t border-line py-[92px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[64px] sm:py-[92px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <OfferBand
             headline="You see the design before you pay."
             body="We build a real first design of your new site. If you love it, we continue — three revisions included. If you don't, you owe nothing."
@@ -518,6 +519,9 @@ const HomePage = () => (
       legalLeft="© 2026 QuantikGrowth"
       legalRight="Mumbai, India"
     />
+
+    <div className="h-[88px] md:hidden" aria-hidden />
+    <MobileCtaBar />
   </div>
 );
 

@@ -21,9 +21,9 @@ const ContactPage = () => {
           { name: 'Contact', path: '/contact' },
         ])}
       />
-      <section className="pt-[104px] pb-[80px]">
+      <section className="pt-[64px] pb-[48px] sm:pt-[104px] sm:pb-[80px]">
         <motion.div
-          className="max-w-[1120px] mx-auto px-8"
+          className="max-w-[1320px] mx-auto px-8 lg:px-12"
           variants={stagger}
           initial="hidden"
           animate="visible"
@@ -53,7 +53,7 @@ const ContactPage = () => {
       {/* Booking calendar — the anchor of the page */}
       <section className="pb-[64px]">
         <motion.div
-          className="max-w-[1120px] mx-auto px-8"
+          className="max-w-[1320px] mx-auto px-8 lg:px-12"
           variants={fadeUp}
           initial="hidden"
           animate="visible"
@@ -76,7 +76,7 @@ const ContactPage = () => {
               src={BOOKING_URL}
               title="Book a 30-minute intro call with QuantikGrowth"
               loading="lazy"
-              className="h-[760px] w-full border-0"
+              className="h-[620px] w-full border-0 sm:h-[760px]"
             />
           </div>
         </motion.div>
@@ -85,7 +85,7 @@ const ContactPage = () => {
       {/* Secondary contact details */}
       <section className="pb-[110px]">
         <motion.div
-          className="max-w-[1120px] mx-auto px-8"
+          className="max-w-[1320px] mx-auto px-8 lg:px-12"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"

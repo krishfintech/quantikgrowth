@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nav } from './Nav';
 import { SiteFooter } from './SiteFooter';
+import { MobileCtaBar } from './MobileCtaBar';
 import type { NavLink } from './Nav';
 
 export const SITE_NAV_LINKS: NavLink[] = [
@@ -50,5 +51,9 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => (
       legalLeft="© 2026 QuantikGrowth"
       legalRight="Mumbai, India"
     />
+
+    {/* Spacer so the sticky mobile CTA never covers the footer's last line. */}
+    <div className="h-[88px] md:hidden" aria-hidden />
+    <MobileCtaBar />
   </div>
 );

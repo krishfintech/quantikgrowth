@@ -19,6 +19,8 @@ export { HeroArtifact } from './HeroArtifact';
 
 export { CountUp } from './CountUp';
 
+export { MobileCtaBar } from './MobileCtaBar';
+
 export { Seo, SITE_URL, SITE_NAME } from './Seo';
 
 export { OfferBand } from './OfferBand';

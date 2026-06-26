@@ -69,7 +69,7 @@ const Chapter = ({
 
   return (
     <motion.section
-      className="border-t border-line py-[72px] scroll-mt-[90px]"
+      className="border-t border-line py-[56px] sm:py-[72px] scroll-mt-[90px]"
       id={kicker.toLowerCase().replace(/\s+/g, '-')}
       variants={fadeUp}
       initial="hidden"
@@ -257,8 +257,8 @@ const ApproachPage = () => {
           faqSchema(APPROACH_FAQ),
         ]}
       />
-      <section className="pt-[96px] pb-[40px]">
-        <motion.div className="max-w-[1120px] mx-auto px-8" variants={stagger} initial="hidden" animate="visible">
+      <section className="pt-[60px] pb-[32px] sm:pt-[96px] sm:pb-[40px]">
+        <motion.div className="max-w-[1320px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[22px]">Approach</Eyebrow>
           </motion.div>
@@ -277,7 +277,7 @@ const ApproachPage = () => {
         </motion.div>
       </section>
 
-      <div className="max-w-[1120px] mx-auto px-8">
+      <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
         <Chapter
           index="01"
           kicker="Website design"
@@ -361,8 +361,8 @@ const ApproachPage = () => {
       </div>
 
       {/* FAQ — AEO: question-headings + tight, quotable answers */}
-      <section className="border-t border-line py-[80px]" aria-labelledby="faq-heading">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[60px] sm:py-[80px]" aria-labelledby="faq-heading">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <Eyebrow className="mb-[22px]">Questions, answered</Eyebrow>
             <h2
@@ -392,8 +392,8 @@ const ApproachPage = () => {
         </div>
       </section>
 
-      <section className="border-t border-line py-[80px]">
-        <div className="max-w-[1120px] mx-auto px-8">
+      <section className="border-t border-line py-[60px] sm:py-[80px]">
+        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <h2 className="font-display font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] tracking-[-0.01em] max-w-[20ch]">
               See the design before you decide anything.
