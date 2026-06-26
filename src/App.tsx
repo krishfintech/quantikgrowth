@@ -7,8 +7,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import HomePage from './HomePage';
 import ApproachPage from './pages/ApproachPage';
-import WorkIndexPage from './pages/WorkIndexPage';
-import WorkCaseStudyPage from './pages/WorkCaseStudyPage';
+import HowWeWorkPage from './pages/HowWeWorkPage';
 import WritingIndexPage from './pages/WritingIndexPage';
 import ArticlePage from './pages/ArticlePage';
 import AboutPage from './pages/AboutPage';
@@ -28,7 +27,7 @@ import {
 // navigation — no react-router. Each path carries an optional audience segment
 // (/portfolio/…); venture is canonical and unprefixed.
 
-type View = 'home' | 'approach' | 'work' | 'case-study' | 'writing' | 'article' | 'about' | 'contact';
+type View = 'home' | 'approach' | 'work' | 'writing' | 'article' | 'about' | 'contact';
 type Route = { view: View; slug?: string };
 
 const trimSlug = (s: string) => s.replace(/[/?#].*$/, '').replace(/\/+$/, '');
@@ -42,7 +41,6 @@ const LEGACY_REDIRECTS: Record<string, string> = {
 
 // Resolve the within-audience remainder to a view.
 const resolveRoute = (rest: string): Route => {
-  if (rest.startsWith('/work/')) return { view: 'case-study', slug: trimSlug(rest.slice('/work/'.length)) };
   if (rest === '/work') return { view: 'work' };
   if (rest.startsWith('/writing/')) return { view: 'article', slug: trimSlug(rest.slice('/writing/'.length)) };
   if (rest === '/writing') return { view: 'writing' };
@@ -57,9 +55,7 @@ const renderView = (route: Route) => {
     case 'approach':
       return <ApproachPage />;
     case 'work':
-      return <WorkIndexPage />;
-    case 'case-study':
-      return <WorkCaseStudyPage slug={route.slug!} />;
+      return <HowWeWorkPage />;
     case 'writing':
       return <WritingIndexPage />;
     case 'article':

@@ -7,6 +7,8 @@ export interface ApproachContent {
   seo: { title: string; intro: string; why: { k: string; body: string }[]; outro: string };
   content: { title: string; intro: string; steps: { n: string; t: string; b: string }[] };
   together: { title: string; intro: string; nodes: { t: string; s: string }[] };
+  /** Portfolio-only: the AI investor-relations concierge. */
+  chatbot?: { title: string; intro: string; points: string[] };
   faqHeading: string;
   faq: { q: string; a: string }[];
 }
@@ -140,6 +142,17 @@ const portfolio: ApproachContent = {
       { t: 'Content gives SEO something worth ranking', s: 'Every article is a page that can rank for a real wealth question.' },
       { t: 'SEO gives content an audience', s: 'Search delivers the exact HNIs and advisors the article was written for.' },
       { t: 'Together they produce qualified enquiry', s: 'Investors arrive informed, convinced, and ready to talk — on your terms.' },
+    ],
+  },
+  chatbot: {
+    title: 'An AI concierge that answers investors in your voice.',
+    intro:
+      'For PMS firms we add a fourth piece: an AI Investor Relations Concierge. A prospective investor on your site at any hour can ask about your strategy, your process, or the minimum — and get a clear answer drawn from your own approved material, in your firm’s voice. It is built compliance-first: it gives information and analysis, never advice. No buy/sell/hold calls, no return promises, nothing that hasn’t been signed off. The serious enquiries get qualified and routed straight to your team.',
+    points: [
+      'Trained only on your approved, compliance-checked material',
+      'Answers strategy, process and minimums — in your voice',
+      'No advice, no buy/sell/hold, no return promises — by design',
+      'Qualifies serious investors and routes them to your team',
     ],
   },
   faqHeading: 'What fund managers ask before they start.',

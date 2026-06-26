@@ -32,28 +32,28 @@ const WebsitePanel = ({ animate }: { animate: boolean }) => {
         <span className="h-2 w-2 rounded-full bg-white/15" />
         <span className="h-2 w-2 rounded-full bg-white/15" />
         <span className="ml-3 flex-1 rounded-[5px] bg-white/[0.06] px-3 py-1 text-[9px] font-medium tracking-wide text-white/40">
-          northstar.vc
+          your-firm.com
         </span>
       </div>
       <div className="flex h-[calc(100%-37px)] flex-col px-5 py-5">
         <motion.div {...item(0)} className="text-[9px] font-medium uppercase tracking-[0.22em] text-[#9FD9B8]">
-          Seed · climate & energy
+          Your portfolio
         </motion.div>
         <motion.h4
           {...item(1)}
           className="mt-3 font-display text-[19px] leading-[1.12] tracking-[-0.01em] text-white"
         >
-          We back founders before<br />the thesis is obvious.
+          Your thesis, in the<br />first ten seconds.
         </motion.h4>
         <div className="mt-auto grid grid-cols-3 gap-2">
-          {['Voltreon', 'Cropline', 'Hearth'].map((name, i) => (
+          {['Seed · led', 'Series A', 'Seed'].map((sub, i) => (
             <motion.div
               {...item(2 + i)}
-              key={name}
+              key={i}
               className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-2.5"
             >
-              <div className="font-display text-[12px] text-white">{name}</div>
-              <div className="mt-1 text-[8px] leading-snug text-white/45">Series A · led</div>
+              <div className="h-2 w-3/4 rounded-full bg-white/25" aria-hidden />
+              <div className="mt-2 text-[8px] leading-snug text-white/45">{sub}</div>
             </motion.div>
           ))}
         </div>
@@ -66,8 +66,8 @@ const WebsitePanel = ({ animate }: { animate: boolean }) => {
 const SeoPanel = ({ animate }: { animate: boolean }) => {
   // The firm's result starts mid-list and rises to #1.
   const results = [
-    { name: 'Northstar Ventures', ours: true },
-    { name: 'Generic VC directory', ours: false },
+    { name: 'Your firm', ours: true },
+    { name: 'A directory listing', ours: false },
     { name: 'A competing fund', ours: false },
     { name: 'An aggregator page', ours: false },
   ];

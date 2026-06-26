@@ -9,9 +9,6 @@ export type { NavLink } from './Nav';
 export { ServiceTrio } from './ServiceTrio';
 export type { ServiceItem } from './ServiceTrio';
 
-export { WorkLedger } from './WorkLedger';
-export type { WorkItem, WorkMetric } from './WorkLedger';
-
 export { ArticleRow } from './ArticleRow';
 export type { ArticleItem } from './ArticleRow';
 
@@ -24,6 +21,8 @@ export { MobileCtaBar } from './MobileCtaBar';
 export { AudienceSwitcher } from './AudienceSwitcher';
 
 export { MaskReveal } from './Reveal';
+
+export { VoiceToContent } from './VoiceToContent';
 
 export { Seo, SITE_URL, SITE_NAME } from './Seo';
 

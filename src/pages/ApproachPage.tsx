@@ -10,7 +10,7 @@ import {
   useStaggerVariants,
   viewportOnce,
 } from '../components/site';
-import { breadcrumbSchema, faqSchema, servicesSchema } from '../data/structuredData';
+import { breadcrumbSchema, faqSchema, servicesSchemaFor } from '../data/structuredData';
 import { useAudience } from '../audience';
 import { approachContent, type ApproachContent } from '../content/approach';
 
@@ -164,7 +164,7 @@ const ApproachPage = () => {
             { name: 'Home', path: link('/') },
             { name: 'Approach', path: link('/approach') },
           ]),
-          ...servicesSchema,
+          ...servicesSchemaFor(audience),
           faqSchema(c.faq),
         ]}
       />
@@ -206,7 +206,14 @@ const ApproachPage = () => {
           <EngineSteps steps={c.content.steps} />
         </Chapter>
 
-        <Chapter index="04" kicker="Why together" title={c.together.title}>
+        {c.chatbot && (
+          <Chapter index="04" kicker="AI concierge" title={c.chatbot.title}>
+            <P>{c.chatbot.intro}</P>
+            <PointList points={c.chatbot.points} />
+          </Chapter>
+        )}
+
+        <Chapter index={c.chatbot ? '05' : '04'} kicker="Why together" title={c.together.title}>
           <P>{c.together.intro}</P>
           <Flywheel nodes={c.together.nodes} />
         </Chapter>
