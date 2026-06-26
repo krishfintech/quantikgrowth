@@ -152,7 +152,7 @@ const Amplify = ({ animate }: { animate: boolean }) => {
     { t: '◎', label: 'Instagram' },
   ];
   return (
-    <div className="relative flex h-[220px] w-full max-w-[460px] items-center justify-center">
+    <div className="relative flex h-[220px] w-full max-w-[460px] items-center justify-center overflow-hidden">
       {/* reach pulse rings */}
       {animate &&
         [0, 1, 2].map((i) => (
@@ -170,8 +170,8 @@ const Amplify = ({ animate }: { animate: boolean }) => {
       <div className="absolute inset-0">
         {marks.map((m, i) => {
           const angle = (i / marks.length) * Math.PI * 2 - Math.PI / 2;
-          const x = Math.cos(angle) * 150;
-          const y = Math.sin(angle) * 86;
+          const x = Math.cos(angle) * 108;
+          const y = Math.sin(angle) * 78;
           return (
             <motion.div
               key={m.label}
