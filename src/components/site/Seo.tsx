@@ -11,6 +11,39 @@ export const SITE_URL = 'https://quantikgrowth.in';
 export const SITE_NAME = 'QuantikGrowth';
 const DEFAULT_OG_IMAGE = '/og/default.png';
 
+// Site-wide identity graph, emitted on every page (defined inline to avoid a
+// circular import with data/structuredData).
+const SITE_GRAPH: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${SITE_URL}/#organization`,
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/favicon.svg`,
+    image: `${SITE_URL}/og/default.png`,
+    description:
+      'Digital-infrastructure studio for venture capital, private equity and PMS firms: website design, on-page SEO, and a content engine.',
+    email: 'krish@quantikgrowth.in',
+    areaServed: { '@type': 'Country', name: 'India' },
+    sameAs: ['https://www.linkedin.com/company/quantikgrowth'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: SITE_NAME,
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    inLanguage: 'en',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: `${SITE_URL}/writing?q={search_term_string}` },
+      'query-input': 'required name=search_term_string',
+    },
+  },
+];
+
 interface SeoProps {
   title: string;
   description: string;
@@ -74,6 +107,9 @@ export const Seo = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
       {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
+
+      {/* Site-wide Organization + WebSite identity graph (every page) */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SITE_GRAPH) }} />
 
       {jsonLd && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />

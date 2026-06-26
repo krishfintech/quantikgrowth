@@ -316,6 +316,25 @@ const ArticlePage = ({ slug }: { slug: string }) => {
                 </motion.section>
               ))}
             </div>
+
+            {/* Author bio — E-E-A-T */}
+            <aside className="mt-14 flex gap-5 rounded-[16px] border border-line bg-paper-soft p-6">
+              <span
+                className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand text-[15px] font-semibold text-white"
+                aria-hidden
+              >
+                KN
+              </span>
+              <div>
+                <div className="font-display text-[1.2rem] tracking-[-0.01em]">{content.author.name}</div>
+                <div className="text-[13px] text-ink-soft">{content.author.role}</div>
+                <p className="mt-2.5 text-[14.5px] leading-[1.55] text-ink-soft">
+                  QuantikGrowth is a digital-infrastructure studio for venture, private equity and PMS
+                  firms — website design, on-page SEO, and a content engine that turns voicenotes into
+                  articles and social. Based in Mumbai.
+                </p>
+              </div>
+            </aside>
           </article>
         </div>
       </div>

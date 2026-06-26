@@ -19,7 +19,6 @@ import {
 } from './components/site';
 import { workByAudience } from './data/work';
 import { writingByAudience } from './data/writing';
-import { organizationSchema, websiteSchema } from './data/structuredData';
 import { useAudience } from './audience';
 import { homeContent } from './content/home';
 import type {
@@ -341,7 +340,6 @@ const HomePage = () => {
         image={c.ogImage}
         imageAlt={`QuantikGrowth — ${c.metaTitle}.`}
         keywords={c.keywords}
-        jsonLd={[organizationSchema, websiteSchema]}
       />
       <Nav links={NAV_LINKS} ctaLabel="Start a project" ctaHref="/contact" />
 

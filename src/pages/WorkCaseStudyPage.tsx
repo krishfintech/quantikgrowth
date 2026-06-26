@@ -148,7 +148,8 @@ const WorkCaseStudyPage = ({ slug }: { slug: string }) => {
   const path = link(`/work/${slug}`);
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'CreativeWork',
+    name: `${item.company} — case study`,
     headline: `${item.company} — case study`,
     description: content.description,
     datePublished: content.datePublished,
