@@ -18,6 +18,7 @@ import { work } from './data/work';
 import { writing } from './data/writing';
 
 const NAV_LINKS: NavLink[] = [
+  { label: 'Approach', href: '/approach' },
   { label: 'Work', href: '/work' },
   { label: 'Writing', href: '/writing' },
   { label: 'About', href: '/about' },
@@ -488,6 +489,7 @@ const HomePage = () => (
         {
           heading: 'Explore',
           links: [
+            { label: 'Approach', href: '/approach' },
             { label: 'Work', href: '/work' },
             { label: 'Writing', href: '/writing' },
             { label: 'About', href: '/about' },

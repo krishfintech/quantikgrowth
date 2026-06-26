@@ -4,6 +4,7 @@ import { SiteFooter } from './SiteFooter';
 import type { NavLink } from './Nav';
 
 export const SITE_NAV_LINKS: NavLink[] = [
+  { label: 'Approach', href: '/approach' },
   { label: 'Work', href: '/work' },
   { label: 'Writing', href: '/writing' },
   { label: 'About', href: '/about' },
@@ -31,6 +32,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => (
         {
           heading: 'Explore',
           links: [
+            { label: 'Approach', href: '/approach' },
             { label: 'Work', href: '/work' },
             { label: 'Writing', href: '/writing' },
             { label: 'About', href: '/about' },

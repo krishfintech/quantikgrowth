@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import HomePage from './HomePage';
+import ApproachPage from './pages/ApproachPage';
 import WorkIndexPage from './pages/WorkIndexPage';
 import WorkCaseStudyPage from './pages/WorkCaseStudyPage';
 import WritingIndexPage from './pages/WritingIndexPage';
@@ -20,6 +21,7 @@ import ContactPage from './pages/ContactPage';
 
 type Route =
   | { view: 'home' }
+  | { view: 'approach' }
   | { view: 'work' }
   | { view: 'case-study'; slug: string }
   | { view: 'writing' }
@@ -41,6 +43,7 @@ const resolveRoute = (pathname: string): Route => {
   if (pathname === '/work') return { view: 'work' };
   if (pathname.startsWith('/writing/')) return { view: 'article', slug: trimSlug(pathname.slice('/writing/'.length)) };
   if (pathname === '/writing') return { view: 'writing' };
+  if (pathname === '/approach') return { view: 'approach' };
   if (pathname === '/about') return { view: 'about' };
   if (pathname === '/contact') return { view: 'contact' };
   return { view: 'home' };
@@ -105,6 +108,7 @@ const App = () => {
   return (
     <div className="relative min-h-screen overflow-x-hidden">
       {route.view === 'home' && <HomePage />}
+      {route.view === 'approach' && <ApproachPage />}
       {route.view === 'work' && <WorkIndexPage />}
       {route.view === 'case-study' && <WorkCaseStudyPage slug={route.slug} />}
       {route.view === 'writing' && <WritingIndexPage />}
