@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import {
   Eyebrow,
+  Seo,
   SiteLayout,
   useFadeUpVariants,
   useStaggerVariants,
@@ -71,6 +72,12 @@ const WritingIndexPage = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="Writing — on how venture firms present themselves"
+        description="Notes on portfolio, proof, and publishing — the small decisions that make a venture firm legible to the founders and LPs it wants to reach."
+        path="/writing"
+        keywords="venture capital writing, VC thought leadership, how venture firms present themselves, publishing for investors"
+      />
       <section className="pt-[96px] pb-[48px]">
         <motion.div className="max-w-[1120px] mx-auto px-8" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>

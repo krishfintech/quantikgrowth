@@ -7,6 +7,8 @@ import {
   HeroArtifact,
   Nav,
   OfferBand,
+  Seo,
+  SITE_URL,
   SiteFooter,
   WorkLedger,
   useFadeUpVariants,
@@ -412,8 +414,26 @@ const ResultsBand = () => {
 
 // --- Page --------------------------------------------------------------------
 
+const HOME_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'QuantikGrowth',
+  url: SITE_URL,
+  description:
+    'Digital infrastructure for venture and private equity firms — website design, on-page SEO, and a content engine.',
+  areaServed: { '@type': 'Country', name: 'India' },
+  knowsAbout: ['Website design', 'On-page SEO', 'Content marketing for venture capital'],
+};
+
 const HomePage = () => (
   <div className="bg-paper">
+    <Seo
+      title="Digital infrastructure for venture & PE firms"
+      description="QuantikGrowth designs clean, fast websites for VC and PE firms, makes them findable with on-page SEO, and runs a content engine that turns partners' voicenotes into articles and social."
+      path="/"
+      keywords="venture capital website design, VC firm web design, private equity website, on-page SEO for investors, content engine for venture firms"
+      jsonLd={HOME_JSON_LD}
+    />
     <Nav links={NAV_LINKS} ctaLabel="Start a project" ctaHref="/contact" />
 
     <main>

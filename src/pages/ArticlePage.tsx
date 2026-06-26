@@ -1,125 +1,172 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { SiteLayout, useFadeUpVariants, useStaggerVariants } from '../components/site';
+import React, { useEffect, useState } from 'react';
+import { motion, useScroll, useSpring, useReducedMotion } from 'motion/react';
+import {
+  Button,
+  Seo,
+  SITE_URL,
+  SiteLayout,
+  useFadeUpVariants,
+  useStaggerVariants,
+  viewportOnce,
+} from '../components/site';
 import { writing } from '../data/writing';
+import { articleContent } from '../data/articleContent';
+import type { ArticleSection } from '../data/articleContent';
 
-/* ------------------------------------------------------------------ */
-/* Prose primitives — shared by every article body.                    */
-/* ------------------------------------------------------------------ */
+/* --- Scrollspy: highlight the table-of-contents entry in view --------------- */
+const useScrollSpy = (ids: string[]) => {
+  const [active, setActive] = useState(ids[0] ?? '');
 
-const P = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-[1.15rem] leading-[1.85] text-ink mb-7">{children}</p>
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-25% 0px -65% 0px', threshold: 0 },
+    );
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ids.join('|')]);
+
+  return active;
+};
+
+/* --- Reading progress bar --------------------------------------------------- */
+const ProgressBar = () => {
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 130, damping: 30, mass: 0.2 });
+  if (reduceMotion) return null;
+  return (
+    <motion.div
+      style={{ scaleX }}
+      className="fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-brand"
+      aria-hidden
+    />
+  );
+};
+
+/* --- Table of contents ------------------------------------------------------ */
+const TableOfContents = ({ sections, active }: { sections: ArticleSection[]; active: string }) => (
+  <nav aria-label="On this page" className="text-[14px]">
+    <div className="mb-4 text-[12px] font-medium uppercase tracking-[0.16em] text-ink-soft">On this page</div>
+    <ul className="space-y-2.5 border-l border-line">
+      {sections.map((s) => (
+        <li key={s.id}>
+          <a
+            href={`#${s.id}`}
+            className={`-ml-px block border-l-2 pl-4 leading-snug transition-colors duration-200 ${
+              active === s.id
+                ? 'border-brand text-brand'
+                : 'border-transparent text-ink-soft hover:text-ink'
+            }`}
+          >
+            {s.heading}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
 );
 
-const H2 = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="font-display font-medium text-[1.65rem] leading-[1.2] tracking-[-0.01em] text-ink mt-12 mb-5">
-    {children}
-  </h2>
-);
+/* --- A figure with descriptive alt text (the article's core metaphor) ------- */
+const ArchiveFigure = () => {
+  const reduceMotion = useReducedMotion();
+  return (
+    <figure className="my-12 rounded-[16px] border border-line bg-paper-soft p-8">
+      <svg
+        viewBox="0 0 360 150"
+        className="w-full"
+        role="img"
+        aria-label="A line chart contrasting two assets over time: a marketing brochure's value declines steadily from launch, while a published archive's value rises and accelerates."
+      >
+        {/* axes */}
+        <line x1="34" y1="14" x2="34" y2="124" stroke="var(--color-line-strong)" strokeWidth="1" />
+        <line x1="34" y1="124" x2="346" y2="124" stroke="var(--color-line-strong)" strokeWidth="1" />
+        {/* brochure: declining */}
+        <motion.path
+          d="M40 36 C 110 58, 200 92, 340 114"
+          fill="none"
+          stroke="var(--color-ink-soft)"
+          strokeWidth="2"
+          strokeDasharray="5 5"
+          initial={reduceMotion ? false : { pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={viewportOnce}
+          transition={{ duration: 1.1, ease: 'easeOut' }}
+        />
+        {/* archive: rising and accelerating */}
+        <motion.path
+          d="M40 116 C 150 110, 250 86, 340 22"
+          fill="none"
+          stroke="var(--color-brand)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          initial={reduceMotion ? false : { pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          viewport={viewportOnce}
+          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+        />
+        <text x="344" y="18" textAnchor="end" className="fill-brand" fontSize="11" fontWeight="500">Archive</text>
+        <text x="344" y="110" textAnchor="end" fill="var(--color-ink-soft)" fontSize="11">Brochure</text>
+        <text x="40" y="138" fill="var(--color-ink-soft)" fontSize="10">launch</text>
+        <text x="346" y="138" textAnchor="end" fill="var(--color-ink-soft)" fontSize="10">years later</text>
+      </svg>
+      <figcaption className="mt-5 text-[14px] leading-[1.5] text-ink-soft">
+        Two instruments. The brochure is worth most the day it ships and depreciates from there; the
+        published archive compounds — ranking, getting forwarded, and getting cited long after it goes live.
+      </figcaption>
+    </figure>
+  );
+};
 
-const Lead = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-[1.3rem] leading-[1.6] text-ink-soft mb-8">{children}</p>
-);
+/* --- Related / more writing ------------------------------------------------- */
+const RelatedFooter = ({ slugs }: { slugs: string[] }) => {
+  const related = slugs
+    .map((slug) => writing.find((w) => w.slug === slug))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a));
 
-/* ------------------------------------------------------------------ */
-/* Co-located article bodies, keyed by slug.                           */
-/* ------------------------------------------------------------------ */
+  return (
+    <section className="border-t border-line py-[72px]">
+      <div className="max-w-[1120px] mx-auto px-8">
+        <div className="mb-9 text-[13px] font-medium uppercase tracking-[0.14em] text-ink-soft">More writing</div>
+        <div className="grid gap-px overflow-hidden rounded-[16px] border border-line bg-line md:grid-cols-2">
+          {related.map((a) => (
+            <a key={a.slug} href={`/writing/${a.slug}`} className="group block bg-paper p-7 transition-colors hover:bg-paper-soft">
+              <div className="text-[13px] text-ink-soft">
+                {a.date} · {a.readingMinutes} min read
+              </div>
+              <h3 className="mt-3 font-display text-[1.4rem] leading-[1.15] tracking-[-0.01em] group-hover:text-brand transition-colors">
+                {a.title}
+              </h3>
+              <p className="mt-2.5 text-[15px] leading-[1.5] text-ink-soft">{a.excerpt}</p>
+            </a>
+          ))}
+        </div>
 
-const articleBodies: Record<string, React.ReactNode> = {
-  'think-like-a-publisher': (
-    <>
-      <Lead>
-        Marketing rents attention. Publishing compounds it. For a firm whose entire product is judgment,
-        that difference is not cosmetic — it decides whether the best founders arrive already convinced.
-      </Lead>
-      <P>
-        Most venture websites are built like brochures. There is a tagline about partnership, a grid of
-        portfolio logos, a page of partner headshots, and a contact form. It is marketing in the oldest
-        sense: a static claim about how good the firm is, addressed to no one in particular, refreshed
-        once every few years when it starts to feel embarrassing. It informs. It does not persuade, and
-        it certainly does not compound.
-      </P>
-      <P>
-        A publisher behaves differently. A publisher ships — regularly, with a point of view, to an
-        audience it is trying to earn rather than rent. Each thing it puts out is an asset that keeps
-        working: it gets found in search, forwarded in DMs, quoted in other people's essays, and read
-        by a founder at 1 a.m. three months after it was written. The brochure depreciates the day it
-        goes live. The published archive appreciates.
-      </P>
-      <H2>Judgment is the product, and writing is the only proof of it</H2>
-      <P>
-        A venture firm does not sell capital — capital is a commodity, and the founder you actually want
-        has three other term sheets. What a firm sells is judgment: the ability to see, earlier and more
-        clearly than the market, which companies and which people compound. That is an invisible product.
-        You cannot photograph it. You can only demonstrate it, and the most direct demonstration is
-        sustained, public, specific writing about how you think.
-      </P>
-      <P>
-        When a partner writes a sharp essay about why a category is mispriced, two things happen at once.
-        Founders in that category recognise that this firm understands their world before the first call.
-        And the firm builds a durable, searchable record of having been right early — the closest thing
-        to a track record you can show before the exits land.
-      </P>
-      <H2>What this changes about the website</H2>
-      <P>
-        If you take the publisher framing seriously, the firm's site stops being a billboard and becomes
-        a home for thinking. The writing is not a buried blog link in the footer; it is a first-class
-        surface, designed to be read, easy to ship to, and built so a single essay keeps paying out for
-        years. The portfolio stops being a wall of logos and becomes a set of arguments — here is what we
-        saw, here is why we moved, here is what happened.
-      </P>
-      <P>
-        None of this requires a content team or a publishing calendar borrowed from a media company. It
-        requires a system the partners will actually use, and the discipline to treat thinking as the
-        firm's most valuable output — not a marketing afterthought. Get that right, and the website stops
-        introducing the firm and starts doing what the best partners do in a room: making the case, before
-        anyone has to ask for it.
-      </P>
-    </>
-  ),
-  'logo-wall-is-dead': (
-    <>
-      <Lead>
-        A grid of portfolio logos proves you wrote a cheque. An investment case study proves you had a
-        reason — and that the reason turned out to be right.
-      </Lead>
-      <P>
-        The logo wall is the most common element on a venture website and the least informative. It tells
-        a visitor that money changed hands, nothing more. It cannot distinguish the deal you fought for
-        from the one you backed into, or the conviction bet from the index-style spray. Every firm's wall
-        looks roughly the same, which is precisely the problem.
-      </P>
-      <P>
-        An investment case study does the work the logo cannot. It has a spine: the thesis you held, the
-        partnership you built, and the outcome that followed. Read three of them and a founder understands
-        your taste — not that you invest, but how you decide. That is the thing they are actually trying
-        to learn before they let you onto their cap table.
-      </P>
-    </>
-  ),
-  'what-founders-read': (
-    <>
-      <Lead>
-        By the time a strong founder replies to your email, they have already decided what they think of
-        you. Here is what they looked at to decide it.
-      </Lead>
-      <P>
-        The good ones do their diligence in reverse. Before they answer, they open a tab, type your firm's
-        name, and spend four minutes deciding whether you are worth a call. They are not reading your
-        tagline. They are looking for evidence that you understand the specific thing they are building.
-      </P>
-      <P>
-        What they find is usually a portfolio grid and a contact form — which tells them nothing, so they
-        fall back on warm intros and reputation. A firm that instead shows its thinking and its reasoning
-        gives the founder something to react to, and turns a cold four minutes into the first half of a
-        conversation.
-      </P>
-    </>
-  ),
+        <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <p className="font-display text-[1.4rem] tracking-[-0.01em]">
+            This essay is the content engine, working on our own site.
+          </p>
+          <Button variant="primary" href="/approach" arrow>
+            See how it works
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 const NotFound = () => (
   <SiteLayout>
+    <Seo title="Article not found" description="The article you were looking for could not be found." path="/writing" />
     <section className="pt-[120px] pb-[140px]">
       <div className="max-w-[680px] mx-auto px-6">
         <h1 className="font-display text-[2.4rem] tracking-[-0.01em]">Article not found</h1>
@@ -138,39 +185,132 @@ const ArticlePage = ({ slug }: { slug: string }) => {
   const stagger = useStaggerVariants(0.07, 0.05);
 
   const article = writing.find((a) => a.slug === slug);
-  const body = articleBodies[slug];
+  const content = articleContent[slug];
 
-  if (!article || !body) return <NotFound />;
+  const ids = content ? content.sections.map((s) => s.id) : [];
+  const active = useScrollSpy(ids);
+
+  if (!article || !content) return <NotFound />;
+
+  const path = `/writing/${slug}`;
+  const showToc = content.sections.length > 2;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: content.description,
+    datePublished: content.datePublished,
+    dateModified: content.datePublished,
+    author: { '@type': 'Person', name: content.author.name },
+    publisher: {
+      '@type': 'Organization',
+      name: 'QuantikGrowth',
+      logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.svg` },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${path}` },
+    image: `${SITE_URL}/og-image.jpg`,
+    articleSection: content.section,
+    keywords: content.keywords,
+  };
 
   return (
     <SiteLayout>
-      <article className="max-w-[680px] mx-auto px-6 pt-[80px] pb-[110px]">
-        <motion.header variants={stagger} initial="hidden" animate="visible">
-          <motion.div variants={fadeUp}>
-            <a href="/writing" className="text-[14px] text-ink-soft hover:text-brand transition-colors">
-              ← Writing
-            </a>
-          </motion.div>
-          <motion.p variants={fadeUp} className="text-[13.5px] text-ink-soft mt-8">
-            {article.date} · {article.readingMinutes} min read
-          </motion.p>
-          <motion.h1
-            variants={fadeUp}
-            className="font-display font-normal text-[clamp(2.1rem,4.4vw,3rem)] leading-[1.1] tracking-[-0.015em] mt-3"
-          >
-            {article.title}
-          </motion.h1>
-        </motion.header>
+      <Seo
+        title={article.title}
+        description={content.description}
+        path={path}
+        type="article"
+        keywords={content.keywords}
+        imageAlt={content.ogImageAlt}
+        article={{
+          publishedTime: content.datePublished,
+          author: content.author.name,
+          section: content.section,
+        }}
+        jsonLd={jsonLd}
+      />
+      <ProgressBar />
 
-        <motion.div
-          className="mt-12"
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
-          {body}
-        </motion.div>
-      </article>
+      <div className="mx-auto max-w-[1120px] px-6 pt-[72px] pb-[40px] lg:px-8">
+        <div className={showToc ? 'lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-x-14' : ''}>
+          {/* Sticky TOC (desktop only) */}
+          {showToc && (
+            <aside className="hidden lg:block">
+              <div className="sticky top-[100px]">
+                <TableOfContents sections={content.sections} active={active} />
+              </div>
+            </aside>
+          )}
+
+          {/* Article body */}
+          <article className="mx-auto max-w-[700px]">
+            <motion.header variants={stagger} initial="hidden" animate="visible">
+              <motion.div variants={fadeUp}>
+                <a href="/writing" className="text-[14px] text-ink-soft hover:text-brand transition-colors">
+                  ← Writing
+                </a>
+              </motion.div>
+              <motion.h1
+                variants={fadeUp}
+                className="mt-8 font-display font-normal text-[clamp(2.2rem,4.6vw,3.2rem)] leading-[1.08] tracking-[-0.018em]"
+              >
+                {article.title}
+              </motion.h1>
+              <motion.p
+                variants={fadeUp}
+                className="mt-6 font-display text-[clamp(1.2rem,2vw,1.45rem)] leading-[1.45] tracking-[-0.005em] text-ink-soft"
+              >
+                {content.dek}
+              </motion.p>
+              <motion.div
+                variants={fadeUp}
+                className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-line pt-6 text-[14px]"
+              >
+                <span className="text-ink">{content.author.name}</span>
+                <span className="text-ink-soft">{content.author.role}</span>
+                <span className="text-line-strong" aria-hidden>·</span>
+                <span className="text-ink-soft">
+                  {article.date} · {article.readingMinutes} min read
+                </span>
+              </motion.div>
+            </motion.header>
+
+            {showToc && <ArchiveFigure />}
+
+            {/* Mobile TOC */}
+            {showToc && (
+              <details className="mt-8 rounded-[12px] border border-line bg-paper-soft p-5 lg:hidden">
+                <summary className="cursor-pointer text-[14px] font-medium text-ink">On this page</summary>
+                <div className="mt-4">
+                  <TableOfContents sections={content.sections} active={active} />
+                </div>
+              </details>
+            )}
+
+            <div className="mt-10">
+              {content.sections.map((s) => (
+                <motion.section
+                  key={s.id}
+                  id={s.id}
+                  className="scroll-mt-[100px]"
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={viewportOnce}
+                >
+                  <h2 className="mt-12 mb-5 font-display font-medium text-[1.7rem] leading-[1.18] tracking-[-0.01em] text-ink first:mt-0">
+                    {s.heading}
+                  </h2>
+                  {s.body}
+                </motion.section>
+              ))}
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <RelatedFooter slugs={content.related} />
     </SiteLayout>
   );
 };

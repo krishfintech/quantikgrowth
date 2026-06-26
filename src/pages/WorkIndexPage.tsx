@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import {
   Eyebrow,
+  Seo,
   SiteLayout,
   useFadeUpVariants,
   useStaggerVariants,
@@ -61,6 +62,12 @@ const WorkIndexPage = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="Work — venture firms, presented as well as they invest"
+        description="A representative set of builds for VC and PE firms: portfolios made legible, track records turned into investment case studies, and a content engine that compounds."
+        path="/work"
+        keywords="venture capital case studies, VC website examples, portfolio design, investment case study"
+      />
       <section className="pt-[96px] pb-[56px]">
         <motion.div className="max-w-[1120px] mx-auto px-8" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>

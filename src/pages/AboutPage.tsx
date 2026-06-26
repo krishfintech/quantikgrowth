@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Eyebrow, SiteLayout, useFadeUpVariants, useStaggerVariants, viewportOnce } from '../components/site';
+import { Eyebrow, Seo, SiteLayout, useFadeUpVariants, useStaggerVariants, viewportOnce } from '../components/site';
 
 const P = ({ children }: { children: React.ReactNode }) => (
   <p className="text-[1.15rem] leading-[1.85] text-ink mb-7 last:mb-0">{children}</p>
@@ -33,6 +33,11 @@ const AboutPage = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="About — a studio for how venture firms present themselves"
+        description="QuantikGrowth is a small studio that builds the digital infrastructure venture and private equity firms use to present their judgment — clearly and on their own terms."
+        path="/about"
+      />
       <section className="pt-[96px] pb-[40px]">
         <motion.div
           className="max-w-[1120px] mx-auto px-8"

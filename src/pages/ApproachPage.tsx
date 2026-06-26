@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import {
   Button,
   Eyebrow,
+  Seo,
   SiteLayout,
   useFadeUpVariants,
   useStaggerVariants,
@@ -208,6 +209,12 @@ const ApproachPage = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="Approach — website design, on-page SEO, and a content engine"
+        description="How we think about a venture firm's website: portfolio-led design, on-page SEO that brings inbound, and a content engine that turns voicenotes into articles and social."
+        path="/approach"
+        keywords="venture firm website, on-page SEO for VC, content engine, voicenote to article, VC inbound marketing"
+      />
       <section className="pt-[96px] pb-[40px]">
         <motion.div className="max-w-[1120px] mx-auto px-8" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>

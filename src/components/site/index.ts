@@ -17,6 +17,8 @@ export type { ArticleItem } from './ArticleRow';
 
 export { HeroArtifact } from './HeroArtifact';
 
+export { Seo, SITE_URL, SITE_NAME } from './Seo';
+
 export { OfferBand } from './OfferBand';
 
 export { SiteFooter } from './SiteFooter';

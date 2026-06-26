@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Eyebrow, SiteLayout, useFadeUpVariants, useStaggerVariants } from '../components/site';
+import { Eyebrow, Seo, SiteLayout, useFadeUpVariants, useStaggerVariants } from '../components/site';
 
 const EMAIL = 'krish@quantikgrowth.in';
 const LINKEDIN_URL = 'https://www.linkedin.com/company/quantikgrowth';
@@ -11,6 +11,11 @@ const ContactPage = () => {
 
   return (
     <SiteLayout>
+      <Seo
+        title="Contact — start a project"
+        description="Tell us about the firm. We build a real first design of your new site before you commit — love it and we continue with three revisions; if you don't, you owe nothing."
+        path="/contact"
+      />
       <section className="pt-[104px] pb-[120px]">
         <motion.div
           className="max-w-[760px] mx-auto px-6"
