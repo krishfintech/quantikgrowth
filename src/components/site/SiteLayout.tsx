@@ -53,7 +53,7 @@ export const SiteLayout = ({ children }: SiteLayoutProps) => (
     />
 
     {/* Spacer so the sticky mobile CTA never covers the footer's last line. */}
-    <div className="h-[88px] md:hidden" aria-hidden />
+    <div className="h-[88px] lg:hidden" aria-hidden />
     <MobileCtaBar />
   </div>
 );

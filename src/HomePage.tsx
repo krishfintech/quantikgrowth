@@ -520,7 +520,7 @@ const HomePage = () => (
       legalRight="Mumbai, India"
     />
 
-    <div className="h-[88px] md:hidden" aria-hidden />
+    <div className="h-[88px] lg:hidden" aria-hidden />
     <MobileCtaBar />
   </div>
 );

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useFadeUpVariants, viewportOnce } from './motion';
+import { useAudience } from '../../audience';
 
 export interface FooterLink {
   label: string;
@@ -23,6 +24,7 @@ interface SiteFooterProps {
 
 export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, className = '' }: SiteFooterProps) => {
   const fadeUp = useFadeUpVariants();
+  const { link } = useAudience();
 
   return (
     <motion.footer
@@ -35,7 +37,7 @@ export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, classN
     >
       <div className="max-w-[1320px] mx-auto px-8 lg:px-12 flex flex-wrap items-start justify-between gap-10">
         <div>
-          <a href="#" className="font-sans font-semibold text-[21px] tracking-[-0.01em] text-ink">
+          <a href={link('/')} className="font-sans font-semibold text-[21px] tracking-[-0.01em] text-ink">
             Quantik<span className="text-brand">growth</span>
           </a>
           <p className="mt-3.5 text-[15px] text-ink-soft max-w-[30ch]">{tagline}</p>
@@ -45,13 +47,13 @@ export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, classN
           {columns.map((col) => (
             <div key={col.heading}>
               <h2 className="text-[13px] text-ink-soft font-medium tracking-[0.02em] mb-4">{col.heading}</h2>
-              {col.links.map((link) => (
+              {col.links.map((l) => (
                 <a
-                  key={link.label}
-                  href={link.href}
+                  key={l.label}
+                  href={link(l.href)}
                   className="block py-1.5 text-[15px] text-ink hover:text-brand transition-colors duration-200"
                 >
-                  {link.label}
+                  {l.label}
                 </a>
               ))}
             </div>

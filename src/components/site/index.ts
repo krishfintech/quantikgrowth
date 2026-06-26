@@ -21,6 +21,8 @@ export { CountUp } from './CountUp';
 
 export { MobileCtaBar } from './MobileCtaBar';
 
+export { AudienceSwitcher } from './AudienceSwitcher';
+
 export { Seo, SITE_URL, SITE_NAME } from './Seo';
 
 export { OfferBand } from './OfferBand';
