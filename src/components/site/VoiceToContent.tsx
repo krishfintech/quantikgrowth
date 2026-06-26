@@ -1,12 +1,15 @@
-import React, { useRef, useState } from 'react';
-import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { AnimatePresence, motion, useInView, useMotionValueEvent, useReducedMotion, useScroll } from 'motion/react';
 
 /**
  * The signature animation: a voicenote transformed into published content, stage
  * by stage. Desktop pins and steps through the five stages on scroll; mobile is
- * a clean vertical stack with each stage's mini-animation. Under
+ * a clean vertical stack where each stage animates as it enters view. Under
  * prefers-reduced-motion it renders a static, labelled five-stage diagram.
- * Transform/opacity only.
+ *
+ * Performance: only ONE layout is mounted per viewport (no hidden duplicate
+ * running loops), and a stage's infinite loops only run while it is on screen.
+ * One-shot reveals use whileInView. Transform/opacity only → 60fps.
  */
 
 interface Stage {
@@ -24,6 +27,26 @@ const STAGES: Stage[] = [
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as const;
+const VP = { once: true, margin: '-10% 0px' } as const;
+
+interface VisualProps {
+  /** Run infinite loops (only when the stage is on screen). */
+  live: boolean;
+  /** Play one-shot entrance reveals (off under reduced motion). */
+  reveal: boolean;
+}
+
+const useIsDesktop = () => {
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+  return isDesktop;
+};
 
 /* --- Stage visuals ---------------------------------------------------------- */
 
@@ -33,8 +56,8 @@ const Frame = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-const MicWave = ({ animate }: { animate: boolean }) => {
-  const bars = [14, 26, 40, 22, 48, 30, 56, 36, 44, 20, 34, 50, 24, 40, 16];
+const MicWave = ({ live }: VisualProps) => {
+  const bars = [16, 30, 44, 24, 50, 34, 22, 46, 28, 40, 18];
   return (
     <div className="flex w-full max-w-[420px] flex-col items-center gap-6">
       <span className="flex h-16 w-16 items-center justify-center rounded-full bg-brand text-white">
@@ -43,14 +66,14 @@ const MicWave = ({ animate }: { animate: boolean }) => {
           <path d="M5 11a7 7 0 0 0 14 0M12 18v3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </span>
-      <div className="flex h-[70px] items-center gap-[5px]" aria-hidden>
+      <div className="flex h-[70px] items-center gap-[6px]" aria-hidden>
         {bars.map((h, i) => (
           <motion.span
             key={i}
-            className="w-[5px] rounded-full bg-brand/70"
+            className="w-[5px] origin-center rounded-full bg-brand/70 will-change-transform"
             style={{ height: h }}
-            animate={animate ? { scaleY: [1, 0.4 + (i % 4) * 0.25, 1] } : undefined}
-            transition={animate ? { duration: 1.1, repeat: Infinity, delay: i * 0.06, ease: 'easeInOut' } : undefined}
+            animate={live ? { scaleY: [1, 0.45, 1] } : { scaleY: 1 }}
+            transition={live ? { duration: 1, repeat: Infinity, delay: i * 0.08, ease: 'easeInOut' } : { duration: 0 }}
           />
         ))}
       </div>
@@ -59,7 +82,7 @@ const MicWave = ({ animate }: { animate: boolean }) => {
   );
 };
 
-const Transcribe = ({ animate }: { animate: boolean }) => {
+const Transcribe = ({ live, reveal }: VisualProps) => {
   const words = ['The', 'energy', 'transition', 'rewards', 'the', 'firms', 'that', 'show', 'their', 'work', '—', 'early', 'and', 'often.'];
   return (
     <div className="grid w-full max-w-[460px] grid-cols-[auto_1fr] items-center gap-5">
@@ -72,51 +95,48 @@ const Transcribe = ({ animate }: { animate: boolean }) => {
         {words.map((w, i) => (
           <motion.span
             key={i}
-            className="mr-[0.28em] inline-block"
-            initial={animate ? { opacity: 0, y: 6 } : false}
-            animate={animate ? { opacity: 1, y: 0 } : undefined}
-            transition={animate ? { delay: 0.15 + i * 0.07, duration: 0.3 } : undefined}
+            className="mr-[0.28em] inline-block will-change-transform"
+            initial={reveal ? { opacity: 0, y: 6 } : false}
+            whileInView={reveal ? { opacity: 1, y: 0 } : undefined}
+            viewport={VP}
+            transition={reveal ? { delay: 0.1 + i * 0.05, duration: 0.3 } : undefined}
           >
             {w}
           </motion.span>
         ))}
         <motion.span
           className="inline-block h-[1.1em] w-[2px] translate-y-[2px] bg-brand"
-          animate={animate ? { opacity: [1, 0, 1] } : undefined}
-          transition={animate ? { duration: 0.9, repeat: Infinity } : undefined}
+          animate={live ? { opacity: [1, 0, 1] } : { opacity: 1 }}
+          transition={live ? { duration: 0.9, repeat: Infinity } : { duration: 0 }}
         />
       </p>
     </div>
   );
 };
 
-const ArticleCard = ({ animate }: { animate: boolean }) => (
+const ArticleCard = ({ reveal }: VisualProps) => (
   <div className="w-full max-w-[420px] rounded-[14px] border border-line bg-paper p-6">
     <div className="text-[10px] font-medium uppercase tracking-[0.2em] text-brand">Article · your site</div>
-    <motion.h4
-      className="mt-3 font-display text-[1.5rem] leading-[1.12] tracking-[-0.01em] text-ink"
-      initial={animate ? { opacity: 0, y: 8 } : false}
-      animate={animate ? { opacity: 1, y: 0 } : undefined}
-      transition={animate ? { duration: 0.5, delay: 0.1 } : undefined}
-    >
+    <h4 className="mt-3 font-display text-[1.5rem] leading-[1.12] tracking-[-0.01em] text-ink">
       What the energy transition rewards
-    </motion.h4>
+    </h4>
     <div className="mt-4 space-y-2.5">
       {[100, 96, 88, 92, 70].map((w, i) => (
         <motion.div
           key={i}
-          className="h-2 rounded-full bg-line-strong/70"
+          className="h-2 origin-left rounded-full bg-line-strong/70 will-change-transform"
           style={{ width: `${w}%` }}
-          initial={animate ? { scaleX: 0, originX: 0 } : false}
-          animate={animate ? { scaleX: 1 } : undefined}
-          transition={animate ? { duration: 0.5, delay: 0.25 + i * 0.1, ease: EASE } : undefined}
+          initial={reveal ? { scaleX: 0 } : false}
+          whileInView={reveal ? { scaleX: 1 } : undefined}
+          viewport={VP}
+          transition={reveal ? { duration: 0.45, delay: 0.15 + i * 0.08, ease: EASE } : undefined}
         />
       ))}
     </div>
   </div>
 );
 
-const Repurpose = ({ animate }: { animate: boolean }) => {
+const Repurpose = ({ reveal }: VisualProps) => {
   const cards = [
     { k: 'Newsletter', v: 'To your list' },
     { k: 'LinkedIn', v: 'Two posts' },
@@ -127,10 +147,11 @@ const Repurpose = ({ animate }: { animate: boolean }) => {
       {cards.map((c, i) => (
         <motion.div
           key={c.k}
-          className="rounded-[12px] border border-brand/25 bg-brand-tint p-4"
-          initial={animate ? { opacity: 0, y: 16, rotate: i === 0 ? -3 : i === 2 ? 3 : 0 } : false}
-          animate={animate ? { opacity: 1, y: 0, rotate: 0 } : undefined}
-          transition={animate ? { duration: 0.5, delay: 0.1 + i * 0.12, ease: EASE } : undefined}
+          className="rounded-[12px] border border-brand/25 bg-brand-tint p-4 will-change-transform"
+          initial={reveal ? { opacity: 0, y: 14 } : false}
+          whileInView={reveal ? { opacity: 1, y: 0 } : undefined}
+          viewport={VP}
+          transition={reveal ? { duration: 0.45, delay: 0.08 + i * 0.1, ease: EASE } : undefined}
         >
           <div className="font-display text-[1.05rem] tracking-[-0.01em] text-brand-deep">{c.k}</div>
           <div className="mt-1 text-[12px] text-ink-soft">{c.v}</div>
@@ -144,7 +165,7 @@ const Repurpose = ({ animate }: { animate: boolean }) => {
   );
 };
 
-const Amplify = ({ animate }: { animate: boolean }) => {
+const Amplify = ({ live, reveal }: VisualProps) => {
   const marks = [
     { t: 'in', label: 'LinkedIn' },
     { t: 'X', label: 'X' },
@@ -153,14 +174,13 @@ const Amplify = ({ animate }: { animate: boolean }) => {
   ];
   return (
     <div className="relative flex h-[220px] w-full max-w-[460px] items-center justify-center overflow-hidden">
-      {/* reach pulse rings */}
-      {animate &&
+      {live &&
         [0, 1, 2].map((i) => (
           <motion.span
             key={i}
-            className="absolute h-24 w-24 rounded-full border border-brand/30"
+            className="absolute h-24 w-24 rounded-full border border-brand/30 will-change-transform"
             initial={{ scale: 0.5, opacity: 0.5 }}
-            animate={{ scale: 2.4, opacity: 0 }}
+            animate={{ scale: 2.3, opacity: 0 }}
             transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.8, ease: 'easeOut' }}
           />
         ))}
@@ -175,11 +195,12 @@ const Amplify = ({ animate }: { animate: boolean }) => {
           return (
             <motion.div
               key={m.label}
-              className="absolute left-1/2 top-1/2 flex flex-col items-center gap-1"
-              style={{ x: '-50%', y: '-50%', left: `calc(50% + ${x}px)`, top: `calc(50% + ${y}px)` }}
-              initial={animate ? { opacity: 0, scale: 0.6 } : false}
-              animate={animate ? { opacity: 1, scale: 1 } : undefined}
-              transition={animate ? { duration: 0.4, delay: 0.2 + i * 0.12, ease: EASE } : undefined}
+              className="absolute flex flex-col items-center gap-1 will-change-transform"
+              style={{ left: `calc(50% + ${x}px)`, top: `calc(50% + ${y}px)`, x: '-50%', y: '-50%' }}
+              initial={reveal ? { opacity: 0, scale: 0.6 } : false}
+              whileInView={reveal ? { opacity: 1, scale: 1 } : undefined}
+              viewport={VP}
+              transition={reveal ? { duration: 0.4, delay: 0.15 + i * 0.1, ease: EASE } : undefined}
             >
               <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-paper text-[15px] font-semibold text-ink">
                 {m.t}
@@ -195,9 +216,9 @@ const Amplify = ({ animate }: { animate: boolean }) => {
 
 const STAGE_VISUALS = [MicWave, Transcribe, ArticleCard, Repurpose, Amplify];
 
-const StageVisual = ({ index, animate }: { index: number; animate: boolean }) => {
+const StageVisual = ({ index, live, reveal }: { index: number } & VisualProps) => {
   const V = STAGE_VISUALS[index];
-  return <V animate={animate} />;
+  return <V live={live} reveal={reveal} />;
 };
 
 /* --- Progress rail ---------------------------------------------------------- */
@@ -221,25 +242,43 @@ const Rail = ({ active }: { active: number }) => (
 
 /* --- Layouts ---------------------------------------------------------------- */
 
-const StageCard = ({ index, animate, reveal }: { index: number; animate: boolean; reveal: boolean }) => (
-  <motion.div
-    className="grid gap-5"
-    initial={reveal ? { opacity: 0, y: 24 } : false}
-    whileInView={reveal ? { opacity: 1, y: 0 } : undefined}
-    viewport={{ once: true, margin: '-60px' }}
-    transition={reveal ? { duration: 0.6, ease: EASE } : undefined}
-  >
-    <div className="flex items-baseline gap-3">
-      <span className="font-display text-[1.3rem] italic text-brand">{STAGES[index].n}</span>
-      <span className="text-[13px] font-medium uppercase tracking-[0.16em] text-ink-soft">{STAGES[index].label}</span>
+const StackCard = ({ index, animate }: { index: number; animate: boolean }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { margin: '-15% 0px -15% 0px' });
+
+  return (
+    <div ref={ref} className="relative">
+      <motion.div
+        className="grid gap-5"
+        initial={animate ? { opacity: 0, y: 24 } : false}
+        whileInView={animate ? { opacity: 1, y: 0 } : undefined}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={animate ? { duration: 0.6, ease: EASE } : undefined}
+      >
+        <div className="flex items-baseline gap-3">
+          <span className="font-display text-[1.3rem] italic text-brand">{STAGES[index].n}</span>
+          <span className="text-[13px] font-medium uppercase tracking-[0.16em] text-ink-soft">{STAGES[index].label}</span>
+        </div>
+        <div className="aspect-[16/11]">
+          <Frame>
+            <StageVisual index={index} live={animate && inView} reveal={animate} />
+          </Frame>
+        </div>
+        <p className="font-display text-[1.25rem] leading-[1.3] tracking-[-0.01em] text-ink">{STAGES[index].caption}</p>
+      </motion.div>
+      {index < STAGES.length - 1 && <div className="mx-auto mt-6 h-6 w-px bg-line-strong" aria-hidden />}
     </div>
-    <div className="aspect-[16/11]">
-      <Frame>
-        <StageVisual index={index} animate={animate} />
-      </Frame>
-    </div>
-    <p className="font-display text-[1.25rem] leading-[1.3] tracking-[-0.01em] text-ink">{STAGES[index].caption}</p>
-  </motion.div>
+  );
+};
+
+const Stacked = ({ animate }: { animate: boolean }) => (
+  <div className="space-y-6">
+    {STAGES.map((_, i) => (
+      <React.Fragment key={i}>
+        <StackCard index={i} animate={animate} />
+      </React.Fragment>
+    ))}
+  </div>
 );
 
 const DesktopPinned = () => {
@@ -249,25 +288,25 @@ const DesktopPinned = () => {
 
   useMotionValueEvent(scrollYProgress, 'change', (v) => {
     const i = Math.min(STAGES.length - 1, Math.max(0, Math.floor(v * STAGES.length)));
-    setActive(i);
+    setActive((prev) => (prev === i ? prev : i));
   });
 
   return (
-    <div ref={ref} className="hidden lg:block relative" style={{ height: `${STAGES.length * 78}vh` }}>
+    <div ref={ref} className="relative" style={{ height: `${STAGES.length * 80}vh` }}>
       <div className="sticky top-0 flex h-[100svh] flex-col items-center justify-center gap-8 px-8">
         <Rail active={active} />
         <div className="relative aspect-[16/9] w-full max-w-[760px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              className="absolute inset-0"
-              initial={{ opacity: 0, y: 24, scale: 0.985 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -24, scale: 0.985 }}
-              transition={{ duration: 0.45, ease: EASE }}
+              className="absolute inset-0 will-change-transform"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -18 }}
+              transition={{ duration: 0.4, ease: EASE }}
             >
               <Frame>
-                <StageVisual index={active} animate />
+                <StageVisual index={active} live reveal />
               </Frame>
             </motion.div>
           </AnimatePresence>
@@ -277,10 +316,10 @@ const DesktopPinned = () => {
             <motion.p
               key={active}
               className="font-display text-[clamp(1.3rem,2.4vw,1.9rem)] leading-[1.25] tracking-[-0.01em] text-ink"
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.35 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.3 }}
             >
               {STAGES[active].caption}
             </motion.p>
@@ -291,32 +330,13 @@ const DesktopPinned = () => {
   );
 };
 
-const StackedDiagram = ({ animate }: { animate: boolean }) => (
-  <div className={`${animate ? 'lg:hidden' : ''} space-y-6`}>
-    {STAGES.map((s, i) => (
-      <div key={s.n} className="relative">
-        <StageCard index={i} animate={animate} reveal={animate} />
-        {i < STAGES.length - 1 && <div className="mx-auto mt-6 h-6 w-px bg-line-strong" aria-hidden />}
-      </div>
-    ))}
-  </div>
-);
-
 export const VoiceToContent = ({ className = '' }: { className?: string }) => {
   const reduceMotion = useReducedMotion();
-
-  if (reduceMotion) {
-    return (
-      <div className={className}>
-        <StackedDiagram animate={false} />
-      </div>
-    );
-  }
+  const isDesktop = useIsDesktop();
 
   return (
     <div className={className}>
-      <DesktopPinned />
-      <StackedDiagram animate />
+      {reduceMotion ? <Stacked animate={false} /> : isDesktop ? <DesktopPinned /> : <Stacked animate />}
     </div>
   );
 };
