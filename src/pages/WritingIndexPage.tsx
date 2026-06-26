@@ -96,7 +96,13 @@ const WritingIndexPage = () => {
   const { audience, link } = useAudience();
   const c = COPY[audience];
 
-  const [featured, ...rest] = writingByAudience(audience);
+  // Honours the WebSite SearchAction (?q=…): a simple client-side title/excerpt filter.
+  const q = (typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('q') : '') || '';
+  const all = writingByAudience(audience);
+  const filtered = q
+    ? all.filter((a) => `${a.title} ${a.excerpt}`.toLowerCase().includes(q.toLowerCase()))
+    : all;
+  const [featured, ...rest] = filtered;
 
   return (
     <SiteLayout>
@@ -139,7 +145,16 @@ const WritingIndexPage = () => {
           whileInView="visible"
           viewport={viewportOnce}
         >
-          {featured && <FeaturedArticle article={featured} />}
+          {featured ? (
+            <FeaturedArticle article={featured} />
+          ) : (
+            <p className="text-[1.05rem] text-ink-soft">
+              No articles match “{q}”.{' '}
+              <a href={link('/writing')} className="text-brand hover:underline">
+                Clear search
+              </a>
+            </p>
+          )}
         </motion.div>
       </section>
 
