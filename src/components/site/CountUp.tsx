@@ -16,7 +16,10 @@ export const CountUp = ({ end, duration = 1.6, prefix = '', suffix = '', decimal
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
   const reduceMotion = useReducedMotion();
-  const [value, setValue] = useState(reduceMotion ? end : 0);
+  // On the server (prerender) there's no animation, so render the final value
+  // straight away — crawlers should index the real number, not 0.
+  const isServer = typeof window === 'undefined';
+  const [value, setValue] = useState(reduceMotion || isServer ? end : 0);
 
   useEffect(() => {
     if (reduceMotion) {

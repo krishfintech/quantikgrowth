@@ -7,7 +7,7 @@ import React from 'react';
  * an inline <script>, which is valid and crawlable anywhere in the document.
  */
 
-export const SITE_URL = 'https://www.quantikgrowth.in';
+export const SITE_URL = 'https://quantikgrowth.in';
 export const SITE_NAME = 'QuantikGrowth';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.jpg`; // TODO(Phase F): ship this asset
 

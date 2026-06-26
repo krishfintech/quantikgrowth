@@ -1,9 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Eyebrow, Seo, SiteLayout, useFadeUpVariants, useStaggerVariants } from '../components/site';
-
-const EMAIL = 'krish@quantikgrowth.in';
-const LINKEDIN_URL = 'https://www.linkedin.com/company/quantikgrowth';
+import { BOOKING_URL, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
 
 const ContactPage = () => {
   const fadeUp = useFadeUpVariants();
@@ -16,9 +14,9 @@ const ContactPage = () => {
         description="Tell us about the firm. We build a real first design of your new site before you commit — love it and we continue with three revisions; if you don't, you owe nothing."
         path="/contact"
       />
-      <section className="pt-[104px] pb-[120px]">
+      <section className="pt-[104px] pb-[80px]">
         <motion.div
-          className="max-w-[760px] mx-auto px-6"
+          className="max-w-[1120px] mx-auto px-8"
           variants={stagger}
           initial="hidden"
           animate="visible"
@@ -29,7 +27,7 @@ const ContactPage = () => {
 
           <motion.h1
             variants={fadeUp}
-            className="font-display font-normal text-[clamp(2.4rem,5.4vw,3.8rem)] leading-[1.06] tracking-[-0.018em]"
+            className="font-display font-normal text-[clamp(2.4rem,5.4vw,3.8rem)] leading-[1.06] tracking-[-0.018em] max-w-[16ch]"
           >
             You see the design <em className="italic text-brand">before you pay.</em>
           </motion.h1>
@@ -38,48 +36,75 @@ const ContactPage = () => {
             variants={fadeUp}
             className="text-[clamp(1.05rem,1.6vw,1.28rem)] text-ink-soft max-w-[52ch] mt-[24px] leading-[1.6]"
           >
-            We build a real first design of your new site. If you love it, we continue — three revisions
-            included. If you don't, you owe nothing. Tell us about the firm and we'll take it from there.
+            Book a 30-minute intro call below. We'll talk through the firm, and if it's a fit we build a
+            real first design of your new site before you commit a rupee — three revisions included, or you
+            owe nothing.
           </motion.p>
+        </motion.div>
+      </section>
 
-          {/* One clear action */}
-          <motion.div variants={fadeUp} className="mt-[44px]">
-            <a
-              href={`mailto:${EMAIL}?subject=Starting%20a%20project`}
-              className="inline-flex items-center gap-3 bg-brand text-white rounded-full px-[28px] py-[16px] text-[1.05rem] font-medium hover:bg-brand-deep transition-colors"
-            >
-              {EMAIL}
-              <span aria-hidden="true">→</span>
-            </a>
-          </motion.div>
+      {/* Booking calendar — the anchor of the page */}
+      <section className="pb-[64px]">
+        <motion.div
+          className="max-w-[1120px] mx-auto px-8"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="overflow-hidden rounded-[18px] border border-line bg-paper-soft">
+            <div className="flex items-center justify-between gap-4 border-b border-line px-6 py-4">
+              <span className="text-[13px] font-medium uppercase tracking-[0.14em] text-ink-soft">
+                Book an intro call
+              </span>
+              <a
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-[14px] text-brand hover:underline"
+              >
+                Open in a new tab ↗
+              </a>
+            </div>
+            <iframe
+              src={BOOKING_URL}
+              title="Book a 30-minute intro call with QuantikGrowth"
+              loading="lazy"
+              className="h-[760px] w-full border-0"
+            />
+          </div>
+        </motion.div>
+      </section>
 
-          {/* Secondary contact */}
-          <motion.div
-            variants={fadeUp}
-            className="mt-12 pt-8 border-t border-line flex flex-wrap gap-x-12 gap-y-4 text-[15px]"
-          >
+      {/* Secondary contact details */}
+      <section className="pb-[110px]">
+        <motion.div
+          className="max-w-[1120px] mx-auto px-8"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
+          <div className="flex flex-wrap gap-x-14 gap-y-6 border-t border-line pt-10 text-[15px]">
             <div>
-              <div className="text-ink-soft mb-1">Email</div>
-              <a href={`mailto:${EMAIL}`} className="text-ink hover:text-brand transition-colors">
-                {EMAIL}
+              <div className="text-ink-soft mb-1.5">Prefer email?</div>
+              <a
+                href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20project`}
+                className="text-ink hover:text-brand transition-colors"
+              >
+                {CONTACT_EMAIL}
               </a>
             </div>
             <div>
-              <div className="text-ink-soft mb-1">LinkedIn</div>
-              <a
-                href={LINKEDIN_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="text-ink hover:text-brand transition-colors"
-              >
+              <div className="text-ink-soft mb-1.5">LinkedIn</div>
+              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="text-ink hover:text-brand transition-colors">
                 /quantikgrowth
               </a>
             </div>
             <div>
-              <div className="text-ink-soft mb-1">Based in</div>
+              <div className="text-ink-soft mb-1.5">Based in</div>
               <span className="text-ink">Mumbai, India</span>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </section>
     </SiteLayout>

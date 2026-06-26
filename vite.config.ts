@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig} from 'vite';
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -18,16 +18,18 @@ export default defineConfig({
     minify: 'esbuild',
     sourcemap: false,
     rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom'],
-          'vendor-motion': ['motion'],
-          'vendor-icons': ['lucide-react'],
-        },
-      },
+      output: isSsrBuild
+        ? {}
+        : {
+            manualChunks: {
+              'vendor-react': ['react', 'react-dom'],
+              'vendor-motion': ['motion'],
+              'vendor-icons': ['lucide-react'],
+            },
+          },
     },
   },
   esbuild: {
     drop: ['console', 'debugger'],
   },
-});
+}));

@@ -1,12 +1,13 @@
 /** @type {import('next-sitemap').IConfig} */
 
 // Static routes + the data-driven work/writing slugs. Keep in sync with
-// src/data/work.ts and src/data/writing.ts.
-const WORK_SLUGS = ['atlas-ventures', 'meridian-capital', 'northwind'];
+// src/data/work.ts, src/data/writing.ts and src/data/caseStudyContent.tsx.
+const WORK_SLUGS = ['northbound-capital'];
 const WRITING_SLUGS = ['think-like-a-publisher', 'logo-wall-is-dead', 'what-founders-read'];
 
 const PATHS = [
   '/',
+  '/approach',
   '/work',
   '/writing',
   '/about',

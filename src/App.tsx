@@ -51,8 +51,10 @@ const resolveRoute = (pathname: string): Route => {
 
 // --- App Root ---
 
-const App = () => {
-  const [path, setPath] = useState(() => window.location.pathname);
+const App = ({ initialPath }: { initialPath?: string } = {}) => {
+  const [path, setPath] = useState(
+    () => initialPath ?? (typeof window !== 'undefined' ? window.location.pathname : '/'),
+  );
 
   // Programmatic navigation: pushState + state update, with optional hash scroll.
   const navigate = useCallback((to: string, replace = false) => {
