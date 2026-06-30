@@ -79,57 +79,6 @@ const TableOfContents = ({ sections, active }: { sections: ArticleSection[]; act
   </nav>
 );
 
-/* --- A figure with descriptive alt text (the article's core metaphor) ------- */
-const ArchiveFigure = () => {
-  const reduceMotion = useReducedMotion();
-  return (
-    <figure className="my-12 rounded-[16px] border border-line bg-paper-soft p-8">
-      <svg
-        viewBox="0 0 360 150"
-        className="w-full"
-        role="img"
-        aria-label="A line chart contrasting two assets over time: a marketing brochure's value declines steadily from launch, while a published archive's value rises and accelerates."
-      >
-        {/* axes */}
-        <line x1="34" y1="14" x2="34" y2="124" stroke="var(--color-line-strong)" strokeWidth="1" />
-        <line x1="34" y1="124" x2="346" y2="124" stroke="var(--color-line-strong)" strokeWidth="1" />
-        {/* brochure: declining */}
-        <motion.path
-          d="M40 36 C 110 58, 200 92, 340 114"
-          fill="none"
-          stroke="var(--color-ink-soft)"
-          strokeWidth="2"
-          strokeDasharray="5 5"
-          initial={reduceMotion ? false : { pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={viewportOnce}
-          transition={{ duration: 1.1, ease: 'easeOut' }}
-        />
-        {/* archive: rising and accelerating */}
-        <motion.path
-          d="M40 116 C 150 110, 250 86, 340 22"
-          fill="none"
-          stroke="var(--color-brand)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          initial={reduceMotion ? false : { pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={viewportOnce}
-          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-        />
-        <text x="344" y="18" textAnchor="end" className="fill-brand" fontSize="11" fontWeight="500">Archive</text>
-        <text x="344" y="110" textAnchor="end" fill="var(--color-ink-soft)" fontSize="11">Brochure</text>
-        <text x="40" y="138" fill="var(--color-ink-soft)" fontSize="10">launch</text>
-        <text x="346" y="138" textAnchor="end" fill="var(--color-ink-soft)" fontSize="10">years later</text>
-      </svg>
-      <figcaption className="mt-5 text-[14px] leading-[1.5] text-ink-soft">
-        Two instruments. The brochure is worth most the day it ships and depreciates from there; the
-        published archive compounds — ranking, getting forwarded, and getting cited long after it goes live.
-      </figcaption>
-    </figure>
-  );
-};
-
 /* --- Related / more writing ------------------------------------------------- */
 const RelatedFooter = ({ slugs }: { slugs: string[] }) => {
   const related = slugs
@@ -197,7 +146,7 @@ const ArticlePage = ({ slug }: { slug: string }) => {
   if (!article || !content) return <NotFound />;
 
   const path = link(`/writing/${slug}`);
-  const showToc = content.sections.length > 2;
+  const showToc = content.toc ?? content.sections.length > 2;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -289,7 +238,8 @@ const ArticlePage = ({ slug }: { slug: string }) => {
               </motion.div>
             </motion.header>
 
-            {showToc && <ArchiveFigure />}
+            {/* The article's own opening graphic */}
+            {content.heroFigure}
 
             {/* Mobile TOC */}
             {showToc && (
@@ -312,9 +262,11 @@ const ArticlePage = ({ slug }: { slug: string }) => {
                   whileInView="visible"
                   viewport={viewportOnce}
                 >
-                  <h2 className="mt-12 mb-5 font-display font-medium text-[1.7rem] leading-[1.18] tracking-[-0.01em] text-ink first:mt-0">
-                    {s.heading}
-                  </h2>
+                  {s.heading && (
+                    <h2 className="mt-12 mb-5 font-display font-medium text-[1.7rem] leading-[1.18] tracking-[-0.01em] text-ink first:mt-0">
+                      {s.heading}
+                    </h2>
+                  )}
                   {s.body}
                 </motion.section>
               ))}

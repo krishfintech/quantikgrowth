@@ -2,8 +2,16 @@
 
 // Static routes for both audience tracks + the data-driven slugs. Keep in sync
 // with src/data/* and scripts/prerender.mjs.
-const VENTURE_WRITING = ['think-like-a-publisher', 'logo-wall-is-dead', 'what-founders-read'];
-const PORTFOLIO_WRITING = ['think-like-a-publisher', 'what-hni-investors-read', 'seo-for-pms-firms'];
+const VENTURE_WRITING = [
+  'revolutionizing-investment-firm-presence',
+  'vc-first-five-seconds',
+  'vc-portfolio-best-salesperson',
+];
+const PORTFOLIO_WRITING = [
+  'revolutionizing-investment-firm-presence',
+  'pms-growth-ceiling',
+  'pms-invisible-to-inevitable',
+];
 
 const track = (prefix, writing) => [
   prefix || '/',

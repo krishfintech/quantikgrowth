@@ -13,8 +13,16 @@ const dist = join(root, 'dist');
 
 // Keep in sync with src/data/*. Mirrors next-sitemap.config.js.
 // /work is the "How we work" page (no case-study children — no fabricated clients).
-const VENTURE_WRITING = ['think-like-a-publisher', 'logo-wall-is-dead', 'what-founders-read'];
-const PORTFOLIO_WRITING = ['think-like-a-publisher', 'what-hni-investors-read', 'seo-for-pms-firms'];
+const VENTURE_WRITING = [
+  'revolutionizing-investment-firm-presence',
+  'vc-first-five-seconds',
+  'vc-portfolio-best-salesperson',
+];
+const PORTFOLIO_WRITING = [
+  'revolutionizing-investment-firm-presence',
+  'pms-growth-ceiling',
+  'pms-invisible-to-inevitable',
+];
 
 const trackRoutes = (prefix, writing) => [
   `${prefix}` || '/',

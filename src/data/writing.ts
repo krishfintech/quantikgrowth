@@ -1,56 +1,60 @@
 import type { ArticleItem } from '../components/site';
 import type { Audience } from '../audience';
 
+// Order matters: the first article in each audience's filtered list becomes the
+// "Featured" card on the Writing index. The mega essay is tagged for both tracks
+// and placed first, so it leads (and is featured) on both the venture and the
+// portfolio pages. The remaining four fall into the per-track "More writing" list.
 export const writing: ArticleItem[] = [
   {
-    slug: 'think-like-a-publisher',
-    title: 'Why a venture firm should think like a publisher, not a marketer',
+    slug: 'revolutionizing-investment-firm-presence',
+    title: 'Revolutionizing how PMS and VC firms present themselves online',
     date: 'Jun 2026',
-    readingMinutes: 7,
-    tag: 'Strategy',
+    readingMinutes: 12,
+    tag: 'Featured',
     audiences: ['venture', 'portfolio'],
     excerpt:
-      'Marketing rents attention. Publishing compounds it. For a firm whose entire product is judgment, the difference decides whether founders arrive already convinced.',
+      'The investment industry has a presentation problem. Funds, PE shops and PMS boutiques present themselves at a fraction of the sophistication of their actual work — and it is quietly costing them growth. Here is the new standard.',
   },
   {
-    slug: 'logo-wall-is-dead',
-    title: 'The logo wall is dead. Long live the investment case study.',
+    slug: 'pms-growth-ceiling',
+    title: 'The growth ceiling most PMS firms never see',
     date: 'Jun 2026',
-    readingMinutes: 7,
-    tag: 'Portfolio',
-    audiences: ['venture'],
+    readingMinutes: 5,
+    tag: 'Growth',
+    audiences: ['portfolio'],
     excerpt:
-      'A grid of portfolio logos proves you wrote a cheque. An investment case study proves you had a reason — and that the reason turned out to be right.',
+      'Most boutique PMS firms hit an invisible ceiling on AUM growth. It isn’t performance — it’s presence. Here’s why the ceiling forms, and the three moves that lift it.',
   },
   {
-    slug: 'what-founders-read',
-    title: 'What founders actually read before they take your call',
-    date: 'May 2026',
-    readingMinutes: 7,
-    tag: 'Strategy',
-    audiences: ['venture'],
-    excerpt:
-      "By the time a strong founder replies to your email, they've already decided what they think of you. Here is the four minutes they spent deciding it.",
-  },
-  {
-    slug: 'what-hni-investors-read',
-    title: 'What an HNI reads before they trust a PMS firm',
+    slug: 'pms-invisible-to-inevitable',
+    title: 'From invisible to inevitable',
     date: 'Jun 2026',
-    readingMinutes: 7,
+    readingMinutes: 5,
     tag: 'Trust',
     audiences: ['portfolio'],
     excerpt:
-      'Performance gets you onto the shortlist. The website decides whether a wealthy investor trusts you with the next decade of their capital — and what quietly loses them.',
+      'Some boutique PMS firms attract HNIs effortlessly; others chase every rupee. The difference is rarely performance — it’s a system that makes a firm easy to discover, trust, and remember.',
   },
   {
-    slug: 'seo-for-pms-firms',
-    title: 'On-page SEO for PMS firms: getting found when wealth is searching',
-    date: 'May 2026',
-    readingMinutes: 8,
-    tag: 'SEO',
-    audiences: ['portfolio'],
+    slug: 'vc-first-five-seconds',
+    title: 'The first five seconds',
+    date: 'Jun 2026',
+    readingMinutes: 5,
+    tag: 'Strategy',
+    audiences: ['venture'],
     excerpt:
-      'When an HNI searches for a way to grow long-term wealth, a directory ranks for your category — and sells your prospect as a lead. On-page SEO fixes who gets found.',
+      'A founder decides whether to take your fund seriously in about five seconds — and almost none of it is about your returns. Here’s what wins those seconds.',
+  },
+  {
+    slug: 'vc-portfolio-best-salesperson',
+    title: 'Your portfolio is your best salesperson',
+    date: 'Jun 2026',
+    readingMinutes: 5,
+    tag: 'Portfolio',
+    audiences: ['venture'],
+    excerpt:
+      'Most funds display their portfolio as a wall of logos. The best funds turn the same portfolio into their most persuasive sales asset — proof of judgment, not a grid of names.',
   },
 ];
 

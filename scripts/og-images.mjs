@@ -78,16 +78,18 @@ const IMAGES = {
   'how-we-work': 'How we work — voicenote to content, everywhere',
   writing: 'Writing on how venture firms present themselves',
   contact: 'See the design before you pay',
-  'think-like-a-publisher': 'Think like a publisher, not a marketer',
-  'logo-wall-is-dead': 'The logo wall is dead. Long live the case study.',
-  'what-founders-read': 'What founders read before they take your call',
+  // Featured mega essay (shown in both tracks)
+  'revolutionizing-investment-firm-presence': 'How investment firms should present themselves online',
+  // Venture track
+  'vc-first-five-seconds': 'The first five seconds',
+  'vc-portfolio-best-salesperson': 'Your portfolio is your best salesperson',
   // Portfolio (PMS) track
   'portfolio-home': 'A PMS firm, presented as well as it performs',
   'portfolio-approach': 'Website design, on-page SEO & a content engine for PMS firms',
   'portfolio-how-we-work': 'How we work — for PMS firms',
   'portfolio-writing': 'Writing on how PMS firms earn trust online',
-  'what-hni-investors-read': 'What an HNI reads before trusting a PMS',
-  'seo-for-pms-firms': 'On-page SEO for PMS firms',
+  'pms-growth-ceiling': 'The growth ceiling most PMS firms never see',
+  'pms-invisible-to-inevitable': 'From invisible to inevitable',
 };
 
 async function main() {
