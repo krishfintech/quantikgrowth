@@ -109,7 +109,7 @@ const AboutPage = () => {
       {/* --- Opening manifesto --- */}
       <section className="pt-[64px] pb-[20px] sm:pt-[104px] sm:pb-[36px]">
         <motion.div
-          className="max-w-[1320px] mx-auto px-8 lg:px-12"
+          className="max-w-[1360px] mx-auto px-8 lg:px-12"
           variants={stagger}
           initial="hidden"
           animate="visible"
@@ -134,27 +134,15 @@ const AboutPage = () => {
         </motion.div>
       </section>
 
-      <div className="max-w-[1320px] mx-auto px-8 lg:px-12 mt-10">
+      <div className="max-w-[1360px] mx-auto px-8 lg:px-12 mt-10">
         {/* --- The point of view --- */}
         <Section label="The point of view">
           <P>
             The best investment firms are excellent at investing and forgettable at presenting it. The
-            judgment that actually sets a firm apart — its theses, its discipline, the way it thinks about
-            risk — stays locked in decks, memos, and conversations. Online, the same firm shows up as a wall
-            of logos, a page of bios, and a contact form.
+            judgment that sets a firm apart stays locked in decks and conversations; online, it shows up as a
+            logo wall and a contact form — while every allocation now begins with quiet research.
           </P>
-          <P>
-            We think that’s a costly mistake. Today every allocation, term sheet, and mandate begins with
-            quiet research — a founder, an LP, an HNI, an advisor forming a judgment long before anyone
-            speaks. The website is the first room they walk into. It should carry the same care the firm
-            brings to a deal.
-          </P>
-          <P>
-            So we don’t treat presence as marketing. We treat it as infrastructure — built once, properly, to
-            compound. And we build it the way a publisher would: the firm’s thinking, captured and shipped on
-            a cadence, until being found and being trusted stop depending on a referral.
-          </P>
-          <blockquote className="mt-10 border-l-2 border-brand pl-6">
+          <blockquote className="mt-8 border-l-2 border-brand pl-6">
             <p className="font-display text-[clamp(1.4rem,2.6vw,1.9rem)] leading-[1.35] tracking-[-0.01em] text-brand-deep">
               Presence isn’t marketing. It’s infrastructure — and underbuilt, it quietly discounts every
               other strength a firm has.
@@ -165,45 +153,33 @@ const AboutPage = () => {
         {/* --- How we work --- */}
         <Section label="How we work">
           <Principle letter="A" title="Substance over flash">
-            The work should read as serious as the firm. No stock photography, no borrowed buzzwords — only
-            clarity, restraint, and a real point of view.
+            No stock photography, no buzzwords — clarity, restraint, and a real point of view.
           </Principle>
           <Principle letter="B" title="Infrastructure that compounds">
-            We build owned assets, not campaigns. Every page, essay, and case study keeps working for years
-            after it ships, instead of evaporating the moment a budget stops.
+            Owned assets, not campaigns. Every page keeps working long after it ships.
           </Principle>
           <Principle letter="C" title="We speak your language">
-            We understand investing from the inside, so the writing sounds like a partner — specific,
-            compliant, and never generic.
+            We understand investing from the inside, so the writing sounds like a partner.
           </Principle>
           <Principle letter="D" title="Senior attention, always">
-            You work directly with the person doing the work. No account layers, no hand-off to juniors, no
-            deliverables nobody reads.
+            You work directly with the person doing the work. No hand-offs.
           </Principle>
         </Section>
 
         {/* --- What we do --- */}
         <Section label="What we do">
-          <P>
-            Three pieces of infrastructure, built to work together — for venture and private equity firms,
-            and for PMS boutiques.
-          </P>
-          <div className="mt-3">
+          <div>
             <ServiceLine title="A website that earns trust in ten seconds">
-              Fast, clean, and editorial — built around your thesis and track record, so a prospect believes
-              the firm before they’ve scrolled.
+              Fast, editorial, built around your thesis and track record.
             </ServiceLine>
-            <ServiceLine title="On-page SEO that makes you findable">
-              So founders, LPs, HNIs, and advisors reach you the moment they search — not a directory ranking
-              for your own category.
+            <ServiceLine title="Discoverability, for people and AI">
+              On-page SEO plus AEO/GEO — found and cited when they search, or ask an AI.
             </ServiceLine>
             <ServiceLine title="A content engine that compounds authority">
-              Your thinking, captured as a five-minute voicenote and turned into articles, newsletters, and
-              social — published on a cadence the firm will actually keep.
+              Your thinking, captured as a five-minute voicenote and published on a cadence.
             </ServiceLine>
             <ServiceLine title="An AI investor-relations concierge — for PMS firms">
-              A compliance-safe concierge that answers diligence questions around the clock in the firm’s
-              voice: information and analysis, never advice.
+              Compliance-safe answers to diligence questions, around the clock. Information, never advice.
             </ServiceLine>
           </div>
         </Section>
@@ -238,20 +214,13 @@ const AboutPage = () => {
             <div className="max-w-[60ch]">
               <P>
                 QuantikGrowth exists at an unusual intersection: someone who understands investing from the
-                inside, building the digital infrastructure to present it.
+                inside, building the infrastructure to present it.
               </P>
               <P>
                 Krish has spent years studying and trading Indian equities, and is building an AI-driven
-                equity-research platform. That work means he reads a firm’s site the way its prospects do —
-                looking for the thesis, the discipline, the judgment. He knows what an HNI, an advisor, or an
-                LP is quietly testing for, because he has been on that side of the screen.
-              </P>
-              <P>
-                That is the conviction behind the studio. Investment firms rarely have a quality problem; they
-                have a visibility problem. The thinking is there — it simply isn’t built into anything a
-                prospect can find, read, and trust. QuantikGrowth closes that gap, and deliberately stays
-                small, so every client gets senior attention and work that reads as institutional as their
-                own.
+                equity-research platform — so he reads a firm’s site the way an LP, an advisor, or an HNI
+                does. The conviction is simple: investment firms rarely have a quality problem; they have a
+                visibility problem. We close that gap, and stay small, so every client gets senior attention.
               </P>
             </div>
           </div>
@@ -260,10 +229,8 @@ const AboutPage = () => {
         {/* --- The standard --- */}
         <Section label="The standard">
           <P>
-            We hold the work to a single test: it must read as institutional as the firm it represents.
-            We’d rather ship less and have it be excellent than fill a site with pages no one reads. Honesty
-            over hype — we don’t borrow logos or invent results — and craft as the default, never the upsell.
-            If a page isn’t carrying its weight, it doesn’t go up.
+            One test: the work must read as institutional as the firm it represents. We ship less and better,
+            borrow no logos, invent no results — and if a page isn’t carrying its weight, it doesn’t go up.
           </P>
         </Section>
       </div>
@@ -271,7 +238,7 @@ const AboutPage = () => {
       {/* --- Closing CTA --- */}
       <section className="border-t border-line">
         <motion.div
-          className="max-w-[1320px] mx-auto px-8 lg:px-12 py-[clamp(56px,9vw,104px)]"
+          className="max-w-[1360px] mx-auto px-8 lg:px-12 py-[clamp(56px,9vw,104px)]"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"

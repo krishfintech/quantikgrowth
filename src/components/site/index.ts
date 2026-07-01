@@ -14,6 +14,9 @@ export type { ArticleItem } from './ArticleRow';
 
 export { HeroArtifact } from './HeroArtifact';
 
+export { HeroVenture } from './HeroVenture';
+export { HeroPortfolio } from './HeroPortfolio';
+
 export { CountUp } from './CountUp';
 
 export { MobileCtaBar } from './MobileCtaBar';
@@ -27,6 +30,8 @@ export { VoiceToContent } from './VoiceToContent';
 export { Seo, SITE_URL, SITE_NAME } from './Seo';
 
 export { OfferBand } from './OfferBand';
+
+export { Offer } from './Offer';
 
 export { SiteFooter } from './SiteFooter';
 export type { FooterColumn, FooterLink } from './SiteFooter';

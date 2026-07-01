@@ -1,31 +1,76 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Eyebrow, Seo, SiteLayout, useFadeUpVariants, useStaggerVariants } from '../components/site';
-import { BOOKING_URL, CONTACT_EMAIL, LINKEDIN_URL } from '../config';
+import { Eyebrow, Seo, SiteLayout, useFadeUpVariants, useStaggerVariants, viewportOnce } from '../components/site';
+import { CONTACT_EMAIL, LINKEDIN_URL } from '../config';
 import { breadcrumbSchema } from '../data/structuredData';
 import { useAudience } from '../audience';
+
+const MAILTO = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Booking a call')}`;
+
+const ContactCard = ({
+  href,
+  external,
+  label,
+  value,
+  hint,
+  cta,
+  icon,
+}: {
+  href: string;
+  external?: boolean;
+  label: string;
+  value: string;
+  hint: string;
+  cta: string;
+  icon: React.ReactNode;
+}) => {
+  const fadeUp = useFadeUpVariants();
+  return (
+    <motion.a
+      variants={fadeUp}
+      href={href}
+      {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
+      className="group flex flex-col rounded-[18px] border border-line bg-paper-soft p-8 transition-colors duration-200 hover:border-brand sm:p-10"
+    >
+      <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-tint text-brand">
+        {icon}
+      </span>
+      <span className="mt-7 text-[12px] font-medium uppercase tracking-[0.16em] text-ink-soft">{label}</span>
+      <span className="mt-2 font-display text-[clamp(1.35rem,2.4vw,1.7rem)] leading-[1.15] tracking-[-0.01em] text-ink transition-colors group-hover:text-brand">
+        {value}
+      </span>
+      <span className="mt-3 text-[15px] leading-[1.5] text-ink-soft">{hint}</span>
+      <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-brand">
+        {cta}
+        <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden>→</span>
+      </span>
+    </motion.a>
+  );
+};
 
 const ContactPage = () => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08, 0.06);
+  const cardStagger = useStaggerVariants(0.1);
   const { link } = useAudience();
 
   return (
     <SiteLayout>
       <Seo
-        title="Contact — book a call"
-        description="Book a 30-minute intro call. We build a real first design of your new site before you commit — three revisions included, or you owe nothing."
+        title="Contact — begin with a conversation"
+        description="Two ways to reach a founder-led studio for investment firms: email us to book a call, or send a message on LinkedIn."
         path={link('/contact')}
         image="/og/contact.png"
-        imageAlt="Contact QuantikGrowth — book a 30-minute intro call."
+        imageAlt="Contact QuantikGrowth — begin with a conversation."
         jsonLd={breadcrumbSchema([
           { name: 'Home', path: link('/') },
           { name: 'Contact', path: link('/contact') },
         ])}
       />
-      <section className="pt-[64px] pb-[48px] sm:pt-[104px] sm:pb-[80px]">
+
+      <section className="pt-[64px] pb-[40px] sm:pt-[112px] sm:pb-[56px]">
         <motion.div
-          className="max-w-[1320px] mx-auto px-8 lg:px-12"
+          className="max-w-[1360px] mx-auto px-8 lg:px-12"
           variants={stagger}
           initial="hidden"
           animate="visible"
@@ -36,84 +81,61 @@ const ContactPage = () => {
 
           <motion.h1
             variants={fadeUp}
-            className="font-display font-normal text-[clamp(2.4rem,5.4vw,3.8rem)] leading-[1.06] tracking-[-0.018em] max-w-[16ch]"
+            className="font-display font-normal text-[clamp(2.4rem,5.4vw,3.8rem)] leading-[1.06] tracking-[-0.018em] max-w-[15ch]"
           >
-            You see the design <em className="italic text-brand">before you pay.</em>
+            Begin with a <em className="italic text-brand">conversation.</em>
           </motion.h1>
 
           <motion.p
             variants={fadeUp}
-            className="text-[clamp(1.05rem,1.6vw,1.28rem)] text-ink-soft max-w-[52ch] mt-[24px] leading-[1.6]"
+            className="mt-[24px] max-w-[52ch] text-[clamp(1.05rem,1.6vw,1.28rem)] leading-[1.6] text-ink-soft"
           >
-            Book a 30-minute intro call below. We'll talk through the firm, and if it's a fit we build a
-            real first design of your new site before you commit a rupee — three revisions included, or you
-            owe nothing.
+            If your firm’s presence isn’t yet carrying the weight of your work, we should talk. Two simple
+            ways to reach us — whichever suits you.
           </motion.p>
         </motion.div>
       </section>
 
-      {/* Booking calendar — the anchor of the page */}
-      <section className="pb-[64px]">
+      <section className="pb-[80px] sm:pb-[120px]">
         <motion.div
-          className="max-w-[1320px] mx-auto px-8 lg:px-12"
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="overflow-hidden rounded-[18px] border border-line bg-paper-soft">
-            <div className="flex items-center justify-between gap-4 border-b border-line px-6 py-4">
-              <span className="text-[13px] font-medium uppercase tracking-[0.14em] text-ink-soft">
-                Book an intro call
-              </span>
-              <a
-                href={BOOKING_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="text-[14px] text-brand hover:underline"
-              >
-                Open in a new tab ↗
-              </a>
-            </div>
-            <iframe
-              src={BOOKING_URL}
-              title="Book a 30-minute intro call with QuantikGrowth"
-              loading="lazy"
-              className="h-[620px] w-full border-0 sm:h-[760px]"
-            />
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Secondary contact details */}
-      <section className="pb-[110px]">
-        <motion.div
-          className="max-w-[1320px] mx-auto px-8 lg:px-12"
-          variants={fadeUp}
+          className="max-w-[1360px] mx-auto px-8 lg:px-12"
+          variants={cardStagger}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={viewportOnce}
         >
-          <div className="flex flex-wrap gap-x-14 gap-y-6 border-t border-line pt-10 text-[15px]">
-            <div>
-              <div className="text-ink-soft mb-1.5">Prefer email?</div>
-              <a
-                href={`mailto:${CONTACT_EMAIL}?subject=Starting%20a%20project`}
-                className="text-ink hover:text-brand transition-colors"
-              >
-                {CONTACT_EMAIL}
-              </a>
-            </div>
-            <div>
-              <div className="text-ink-soft mb-1.5">LinkedIn</div>
-              <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="text-ink hover:text-brand transition-colors">
-                /quantikgrowth
-              </a>
-            </div>
-            <div>
-              <div className="text-ink-soft mb-1.5">Based in</div>
-              <span className="text-ink">Mumbai, India</span>
-            </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            <ContactCard
+              href={MAILTO}
+              label="Email"
+              value={CONTACT_EMAIL}
+              hint="Tell us a little about the firm, and we’ll set up a call."
+              cta="Email to book a call"
+              icon={
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="2" />
+                  <path d="m4 7 8 6 8-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              }
+            />
+            <ContactCard
+              href={LINKEDIN_URL}
+              external
+              label="LinkedIn"
+              value="Message us on LinkedIn"
+              hint="Prefer a DM? Reach the studio directly on LinkedIn."
+              cta="Open LinkedIn"
+              icon={
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                  <path d="M4.98 3.5A2.5 2.5 0 1 1 5 8.5a2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm6 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.3-.02-2.96-1.8-2.96-1.8 0-2.08 1.4-2.08 2.86V21H9V9Z" />
+                </svg>
+              }
+            />
           </div>
+
+          <motion.p variants={fadeUp} className="mt-10 text-[14px] text-ink-soft">
+            Founder-led, from Mumbai, India.
+          </motion.p>
         </motion.div>
       </section>
     </SiteLayout>

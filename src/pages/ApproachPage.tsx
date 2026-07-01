@@ -17,7 +17,7 @@ import { approachContent, type ApproachContent } from '../content/approach';
 // --- Primitives --------------------------------------------------------------
 
 const P = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-[1.12rem] leading-[1.8] text-ink mb-6 last:mb-0">{children}</p>
+  <p className="max-w-[70ch] text-[1.12rem] leading-[1.8] text-ink mb-6 last:mb-0">{children}</p>
 );
 
 const Lead = ({ children }: { children: React.ReactNode }) => (
@@ -169,7 +169,7 @@ const ApproachPage = () => {
         ]}
       />
       <section className="pt-[60px] pb-[32px] sm:pt-[96px] sm:pb-[40px]">
-        <motion.div className="max-w-[1320px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
+        <motion.div className="max-w-[1360px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[22px]">Approach</Eyebrow>
           </motion.div>
@@ -184,7 +184,7 @@ const ApproachPage = () => {
         </motion.div>
       </section>
 
-      <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+      <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
         <Chapter index="01" kicker="Website design" title={c.website.title}>
           {c.website.paras.map((p, i) => (
             <React.Fragment key={i}>
@@ -194,7 +194,7 @@ const ApproachPage = () => {
           <PointList points={c.website.points} />
         </Chapter>
 
-        <Chapter index="02" kicker="On-page SEO" title={c.seo.title}>
+        <Chapter index="02" kicker="SEO · AEO · GEO" title={c.seo.title}>
           <P>{c.seo.intro}</P>
           <SeoWhy why={c.seo.why} />
           <div className="mt-8" />
@@ -221,7 +221,7 @@ const ApproachPage = () => {
 
       {/* FAQ — AEO: question-headings + tight, quotable answers */}
       <section className="border-t border-line py-[60px] sm:py-[80px]" aria-labelledby="faq-heading">
-        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+        <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <Eyebrow className="mb-[22px]">Questions, answered</Eyebrow>
             <h2 id="faq-heading" className="font-display font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] tracking-[-0.01em] max-w-[22ch]">
@@ -247,7 +247,7 @@ const ApproachPage = () => {
       </section>
 
       <section className="border-t border-line py-[60px] sm:py-[80px]">
-        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+        <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <h2 className="font-display font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] tracking-[-0.01em] max-w-[20ch]">
               See the design before you decide anything.

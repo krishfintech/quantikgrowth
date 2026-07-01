@@ -42,24 +42,24 @@ const venture: ApproachContent = {
   seo: {
     title: 'Being good is not the same as being found.',
     intro:
-      "On-page SEO is the part of the work most firms underrate, so it's the part we argue hardest for. It isn't keyword stuffing or a monthly report of vanity metrics. It's making sure that when the right person searches, your pages are what they find — and that those pages read like the clearest thinking on the subject. There are three reasons it matters to a venture firm.",
+      "Discoverability is the part of the work most firms underrate, so it's the part we argue hardest for. It isn't keyword stuffing or a monthly report of vanity metrics. Your investors increasingly ask an AI before they ask around — so we make sure the firm is what it finds. On-page SEO gets your pages ranked when the right person searches; answer- and generative-engine optimisation (AEO/GEO) get them cited by ChatGPT, Perplexity, and Google's AI Overviews. Either way your pages read like the clearest thinking on the subject. There are three reasons it matters to a venture firm.",
     why: [
       { k: 'Inbound', body: 'A founder who finds you by searching arrives already convinced. They have read your thesis, seen the companies you backed, and decided you understand their world — before the first email.' },
-      { k: 'Discoverability', body: 'LPs and founders search in plain language: "who funds climate hardware," "seed investors for fintech in India." If those pages aren\'t yours, they\'re a competitor\'s — or a directory that sells your name as a lead.' },
-      { k: 'Authority', body: 'Ranking for the topics you have a view on does more than bring traffic. It positions the firm as the clearest thinker on the subject. The search result becomes part of the pitch.' },
+      { k: 'Discoverability', body: 'LPs and founders search in plain language — "who funds climate hardware," "seed investors for fintech in India" — and increasingly they ask an AI to shortlist for them. If those answers aren\'t drawn from your pages, they\'re a competitor\'s, or a directory that sells your name as a lead.' },
+      { k: 'Authority', body: 'Ranking for — and being cited on — the topics you have a view on does more than bring traffic. It positions the firm as the clearest thinker on the subject. The search result, and the AI answer, become part of the pitch.' },
     ],
     outro:
-      "In practice it's unglamorous and concrete: page titles and descriptions written for humans and crawlers both, a clean semantic structure, fast loads, descriptive links, structured data, and — above all — pages that exist for the questions your audience actually asks. We do this from the first line of the build, not as a bolt-on afterward, because retrofitting SEO onto a finished site is how it ends up half-done.",
+      "In practice it's unglamorous and concrete: page titles and descriptions written for humans and crawlers both, a clean semantic structure, fast loads, descriptive links, structured data an answer engine can parse, and — above all — pages that exist for the questions your audience actually asks, written so an AI can quote them cleanly. We do this from the first line of the build, not as a bolt-on afterward, because retrofitting discoverability onto a finished site is how it ends up half-done.",
   },
   content: {
     title: 'Your partners already have the insight. We remove the writing.',
     intro:
       "The reason most firms don't publish isn't that they have nothing to say — it's that turning a sharp thought into a finished article is a job nobody has time for. So the thinking stays in partners' heads, or it goes to LinkedIn once a quarter and stops. The content engine fixes the bottleneck by removing the part that costs partners time: the writing.",
     steps: [
-      { n: '1', t: 'A partner records, in two minutes', b: 'After a board meeting, on a walk, between flights — a partner records a voicenote or a short video about what they just learned. No outline, no writing. Just the thinking, out loud.' },
+      { n: '1', t: 'A partner records, in two minutes', b: 'After a board meeting, on a walk, between flights — a partner records a short voicenote about what they just learned. No outline, no writing. Just the thinking, out loud.' },
       { n: '2', t: 'We shape it into an article', b: "We transcribe it and turn it into a clean, well-argued article in your firm's voice — structure, headings, the right examples — not a transcript with the ums removed." },
       { n: '3', t: 'You approve; we publish', b: 'You see a draft and give one round of notes. We publish it on your site, structured for search from the first line — title, headings, internal links, schema.' },
-      { n: '4', t: 'We repurpose it everywhere', b: 'The same idea becomes a LinkedIn post, an X thread, and a short clip if there was video — sized and written for each platform, not copy-pasted across them.' },
+      { n: '4', t: 'We repurpose it everywhere', b: 'The same idea becomes a newsletter, a LinkedIn post, and an X thread — sized and written for each platform your investors use, not copy-pasted across them.' },
       { n: '5', t: 'It compounds, weekly', b: 'Repeat at a steady cadence and the firm builds a body of work: a back catalogue that ranks, an audience that grows, and partners who are known for their thinking.' },
     ],
   },
@@ -76,9 +76,9 @@ const venture: ApproachContent = {
   faqHeading: 'What VC partners ask before they start.',
   faq: [
     { q: 'What does on-page SEO do for a venture firm?', a: 'On-page SEO makes a venture firm findable when founders and LPs search. It does three things: it brings inbound from people who arrive already convinced, it makes you discoverable for your own thesis terms instead of directories, and it positions your pages as the clearest thinking on a topic.' },
-    { q: 'How do you turn voicenotes into content?', a: "A partner records a two-minute voicenote or short video after a meeting. We transcribe it, shape it into a finished article in your firm's voice, and you approve a draft. Then we publish it, structured for search, and repurpose it into LinkedIn posts, an X thread, and short clips." },
+    { q: 'How do you turn voicenotes into content?', a: "A partner records a two-minute voicenote after a meeting. We transcribe it, shape it into a finished article in your firm's voice, and you approve a draft. Then we publish it, structured for search, and repurpose it into a newsletter, LinkedIn posts, and an X thread." },
     { q: 'How long does a website build take?', a: 'A full build typically runs about six weeks from kickoff to launch: audit and positioning, design, then an SEO-structured build. You see a real first design before committing, and the content engine begins publishing on a weekly cadence once the site is live.' },
-    { q: 'Do you write the content, or do we?', a: "We do the writing. Your partners supply the thinking in the most natural form — a voicenote or a short video — and we turn it into finished articles and social posts. You approve drafts. The goal is authority that compounds without adding to a partner's week." },
+    { q: 'Do you write the content, or do we?', a: "We do the writing. Your partners supply the thinking in the most natural form — a five-minute voicenote — and we turn it into finished articles and social posts. You approve drafts. The goal is authority that compounds without adding to a partner's week." },
     { q: "What does it cost, and what's the risk?", a: "We build a real first design of your new site before you commit. If you love it, we continue, with three revisions included. If you don't, you owe nothing. Pricing depends on scope across the three services, and we quote it after a short call." },
     { q: 'Do you only work with venture firms?', a: 'Venture and private equity firms are our focus. We also take a small number of PMS — portfolio management service — engagements as pilots. The work is the same: a portfolio-led site, on-page SEO, and a content engine that turns expertise into authority.' },
   ],
@@ -113,24 +113,24 @@ const portfolio: ApproachContent = {
   seo: {
     title: 'Being good is not the same as being found.',
     intro:
-      "On-page SEO is the part of the work most PMS firms underrate, so it's the part we argue hardest for. It isn't keyword stuffing or vanity metrics. It's making sure that when an HNI or an advisor searches, your pages are what they find — not an aggregator selling your name as a lead. There are three reasons it matters.",
+      "Discoverability is the part of the work most PMS firms underrate, so it's the part we argue hardest for. It isn't keyword stuffing or vanity metrics. Your investors increasingly ask an AI before they ask around — so we make sure the firm is what it finds. On-page SEO gets your pages ranked when an HNI or advisor searches; answer- and generative-engine optimisation (AEO/GEO) get them cited by ChatGPT, Perplexity, and Google's AI Overviews — not an aggregator selling your name as a lead. There are three reasons it matters.",
     why: [
       { k: 'Inbound', body: 'An investor who finds you by searching arrives already qualified. They have read your strategy, seen your track record, and decided you understand how to grow wealth — before the first call.' },
-      { k: 'Discoverability', body: 'HNIs and advisors search in plain language: "best PMS for long-term wealth," "portfolio management for HNIs in India." If those pages aren\'t yours, they\'re a directory\'s — and the lead is sold elsewhere.' },
-      { k: 'Authority', body: 'Ranking for the strategy you actually run does more than bring traffic. It positions the firm as the clearest thinker on the approach. The search result becomes part of the pitch.' },
+      { k: 'Discoverability', body: 'HNIs and advisors search in plain language — "best PMS for long-term wealth," "portfolio management for HNIs in India" — and increasingly they ask an AI to shortlist for them. If those answers aren\'t drawn from your pages, the lead is sold elsewhere.' },
+      { k: 'Authority', body: 'Ranking for — and being cited on — the strategy you actually run does more than bring traffic. It positions the firm as the clearest thinker on the approach. The search result, and the AI answer, become part of the pitch.' },
     ],
     outro:
-      "In practice it's unglamorous and concrete: page titles and descriptions written for humans and crawlers both, a clean semantic structure, fast loads, descriptive links, structured data, and — above all — pages that exist for the questions HNIs actually ask. We do this from the first line of the build, not as a bolt-on, because retrofitting SEO onto a finished site is how it ends up half-done.",
+      "In practice it's unglamorous and concrete: page titles and descriptions written for humans and crawlers both, a clean semantic structure, fast loads, descriptive links, structured data an answer engine can parse, and — above all — pages that exist for the questions HNIs actually ask, written so an AI can quote them cleanly. We do this from the first line of the build, not as a bolt-on, because retrofitting discoverability onto a finished site is how it ends up half-done.",
   },
   content: {
     title: 'Your fund managers already have the insight. We remove the writing.',
     intro:
       "The reason most PMS firms don't publish isn't that they have nothing to say — it's that turning a sharp market view into a finished, compliance-aware article is a job nobody has time for. So the thinking stays in the managers' heads, or it goes out as a quarterly note and stops. The content engine fixes the bottleneck by removing the part that costs managers time: the writing.",
     steps: [
-      { n: '1', t: 'A manager records, in two minutes', b: 'After a review, between market hours, on the way home — a fund manager records a voicenote or a short video about what they are seeing. No outline, no writing. Just the thinking, out loud.' },
+      { n: '1', t: 'A manager records, in two minutes', b: 'After a review, between market hours, on the way home — a fund manager records a short voicenote about what they are seeing. No outline, no writing. Just the thinking, out loud.' },
       { n: '2', t: 'We shape it into an article', b: "We transcribe it and turn it into a clean, compliance-aware article in your firm's voice — structure, headings, the right framing — not a transcript with the ums removed." },
       { n: '3', t: 'You approve; we publish', b: 'You see a draft and give one round of notes, including any compliance edits. We publish it on your site, structured for search from the first line — title, headings, internal links, schema.' },
-      { n: '4', t: 'We repurpose it everywhere', b: 'The same idea becomes a LinkedIn post, an X thread, and a short clip if there was video — sized and written for each platform, not copy-pasted across them.' },
+      { n: '4', t: 'We repurpose it everywhere', b: 'The same idea becomes a newsletter, a LinkedIn post, and an X thread — sized and written for each platform your investors use, not copy-pasted across them.' },
       { n: '5', t: 'It compounds, weekly', b: 'Repeat at a steady cadence and the firm builds a body of work: a back catalogue that ranks, an audience of investors that grows, and managers who are known for their thinking.' },
     ],
   },
@@ -159,7 +159,7 @@ const portfolio: ApproachContent = {
   faq: [
     { q: 'What does on-page SEO do for a PMS firm?', a: 'On-page SEO makes a PMS firm findable when HNIs and advisors search. It does three things: it brings inbound from investors who arrive already qualified, it makes you discoverable for wealth terms instead of directories, and it positions your pages as the clearest thinking on your strategy.' },
     { q: 'How do you keep the content compliant?', a: 'Every article goes through your approval before it is published, and we write within SEBI guardrails from the first draft — no performance promises, no guarantees. You give one round of notes, including any compliance edits, and nothing goes live without your sign-off.' },
-    { q: 'How do you turn voicenotes into content?', a: "A fund manager records a two-minute voicenote or short video. We transcribe it, shape it into a finished, compliance-aware article in your firm's voice, and you approve a draft. Then we publish it, structured for search, and repurpose it into LinkedIn posts, an X thread, and short clips." },
+    { q: 'How do you turn voicenotes into content?', a: "A fund manager records a two-minute voicenote. We transcribe it, shape it into a finished, compliance-aware article in your firm's voice, and you approve a draft. Then we publish it, structured for search, and repurpose it into a newsletter, LinkedIn posts, and an X thread." },
     { q: 'How long does a website build take?', a: 'A full build typically runs about six weeks from kickoff to launch: audit and positioning, design, then an SEO-structured build. You see a real first design before committing, and the content engine begins publishing on a weekly cadence once the site is live.' },
     { q: "What does it cost, and what's the risk?", a: "We build a real first design of your new site before you commit. If you love it, we continue, with three revisions included. If you don't, you owe nothing. Pricing depends on scope across the three services, and we quote it after a short call." },
     { q: 'Do you only work with PMS firms?', a: 'SEBI-registered PMS and AIF firms are a core focus, alongside venture capital firms. The work is the same in both: a credibility-first site, on-page SEO, and a content engine that turns expertise into authority.' },

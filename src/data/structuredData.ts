@@ -64,7 +64,7 @@ export const servicesSchema: JsonLd[] = [
     serviceType: 'Content marketing',
     name: 'Content engine for investment firms',
     description:
-      'We turn a partner’s voicenotes and videos into polished articles and repurposed social posts across LinkedIn, X, and short-form video.',
+      'We turn a partner’s five-minute voicenotes into polished articles and repurposed posts across a newsletter, LinkedIn, and X — a content engine that compounds authority.',
     provider: { '@id': ORG_ID },
     areaServed: { '@type': 'Country', name: 'India' },
   },

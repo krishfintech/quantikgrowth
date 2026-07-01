@@ -47,7 +47,7 @@ export interface HomeContent {
   engineHead: { title: string; label: string };
   engineIntro: string;
   processHead: { title: string; label: string };
-  process: { n: string; title: string; body: string }[];
+  process: { intro: string; cards: { n: string; title: string; body: string }[] };
   writingHead: { title: string; label: string };
   method: { eyebrow: string; quote: string; note: string; items: { value: string; label: string }[] };
   offer: { headline: string; body: string; note?: string };
@@ -73,8 +73,8 @@ const WEBSITE_VENTURE: WebsiteVisualData = {
 
 const SEO_VENTURE: SeoVisualData = {
   headline: 'Found first',
-  sub: 'when a founder or LP searches',
-  chipsLabel: 'Built to rank for',
+  sub: 'when a founder, an LP, or their AI asks',
+  chipsLabel: 'Ranked and cited for',
   chips: ['investors for climate hardware', 'who funds fintech in india', 'seed VC for developer tools', 'best deep-tech funds'],
 };
 
@@ -85,7 +85,7 @@ const CONTENT_DATA = (who: string): ContentVisualData => ({
     { k: 'Article', v: 'On your site' },
     { k: 'Newsletter', v: 'To your list' },
     { k: 'LinkedIn + X', v: '3 posts' },
-    { k: 'YouTube + IG', v: 'Short clips' },
+    { k: 'Everywhere else', v: 'Sized per platform' },
   ],
 });
 
@@ -127,14 +127,14 @@ const venture: HomeContent = {
     },
     {
       index: '02',
-      kicker: 'On-page SEO',
-      titleLead: 'So the right people find you — and you',
-      titleEm: 'read as the authority',
-      body: 'When a founder looks for an investor in their space, or an LP checks you out before a first meeting, you want to be the firm they find — and the one whose pages read like the clearest thinking on the subject. That is what on-page SEO buys: inbound that arrives already convinced.',
+      kicker: 'SEO · AEO · GEO',
+      titleLead: 'So the right people — and the AI they ask —',
+      titleEm: 'find you first',
+      body: 'Your investors increasingly ask an AI before they ask around. We make sure the firm is what it finds. On-page SEO gets you ranked when a founder or LP searches; answer- and generative-engine optimisation get you cited by ChatGPT, Perplexity, and Google’s AI Overviews. Either way, you are the firm that comes up — reading as the clearest thinking on the subject.',
       points: [
-        'Pages mapped to what founders and LPs actually search for',
-        'Clean semantic structure and fast loads that crawlers reward',
-        'Thesis and sector pages built to rank for your point of view',
+        'On-page SEO mapped to what founders and LPs actually search for',
+        'AEO/GEO so AI answer engines cite your thesis, not a directory',
+        'Clean semantics and fast loads that both crawlers and models reward',
         'Internal linking that compounds authority across the site',
       ],
       visual: 'seo',
@@ -144,27 +144,29 @@ const venture: HomeContent = {
       kicker: 'Content engine',
       titleLead: 'Your partners talk. We turn it into',
       titleEm: 'authority, everywhere.',
-      body: "The insight is already there — in a partner's head, on a call, in a five-minute voicenote or a short video. We shape it into a polished article on your site, then repurpose it into a newsletter, LinkedIn and X posts, and short clips. The partner spends minutes; the firm publishes everywhere.",
+      body: "The insight is already there — in a partner's head, on a call, in a five-minute voicenote. We shape it into a polished article on your site, then repurpose it into a newsletter and posts across every platform your investors use. The partner spends minutes; the firm publishes everywhere.",
       points: [
-        'Record a voicenote or short video — no writing required',
+        'Record a five-minute voicenote — no writing required',
         "We shape it into an article in your firm's voice",
-        'Repurposed across newsletter, LinkedIn, X, YouTube and Instagram',
+        'Repurposed into a newsletter and social posts, sized for each platform',
         'A steady cadence that compounds into search traffic and authority',
       ],
-      pilot: 'Video production — available as a pilot',
       visual: 'content',
     },
   ],
   engineHead: { title: 'The content engine', label: 'voicenote → article → everywhere' },
   engineIntro:
-    'One five-minute voicenote from a partner becomes a finished article on your site — then a newsletter, LinkedIn and X posts, and organic reach on YouTube and Instagram. Watch it happen.',
-  processHead: { title: 'How we work', label: 'From first call to a running engine' },
-  process: [
-    { n: '01', title: 'Audit & positioning', body: 'We study your portfolio, your thesis, and how you currently show up when someone searches for a firm like yours.' },
-    { n: '02', title: 'Design first', body: "You see a real design of your new site before you commit. Love it and we continue, three revisions included. If you don't, you owe nothing." },
-    { n: '03', title: 'Build & rank', body: 'A fast, editorial site goes live — portfolio, thesis and sector pages structured from the first line to be found.' },
-    { n: '04', title: 'The engine runs', body: 'Each week your partners send a voicenote or video. We turn it into an article and a week of social. Authority compounds.' },
-  ],
+    'One five-minute voicenote from a partner becomes a finished article on your site — then a newsletter, and posts across every platform your investors use. Watch it happen.',
+  processHead: { title: 'You already have the content', label: 'It just isn’t working for you yet' },
+  process: {
+    intro:
+      'Talks, panels, webinars, existing video, and the thinking you share every day — most of it is used once and forgotten.',
+    cards: [
+      { n: '01', title: 'We repurpose everything you already have', body: 'Each existing piece becomes articles, a newsletter, and posts across every platform your founders and LPs use.' },
+      { n: '02', title: 'We capture more with focused in-office shoots', body: 'One short session in your office becomes weeks of content — filmed and shaped for you.' },
+      { n: '03', title: 'A five-minute voicenote becomes a month of authority', body: 'Everywhere your founders and LPs look, and with almost no time from you.' },
+    ],
+  },
   writingHead: { title: 'Writing', label: 'On how venture firms present themselves' },
   method: {
     eyebrow: 'What you actually get',
@@ -215,14 +217,14 @@ const portfolio: HomeContent = {
     },
     {
       index: '02',
-      kicker: 'On-page SEO',
-      titleLead: 'So HNIs and advisors find you — and you',
-      titleEm: 'read as the authority',
-      body: 'When an HNI searches for a way to grow long-term wealth, or an advisor vets a fund before recommending it, you want to be the firm they find — and the one whose pages read like the clearest thinking on the strategy. On-page SEO turns search into a steady stream of qualified enquiry.',
+      kicker: 'SEO · AEO · GEO',
+      titleLead: 'So HNIs and advisors — and the AI they ask —',
+      titleEm: 'find you first',
+      body: 'Your investors increasingly ask an AI before they ask around. We make sure the firm is what it finds. On-page SEO gets you ranked when an HNI or advisor searches; answer- and generative-engine optimisation get you cited by ChatGPT, Perplexity, and Google’s AI Overviews. Either way, you are the firm that comes up — reading as the clearest thinking on the strategy.',
       points: [
-        'Pages mapped to what HNIs and advisors actually search for',
-        'Clean semantic structure and fast loads that crawlers reward',
-        'Strategy and approach pages built to rank for your point of view',
+        'On-page SEO mapped to what HNIs and advisors actually search for',
+        'AEO/GEO so AI answer engines cite your strategy, not a directory',
+        'Clean semantics and fast loads that both crawlers and models reward',
         'Internal linking that compounds authority across the site',
       ],
       visual: 'seo',
@@ -232,14 +234,13 @@ const portfolio: HomeContent = {
       kicker: 'Content engine',
       titleLead: 'Your fund managers talk. We turn it into',
       titleEm: 'authority, everywhere.',
-      body: "The insight is already there — in a fund manager's head, on a call, in a five-minute voicenote or a short video. We shape it into a compliance-aware article on your site, then a newsletter, LinkedIn and X posts, and short clips. The manager spends minutes; the firm publishes everywhere.",
+      body: "The insight is already there — in a fund manager's head, on a call, in a five-minute voicenote. We shape it into a compliance-aware article on your site, then repurpose it into a newsletter and posts across every platform your investors use. The manager spends minutes; the firm publishes everywhere.",
       points: [
-        'Record a voicenote or short video — no writing required',
+        'Record a five-minute voicenote — no writing required',
         "We shape it into a compliance-aware article in your firm's voice",
-        'Repurposed across newsletter, LinkedIn, X, YouTube and Instagram',
+        'Repurposed into a newsletter and social posts, sized for each platform',
         'A steady cadence that compounds into search traffic and trust',
       ],
-      pilot: 'Video production — available as a pilot',
       visual: 'content',
     },
     {
@@ -260,14 +261,17 @@ const portfolio: HomeContent = {
   ],
   engineHead: { title: 'The content engine', label: 'voicenote → article → everywhere' },
   engineIntro:
-    "One five-minute voicenote from a fund manager becomes a compliance-aware article on your site — then a newsletter, LinkedIn and X posts, and organic reach on YouTube and Instagram. Watch it happen.",
-  processHead: { title: 'How we work', label: 'From first call to a running engine' },
-  process: [
-    { n: '01', title: 'Audit & positioning', body: 'We study your strategy, your discipline, and how you currently show up when an HNI or advisor searches for a firm like yours.' },
-    { n: '02', title: 'Design first', body: "You see a real design of your new site before you commit. Love it and we continue, three revisions included. If you don't, you owe nothing." },
-    { n: '03', title: 'Build & rank', body: 'A fast, compliance-aware site goes live — strategy and approach pages structured from the first line to be found.' },
-    { n: '04', title: 'The engine runs', body: 'Each week your fund managers send a voicenote or video. We turn it into an article and a week of social. Trust compounds.' },
-  ],
+    'One five-minute voicenote from a fund manager becomes a compliance-aware article on your site — then a newsletter, and posts across every platform your investors use. Watch it happen.',
+  processHead: { title: 'You already have the content', label: 'It just isn’t working for you yet' },
+  process: {
+    intro:
+      'Talks, panels, webinars, existing video, and the thinking you share every day — most of it is used once and forgotten.',
+    cards: [
+      { n: '01', title: 'We repurpose everything you already have', body: 'Each existing piece becomes articles, a newsletter, and posts across every platform your HNIs and advisors use.' },
+      { n: '02', title: 'We capture more with focused in-office shoots', body: 'One short session in your office becomes weeks of content — filmed and shaped for you.' },
+      { n: '03', title: 'A five-minute voicenote becomes a month of authority', body: 'Everywhere your HNIs and advisors look, and with almost no time from you.' },
+    ],
+  },
   writingHead: { title: 'Writing', label: 'On how PMS firms earn trust online' },
   method: {
     eyebrow: 'What you actually get',
@@ -294,8 +298,8 @@ const portfolio: HomeContent = {
     },
     seo: {
       headline: 'Found first',
-      sub: 'when an HNI or advisor searches',
-      chipsLabel: 'Built to rank for',
+      sub: 'when an HNI, advisor, or their AI asks',
+      chipsLabel: 'Ranked and cited for',
       chips: ['best pms for long-term wealth', 'portfolio management for hni', 'sebi registered pms india', 'pms vs mutual funds'],
     },
     content: CONTENT_DATA('fund manager'),

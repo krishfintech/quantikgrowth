@@ -35,7 +35,7 @@ export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, classN
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <div className="max-w-[1320px] mx-auto px-8 lg:px-12 flex flex-wrap items-start justify-between gap-10">
+      <div className="max-w-[1360px] mx-auto px-8 lg:px-12 flex flex-wrap items-start justify-between gap-10">
         <div>
           <a href={link('/')} className="font-sans font-semibold text-[21px] tracking-[-0.01em] text-ink">
             Quantik<span className="text-brand">growth</span>
@@ -61,7 +61,7 @@ export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, classN
         </div>
       </div>
 
-      <div className="max-w-[1320px] mx-auto px-8 lg:px-12 mt-12 pt-6 border-t border-line flex flex-wrap justify-between gap-5 text-[13.5px] text-ink-soft">
+      <div className="max-w-[1360px] mx-auto px-8 lg:px-12 mt-12 pt-6 border-t border-line flex flex-wrap justify-between gap-5 text-[13.5px] text-ink-soft">
         <span>{legalLeft}</span>
         <span>{legalRight}</span>
       </div>

@@ -122,7 +122,7 @@ const WritingIndexPage = () => {
         ])}
       />
       <section className="pt-[60px] pb-[36px] sm:pt-[96px] sm:pb-[48px]">
-        <motion.div className="max-w-[1320px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
+        <motion.div className="max-w-[1360px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[22px]">Writing</Eyebrow>
           </motion.div>
@@ -142,7 +142,7 @@ const WritingIndexPage = () => {
 
       <section className="pb-[40px]">
         <motion.div
-          className="max-w-[1320px] mx-auto px-8 lg:px-12"
+          className="max-w-[1360px] mx-auto px-8 lg:px-12"
           variants={stagger}
           initial="hidden"
           whileInView="visible"
@@ -164,7 +164,7 @@ const WritingIndexPage = () => {
       {rest.length > 0 && (
         <section className="pb-[104px]">
           <motion.div
-            className="max-w-[1320px] mx-auto px-8 lg:px-12"
+            className="max-w-[1360px] mx-auto px-8 lg:px-12"
             variants={stagger}
             initial="hidden"
             whileInView="visible"

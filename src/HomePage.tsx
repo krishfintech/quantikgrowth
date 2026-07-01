@@ -4,11 +4,12 @@ import {
   ArticleRow,
   Button,
   Eyebrow,
-  HeroArtifact,
+  HeroVenture,
+  HeroPortfolio,
   MaskReveal,
   MobileCtaBar,
   Nav,
-  OfferBand,
+  Offer,
   Seo,
   SiteFooter,
   VoiceToContent,
@@ -61,6 +62,7 @@ const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08, 0.35);
   const reduceMotion = useReducedMotion();
+  const { audience } = useAudience();
 
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
@@ -68,7 +70,7 @@ const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
 
   return (
     <section ref={sectionRef} className="pt-[60px] pb-[56px] sm:pt-[92px] sm:pb-[88px]">
-      <div className="max-w-[1380px] mx-auto px-8 lg:px-12 grid lg:grid-cols-[1.05fr_0.95fr] gap-x-20 gap-y-14 items-center">
+      <div className="max-w-[1360px] mx-auto px-8 lg:px-12 grid lg:grid-cols-[1.05fr_0.95fr] gap-x-20 gap-y-14 items-center">
         <div>
           <motion.div variants={stagger} initial="hidden" animate="visible">
             <motion.div variants={fadeUp}>
@@ -107,7 +109,7 @@ const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <HeroArtifact />
+          {audience === 'portfolio' ? <HeroPortfolio /> : <HeroVenture />}
         </motion.div>
       </div>
     </section>
@@ -296,25 +298,78 @@ const ServiceBlock = ({ service, visual, flip }: { service: HomeService; visual:
   );
 };
 
-const Process = ({ steps }: { steps: HomeContent['process'] }) => {
+// Repurposing flow: what you already have → the engine → working everywhere.
+// The only place existing video / in-office capture is surfaced.
+const RepurposeFlow = () => {
+  const reduceMotion = useReducedMotion();
+  const sources = ['Talks & panels', 'Webinars', 'Existing video', 'A 5-min voicenote', 'An in-office shoot'];
+  const outputs = ['Articles', 'A newsletter', 'LinkedIn', 'X', 'Everywhere else'];
+  const item = (i: number, from: number) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, x: from },
+          whileInView: { opacity: 1, x: 0 },
+          viewport: viewportOnce,
+          transition: { duration: 0.5, delay: 0.08 + i * 0.07, ease: [0.16, 1, 0.3, 1] as const },
+        };
+
+  return (
+    <div className="rounded-[18px] border border-line bg-paper-soft p-6 shadow-[0_30px_80px_-50px_rgba(19,36,28,0.4)] sm:p-8">
+      <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr] lg:gap-8">
+        <div className="space-y-2.5">
+          <div className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-ink-soft">What you already have</div>
+          {sources.map((s, i) => (
+            <motion.div key={s} {...item(i, -16)} className="rounded-lg border border-line bg-paper px-3.5 py-2.5 text-[13.5px] text-ink">
+              {s}
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-center gap-3 lg:flex-col lg:gap-2">
+          <span className="text-brand lg:rotate-0" aria-hidden>→</span>
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand text-center text-[10px] font-semibold uppercase leading-tight tracking-wide text-white">
+            The<br />engine
+          </div>
+          <span className="text-brand" aria-hidden>→</span>
+        </div>
+
+        <div className="space-y-2.5">
+          <div className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">Working everywhere</div>
+          {outputs.map((o, i) => (
+            <motion.div key={o} {...item(i, 16)} className="rounded-lg border border-brand/25 bg-brand-tint px-3.5 py-2.5 text-[13.5px] text-brand-deep">
+              {o}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Process = ({ process }: { process: HomeContent['process'] }) => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08);
 
   return (
-    <motion.div
-      className="grid gap-px overflow-hidden rounded-[16px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4"
-      variants={stagger}
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewportOnce}
-    >
-      {steps.map((step) => (
-        <motion.div key={step.n} variants={fadeUp} className="bg-paper p-7 lg:p-8">
-          <div className="font-display text-[1.8rem] italic text-brand/30">{step.n}</div>
-          <h3 className="mt-5 font-display text-[1.3rem] tracking-[-0.01em]">{step.title}</h3>
-          <p className="mt-3 text-[15px] leading-[1.5] text-ink-soft">{step.body}</p>
-        </motion.div>
-      ))}
+    <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+      <motion.p variants={fadeUp} className="-mt-6 mb-12 max-w-[62ch] text-[1.15rem] leading-[1.6] text-ink-soft">
+        {process.intro}
+      </motion.p>
+
+      <motion.div variants={fadeUp}>
+        <RepurposeFlow />
+      </motion.div>
+
+      <div className="mt-12 grid gap-px overflow-hidden rounded-[16px] border border-line bg-line sm:grid-cols-3">
+        {process.cards.map((step) => (
+          <motion.div key={step.n} variants={fadeUp} className="bg-paper p-7 lg:p-8">
+            <div className="font-display text-[1.8rem] italic text-brand/30">{step.n}</div>
+            <h3 className="mt-5 font-display text-[1.3rem] leading-[1.18] tracking-[-0.01em]">{step.title}</h3>
+            <p className="mt-3 text-[15px] leading-[1.5] text-ink-soft">{step.body}</p>
+          </motion.div>
+        ))}
+      </div>
     </motion.div>
   );
 };
@@ -368,7 +423,7 @@ const HomePage = () => {
         <Hero hero={c.hero} />
 
         <section id="services" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.servicesHead.title} label={c.servicesHead.label} />
             <div className="space-y-[104px]">
               {c.services.map((service, i) => (
@@ -382,12 +437,12 @@ const HomePage = () => {
 
         {/* The signature content-engine animation */}
         <section id="engine" className="border-t border-line py-[64px] sm:py-[88px] scroll-mt-[90px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.engineHead.title} label={c.engineHead.label} />
             <p className="-mt-6 mb-12 max-w-[60ch] text-[1.05rem] leading-[1.6] text-ink-soft">{c.engineIntro}</p>
           </div>
-          <VoiceToContent className="max-w-[1320px] mx-auto px-8 lg:px-12" />
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12 mt-12">
+          <VoiceToContent className="max-w-[1360px] mx-auto px-8 lg:px-12" />
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12 mt-12">
             <Button variant="ghost" href="/work" arrow>
               See the full pipeline
             </Button>
@@ -395,14 +450,14 @@ const HomePage = () => {
         </section>
 
         <section id="process" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.processHead.title} label={c.processHead.label} />
-            <Process steps={c.process} />
+            <Process process={c.process} />
           </div>
         </section>
 
         <section id="writing" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.writingHead.title} label={c.writingHead.label} />
             <ArticleRow articles={homeWriting} />
             <div className="mt-9">
@@ -414,17 +469,14 @@ const HomePage = () => {
         </section>
 
         <section className="border-t border-line py-[64px] sm:py-[92px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <MethodBand method={c.method} />
           </div>
         </section>
 
-        <section className="border-t border-line py-[64px] sm:py-[92px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
-            <OfferBand headline={c.offer.headline} body={c.offer.body} ctaLabel="Start a project" ctaHref="/contact" />
-            {c.offer.note && (
-              <p className="mx-auto mt-6 max-w-[60ch] text-center text-[14px] text-ink-soft">{c.offer.note}</p>
-            )}
+        <section id="offer" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
+            <Offer />
           </div>
         </section>
       </main>

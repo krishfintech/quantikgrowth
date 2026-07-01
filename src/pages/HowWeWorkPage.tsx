@@ -47,7 +47,7 @@ const PIPELINE_BASE: PipelineStage[] = [
   { label: 'Article', what: 'A polished, publish-ready article on your own site.', value: 'Authority you own, on a page built to rank.' },
   { label: 'Newsletter', what: 'The same idea, shaped for your subscriber list.', value: 'Direct reach to people who already chose to hear from you.' },
   { label: 'LinkedIn & X', what: 'Repurposed into posts and a thread, written for each platform.', value: 'Reach where your audience already scrolls.' },
-  { label: 'YouTube & Instagram', what: 'Short clips cut from your video, captioned and posted.', value: 'Organic visibility on the platforms that reward consistency.' },
+  { label: 'Everywhere your investors are', what: 'Repurposed for each remaining platform, sized and written to fit — never copy-pasted.', value: 'A consistent presence wherever attention already is.' },
 ];
 
 const COPY: Record<Audience, Copy> = {
@@ -72,11 +72,11 @@ const COPY: Record<Audience, Copy> = {
       },
       {
         n: '02',
-        kicker: 'On-page SEO',
+        kicker: 'SEO · AEO · GEO',
         kind: 'seo',
-        title: 'Then we make it findable, and rank it.',
-        body: 'A beautiful site nobody finds is a brochure. We structure every page for search from the first line, mapped to what founders and LPs actually type — so you are the firm that comes up, reading as the authority.',
-        points: ['Pages mapped to real search intent', 'Clean semantics, fast loads, structured data', 'Internal links that compound authority'],
+        title: 'Then we make it findable — by people and AI.',
+        body: 'A beautiful site nobody finds is a brochure. Your investors increasingly ask an AI before they ask around, so we structure every page to be ranked in search and cited by answer engines like ChatGPT, Perplexity, and Google’s AI Overviews — so you are the firm that comes up, reading as the authority.',
+        points: ['Pages mapped to what founders and LPs actually search', 'AEO/GEO so AI answers cite you, not a directory', 'Clean semantics, fast loads, and structured data models can parse'],
       },
       {
         n: '03',
@@ -92,7 +92,7 @@ const COPY: Record<Audience, Copy> = {
     pipeline: PIPELINE_BASE,
     faq: [
       { q: 'Do you have case studies?', a: 'Not yet — we are a new studio and we would rather be honest than borrow someone else’s logos. What we show is the method and the transformation it is built to deliver, end to end.' },
-      { q: 'How much work is the content engine for us?', a: 'About five minutes a week. A partner records a voicenote or short video; we do the writing, formatting, SEO and repurposing. You approve a draft. That is the whole ask.' },
+      { q: 'How much work is the content engine for us?', a: 'About five minutes a week. A partner records a five-minute voicenote; we do the writing, formatting, SEO and repurposing. You approve a draft. That is the whole ask.' },
       { q: 'What do I get before I commit?', a: 'A real first design of your new site — a working page, not a moodboard. If you love it, we continue with three revisions included. If you don’t, you owe nothing.' },
     ],
   },
@@ -117,11 +117,11 @@ const COPY: Record<Audience, Copy> = {
       },
       {
         n: '02',
-        kicker: 'On-page SEO',
+        kicker: 'SEO · AEO · GEO',
         kind: 'seo',
-        title: 'Then we make it findable, and rank it.',
-        body: 'When an HNI or advisor searches for a way to grow long-term wealth, a directory ranks for your category — not you. We structure every page for search so you are the firm that comes up, reading as the authority.',
-        points: ['Pages mapped to what HNIs and advisors search', 'Clean semantics, fast loads, structured data', 'Internal links that compound authority'],
+        title: 'Then we make it findable — by people and AI.',
+        body: 'When an HNI or advisor looks for a way to grow long-term wealth, a directory ranks for your category — not you. And increasingly they ask an AI first. We structure every page to be ranked in search and cited by answer engines like ChatGPT, Perplexity, and Google’s AI Overviews — so you are the firm that comes up, reading as the authority.',
+        points: ['Pages mapped to what HNIs and advisors actually search', 'AEO/GEO so AI answers cite you, not a directory', 'Clean semantics, fast loads, and structured data models can parse'],
       },
       {
         n: '03',
@@ -146,7 +146,7 @@ const COPY: Record<Audience, Copy> = {
     faq: [
       { q: 'Do you have case studies?', a: 'Not yet — we are a new studio and we would rather be honest than borrow someone else’s logos. What we show is the method and the transformation it is built to deliver, end to end.' },
       { q: 'Is the AI concierge compliant?', a: 'It is built to be. It is trained only on your approved material, gives information and analysis rather than advice, and never makes buy/sell/hold calls or return promises. You sign off on what it can say.' },
-      { q: 'How much work is the content engine for us?', a: 'About five minutes a week. A fund manager records a voicenote or short video; we do the writing, compliance-aware shaping, SEO and repurposing. You approve a draft. That is the whole ask.' },
+      { q: 'How much work is the content engine for us?', a: 'About five minutes a week. A fund manager records a five-minute voicenote; we do the writing, compliance-aware shaping, SEO and repurposing. You approve a draft. That is the whole ask.' },
     ],
   },
 };
@@ -373,7 +373,7 @@ const HowWeWorkPage = () => {
 
       {/* Hero */}
       <section className="pt-[60px] pb-[40px] sm:pt-[96px] sm:pb-[56px]">
-        <motion.div className="max-w-[1320px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
+        <motion.div className="max-w-[1360px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[22px]">How we work</Eyebrow>
           </motion.div>
@@ -393,7 +393,7 @@ const HowWeWorkPage = () => {
 
       {/* The journey */}
       <section className="border-t border-line py-[56px] sm:py-[80px]">
-        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+        <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <div className="space-y-[88px]">
             {c.journey.map((step, i) => (
               <React.Fragment key={step.n}>
@@ -406,19 +406,19 @@ const HowWeWorkPage = () => {
 
       {/* The signature animation */}
       <section id="engine" className="border-t border-line py-[56px] sm:py-[88px] scroll-mt-[90px]">
-        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+        <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <Eyebrow className="mb-[22px]">The content engine</Eyebrow>
           <h2 className="font-display font-normal text-[clamp(1.9rem,3.6vw,2.8rem)] leading-[1.1] tracking-[-0.01em] max-w-[20ch]">
             One voicenote becomes content <em className="italic text-brand">everywhere.</em>
           </h2>
           <p className="mt-5 max-w-[60ch] text-[1.05rem] leading-[1.6] text-ink-soft">{c.engineIntro}</p>
         </div>
-        <VoiceToContent className="max-w-[1320px] mx-auto px-8 lg:px-12 mt-10" />
+        <VoiceToContent className="max-w-[1360px] mx-auto px-8 lg:px-12 mt-10" />
       </section>
 
       {/* Pipeline deep-dive */}
       <section className="border-t border-line py-[56px] sm:py-[80px]">
-        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+        <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <Eyebrow className="mb-[22px]">The journey, step by step</Eyebrow>
           <h2 className="font-display font-normal text-[clamp(1.9rem,3.6vw,2.8rem)] leading-[1.1] tracking-[-0.01em] max-w-[22ch]">
             What each stage does for you.
@@ -457,9 +457,37 @@ const HowWeWorkPage = () => {
         </div>
       </section>
 
+      {/* Founding clients — no named clients yet, so we invite the first documented ones */}
+      <section className="border-t border-line py-[56px] sm:py-[80px]">
+        <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="rounded-[18px] border border-brand/40 bg-brand p-8 text-white sm:p-11"
+          >
+            <div className="text-[13px] font-medium uppercase tracking-[0.16em] text-brand-muted">Founding clients</div>
+            <h2 className="mt-4 font-display font-normal text-[clamp(1.6rem,3vw,2.3rem)] leading-[1.15] tracking-[-0.01em] max-w-[24ch]">
+              The first firms we work with become our first published case studies.
+            </h2>
+            <p className="mt-4 max-w-[64ch] text-[1.05rem] leading-[1.6] text-brand-muted">
+              We are selecting a small number of founding clients, invited at half the build investment in
+              exchange for allowing us to document the work. It is offered once, at this level, and only a few
+              places remain.
+            </p>
+            <div className="mt-8">
+              <Button variant="primary" href="/contact" arrow className="bg-white! text-brand-deep! hover:bg-brand-tint!">
+                Become a founding client
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="border-t border-line py-[60px] sm:py-[80px]">
-        <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+        <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <h2 className="font-display font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] tracking-[-0.01em] max-w-[20ch]">
               Start with a design you can see.
