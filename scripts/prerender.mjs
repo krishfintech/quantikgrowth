@@ -12,26 +12,31 @@ const root = dirname(fileURLToPath(import.meta.url)) + '/..';
 const dist = join(root, 'dist');
 
 // Keep in sync with src/data/*. Mirrors next-sitemap.config.js.
-// Per-track slugs (the shared article appears in both writing indexes).
-const VENTURE_WORK = ['northbound-capital'];
-const VENTURE_WRITING = ['think-like-a-publisher', 'logo-wall-is-dead', 'what-founders-read'];
-const PORTFOLIO_WORK = ['meridian-pms'];
-const PORTFOLIO_WRITING = ['think-like-a-publisher', 'what-hni-investors-read', 'seo-for-pms-firms'];
+// /work is the "How we work" page (no case-study children — no fabricated clients).
+const VENTURE_WRITING = [
+  'revolutionizing-investment-firm-presence',
+  'vc-first-five-seconds',
+  'vc-portfolio-best-salesperson',
+];
+const PORTFOLIO_WRITING = [
+  'revolutionizing-investment-firm-presence',
+  'pms-growth-ceiling',
+  'pms-invisible-to-inevitable',
+];
 
-const trackRoutes = (prefix, work, writing) => [
+const trackRoutes = (prefix, writing) => [
   `${prefix}` || '/',
   `${prefix}/approach`,
   `${prefix}/work`,
   `${prefix}/writing`,
   `${prefix}/contact`,
-  ...work.map((s) => `${prefix}/work/${s}`),
   ...writing.map((s) => `${prefix}/writing/${s}`),
 ];
 
 const ROUTES = [
-  ...trackRoutes('', VENTURE_WORK, VENTURE_WRITING).map((r) => r || '/'),
+  ...trackRoutes('', VENTURE_WRITING).map((r) => r || '/'),
   '/about', // shared across tracks
-  ...trackRoutes('/portfolio', PORTFOLIO_WORK, PORTFOLIO_WRITING),
+  ...trackRoutes('/portfolio', PORTFOLIO_WRITING),
 ];
 
 // Tags that belong in <head> rather than the body.

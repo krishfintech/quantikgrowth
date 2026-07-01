@@ -79,57 +79,6 @@ const TableOfContents = ({ sections, active }: { sections: ArticleSection[]; act
   </nav>
 );
 
-/* --- A figure with descriptive alt text (the article's core metaphor) ------- */
-const ArchiveFigure = () => {
-  const reduceMotion = useReducedMotion();
-  return (
-    <figure className="my-12 rounded-[16px] border border-line bg-paper-soft p-8">
-      <svg
-        viewBox="0 0 360 150"
-        className="w-full"
-        role="img"
-        aria-label="A line chart contrasting two assets over time: a marketing brochure's value declines steadily from launch, while a published archive's value rises and accelerates."
-      >
-        {/* axes */}
-        <line x1="34" y1="14" x2="34" y2="124" stroke="var(--color-line-strong)" strokeWidth="1" />
-        <line x1="34" y1="124" x2="346" y2="124" stroke="var(--color-line-strong)" strokeWidth="1" />
-        {/* brochure: declining */}
-        <motion.path
-          d="M40 36 C 110 58, 200 92, 340 114"
-          fill="none"
-          stroke="var(--color-ink-soft)"
-          strokeWidth="2"
-          strokeDasharray="5 5"
-          initial={reduceMotion ? false : { pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={viewportOnce}
-          transition={{ duration: 1.1, ease: 'easeOut' }}
-        />
-        {/* archive: rising and accelerating */}
-        <motion.path
-          d="M40 116 C 150 110, 250 86, 340 22"
-          fill="none"
-          stroke="var(--color-brand)"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          initial={reduceMotion ? false : { pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={viewportOnce}
-          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-        />
-        <text x="344" y="18" textAnchor="end" className="fill-brand" fontSize="11" fontWeight="500">Archive</text>
-        <text x="344" y="110" textAnchor="end" fill="var(--color-ink-soft)" fontSize="11">Brochure</text>
-        <text x="40" y="138" fill="var(--color-ink-soft)" fontSize="10">launch</text>
-        <text x="346" y="138" textAnchor="end" fill="var(--color-ink-soft)" fontSize="10">years later</text>
-      </svg>
-      <figcaption className="mt-5 text-[14px] leading-[1.5] text-ink-soft">
-        Two instruments. The brochure is worth most the day it ships and depreciates from there; the
-        published archive compounds — ranking, getting forwarded, and getting cited long after it goes live.
-      </figcaption>
-    </figure>
-  );
-};
-
 /* --- Related / more writing ------------------------------------------------- */
 const RelatedFooter = ({ slugs }: { slugs: string[] }) => {
   const related = slugs
@@ -138,7 +87,7 @@ const RelatedFooter = ({ slugs }: { slugs: string[] }) => {
 
   return (
     <section className="border-t border-line py-[56px] sm:py-[72px]">
-      <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+      <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
         <div className="mb-9 text-[13px] font-medium uppercase tracking-[0.14em] text-ink-soft">More writing</div>
         <div className="grid gap-px overflow-hidden rounded-[16px] border border-line bg-line md:grid-cols-2">
           {related.map((a) => (
@@ -197,7 +146,7 @@ const ArticlePage = ({ slug }: { slug: string }) => {
   if (!article || !content) return <NotFound />;
 
   const path = link(`/writing/${slug}`);
-  const showToc = content.sections.length > 2;
+  const showToc = content.toc ?? content.sections.length > 2;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -245,7 +194,7 @@ const ArticlePage = ({ slug }: { slug: string }) => {
       />
       <ProgressBar />
 
-      <div className="mx-auto max-w-[1320px] px-6 pt-[72px] pb-[40px] lg:px-12">
+      <div className="mx-auto max-w-[1360px] px-6 pt-[72px] pb-[40px] lg:px-12">
         <div className={showToc ? 'lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-x-14' : ''}>
           {/* Sticky TOC (desktop only) */}
           {showToc && (
@@ -259,12 +208,15 @@ const ArticlePage = ({ slug }: { slug: string }) => {
           {/* Article body */}
           <article className="mx-auto max-w-[700px]">
             <motion.header variants={stagger} initial="hidden" animate="visible">
-              <motion.div variants={fadeUp}>
-                <a href="/writing" className="text-[14px] text-ink-soft hover:text-brand transition-colors">
+              <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3">
+                <a href={link('/writing')} className="text-[14px] text-ink-soft hover:text-brand transition-colors">
                   ← Writing
                 </a>
+                <span className="rounded-full border border-brand/25 bg-brand-tint px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-brand">
+                  {article.tag}
+                </span>
               </motion.div>
-              <h1 className="mt-8 font-display font-normal text-[clamp(2.2rem,4.6vw,3.2rem)] leading-[1.08] tracking-[-0.018em]">
+              <h1 className="mt-7 font-display font-normal text-[clamp(2.2rem,4.6vw,3.2rem)] leading-[1.08] tracking-[-0.018em]">
                 <MaskReveal delay={0.1}>{article.title}</MaskReveal>
               </h1>
               <motion.p
@@ -286,7 +238,8 @@ const ArticlePage = ({ slug }: { slug: string }) => {
               </motion.div>
             </motion.header>
 
-            {showToc && <ArchiveFigure />}
+            {/* The article's own opening graphic */}
+            {content.heroFigure}
 
             {/* Mobile TOC */}
             {showToc && (
@@ -309,9 +262,11 @@ const ArticlePage = ({ slug }: { slug: string }) => {
                   whileInView="visible"
                   viewport={viewportOnce}
                 >
-                  <h2 className="mt-12 mb-5 font-display font-medium text-[1.7rem] leading-[1.18] tracking-[-0.01em] text-ink first:mt-0">
-                    {s.heading}
-                  </h2>
+                  {s.heading && (
+                    <h2 className="mt-12 mb-5 font-display font-medium text-[1.7rem] leading-[1.18] tracking-[-0.01em] text-ink first:mt-0">
+                      {s.heading}
+                    </h2>
+                  )}
                   {s.body}
                 </motion.section>
               ))}

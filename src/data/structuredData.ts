@@ -1,4 +1,5 @@
 import { SITE_URL } from '../components/site/Seo';
+import type { Audience } from '../audience';
 
 type JsonLd = Record<string, unknown>;
 
@@ -63,11 +64,31 @@ export const servicesSchema: JsonLd[] = [
     serviceType: 'Content marketing',
     name: 'Content engine for investment firms',
     description:
-      'We turn a partner’s voicenotes and videos into polished articles and repurposed social posts across LinkedIn, X, and short-form video.',
+      'We turn a partner’s five-minute voicenotes into polished articles and repurposed posts across a newsletter, LinkedIn, and X — a content engine that compounds authority.',
     provider: { '@id': ORG_ID },
     areaServed: { '@type': 'Country', name: 'India' },
   },
 ];
+
+const service = (serviceType: string, name: string, description: string): JsonLd => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  serviceType,
+  name,
+  description,
+  provider: { '@id': ORG_ID },
+  areaServed: { '@type': 'Country', name: 'India' },
+});
+
+const CHATBOT_SERVICE = service(
+  'AI investor-relations concierge',
+  'AI Investor Relations Concierge for PMS firms',
+  'A compliance-safe AI concierge that answers prospective-investor questions in a firm’s voice from approved material — information and analysis, never investment advice.',
+);
+
+/** Service JSON-LD per audience: 3 for venture, 4 for portfolio (adds the AI concierge). */
+export const servicesSchemaFor = (audience: Audience): JsonLd[] =>
+  audience === 'portfolio' ? [...servicesSchema, CHATBOT_SERVICE] : servicesSchema;
 
 export const breadcrumbSchema = (items: { name: string; path: string }[]): JsonLd => ({
   '@context': 'https://schema.org',

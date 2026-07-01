@@ -4,20 +4,20 @@ import {
   ArticleRow,
   Button,
   Eyebrow,
-  HeroArtifact,
+  HeroVenture,
+  HeroPortfolio,
   MaskReveal,
   MobileCtaBar,
   Nav,
-  OfferBand,
+  Offer,
   Seo,
   SiteFooter,
-  WorkLedger,
+  VoiceToContent,
   useFadeUpVariants,
   useStaggerVariants,
   viewportOnce,
   type NavLink,
 } from './components/site';
-import { workByAudience } from './data/work';
 import { writingByAudience } from './data/writing';
 import { useAudience } from './audience';
 import { homeContent } from './content/home';
@@ -27,11 +27,12 @@ import type {
   WebsiteVisualData,
   SeoVisualData,
   ContentVisualData,
+  ChatbotVisualData,
 } from './content/home';
 
 const NAV_LINKS: NavLink[] = [
   { label: 'Approach', href: '/approach' },
-  { label: 'Work', href: '/work' },
+  { label: 'How we work', href: '/work' },
   { label: 'Writing', href: '/writing' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
@@ -61,15 +62,15 @@ const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08, 0.35);
   const reduceMotion = useReducedMotion();
+  const { audience } = useAudience();
 
-  // Parallax-lite: the artifact drifts gently as the hero scrolls past.
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
   const artifactY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -48]);
 
   return (
     <section ref={sectionRef} className="pt-[60px] pb-[56px] sm:pt-[92px] sm:pb-[88px]">
-      <div className="max-w-[1380px] mx-auto px-8 lg:px-12 grid lg:grid-cols-[1.05fr_0.95fr] gap-x-20 gap-y-14 items-center">
+      <div className="max-w-[1360px] mx-auto px-8 lg:px-12 grid lg:grid-cols-[1.05fr_0.95fr] gap-x-20 gap-y-14 items-center">
         <div>
           <motion.div variants={stagger} initial="hidden" animate="visible">
             <motion.div variants={fadeUp}>
@@ -77,7 +78,6 @@ const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
             </motion.div>
           </motion.div>
 
-          {/* Cinematic clip reveal — the headline rises into place */}
           <h1 className="font-display font-normal text-[clamp(2.7rem,5.4vw,4.4rem)] leading-[1.05] tracking-[-0.018em] max-w-[20ch]">
             <MaskReveal delay={0.12}>
               {hero.lead} <em className="italic text-brand">{hero.em}</em>
@@ -94,21 +94,11 @@ const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 sm:gap-6 mt-[40px]">
               <Button variant="primary" href="/work" arrow>
-                See the work
+                See how we work
               </Button>
               <Button variant="ghost" href="/contact">
                 Book an intro call
               </Button>
-            </motion.div>
-
-            <motion.div variants={fadeUp} className="mt-[44px] flex flex-wrap gap-x-7 gap-y-2 text-[13.5px] text-ink-soft">
-              {['Website design', 'On-page SEO', 'Content engine'].map((item, i) => (
-                <span key={item} className="flex items-center gap-2.5">
-                  <span className="h-1 w-1 rounded-full bg-brand" />
-                  {item}
-                  {i < 2 && <span className="ml-5 hidden text-line-strong sm:inline">/</span>}
-                </span>
-              ))}
             </motion.div>
           </motion.div>
         </div>
@@ -119,14 +109,14 @@ const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
-          <HeroArtifact />
+          {audience === 'portfolio' ? <HeroPortfolio /> : <HeroVenture />}
         </motion.div>
       </div>
     </section>
   );
 };
 
-// --- Service deep-dive visuals ----------------------------------------------
+// --- Service visuals ---------------------------------------------------------
 
 const Bullet = ({ children }: { children: React.ReactNode }) => (
   <li className="flex gap-3.5">
@@ -142,7 +132,7 @@ const WebsiteVisual = ({ data }: { data: WebsiteVisualData }) => (
       <span className="font-display text-[13px] italic text-ink-soft">{data.count}</span>
     </div>
     {data.rows.map((c, i) => (
-      <div key={c.name} className={`group flex items-baseline gap-4 py-4 ${i > 0 ? 'border-t border-line' : ''}`}>
+      <div key={c.name} className={`flex items-baseline gap-4 py-4 ${i > 0 ? 'border-t border-line' : ''}`}>
         <span className="font-display text-[1.3rem] tracking-[-0.01em] text-ink">{c.name}</span>
         <span className="flex-1 text-[13.5px] leading-snug text-ink-soft">{c.line}</span>
         <span className="hidden shrink-0 text-[11px] text-brand sm:block">{c.tag}</span>
@@ -159,8 +149,8 @@ const SeoVisual = ({ data }: { data: SeoVisualData }) => (
     <div className="mb-5 flex items-end justify-between">
       <div>
         <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-ink-soft">Organic search</div>
-        <div className="mt-1 font-display text-[2rem] leading-none tracking-[-0.01em] text-brand">{data.stat}</div>
-        <div className="mt-1 text-[12px] text-ink-soft">{data.statSub}</div>
+        <div className="mt-1 font-display text-[1.9rem] leading-none tracking-[-0.01em] text-brand">{data.headline}</div>
+        <div className="mt-1 text-[12px] text-ink-soft">{data.sub}</div>
       </div>
       <svg viewBox="0 0 120 56" className="h-14 w-[120px]" fill="none" aria-hidden>
         <motion.path
@@ -218,15 +208,50 @@ const ContentVisual = ({ data }: { data: ContentVisualData }) => (
   </div>
 );
 
-const ServiceBlock = ({
-  service,
-  visual,
-  flip,
-}: {
-  service: HomeService;
-  visual: React.ReactNode;
-  flip: boolean;
-}) => {
+const ChatbotVisual = ({ data }: { data: ChatbotVisualData }) => (
+  <div className="rounded-[16px] border border-line bg-paper-soft p-6 shadow-[0_24px_60px_-34px_rgba(19,36,28,0.3)]">
+    <div className="mb-4 flex items-center gap-2.5 border-b border-line pb-4">
+      <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-[11px] font-semibold text-white">AI</span>
+      <div className="font-display text-[15px] text-ink">{data.title}</div>
+      <span className="ml-auto flex items-center gap-1.5 text-[11px] text-ink-soft">
+        <span className="h-1.5 w-1.5 rounded-full bg-brand" /> live
+      </span>
+    </div>
+    <div className="space-y-3">
+      <div className="flex justify-end">
+        <p className="max-w-[80%] rounded-2xl rounded-tr-sm bg-paper border border-line px-3.5 py-2.5 text-[13px] text-ink">
+          {data.question}
+        </p>
+      </div>
+      <div className="flex gap-2.5">
+        <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-tint text-[10px] font-semibold text-brand">AI</span>
+        <p className="max-w-[85%] rounded-2xl rounded-tl-sm bg-brand-tint border border-brand/20 px-3.5 py-2.5 text-[13px] leading-relaxed text-brand-deep">
+          {data.answer}
+        </p>
+      </div>
+    </div>
+    <div className="mt-4 inline-flex rounded-full bg-paper border border-line px-3 py-1 text-[11px] text-ink-soft">
+      {data.disclaimer}
+    </div>
+  </div>
+);
+
+const renderVisual = (service: HomeService, c: HomeContent): React.ReactNode => {
+  switch (service.visual) {
+    case 'website':
+      return <WebsiteVisual data={c.visualData.website} />;
+    case 'seo':
+      return <SeoVisual data={c.visualData.seo} />;
+    case 'content':
+      return <ContentVisual data={c.visualData.content} />;
+    case 'chatbot':
+      return c.visualData.chatbot ? <ChatbotVisual data={c.visualData.chatbot} /> : null;
+    default:
+      return null;
+  }
+};
+
+const ServiceBlock = ({ service, visual, flip }: { service: HomeService; visual: React.ReactNode; flip: boolean }) => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.07);
 
@@ -239,9 +264,14 @@ const ServiceBlock = ({
       viewport={viewportOnce}
     >
       <motion.div variants={fadeUp} className={flip ? 'lg:order-2' : ''}>
-        <div className="flex items-center gap-3 text-[13px] text-ink-soft">
+        <div className="flex flex-wrap items-center gap-3 text-[13px] text-ink-soft">
           <span className="font-display text-[15px] italic text-brand">{service.index}</span>
           <span className="font-medium uppercase tracking-[0.16em]">{service.kicker}</span>
+          {service.badge && (
+            <span className="rounded-full bg-brand px-2.5 py-0.5 text-[11px] font-medium uppercase tracking-wider text-white">
+              {service.badge}
+            </span>
+          )}
         </div>
         <h3 className="mt-4 font-display font-normal text-[clamp(1.7rem,2.8vw,2.3rem)] leading-[1.12] tracking-[-0.01em] max-w-[22ch]">
           {service.titleLead} <em className="italic text-brand">{service.titleEm}</em>
@@ -268,43 +298,96 @@ const ServiceBlock = ({
   );
 };
 
-const Process = ({ steps }: { steps: HomeContent['process'] }) => {
+// Repurposing flow: what you already have → the engine → working everywhere.
+// The only place existing video / in-office capture is surfaced.
+const RepurposeFlow = () => {
+  const reduceMotion = useReducedMotion();
+  const sources = ['Talks & panels', 'Webinars', 'Existing video', 'A 5-min voicenote', 'An in-office shoot'];
+  const outputs = ['Articles', 'A newsletter', 'LinkedIn', 'X', 'Everywhere else'];
+  const item = (i: number, from: number) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, x: from },
+          whileInView: { opacity: 1, x: 0 },
+          viewport: viewportOnce,
+          transition: { duration: 0.5, delay: 0.08 + i * 0.07, ease: [0.16, 1, 0.3, 1] as const },
+        };
+
+  return (
+    <div className="rounded-[18px] border border-line bg-paper-soft p-6 shadow-[0_30px_80px_-50px_rgba(19,36,28,0.4)] sm:p-8">
+      <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr] lg:gap-8">
+        <div className="space-y-2.5">
+          <div className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-ink-soft">What you already have</div>
+          {sources.map((s, i) => (
+            <motion.div key={s} {...item(i, -16)} className="rounded-lg border border-line bg-paper px-3.5 py-2.5 text-[13.5px] text-ink">
+              {s}
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="flex items-center justify-center gap-3 lg:flex-col lg:gap-2">
+          <span className="text-brand lg:rotate-0" aria-hidden>→</span>
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand text-center text-[10px] font-semibold uppercase leading-tight tracking-wide text-white">
+            The<br />engine
+          </div>
+          <span className="text-brand" aria-hidden>→</span>
+        </div>
+
+        <div className="space-y-2.5">
+          <div className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-brand">Working everywhere</div>
+          {outputs.map((o, i) => (
+            <motion.div key={o} {...item(i, 16)} className="rounded-lg border border-brand/25 bg-brand-tint px-3.5 py-2.5 text-[13.5px] text-brand-deep">
+              {o}
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Process = ({ process }: { process: HomeContent['process'] }) => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.08);
 
   return (
-    <motion.div
-      className="grid gap-px overflow-hidden rounded-[16px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-4"
-      variants={stagger}
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewportOnce}
-    >
-      {steps.map((step) => (
-        <motion.div key={step.n} variants={fadeUp} className="bg-paper p-7 lg:p-8">
-          <div className="font-display text-[1.8rem] italic text-brand/30">{step.n}</div>
-          <h3 className="mt-5 font-display text-[1.3rem] tracking-[-0.01em]">{step.title}</h3>
-          <p className="mt-3 text-[15px] leading-[1.5] text-ink-soft">{step.body}</p>
-        </motion.div>
-      ))}
+    <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+      <motion.p variants={fadeUp} className="-mt-6 mb-12 max-w-[62ch] text-[1.15rem] leading-[1.6] text-ink-soft">
+        {process.intro}
+      </motion.p>
+
+      <motion.div variants={fadeUp}>
+        <RepurposeFlow />
+      </motion.div>
+
+      <div className="mt-12 grid gap-px overflow-hidden rounded-[16px] border border-line bg-line sm:grid-cols-3">
+        {process.cards.map((step) => (
+          <motion.div key={step.n} variants={fadeUp} className="bg-paper p-7 lg:p-8">
+            <div className="font-display text-[1.8rem] italic text-brand/30">{step.n}</div>
+            <h3 className="mt-5 font-display text-[1.3rem] leading-[1.18] tracking-[-0.01em]">{step.title}</h3>
+            <p className="mt-3 text-[15px] leading-[1.5] text-ink-soft">{step.body}</p>
+          </motion.div>
+        ))}
+      </div>
     </motion.div>
   );
 };
 
-const ResultsBand = ({ results }: { results: HomeContent['results'] }) => {
+const MethodBand = ({ method }: { method: HomeContent['method'] }) => {
   const fadeUp = useFadeUpVariants();
   const stagger = useStaggerVariants(0.1);
 
   return (
     <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
       <motion.div variants={fadeUp} className="max-w-[56ch]">
-        <Eyebrow className="mb-5">{results.eyebrow}</Eyebrow>
-        <p className="font-display text-[clamp(1.5rem,2.6vw,2rem)] leading-[1.2] tracking-[-0.01em]">{results.quote}</p>
-        <p className="mt-4 text-[14px] text-ink-soft">{results.note}</p>
+        <Eyebrow className="mb-5">{method.eyebrow}</Eyebrow>
+        <p className="font-display text-[clamp(1.5rem,2.6vw,2rem)] leading-[1.25] tracking-[-0.01em]">{method.quote}</p>
+        <p className="mt-4 text-[14px] text-ink-soft">{method.note}</p>
       </motion.div>
 
       <motion.div variants={fadeUp} className="mt-14 grid grid-cols-2 gap-x-8 gap-y-10 border-t border-line pt-12 lg:grid-cols-4">
-        {results.metrics.map((r) => (
+        {method.items.map((r) => (
           <div key={r.label}>
             <div className="font-display text-[clamp(2.2rem,4vw,3rem)] leading-none tracking-[-0.01em] text-brand">
               {r.value}
@@ -317,18 +400,11 @@ const ResultsBand = ({ results }: { results: HomeContent['results'] }) => {
   );
 };
 
-const VISUALS: Record<HomeService['visual'], (c: HomeContent) => React.ReactNode> = {
-  website: (c) => <WebsiteVisual data={c.visualData.website} />,
-  seo: (c) => <SeoVisual data={c.visualData.seo} />,
-  content: (c) => <ContentVisual data={c.visualData.content} />,
-};
-
 // --- Page --------------------------------------------------------------------
 
 const HomePage = () => {
   const { audience } = useAudience();
   const c = homeContent[audience];
-  const homeWork = workByAudience(audience).slice(0, 3);
   const homeWriting = writingByAudience(audience).slice(0, 3);
 
   return (
@@ -347,39 +423,41 @@ const HomePage = () => {
         <Hero hero={c.hero} />
 
         <section id="services" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.servicesHead.title} label={c.servicesHead.label} />
             <div className="space-y-[104px]">
               {c.services.map((service, i) => (
                 <React.Fragment key={service.index}>
-                  <ServiceBlock service={service} visual={VISUALS[service.visual](c)} flip={i % 2 === 1} />
+                  <ServiceBlock service={service} visual={renderVisual(service, c)} flip={i % 2 === 1} />
                 </React.Fragment>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="process" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
-            <SectionHead title={c.processHead.title} label={c.processHead.label} />
-            <Process steps={c.process} />
+        {/* The signature content-engine animation */}
+        <section id="engine" className="border-t border-line py-[64px] sm:py-[88px] scroll-mt-[90px]">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
+            <SectionHead title={c.engineHead.title} label={c.engineHead.label} />
+            <p className="-mt-6 mb-12 max-w-[60ch] text-[1.05rem] leading-[1.6] text-ink-soft">{c.engineIntro}</p>
+          </div>
+          <VoiceToContent className="max-w-[1360px] mx-auto px-8 lg:px-12" />
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12 mt-12">
+            <Button variant="ghost" href="/work" arrow>
+              See the full pipeline
+            </Button>
           </div>
         </section>
 
-        <section id="work" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
-            <SectionHead title={c.workHead.title} label={c.workHead.label} />
-            <WorkLedger items={homeWork} />
-            <div className="mt-9">
-              <Button variant="ghost" href="/work" arrow>
-                See all work
-              </Button>
-            </div>
+        <section id="process" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
+            <SectionHead title={c.processHead.title} label={c.processHead.label} />
+            <Process process={c.process} />
           </div>
         </section>
 
         <section id="writing" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.writingHead.title} label={c.writingHead.label} />
             <ArticleRow articles={homeWriting} />
             <div className="mt-9">
@@ -391,14 +469,14 @@ const HomePage = () => {
         </section>
 
         <section className="border-t border-line py-[64px] sm:py-[92px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
-            <ResultsBand results={c.results} />
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
+            <MethodBand method={c.method} />
           </div>
         </section>
 
-        <section className="border-t border-line py-[64px] sm:py-[92px]">
-          <div className="max-w-[1320px] mx-auto px-8 lg:px-12">
-            <OfferBand headline={c.offer.headline} body={c.offer.body} ctaLabel="Start a project" ctaHref="/contact" />
+        <section id="offer" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+          <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
+            <Offer />
           </div>
         </section>
       </main>
@@ -412,7 +490,7 @@ const HomePage = () => {
             heading: 'Explore',
             links: [
               { label: 'Approach', href: '/approach' },
-              { label: 'Work', href: '/work' },
+              { label: 'How we work', href: '/work' },
               { label: 'Writing', href: '/writing' },
               { label: 'About', href: '/about' },
             ],

@@ -33,7 +33,7 @@ export const Nav = ({ links, ctaLabel, ctaHref, onCtaClick, className = '' }: Na
 
   return (
     <header className={`sticky top-0 z-50 bg-paper/[86%] backdrop-blur-[8px] border-b border-line ${className}`}>
-      <div className="max-w-[1320px] mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between h-[64px] sm:h-[72px]">
+      <div className="max-w-[1360px] mx-auto px-5 sm:px-8 lg:px-12 flex items-center justify-between h-[64px] sm:h-[72px]">
         <div className="flex items-center gap-5">
           <a href={link('/')} className="font-sans font-semibold text-[19px] tracking-[-0.01em] text-ink">
             Quantik<span className="text-brand">growth</span>

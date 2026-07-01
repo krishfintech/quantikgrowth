@@ -1,6 +1,6 @@
 # QuantikGrowth
 
-> QuantikGrowth is a digital-infrastructure studio for investment firms. We do three things: design clean, fast websites built around a firm's track record and portfolio; on-page SEO so the firm is found by the people searching for it; and a content engine that turns a partner's voicenotes and videos into polished written articles and repurposed social posts across LinkedIn, X, and short-form video. Based in Mumbai, India. There is no chatbot.
+> QuantikGrowth is a digital-infrastructure studio for investment firms. We design clean, fast websites built around a firm's track record and portfolio; do on-page SEO so the firm is found by the people searching for it; and run a content engine that turns a partner's voicenotes and videos into polished written articles and repurposed social posts across newsletter, LinkedIn, X, YouTube and Instagram. For PMS firms we also build an AI investor-relations concierge. Based in Mumbai, India. We are a young studio and have no client case studies yet — we present our method honestly, with no borrowed logos or invented results.
 
 We serve two audiences, with a parallel site for each:
 
@@ -11,7 +11,8 @@ We serve two audiences, with a parallel site for each:
 
 - **Website design** — We rebuild the site around the work. For a venture firm, the portfolio becomes a set of investment case studies rather than a logo wall; for a PMS firm, the site communicates track record, strategy and SEBI registration with institutional clarity. Sub-second loads, mobile-first.
 - **On-page SEO** — We make the firm findable by the people who matter: founders and LPs searching for a venture firm, or HNIs and advisors searching for a PMS. The three reasons it matters: inbound (people arrive already convinced), discoverability (you rank for your own terms instead of directories), and authority (your pages read as the clearest thinking on the subject).
-- **Content engine (voicenote/video to articles + social)** — A partner or fund manager records a two-minute voicenote or short video; we turn it into a finished article in the firm's voice, published and SEO-structured on the firm's own site, then repurposed into LinkedIn posts, an X thread, and short clips. The partner spends minutes; the firm publishes everywhere, weekly.
+- **Content engine (voicenote/video to articles + social)** — A partner or fund manager records a five-minute voicenote or short video; we turn it into a finished article in the firm's voice, published and SEO-structured on the firm's own site, then repurposed into a newsletter, LinkedIn and X posts, and short clips for YouTube and Instagram. The partner spends minutes; the firm publishes everywhere, weekly.
+- **AI investor-relations concierge (portfolio/PMS track only)** — A compliance-safe AI concierge that answers prospective-investor questions (strategy, process, minimums) in the firm's voice, drawn from approved material. It gives information and analysis, never advice — no buy/sell/hold, no return promises — and routes serious enquiries to the team.
 
 ## How we work
 
@@ -22,15 +23,19 @@ We build a real first design of the new site before the client commits. If they 
 ### Venture & PE (default)
 - Home: https://quantikgrowth.in/
 - Approach (services in depth, with FAQ): https://quantikgrowth.in/approach
-- Work (representative case study — Northbound Capital): https://quantikgrowth.in/work
+- How we work (our method + the content-engine animation): https://quantikgrowth.in/work
 - Writing: https://quantikgrowth.in/writing
-- Flagship article — "Why a venture firm should think like a publisher, not a marketer": https://quantikgrowth.in/writing/think-like-a-publisher
+- Featured essay — "Revolutionizing how PMS and VC firms present themselves online": https://quantikgrowth.in/writing/revolutionizing-investment-firm-presence
+- "The first five seconds": https://quantikgrowth.in/writing/vc-first-five-seconds
+- "Your portfolio is your best salesperson": https://quantikgrowth.in/writing/vc-portfolio-best-salesperson
 
 ### Portfolio management (PMS)
 - Home: https://quantikgrowth.in/portfolio
 - Approach: https://quantikgrowth.in/portfolio/approach
-- Work (representative case study — Meridian PMS): https://quantikgrowth.in/portfolio/work
+- How we work (includes the AI investor concierge): https://quantikgrowth.in/portfolio/work
 - Writing: https://quantikgrowth.in/portfolio/writing
+- "The growth ceiling most PMS firms never see": https://quantikgrowth.in/portfolio/writing/pms-growth-ceiling
+- "From invisible to inevitable": https://quantikgrowth.in/portfolio/writing/pms-invisible-to-inevitable
 
 ### Shared
 - About: https://quantikgrowth.in/about
