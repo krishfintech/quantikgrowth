@@ -47,7 +47,7 @@ const TIERS: Tier[] = [
   },
 ];
 
-const TierCard = ({ tier }: { tier: Tier }) => {
+const TierCard = ({ tier }: { tier: Tier; key?: React.Key }) => {
   const fadeUp = useFadeUpVariants();
   return (
     <motion.div

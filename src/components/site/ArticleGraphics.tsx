@@ -486,6 +486,7 @@ const Node = ({
   small?: boolean;
   delay?: number;
   reduce?: boolean | null;
+  key?: React.Key;
 }) => (
   <motion.g
     initial={reduce ? false : { opacity: 0, scale: 0.7 }}

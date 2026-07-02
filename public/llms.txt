@@ -43,5 +43,5 @@ We build a real first design of the new site before the client commits. If they 
 
 ## Contact
 
-Email: krish@quantikgrowth.in
+Email: krishnaidu@quantikgrowth.in
 LinkedIn: https://www.linkedin.com/company/quantikgrowth
