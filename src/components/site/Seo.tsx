@@ -27,6 +27,11 @@ const SITE_GRAPH: Record<string, unknown>[] = [
     email: 'krishnaidu@quantikgrowth.in',
     areaServed: { '@type': 'Country', name: 'India' },
     sameAs: ['https://www.linkedin.com/company/quantikgrowth'],
+    knowsAbout: [
+      'Website design for venture capital firms',
+      'On-page SEO for venture firms',
+      'Content marketing for investment firms',
+    ],
   },
   {
     '@context': 'https://schema.org',

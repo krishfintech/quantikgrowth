@@ -3,39 +3,9 @@ import type { Audience } from '../audience';
 
 type JsonLd = Record<string, unknown>;
 
+// Organization + WebSite identity nodes are emitted site-wide from Seo.tsx
+// (SITE_GRAPH); everything below references the shared Organization by @id.
 const ORG_ID = `${SITE_URL}/#organization`;
-const WEBSITE_ID = `${SITE_URL}/#website`;
-
-export const organizationSchema: JsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': ORG_ID,
-  name: 'QuantikGrowth',
-  url: SITE_URL,
-  logo: `${SITE_URL}/favicon.svg`,
-  image: `${SITE_URL}/og/default.png`,
-  description:
-    'Digital-infrastructure studio for venture capital and private equity firms: website design, on-page SEO, and a content engine.',
-  email: 'krishnaidu@quantikgrowth.in',
-  areaServed: { '@type': 'Country', name: 'India' },
-  sameAs: ['https://www.linkedin.com/company/quantikgrowth'],
-  knowsAbout: [
-    'Website design for venture capital firms',
-    'On-page SEO for venture firms',
-    'Content marketing for investment firms',
-  ],
-};
-
-export const websiteSchema: JsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  '@id': WEBSITE_ID,
-  url: SITE_URL,
-  name: 'QuantikGrowth',
-  description: 'Website design, on-page SEO, and a content engine for venture & private equity firms.',
-  publisher: { '@id': ORG_ID },
-  inLanguage: 'en',
-};
 
 export const servicesSchema: JsonLd[] = [
   {

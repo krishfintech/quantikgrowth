@@ -10,7 +10,7 @@ import {
   useStaggerVariants,
   viewportOnce,
 } from '../components/site';
-import { breadcrumbSchema, organizationSchema } from '../data/structuredData';
+import { breadcrumbSchema } from '../data/structuredData';
 
 /* --- Shared prose ----------------------------------------------------------- */
 const P = ({ children }: { children: React.ReactNode }) => (
@@ -97,7 +97,6 @@ const AboutPage = () => {
         imageAlt="About QuantikGrowth — a studio that builds digital infrastructure for investment firms."
         keywords="QuantikGrowth, about, digital infrastructure for investment firms, Krish Naidu, website design for VC and PMS firms"
         jsonLd={[
-          organizationSchema,
           personSchema,
           breadcrumbSchema([
             { name: 'Home', path: '/' },

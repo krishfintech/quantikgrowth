@@ -1,20 +1,20 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# QuantikGrowth
 
-# Run and deploy your AI Studio app
+Marketing site for QuantikGrowth — a digital-infrastructure studio for venture,
+private equity, and PMS firms. Built with Vite + React 19, server-rendered to
+static HTML (SSG) at build time and deployed on Vercel.
 
-This contains everything you need to run your app locally.
+## Run locally
 
-View your app in AI Studio: https://ai.studio/apps/0a316408-81dc-4f2e-b35e-ccab1d5e3b2c
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. Start the dev server:
    `npm run dev`
+
+## Build
+
+`npm run build` generates OG images, builds the client and SSR bundles,
+prerenders every route to static HTML in `dist/`, and writes the sitemap.
+`npm run preview` serves the production build locally.
