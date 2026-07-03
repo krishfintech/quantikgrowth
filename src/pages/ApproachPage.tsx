@@ -41,7 +41,7 @@ const Chapter = ({
 
   return (
     <motion.section
-      className="border-t border-line py-[56px] sm:py-[72px] scroll-mt-[90px]"
+      className="border-t border-line py-section scroll-mt-[90px]"
       id={kicker.toLowerCase().replace(/\s+/g, '-')}
       variants={fadeUp}
       initial="hidden"
@@ -54,7 +54,7 @@ const Chapter = ({
           <div className="mt-3 text-[13px] font-medium uppercase tracking-[0.16em] text-ink-soft">{kicker}</div>
         </div>
         <div>
-          <h2 className="font-display font-normal text-[clamp(1.8rem,3.2vw,2.6rem)] leading-[1.12] tracking-[-0.01em] max-w-[20ch]">
+          <h2 className="font-display font-normal text-[clamp(1.9rem,3.2vw,2.6rem)] leading-[1.12] tracking-[-0.015em] max-w-[20ch]">
             {title}
           </h2>
           <div className="mt-7">{children}</div>
@@ -168,7 +168,7 @@ const ApproachPage = () => {
           faqSchema(c.faq),
         ]}
       />
-      <section className="pt-[60px] pb-[32px] sm:pt-[96px] sm:pb-[40px]">
+      <section className="pt-hero-t pb-hero-b">
         <motion.div className="max-w-[1360px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[22px]">Approach</Eyebrow>
@@ -220,11 +220,11 @@ const ApproachPage = () => {
       </div>
 
       {/* FAQ — AEO: question-headings + tight, quotable answers */}
-      <section className="border-t border-line py-[60px] sm:py-[80px]" aria-labelledby="faq-heading">
+      <section className="border-t border-line py-section" aria-labelledby="faq-heading">
         <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <Eyebrow className="mb-[22px]">Questions, answered</Eyebrow>
-            <h2 id="faq-heading" className="font-display font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] tracking-[-0.01em] max-w-[22ch]">
+            <h2 id="faq-heading" className="font-display font-normal text-[clamp(1.9rem,3.2vw,2.6rem)] tracking-[-0.015em] max-w-[22ch]">
               {c.faqHeading}
             </h2>
           </motion.div>
@@ -246,10 +246,10 @@ const ApproachPage = () => {
         </div>
       </section>
 
-      <section className="border-t border-line py-[60px] sm:py-[80px]">
+      <section className="border-t border-line py-section">
         <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
-            <h2 className="font-display font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] tracking-[-0.01em] max-w-[20ch]">
+            <h2 className="font-display font-normal text-[clamp(1.9rem,3.2vw,2.6rem)] tracking-[-0.015em] max-w-[20ch]">
               See the design before you decide anything.
             </h2>
             <p className="mt-5 max-w-[50ch] text-[1.1rem] leading-[1.6] text-ink-soft">

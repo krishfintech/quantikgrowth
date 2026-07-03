@@ -50,7 +50,7 @@ const ProgressBar = () => {
   return (
     <motion.div
       style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-[60] h-[3px] origin-left bg-brand"
+      className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-brand"
       aria-hidden
     />
   );
@@ -65,7 +65,7 @@ const TableOfContents = ({ sections, active }: { sections: ArticleSection[]; act
         <li key={s.id}>
           <a
             href={`#${s.id}`}
-            className={`-ml-px block border-l-2 pl-4 leading-snug transition-colors duration-200 ${
+            className={`-ml-px block border-l-2 pl-4 leading-snug transition-colors duration-300 ease-gentle ${
               active === s.id
                 ? 'border-brand text-brand'
                 : 'border-transparent text-ink-soft hover:text-ink'
@@ -86,7 +86,7 @@ const RelatedFooter = ({ slugs }: { slugs: string[] }) => {
     .filter((a): a is NonNullable<typeof a> => Boolean(a));
 
   return (
-    <section className="border-t border-line py-[56px] sm:py-[72px]">
+    <section className="border-t border-line py-section">
       <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
         <div className="mb-9 text-[13px] font-medium uppercase tracking-[0.14em] text-ink-soft">More writing</div>
         <div className="grid gap-px overflow-hidden rounded-[16px] border border-line bg-line md:grid-cols-2">
@@ -123,7 +123,7 @@ const NotFound = () => (
       <div className="max-w-[680px] mx-auto px-6">
         <h1 className="font-display text-[2.4rem] tracking-[-0.01em]">Article not found</h1>
         <p className="text-ink-soft mt-4">
-          <a href="/writing" className="text-brand hover:underline">
+          <a href="/writing" className="text-brand text-link">
             ← Back to all writing
           </a>
         </p>
@@ -194,7 +194,7 @@ const ArticlePage = ({ slug }: { slug: string }) => {
       />
       <ProgressBar />
 
-      <div className="mx-auto max-w-[1360px] px-6 pt-[72px] pb-[40px] lg:px-12">
+      <div className="mx-auto max-w-[1360px] px-6 pt-hero-b pb-[40px] lg:px-12">
         <div className={showToc ? 'lg:grid lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-x-14' : ''}>
           {/* Sticky TOC (desktop only) */}
           {showToc && (

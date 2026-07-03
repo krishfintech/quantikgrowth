@@ -31,7 +31,7 @@ const Section = ({
   const fadeUp = useFadeUpVariants();
   return (
     <motion.section
-      className="border-t border-line py-[clamp(44px,7vw,76px)]"
+      className="border-t border-line py-[clamp(52px,7vw,84px)]"
       variants={fadeUp}
       initial="hidden"
       whileInView="visible"
@@ -106,7 +106,7 @@ const AboutPage = () => {
       />
 
       {/* --- Opening manifesto --- */}
-      <section className="pt-[64px] pb-[20px] sm:pt-[104px] sm:pb-[36px]">
+      <section className="pt-hero-t pb-[clamp(20px,3vw,36px)]">
         <motion.div
           className="max-w-[1360px] mx-auto px-8 lg:px-12"
           variants={stagger}
@@ -203,7 +203,7 @@ const AboutPage = () => {
                   href="https://www.linkedin.com/company/quantikgrowth"
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-2 inline-block text-[14px] text-brand underline decoration-brand/30 underline-offset-2 hover:decoration-brand"
+                  className="mt-2 inline-block text-[14px] text-brand text-link"
                 >
                   LinkedIn ↗
                 </a>
@@ -237,7 +237,7 @@ const AboutPage = () => {
       {/* --- Closing CTA --- */}
       <section className="border-t border-line">
         <motion.div
-          className="max-w-[1360px] mx-auto px-8 lg:px-12 py-[clamp(56px,9vw,104px)]"
+          className="max-w-[1360px] mx-auto px-8 lg:px-12 py-section"
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -245,7 +245,7 @@ const AboutPage = () => {
         >
           <p className="font-display text-[clamp(1.6rem,3.4vw,2.6rem)] leading-[1.2] tracking-[-0.015em] max-w-[22ch] text-ink">
             If your firm’s presence isn’t carrying the weight your work deserves —{' '}
-            <a href="/contact" className="text-brand hover:underline underline-offset-4">
+            <a href="/contact" className="text-brand text-link">
               let’s talk.
             </a>
           </p>

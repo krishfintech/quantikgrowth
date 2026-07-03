@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'motion/react';
+import { EASE } from './motion';
 
 /**
  * The signature animation: a voicenote transformed into published content, stage
@@ -25,7 +26,6 @@ const STAGES: Stage[] = [
   { n: '05', label: 'Amplify', caption: 'Boosting your organic visibility everywhere.' },
 ];
 
-const EASE = [0.16, 1, 0.3, 1] as const;
 const VP = { once: true, margin: '-10% 0px' } as const;
 
 interface VisualProps {
@@ -38,7 +38,7 @@ interface VisualProps {
 /* --- Stage visuals ---------------------------------------------------------- */
 
 const Frame = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex h-full w-full items-center justify-center rounded-[18px] border border-line bg-paper-soft p-6 shadow-[0_30px_80px_-50px_rgba(19,36,28,0.4)] sm:p-10">
+  <div className="flex h-full w-full items-center justify-center rounded-[18px] border border-line bg-paper-soft p-6 shadow-float sm:p-10">
     {children}
   </div>
 );
@@ -246,7 +246,14 @@ const StageRow = ({ index, animate, flip }: { index: number; animate: boolean; f
       </motion.div>
 
       {index < STAGES.length - 1 && (
-        <div className="mx-auto my-8 h-10 w-px bg-line-strong sm:my-10 lg:my-12" aria-hidden />
+        <motion.div
+          className="mx-auto my-8 h-10 w-px origin-top bg-line-strong will-change-transform sm:my-10 lg:my-12"
+          initial={animate ? { scaleY: 0 } : false}
+          whileInView={animate ? { scaleY: 1 } : undefined}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={animate ? { duration: 0.7, ease: EASE } : undefined}
+          aria-hidden
+        />
       )}
     </div>
   );

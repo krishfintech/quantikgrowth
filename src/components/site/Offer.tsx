@@ -54,7 +54,7 @@ const TierCard = ({ tier }: { tier: Tier; key?: React.Key }) => {
       variants={fadeUp}
       className={`flex h-full flex-col rounded-[18px] p-7 sm:p-9 ${
         tier.featured
-          ? 'border border-brand/40 bg-brand-tint shadow-[0_30px_80px_-50px_rgba(15,90,57,0.5)]'
+          ? 'border border-brand/40 bg-brand-tint shadow-float'
           : 'border border-line bg-paper-soft'
       }`}
     >

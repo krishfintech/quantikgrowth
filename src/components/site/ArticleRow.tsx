@@ -28,11 +28,11 @@ export const ArticleRow = ({ articles, className = '' }: ArticleRowProps) => {
           key={article.slug}
           href={`/writing/${article.slug}`}
           variants={fadeUp}
-          className={`group grid grid-cols-[1fr_auto] gap-6 items-baseline py-6 border-b border-line pl-0 hover:pl-[10px] transition-[padding-left] duration-200 ${
+          className={`group grid grid-cols-[1fr_auto] gap-6 items-baseline py-6 border-b border-line ${
             i === 0 ? 'border-t border-line' : ''
           }`}
         >
-          <span className="font-display text-[1.45rem] font-normal tracking-[-0.005em] leading-[1.25] group-hover:text-brand transition-colors duration-200">
+          <span className="block font-display text-[1.45rem] font-normal tracking-[-0.005em] leading-[1.25] transition-[color,transform] duration-300 ease-gentle group-hover:translate-x-[10px] group-hover:text-brand">
             {article.title}
           </span>
           <span className="text-[13.5px] text-ink-soft whitespace-nowrap">

@@ -38,4 +38,4 @@ export type { FooterColumn, FooterLink } from './SiteFooter';
 
 export { SiteLayout, SITE_NAV_LINKS } from './SiteLayout';
 
-export { useFadeUpVariants, useStaggerVariants, arrowHoverVariants, viewportOnce } from './motion';
+export { useFadeUpVariants, useStaggerVariants, arrowHoverVariants, viewportOnce, EASE, EASE_CURTAIN } from './motion';

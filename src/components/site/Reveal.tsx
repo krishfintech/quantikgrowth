@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
+import { EASE } from './motion';
 
 interface MaskRevealProps {
   children: React.ReactNode;
@@ -19,7 +20,7 @@ export const MaskReveal = ({ children, className = '', delay = 0, trigger = 'mou
   const inner = {
     initial: reduceMotion ? false : { y: '115%' },
     animate: { y: '0%' },
-    transition: reduceMotion ? { duration: 0 } : { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const, delay },
+    transition: reduceMotion ? { duration: 0 } : { duration: 0.9, ease: EASE, delay },
   };
 
   return (

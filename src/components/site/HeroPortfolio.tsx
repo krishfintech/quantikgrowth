@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
+import { EASE } from './motion';
 
 /**
  * Portfolio (PMS) hero animation — a different metaphor entirely: a firm rising
@@ -9,8 +10,6 @@ import { motion, useReducedMotion } from 'motion/react';
  * Transform/opacity + SVG pathLength only → 60fps. Under prefers-reduced-motion
  * it renders the finished chart, static.
  */
-
-const EASE = [0.16, 1, 0.3, 1] as const;
 
 const CEILING_Y = 92;
 const LINE_PATH = 'M 12 190 C 70 184, 104 176, 146 156 S 228 96, 262 62 C 284 40, 300 32, 312 24';
@@ -27,11 +26,11 @@ export const HeroPortfolio = ({ className = '' }: { className?: string }) => {
 
   return (
     <div className={className}>
-      <div className="relative aspect-[4/3.05] w-full rounded-[18px] border border-line bg-paper-soft p-4 shadow-[0_30px_70px_-30px_rgba(19,36,28,0.25)]">
+      <div className="relative aspect-[4/3.05] w-full rounded-[18px] border border-line bg-paper-soft p-4 shadow-float">
         <div className="mb-3 flex items-center justify-between px-1">
           <div className="flex items-center gap-2">
             <span className="relative flex h-1.5 w-1.5">
-              {animate && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand/60" />}
+              {animate && <span className="absolute inline-flex h-full w-full animate-ping-soft rounded-full bg-brand/60" />}
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand" />
             </span>
             <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-ink-soft">Your standing</span>

@@ -10,6 +10,7 @@ import {
   useFadeUpVariants,
   useStaggerVariants,
   viewportOnce,
+  EASE,
 } from '../components/site';
 import { breadcrumbSchema, faqSchema, servicesSchemaFor } from '../data/structuredData';
 import { useAudience, type Audience } from '../audience';
@@ -153,7 +154,6 @@ const COPY: Record<Audience, Copy> = {
 
 /* --- Animated visuals, one per journey step --------------------------------- */
 
-const EASE = [0.16, 1, 0.3, 1] as const;
 const VP = { once: true, margin: '-15% 0px' } as const;
 
 const WebsiteBuild = () => {
@@ -300,7 +300,7 @@ const ChatbotChat = () => {
 };
 
 const JourneyVisual = ({ kind }: { kind: StepKind }) => (
-  <div className="rounded-[18px] border border-line bg-paper-soft p-5 shadow-[0_24px_60px_-40px_rgba(19,36,28,0.3)] sm:p-7">
+  <div className="rounded-[18px] border border-line bg-paper-soft p-5 shadow-card sm:p-7">
     {kind === 'website' && <WebsiteBuild />}
     {kind === 'seo' && <SeoClimb />}
     {kind === 'content' && <ContentFlow />}
@@ -372,7 +372,7 @@ const HowWeWorkPage = () => {
       />
 
       {/* Hero */}
-      <section className="pt-[60px] pb-[40px] sm:pt-[96px] sm:pb-[56px]">
+      <section className="pt-hero-t pb-hero-b">
         <motion.div className="max-w-[1360px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[22px]">How we work</Eyebrow>
@@ -392,9 +392,9 @@ const HowWeWorkPage = () => {
       </section>
 
       {/* The journey */}
-      <section className="border-t border-line py-[56px] sm:py-[80px]">
+      <section className="border-t border-line py-section">
         <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
-          <div className="space-y-[88px]">
+          <div className="space-y-section">
             {c.journey.map((step, i) => (
               <React.Fragment key={step.n}>
                 <JourneyStep step={step} flip={i % 2 === 1} />
@@ -405,10 +405,10 @@ const HowWeWorkPage = () => {
       </section>
 
       {/* The signature animation */}
-      <section id="engine" className="border-t border-line py-[56px] sm:py-[88px] scroll-mt-[90px]">
+      <section id="engine" className="border-t border-line py-section scroll-mt-[90px]">
         <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <Eyebrow className="mb-[22px]">The content engine</Eyebrow>
-          <h2 className="font-display font-normal text-[clamp(1.9rem,3.6vw,2.8rem)] leading-[1.1] tracking-[-0.01em] max-w-[20ch]">
+          <h2 className="font-display font-normal text-[clamp(1.9rem,3.2vw,2.6rem)] leading-[1.12] tracking-[-0.015em] max-w-[20ch]">
             One voicenote becomes content <em className="italic text-brand">everywhere.</em>
           </h2>
           <p className="mt-5 max-w-[60ch] text-[1.05rem] leading-[1.6] text-ink-soft">{c.engineIntro}</p>
@@ -417,10 +417,10 @@ const HowWeWorkPage = () => {
       </section>
 
       {/* Pipeline deep-dive */}
-      <section className="border-t border-line py-[56px] sm:py-[80px]">
+      <section className="border-t border-line py-section">
         <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <Eyebrow className="mb-[22px]">The journey, step by step</Eyebrow>
-          <h2 className="font-display font-normal text-[clamp(1.9rem,3.6vw,2.8rem)] leading-[1.1] tracking-[-0.01em] max-w-[22ch]">
+          <h2 className="font-display font-normal text-[clamp(1.9rem,3.2vw,2.6rem)] leading-[1.12] tracking-[-0.015em] max-w-[22ch]">
             What each stage does for you.
           </h2>
 
@@ -458,7 +458,7 @@ const HowWeWorkPage = () => {
       </section>
 
       {/* Founding clients — no named clients yet, so we invite the first documented ones */}
-      <section className="border-t border-line py-[56px] sm:py-[80px]">
+      <section className="border-t border-line py-section">
         <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <motion.div
             variants={fadeUp}
@@ -486,10 +486,10 @@ const HowWeWorkPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="border-t border-line py-[60px] sm:py-[80px]">
+      <section className="border-t border-line py-section">
         <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
-            <h2 className="font-display font-normal text-[clamp(1.8rem,3.4vw,2.6rem)] tracking-[-0.01em] max-w-[20ch]">
+            <h2 className="font-display font-normal text-[clamp(1.9rem,3.2vw,2.6rem)] tracking-[-0.015em] max-w-[20ch]">
               Start with a design you can see.
             </h2>
             <p className="mt-5 max-w-[50ch] text-[1.1rem] leading-[1.6] text-ink-soft">

@@ -30,7 +30,7 @@ const ContactCard = ({
       variants={fadeUp}
       href={href}
       {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-      className="group flex flex-col rounded-[18px] border border-line bg-paper-soft p-8 transition-colors duration-200 hover:border-brand sm:p-10"
+      className="group flex flex-col rounded-[18px] border border-line bg-paper-soft p-8 shadow-card transition-colors duration-300 ease-gentle hover:border-brand/50 sm:p-10"
     >
       <span className="flex h-12 w-12 items-center justify-center rounded-full bg-brand-tint text-brand">
         {icon}
@@ -42,7 +42,7 @@ const ContactCard = ({
       <span className="mt-3 text-[15px] leading-[1.5] text-ink-soft">{hint}</span>
       <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-brand">
         {cta}
-        <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden>→</span>
+        <span className="transition-transform duration-300 ease-gentle group-hover:translate-x-1" aria-hidden>→</span>
       </span>
     </motion.a>
   );
@@ -68,7 +68,7 @@ const ContactPage = () => {
         ])}
       />
 
-      <section className="pt-[64px] pb-[40px] sm:pt-[112px] sm:pb-[56px]">
+      <section className="pt-hero-t pb-hero-b">
         <motion.div
           className="max-w-[1360px] mx-auto px-8 lg:px-12"
           variants={stagger}
@@ -96,7 +96,7 @@ const ContactPage = () => {
         </motion.div>
       </section>
 
-      <section className="pb-[80px] sm:pb-[120px]">
+      <section className="pb-section">
         <motion.div
           className="max-w-[1360px] mx-auto px-8 lg:px-12"
           variants={cardStagger}

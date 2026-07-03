@@ -6,7 +6,7 @@ import type { NavLink } from './Nav';
 
 export const SITE_NAV_LINKS: NavLink[] = [
   { label: 'Approach', href: '/approach' },
-  { label: 'Work', href: '/work' },
+  { label: 'How we work', href: '/work' },
   { label: 'Writing', href: '/writing' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },

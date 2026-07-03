@@ -19,6 +19,7 @@ import {
   splitAudience,
   type Audience,
 } from './audience';
+import { EASE_CURTAIN } from './components/site/motion';
 
 // --- Routing -----------------------------------------------------------------
 // Custom client router: useState for the current path + window.history.pushState,
@@ -186,7 +187,7 @@ const App = ({ initialPath }: { initialPath?: string } = {}) => {
               initial={{ x: '-100%' }}
               animate={{ x: '0%' }}
               exit={{ x: '100%' }}
-              transition={{ duration: 0.35, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.45, ease: EASE_CURTAIN }}
               onAnimationComplete={() => {
                 // Curtain fully covers the screen — swap the route, then reveal.
                 if (pendingDest.current) {

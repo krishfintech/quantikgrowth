@@ -34,7 +34,7 @@ const Pull = ({ children }: { children: React.ReactNode }) => (
 );
 
 const A = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a href={href} className="text-brand underline decoration-brand/30 underline-offset-2 hover:decoration-brand transition-colors">
+  <a href={href} className="text-brand text-link">
     {children}
   </a>
 );

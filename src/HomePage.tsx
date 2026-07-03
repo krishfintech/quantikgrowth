@@ -16,6 +16,7 @@ import {
   useFadeUpVariants,
   useStaggerVariants,
   viewportOnce,
+  EASE,
   type NavLink,
 } from './components/site';
 import { writingByAudience } from './data/writing';
@@ -50,8 +51,8 @@ const SectionHead = ({ title, label }: { title: string; label: string }) => {
       whileInView="visible"
       viewport={viewportOnce}
     >
-      <h2 className="font-display font-normal text-[clamp(1.7rem,3vw,2.35rem)] tracking-[-0.01em]">{title}</h2>
-      <span className="text-[14px] text-ink-soft">{label}</span>
+      <h2 className="font-display font-normal text-[clamp(1.9rem,3.2vw,2.6rem)] leading-[1.12] tracking-[-0.015em]">{title}</h2>
+      <span className="text-[12px] font-medium uppercase tracking-[0.16em] text-ink-soft">{label}</span>
     </motion.div>
   );
 };
@@ -60,7 +61,9 @@ const SectionHead = ({ title, label }: { title: string; label: string }) => {
 
 const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
   const fadeUp = useFadeUpVariants();
-  const stagger = useStaggerVariants(0.08, 0.35);
+  // Choreography: eyebrow settles first, the headline rises behind its mask,
+  // then the supporting copy and actions follow as one breath.
+  const stagger = useStaggerVariants(0.1, 0.55);
   const reduceMotion = useReducedMotion();
   const { audience } = useAudience();
 
@@ -69,17 +72,15 @@ const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
   const artifactY = useTransform(scrollYProgress, [0, 1], [0, reduceMotion ? 0 : -48]);
 
   return (
-    <section ref={sectionRef} className="pt-[60px] pb-[56px] sm:pt-[92px] sm:pb-[88px]">
+    <section ref={sectionRef} className="pt-hero-t pb-hero-b">
       <div className="max-w-[1360px] mx-auto px-8 lg:px-12 grid lg:grid-cols-[1.05fr_0.95fr] gap-x-20 gap-y-14 items-center">
         <div>
-          <motion.div variants={stagger} initial="hidden" animate="visible">
-            <motion.div variants={fadeUp}>
-              <Eyebrow className="mb-[26px]">{hero.eyebrow}</Eyebrow>
-            </motion.div>
+          <motion.div variants={fadeUp} initial="hidden" animate="visible">
+            <Eyebrow className="mb-[26px]">{hero.eyebrow}</Eyebrow>
           </motion.div>
 
           <h1 className="font-display font-normal text-[clamp(2.7rem,5.4vw,4.4rem)] leading-[1.05] tracking-[-0.018em] max-w-[20ch]">
-            <MaskReveal delay={0.12}>
+            <MaskReveal delay={0.15}>
               {hero.lead} <em className="italic text-brand">{hero.em}</em>
             </MaskReveal>
           </h1>
@@ -107,7 +108,7 @@ const Hero = ({ hero }: { hero: HomeContent['hero'] }) => {
           style={{ y: artifactY }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.9, delay: 0.35, ease: EASE }}
         >
           {audience === 'portfolio' ? <HeroPortfolio /> : <HeroVenture />}
         </motion.div>
@@ -126,7 +127,7 @@ const Bullet = ({ children }: { children: React.ReactNode }) => (
 );
 
 const WebsiteVisual = ({ data }: { data: WebsiteVisualData }) => (
-  <div className="rounded-[16px] border border-line bg-paper-soft p-6 shadow-[0_24px_60px_-34px_rgba(19,36,28,0.3)]">
+  <div className="rounded-[16px] border border-line bg-paper-soft p-6 shadow-card">
     <div className="mb-4 flex items-center justify-between">
       <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-ink-soft">{data.label}</span>
       <span className="font-display text-[13px] italic text-ink-soft">{data.count}</span>
@@ -145,7 +146,7 @@ const WebsiteVisual = ({ data }: { data: WebsiteVisualData }) => (
 );
 
 const SeoVisual = ({ data }: { data: SeoVisualData }) => (
-  <div className="rounded-[16px] border border-line bg-paper-soft p-6 shadow-[0_24px_60px_-34px_rgba(19,36,28,0.3)]">
+  <div className="rounded-[16px] border border-line bg-paper-soft p-6 shadow-card">
     <div className="mb-5 flex items-end justify-between">
       <div>
         <div className="text-[11px] font-medium uppercase tracking-[0.18em] text-ink-soft">Organic search</div>
@@ -161,7 +162,7 @@ const SeoVisual = ({ data }: { data: SeoVisualData }) => (
           initial={{ pathLength: 0 }}
           whileInView={{ pathLength: 1 }}
           viewport={viewportOnce}
-          transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.4, ease: EASE }}
         />
         <motion.circle
           cx="118" cy="5" r="3.5" fill="var(--color-brand)"
@@ -182,7 +183,7 @@ const SeoVisual = ({ data }: { data: SeoVisualData }) => (
 );
 
 const ContentVisual = ({ data }: { data: ContentVisualData }) => (
-  <div className="rounded-[16px] border border-line bg-paper-soft p-6 shadow-[0_24px_60px_-34px_rgba(19,36,28,0.3)]">
+  <div className="rounded-[16px] border border-line bg-paper-soft p-6 shadow-card">
     <div className="flex items-center gap-3 rounded-lg border border-line bg-paper px-4 py-3.5">
       <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-tint text-brand">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" fill="currentColor" /><path d="M5 11a7 7 0 0 0 14 0M12 18v3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
@@ -209,7 +210,7 @@ const ContentVisual = ({ data }: { data: ContentVisualData }) => (
 );
 
 const ChatbotVisual = ({ data }: { data: ChatbotVisualData }) => (
-  <div className="rounded-[16px] border border-line bg-paper-soft p-6 shadow-[0_24px_60px_-34px_rgba(19,36,28,0.3)]">
+  <div className="rounded-[16px] border border-line bg-paper-soft p-6 shadow-card">
     <div className="mb-4 flex items-center gap-2.5 border-b border-line pb-4">
       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand text-[11px] font-semibold text-white">AI</span>
       <div className="font-display text-[15px] text-ink">{data.title}</div>
@@ -311,11 +312,11 @@ const RepurposeFlow = () => {
           initial: { opacity: 0, x: from },
           whileInView: { opacity: 1, x: 0 },
           viewport: viewportOnce,
-          transition: { duration: 0.5, delay: 0.08 + i * 0.07, ease: [0.16, 1, 0.3, 1] as const },
+          transition: { duration: 0.6, delay: 0.08 + i * 0.07, ease: EASE },
         };
 
   return (
-    <div className="rounded-[18px] border border-line bg-paper-soft p-6 shadow-[0_30px_80px_-50px_rgba(19,36,28,0.4)] sm:p-8">
+    <div className="rounded-[18px] border border-line bg-paper-soft p-6 shadow-float sm:p-8">
       <div className="grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr] lg:gap-8">
         <div className="space-y-2.5">
           <div className="mb-3 text-[11px] font-medium uppercase tracking-[0.18em] text-ink-soft">What you already have</div>
@@ -422,10 +423,10 @@ const HomePage = () => {
       <main>
         <Hero hero={c.hero} />
 
-        <section id="services" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+        <section id="services" className="border-t border-line py-section scroll-mt-[90px]">
           <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.servicesHead.title} label={c.servicesHead.label} />
-            <div className="space-y-[104px]">
+            <div className="space-y-section">
               {c.services.map((service, i) => (
                 <React.Fragment key={service.index}>
                   <ServiceBlock service={service} visual={renderVisual(service, c)} flip={i % 2 === 1} />
@@ -436,7 +437,7 @@ const HomePage = () => {
         </section>
 
         {/* The signature content-engine animation */}
-        <section id="engine" className="border-t border-line py-[64px] sm:py-[88px] scroll-mt-[90px]">
+        <section id="engine" className="border-t border-line py-section scroll-mt-[90px]">
           <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.engineHead.title} label={c.engineHead.label} />
             <p className="-mt-6 mb-12 max-w-[60ch] text-[1.05rem] leading-[1.6] text-ink-soft">{c.engineIntro}</p>
@@ -449,14 +450,14 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section id="process" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+        <section id="process" className="border-t border-line py-section scroll-mt-[90px]">
           <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.processHead.title} label={c.processHead.label} />
             <Process process={c.process} />
           </div>
         </section>
 
-        <section id="writing" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+        <section id="writing" className="border-t border-line py-section scroll-mt-[90px]">
           <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <SectionHead title={c.writingHead.title} label={c.writingHead.label} />
             <ArticleRow articles={homeWriting} />
@@ -468,13 +469,13 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section className="border-t border-line py-[64px] sm:py-[92px]">
+        <section className="border-t border-line py-section">
           <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <MethodBand method={c.method} />
           </div>
         </section>
 
-        <section id="offer" className="border-t border-line py-[64px] sm:py-[92px] scroll-mt-[90px]">
+        <section id="offer" className="border-t border-line py-section scroll-mt-[90px]">
           <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
             <Offer />
           </div>

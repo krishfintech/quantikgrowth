@@ -53,19 +53,19 @@ const FeaturedArticle = ({ article }: { article: ArticleItem }) => {
     <motion.a
       href={`/writing/${article.slug}`}
       variants={fadeUp}
-      className="group block rounded-[18px] border border-line bg-paper-soft p-8 transition-colors duration-200 hover:border-line-strong md:p-12"
+      className="group block rounded-[18px] border border-line bg-paper-soft p-8 shadow-card transition-colors duration-300 ease-gentle hover:border-line-strong md:p-12"
     >
       <div className="flex items-center gap-3">
         <span className="rounded-full bg-brand-tint px-3 py-1 text-[12px] font-medium text-brand">Featured</span>
         <Meta article={article} />
       </div>
-      <h2 className="mt-6 font-display font-normal text-[clamp(2rem,4vw,3rem)] leading-[1.08] tracking-[-0.015em] max-w-[20ch] group-hover:text-brand transition-colors duration-200">
+      <h2 className="mt-6 font-display font-normal text-[clamp(2rem,4vw,3rem)] leading-[1.08] tracking-[-0.015em] max-w-[20ch] group-hover:text-brand transition-colors duration-300 ease-gentle">
         {article.title}
       </h2>
       <p className="mt-5 max-w-[58ch] text-[1.12rem] leading-[1.6] text-ink-soft">{article.excerpt}</p>
       <span className="mt-7 inline-flex items-center gap-2 text-[15px] text-brand">
         Read the article
-        <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden>→</span>
+        <span className="transition-transform duration-300 ease-gentle group-hover:translate-x-1" aria-hidden>→</span>
       </span>
     </motion.a>
   );
@@ -84,7 +84,7 @@ const ArticleListItem = ({ article }: { article: ArticleItem }) => {
         <Meta article={article} />
       </div>
       <div>
-        <h3 className="font-display font-normal text-[clamp(1.4rem,2.4vw,1.85rem)] leading-[1.15] tracking-[-0.01em] group-hover:text-brand transition-colors duration-200">
+        <h3 className="font-display font-normal text-[clamp(1.4rem,2.4vw,1.85rem)] leading-[1.15] tracking-[-0.01em] group-hover:text-brand transition-colors duration-300 ease-gentle">
           {article.title}
         </h3>
         <p className="mt-3 max-w-[60ch] text-[16px] leading-[1.55] text-ink-soft">{article.excerpt}</p>
@@ -121,7 +121,7 @@ const WritingIndexPage = () => {
           { name: 'Writing', path: link('/writing') },
         ])}
       />
-      <section className="pt-[60px] pb-[36px] sm:pt-[96px] sm:pb-[48px]">
+      <section className="pt-hero-t pb-hero-b">
         <motion.div className="max-w-[1360px] mx-auto px-8 lg:px-12" variants={stagger} initial="hidden" animate="visible">
           <motion.div variants={fadeUp}>
             <Eyebrow className="mb-[22px]">Writing</Eyebrow>
@@ -153,7 +153,7 @@ const WritingIndexPage = () => {
           ) : (
             <p className="text-[1.05rem] text-ink-soft">
               No articles match “{q}”.{' '}
-              <a href={link('/writing')} className="text-brand hover:underline">
+              <a href={link('/writing')} className="text-brand text-link">
                 Clear search
               </a>
             </p>
@@ -162,7 +162,7 @@ const WritingIndexPage = () => {
       </section>
 
       {rest.length > 0 && (
-        <section className="pb-[104px]">
+        <section className="pb-section">
           <motion.div
             className="max-w-[1360px] mx-auto px-8 lg:px-12"
             variants={stagger}

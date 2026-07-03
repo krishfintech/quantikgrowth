@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { useAudience } from '../../audience';
+import { EASE } from './motion';
 
 interface MobileCtaBarProps {
   href?: string;
@@ -23,7 +24,7 @@ export const MobileCtaBar = ({ href = '/contact', label = 'Book a call' }: Mobil
     <motion.div
       initial={reduceMotion ? false : { y: 80 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+      transition={{ duration: 0.5, ease: EASE, delay: 0.3 }}
       className="lg:hidden fixed inset-x-0 bottom-0 z-40 px-4 pt-4 pb-[max(14px,env(safe-area-inset-bottom))] bg-gradient-to-t from-paper via-paper/95 to-transparent"
     >
       <a

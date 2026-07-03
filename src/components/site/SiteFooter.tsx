@@ -40,18 +40,20 @@ export const SiteFooter = ({ tagline, columns, legalLeft, legalRight, id, classN
           <a href={link('/')} className="font-sans font-semibold text-[21px] tracking-[-0.01em] text-ink">
             Quantik<span className="text-brand">growth</span>
           </a>
-          <p className="mt-3.5 text-[15px] text-ink-soft max-w-[30ch]">{tagline}</p>
+          <p className="mt-4 font-display text-[1.1rem] leading-[1.5] tracking-[-0.005em] text-ink-soft max-w-[30ch]">
+            {tagline}
+          </p>
         </div>
 
         <div className="flex flex-wrap gap-16">
           {columns.map((col) => (
             <div key={col.heading}>
-              <h2 className="text-[13px] text-ink-soft font-medium tracking-[0.02em] mb-4">{col.heading}</h2>
+              <h2 className="text-[12px] text-ink-soft font-medium uppercase tracking-[0.16em] mb-4">{col.heading}</h2>
               {col.links.map((l) => (
                 <a
                   key={l.label}
                   href={link(l.href)}
-                  className="block py-1.5 text-[15px] text-ink hover:text-brand transition-colors duration-200"
+                  className="block py-1.5 text-[15px] text-ink text-link decoration-transparent hover:text-brand"
                 >
                   {l.label}
                 </a>

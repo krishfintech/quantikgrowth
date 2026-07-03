@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { arrowHoverVariants } from './motion';
+import { arrowHoverVariants, EASE } from './motion';
 
 export type ButtonVariant = 'primary' | 'ghost';
 
@@ -15,12 +15,14 @@ interface ButtonProps {
 }
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary: 'bg-brand text-white hover:bg-brand-deep',
-  ghost: 'text-ink border-b border-transparent hover:text-brand hover:border-brand',
+  primary: 'rounded-full bg-brand px-[26px] py-[14px] text-white hover:bg-brand-deep active:bg-brand-deep',
+  // A quiet text action: no phantom pill padding, so its left edge aligns
+  // optically with the copy above it. Hairline underline breathes on hover.
+  ghost: 'py-[14px] text-ink text-link hover:text-brand',
 };
 
 const BASE_CLASSES =
-  'inline-flex items-center gap-[9px] rounded-full px-[26px] py-[14px] text-[16px] font-medium transition-colors duration-200';
+  'inline-flex items-center gap-[9px] text-[16px] font-medium transition-colors duration-300 ease-gentle';
 
 export const Button = ({
   variant = 'primary',
@@ -34,7 +36,7 @@ export const Button = ({
   const classes = `${BASE_CLASSES} ${VARIANT_CLASSES[variant]} ${className}`;
 
   const arrowEl = arrow && (
-    <motion.span variants={arrowHoverVariants(3)} transition={{ duration: 0.2, ease: 'easeOut' }}>
+    <motion.span variants={arrowHoverVariants(3)} transition={{ duration: 0.35, ease: EASE }}>
       →
     </motion.span>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { useAudience } from '../../audience';
 import { AudienceSwitcher } from './AudienceSwitcher';
+import { EASE } from './motion';
 
 export interface NavLink {
   label: string;
@@ -48,7 +49,7 @@ export const Nav = ({ links, ctaLabel, ctaHref, onCtaClick, className = '' }: Na
             <a
               key={l.label}
               href={link(l.href)}
-              className="text-[15px] text-ink-soft hover:text-ink transition-colors duration-200"
+              className="text-[15px] text-ink-soft underline decoration-transparent decoration-1 underline-offset-[6px] hover:text-ink hover:decoration-ink/35 transition-[color,text-decoration-color] duration-300 ease-gentle"
             >
               {l.label}
             </a>
@@ -61,7 +62,7 @@ export const Nav = ({ links, ctaLabel, ctaHref, onCtaClick, className = '' }: Na
           <a
             href={link(ctaHref)}
             onClick={onCtaClick}
-            className="hidden sm:inline-flex text-[15px] text-brand border border-line-strong rounded-full px-[18px] py-[10px] transition-all duration-200 hover:border-brand hover:bg-brand hover:text-white"
+            className="hidden sm:inline-flex text-[15px] text-brand border border-line-strong rounded-full px-[18px] py-[10px] transition-[color,background-color,border-color] duration-300 ease-gentle hover:border-brand hover:bg-brand hover:text-white"
           >
             {ctaLabel}
           </a>
@@ -88,7 +89,7 @@ export const Nav = ({ links, ctaLabel, ctaHref, onCtaClick, className = '' }: Na
             initial={reduceMotion ? { opacity: 0 } : { opacity: 0, x: '100%' }}
             animate={reduceMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: '100%' }}
-            transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.4, ease: EASE }}
             className="lg:hidden fixed inset-0 z-[60] bg-paper flex flex-col"
           >
             {/* menu header */}
@@ -123,7 +124,7 @@ export const Nav = ({ links, ctaLabel, ctaHref, onCtaClick, className = '' }: Na
                   onClick={() => setOpen(false)}
                   initial={reduceMotion ? false : { opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: reduceMotion ? 0 : 0.08 + i * 0.05, duration: 0.3 }}
+                  transition={{ delay: reduceMotion ? 0 : 0.08 + i * 0.05, duration: 0.45, ease: EASE }}
                   className="flex items-center justify-between py-4 border-b border-line font-display text-[1.6rem] tracking-[-0.01em] text-ink"
                 >
                   {l.label}

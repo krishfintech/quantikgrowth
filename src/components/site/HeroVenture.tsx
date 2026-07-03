@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'motion/react';
+import { EASE } from './motion';
 
 /**
  * Venture hero animation — a deal-flow / first-impression metaphor. Scattered
@@ -9,8 +10,6 @@ import { motion, useReducedMotion } from 'motion/react';
  * Transform/opacity + SVG pathLength only → 60fps. Under prefers-reduced-motion
  * it renders the finished constellation, static.
  */
-
-const EASE = [0.16, 1, 0.3, 1] as const;
 
 // Constellation of portfolio companies. A few carry a short story label.
 const NODES = [
@@ -40,11 +39,11 @@ export const HeroVenture = ({ className = '' }: { className?: string }) => {
 
   return (
     <div className={className}>
-      <div className="relative aspect-[4/3.05] w-full rounded-[18px] border border-line bg-brand-deep p-4 shadow-[0_30px_70px_-30px_rgba(19,36,28,0.35)]">
+      <div className="relative aspect-[4/3.05] w-full rounded-[18px] border border-line bg-brand-deep p-4 shadow-float">
         <div className="mb-3 flex items-center justify-between px-1">
           <div className="flex items-center gap-2">
             <span className="relative flex h-1.5 w-1.5">
-              {animate && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#9FD9B8]/60" />}
+              {animate && <span className="absolute inline-flex h-full w-full animate-ping-soft rounded-full bg-[#9FD9B8]/60" />}
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[#9FD9B8]" />
             </span>
             <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/55">Your portfolio</span>
