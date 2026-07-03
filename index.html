@@ -11,6 +11,37 @@
     <!-- Per-page <title>, description, canonical, Open Graph, Twitter and JSON-LD
          are set by the <Seo> component (React 19 document metadata). -->
 
+    <!-- Intro bootstrap: on a first home visit this session, hold a dark field
+         from the very first paint so the cinematic intro never flashes content.
+         Purely visual — the real page renders underneath (SEO unaffected), it
+         self-clears after 4.5s even if the JS bundle never arrives, and it is
+         skipped entirely for reduced-motion users and non-home landings. -->
+    <style>
+      html.qg-intro-hold body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 105;
+        background: #13241c;
+        animation: qg-intro-failsafe 0.6s ease 4.5s forwards;
+      }
+      @keyframes qg-intro-failsafe {
+        to { opacity: 0; visibility: hidden; }
+      }
+    </style>
+    <script>
+      try {
+        var qgPath = location.pathname.replace(/\/+$/, "") || "/";
+        if (
+          (qgPath === "/" || qgPath === "/portfolio") &&
+          !sessionStorage.getItem("qg-intro-seen") &&
+          !matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          document.documentElement.classList.add("qg-intro-hold");
+        }
+      } catch (e) {}
+    </script>
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
