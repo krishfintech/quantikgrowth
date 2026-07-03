@@ -19,6 +19,7 @@ import {
   splitAudience,
   type Audience,
 } from './audience';
+import { IntroOverlay } from './components/site/IntroOverlay';
 import { EASE_CURTAIN } from './components/site/motion';
 
 // --- Routing -----------------------------------------------------------------
@@ -173,6 +174,9 @@ const App = ({ initialPath }: { initialPath?: string } = {}) => {
   return (
     <AudienceContext.Provider value={{ audience, link, switchAudience, switching }}>
       <div className="relative min-h-screen overflow-x-clip">
+        {/* Once-per-session cinematic intro — client-only overlay, never SSR'd. */}
+        <IntroOverlay />
+
         {/* Keyed so each navigation (and the audience switch) re-mounts the page
             and replays its entrance reveal — the hero rises into place on arrival. */}
         <div key={routeKey}>{renderView(route)}</div>
