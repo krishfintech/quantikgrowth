@@ -32,10 +32,13 @@
     <script>
       try {
         var qgPath = location.pathname.replace(/\/+$/, "") || "/";
+        var qgForced =
+          /[?&]intro=replay\b/.test(location.search) || location.hash === "#intro-replay";
         if (
-          (qgPath === "/" || qgPath === "/portfolio") &&
-          !sessionStorage.getItem("qg-intro-seen") &&
-          !matchMedia("(prefers-reduced-motion: reduce)").matches
+          qgForced ||
+          ((qgPath === "/" || qgPath === "/portfolio") &&
+            !sessionStorage.getItem("qg-intro-seen") &&
+            !matchMedia("(prefers-reduced-motion: reduce)").matches)
         ) {
           document.documentElement.classList.add("qg-intro-hold");
         }

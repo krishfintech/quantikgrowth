@@ -53,6 +53,12 @@ export const IntroOverlay = () => {
     if (decided.current) return;
     decided.current = true;
 
+    // Review override: ?intro=replay (or #intro-replay) forces a play-through,
+    // bypassing the session flag and — because it is an explicit request to
+    // watch the animation — the reduced-motion skip as well.
+    const forced =
+      /[?&]intro=replay\b/.test(window.location.search) || window.location.hash === '#intro-replay';
+
     let seen = false;
     try {
       seen = sessionStorage.getItem(KEY) === '1';
@@ -60,7 +66,7 @@ export const IntroOverlay = () => {
       /* private mode — treat as unseen */
     }
 
-    if (seen || reduceMotion || !isHome()) {
+    if (!forced && (seen || reduceMotion || !isHome())) {
       releaseBootstrapHold();
       setPhase('done');
       return;
@@ -77,17 +83,15 @@ export const IntroOverlay = () => {
     requestAnimationFrame(releaseBootstrapHold);
 
     // The opening stillness doubles as a font wait, capped so it stays a beat.
-    let cancelled = false;
-    const begin = () => {
-      if (!cancelled) setPhase((p) => (p === 'still' ? 'playing' : p));
-    };
+    // No cleanup cancellation here: under dev StrictMode the first effect's
+    // cleanup would cancel the one-and-only start timer (the `decided` ref
+    // makes the re-run a no-op) and the intro would hang on the dark field.
+    // `begin` is idempotent via the phase check, and this component lives at
+    // the App root, so it never legitimately unmounts mid-wait.
+    const begin = () => setPhase((p) => (p === 'still' ? 'playing' : p));
     const fonts = document.fonts?.load('600 4rem "Inter Tight"').catch(() => undefined);
     const cap = new Promise((r) => setTimeout(r, 650));
     Promise.race([fonts ?? cap, cap]).then(() => setTimeout(begin, 250));
-
-    return () => {
-      cancelled = true;
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
