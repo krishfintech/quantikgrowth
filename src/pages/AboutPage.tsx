@@ -77,7 +77,7 @@ const AboutPage = () => {
     jobTitle: 'Founder',
     worksFor: { '@id': `${SITE_URL}/#organization` },
     url: `${SITE_URL}/about`,
-    sameAs: ['https://www.linkedin.com/company/quantikgrowth'],
+    sameAs: ['https://www.linkedin.com/in/krishnaidu0/'],
     knowsAbout: [
       'Indian equities',
       'Equity research',
@@ -200,7 +200,7 @@ const AboutPage = () => {
                 <div className="font-display text-[1.25rem] tracking-[-0.01em] text-ink">Krish Naidu</div>
                 <div className="text-[14px] text-ink-soft">Founder, QuantikGrowth</div>
                 <a
-                  href="https://www.linkedin.com/company/quantikgrowth"
+                  href="https://www.linkedin.com/in/krishnaidu0/"
                   target="_blank"
                   rel="noreferrer"
                   className="mt-2 inline-block text-[14px] text-brand underline decoration-brand/30 underline-offset-2 hover:decoration-brand"
