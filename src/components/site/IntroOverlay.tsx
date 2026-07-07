@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 
 /**
- * Cinematic once-per-session intro. One gesture: the wordmark rises from behind
- * a baseline mask (the site's signature reveal), a single green hairline draws
- * beneath it, the tagline breathes in, a held beat, then the dark field lifts
- * like a curtain onto the settled page.
+ * Cinematic once-per-session intro. One gesture: a fine line draws the Q
+ * monogram, the serif wordmark rises from behind its baseline mask (the site's
+ * signature reveal) with "growth" in true italic green, the tagline breathes
+ * in, a held beat, then the dark field lifts like a curtain onto the settled
+ * page.
  *
  * Behaviour contract:
  * - Plays only on the homepage ('/' or '/portfolio'), once per session
@@ -27,10 +28,11 @@ const SETTLE = [0.22, 1, 0.36, 1] as const;
 const LIFT = [0.83, 0, 0.17, 1] as const;
 
 /* Beats, in seconds from the start of play (after the stillness/font wait). */
-const T_WORD = 0.2; // wordmark begins to rise
-const T_LINE = 1.15; // hairline draws
-const T_TAG = 1.45; // tagline breathes in
-const T_EXIT_MS = 2650; // held stillness ends; exit begins
+const T_MARK = 0.1; // the Q monogram begins to draw itself
+const T_TAIL = 1.0; // its tail completes the letter
+const T_WORD = 0.85; // wordmark rises while the tail lands
+const T_TAG = 1.6; // tagline breathes in
+const T_EXIT_MS = 2900; // held stillness ends; exit begins
 
 const isHome = () => {
   const p = window.location.pathname.replace(/\/+$/, '') || '/';
@@ -89,7 +91,12 @@ export const IntroOverlay = () => {
     // `begin` is idempotent via the phase check, and this component lives at
     // the App root, so it never legitimately unmounts mid-wait.
     const begin = () => setPhase((p) => (p === 'still' ? 'playing' : p));
-    const fonts = document.fonts?.load('600 4rem "Inter Tight"').catch(() => undefined);
+    const fonts = document.fonts
+      ? Promise.all([
+          document.fonts.load('500 4rem "Newsreader"'),
+          document.fonts.load('italic 500 4rem "Newsreader"'),
+        ]).catch(() => undefined)
+      : undefined;
     const cap = new Promise((r) => setTimeout(r, 650));
     Promise.race([fonts ?? cap, cap]).then(() => setTimeout(begin, 250));
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -140,35 +147,68 @@ export const IntroOverlay = () => {
         if (leaving || skipped) setPhase('done');
       }}
     >
-      <div className="flex h-full w-full items-center justify-center" aria-hidden>
+      {/* pb lifts the lockup slightly above true centre — the visual centre. */}
+      <div className="flex h-full w-full items-center justify-center pb-[7vh]" aria-hidden>
         <motion.div
           className="flex flex-col items-center px-6 will-change-transform"
           animate={leaving ? { y: -30, opacity: 0 } : { y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: LIFT }}
         >
-          {/* Wordmark, rising from behind its baseline mask */}
-          <span className="block overflow-hidden pb-[0.1em]">
+          {/* The monogram: a fine line drawing the Q, tail landing last */}
+          <svg
+            viewBox="0 0 96 96"
+            fill="none"
+            className="h-[66px] w-[66px] sm:h-[84px] sm:w-[84px]"
+          >
+            <motion.circle
+              cx="48"
+              cy="48"
+              r="34"
+              stroke="#9FD9B8"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              transform="rotate(-90 48 48)"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={playing ? { pathLength: 1, opacity: 1 } : {}}
+              transition={{
+                pathLength: { duration: 1.0, delay: T_MARK, ease: SETTLE },
+                opacity: { duration: 0.25, delay: T_MARK },
+              }}
+            />
+            <motion.line
+              x1="66"
+              y1="66"
+              x2="82"
+              y2="82"
+              stroke="#9FD9B8"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={playing ? { pathLength: 1, opacity: 1 } : {}}
+              transition={{
+                pathLength: { duration: 0.35, delay: T_TAIL, ease: SETTLE },
+                opacity: { duration: 0.15, delay: T_TAIL },
+              }}
+            />
+          </svg>
+
+          {/* Wordmark in the site's editorial voice, rising from its baseline mask.
+              Horizontal padding (undone by the negative margin) keeps the italic
+              overhang and the g's descender clear of the mask edges. */}
+          <span className="mt-[30px] -mx-[0.12em] block overflow-hidden px-[0.12em] pb-[0.16em]">
             <motion.span
-              className="block font-sans font-semibold tracking-[-0.015em] text-[clamp(2.1rem,7vw,3.6rem)] leading-[1.1] text-[#F4F3EC] will-change-transform"
-              initial={{ y: '112%' }}
-              animate={{ y: playing ? '0%' : '112%' }}
-              transition={{ duration: 1.05, delay: T_WORD, ease: SETTLE }}
+              className="block font-display font-medium tracking-[-0.02em] text-[clamp(2.5rem,8.5vw,4.4rem)] leading-[1.05] text-[#F4F3EC] [font-optical-sizing:auto] will-change-transform"
+              initial={{ y: '118%' }}
+              animate={{ y: playing ? '0%' : '118%' }}
+              transition={{ duration: 1.0, delay: T_WORD, ease: SETTLE }}
             >
-              Quantik<span className="text-[#9FD9B8]">growth</span>
+              Quantik<em className="italic ml-[0.02em] text-[#9FD9B8]">growth</em>
             </motion.span>
           </span>
 
-          {/* The one green accent: a hairline drawing itself beneath the name */}
+          {/* Tagline, a half-beat later. -mr rebalances the tracking's trailing space. */}
           <motion.span
-            className="mt-[22px] h-px w-[min(180px,38vw)] origin-center bg-[#3E8E67] will-change-transform"
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={playing ? { scaleX: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: T_LINE, ease: SETTLE }}
-          />
-
-          {/* Tagline, a half-beat later */}
-          <motion.span
-            className="mt-[22px] font-sans text-[10px] font-medium uppercase tracking-[0.24em] text-white/50 sm:text-[12px] sm:tracking-[0.26em] will-change-transform"
+            className="mt-[26px] -mr-[0.26em] font-sans text-[10.5px] font-medium uppercase tracking-[0.26em] text-white/45 sm:-mr-[0.3em] sm:text-[13px] sm:tracking-[0.3em] will-change-transform"
             initial={{ opacity: 0, y: 10 }}
             animate={playing ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: T_TAG, ease: SETTLE }}

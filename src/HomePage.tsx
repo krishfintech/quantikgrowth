@@ -500,7 +500,7 @@ const HomePage = () => {
             heading: 'Get in touch',
             links: [
               { label: 'krishnaidu@quantikgrowth.in', href: 'mailto:krishnaidu@quantikgrowth.in' },
-              { label: 'LinkedIn', href: 'https://www.linkedin.com/company/quantikgrowth' },
+              { label: 'LinkedIn', href: 'https://www.linkedin.com/in/krishnaidu0/' },
               { label: 'Start a project', href: '/contact' },
             ],
           },
